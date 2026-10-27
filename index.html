@@ -1658,6 +1658,46 @@
       flex-shrink: 0;
     }
 
+    /* Visual Order Card Preview inside Drawer */
+    .visual-order-card-box {
+      border: 1px solid var(--hairline-strong);
+      background: var(--bg-elevated);
+      padding: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .visual-order-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+
+    /* Google Drive & Customer CRM Admin Modal */
+    .crm-modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -48%) scale(0.97);
+      width: min(980px, 95vw);
+      max-height: 90vh;
+      overflow-y: auto;
+      background: var(--bg-primary);
+      border: 1px solid var(--hairline-strong);
+      z-index: 250;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.28s ease, transform 0.28s ease;
+      padding: 1.75rem;
+    }
+
+    .crm-modal.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
     @media (max-width: 1080px) {
       .hero-spread, .bespoke-spread {
         grid-template-columns: 1fr;
@@ -1668,7 +1708,7 @@
       .hero-manifesto {
         border-right: none;
         border-bottom: 1px solid var(--hairline);
-        padding: 2.25rem 1.5rem;
+        padding: 2rem 1.35rem;
       }
       .lookbook-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1685,30 +1725,208 @@
       }
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
+      body {
+        padding-bottom: 4.5rem;
+      }
+      .top-ticker {
+        padding: 0.45rem 0.85rem;
+        font-size: 0.65rem;
+        justify-content: center;
+        text-align: center;
+      }
+      .ticker-left span:nth-child(2) {
+        display: none;
+      }
       .masthead {
         grid-template-columns: 1fr auto;
       }
-      .nav-links {
+      .brand-cell {
+        padding: 0.75rem 1rem;
+        border-right: none;
+      }
+      .brand-title {
+        font-size: 1.3rem;
+      }
+      .brand-sub {
+        font-size: 0.58rem;
+      }
+      .masthead-actions {
+        padding: 0.55rem 0.85rem;
+        gap: 0.4rem;
+      }
+      #compareHeaderBtn, #themeToggleBtn {
         display: none;
       }
-      .cro-architecture-bar, .lookbook-grid, .policy-strip, .form-grid, .spec-modal {
+      .brief-trigger-btn {
+        padding: 0.55rem 0.75rem;
+        font-size: 0.68rem;
+        gap: 0.4rem;
+      }
+      .nav-links {
+        grid-column: 1 / -1;
+        order: 3;
+        border-right: none;
+        border-top: 1px solid var(--hairline);
+        padding: 0.55rem 0.85rem;
+        gap: 1.15rem;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .nav-links::-webkit-scrollbar {
+        display: none;
+      }
+      .nav-link {
+        font-size: 0.76rem;
+        padding: 0.2rem 0;
+      }
+      .hero-manifesto {
+        padding: 1.5rem 1.1rem;
+        gap: 1.5rem;
+      }
+      .hero-headline {
+        font-size: 2rem;
+        line-height: 1.28;
+        margin-bottom: 1rem;
+      }
+      .hero-lead {
+        font-size: 0.9rem;
+        margin-bottom: 1.35rem;
+      }
+      .policy-strip {
         grid-template-columns: 1fr;
+      }
+      .policy-cell {
+        border-right: none;
+        border-bottom: 1px solid var(--hairline);
+        padding: 0.9rem 1rem;
+      }
+      .policy-cell:last-child {
+        border-bottom: none;
+      }
+      .hero-cta-row {
+        flex-direction: column;
+      }
+      .hero-cta-row a {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+      }
+      .hero-showcase {
+        padding: 1.25rem 1rem;
+      }
+      .cro-architecture-bar, .lookbook-grid, .form-grid, .spec-modal {
+        grid-template-columns: 1fr;
+      }
+      .cro-arch-cell {
+        border-right: none;
+        padding: 1rem 1.1rem;
+      }
+      .sec-index-cell {
+        padding: 0.85rem 1.1rem;
+        flex-direction: row;
+        align-items: center;
+      }
+      .sec-title-cell, .sec-meta-cell {
+        padding: 1.15rem 1.1rem;
+      }
+      .sec-heading {
+        font-size: 1.6rem;
+      }
+      .archive-controls {
+        padding: 0.85rem 1rem;
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .category-pills {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 0.25rem;
+        -webkit-overflow-scrolling: touch;
+      }
+      .cat-btn {
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .search-and-view {
+        width: 100%;
+      }
+      .archive-search-input {
+        width: 100%;
+        flex: 1;
+        font-size: 16px;
       }
       .lookbook-card {
         border-right: none;
       }
+      .bespoke-left, .bespoke-right {
+        padding: 1.5rem 1.1rem;
+        border-right: none;
+      }
+      .editorial-input, .editorial-select, .editorial-textarea {
+        font-size: 16px;
+        padding: 0.78rem 0.85rem;
+      }
+      .process-cell, .wholesale-card {
+        padding: 1.5rem 1.1rem;
+      }
+      .direct-contact-strip {
+        padding: 1.35rem 1.1rem;
+      }
+      .contact-strip-actions {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .contact-strip-actions a {
+        justify-content: center;
+        text-align: center;
+      }
+      .footer-col {
+        padding: 1.6rem 1.1rem;
+      }
+      .footer-bottom-bar {
+        padding: 1.1rem;
+        font-size: 0.7rem;
+      }
+      .spec-modal {
+        width: 96vw;
+        max-height: 92vh;
+      }
+      .modal-img-col {
+        max-height: 250px;
+        border-right: none;
+        border-bottom: 1px solid var(--hairline);
+      }
+      .modal-info-col {
+        padding: 1.25rem 1rem;
+      }
+      .brief-drawer {
+        width: 100vw;
+      }
+      .drawer-header, .drawer-body, .drawer-footer {
+        padding: 1.1rem 1rem;
+      }
       .floating-care-bar {
-        left: 0.75rem;
-        right: 0.75rem;
-        bottom: 4.5rem;
+        left: 0.6rem;
+        right: 0.6rem;
+        bottom: 0.6rem;
         max-width: none;
+        padding: 0.8rem 0.95rem;
       }
       .compare-floating-dock {
-        left: 0.75rem;
-        right: 0.75rem;
-        bottom: 0.75rem;
+        left: 0.6rem;
+        right: 0.6rem;
+        bottom: 0.6rem;
+        width: calc(100vw - 1.2rem);
+        transform: translateY(130%);
         justify-content: space-between;
+        padding: 0.65rem 0.85rem;
+      }
+      .compare-floating-dock.active {
+        transform: translateY(0);
       }
     }
   </style>
@@ -2122,17 +2340,25 @@
                 <option value="Thời trang & Phụ kiện thiết kế độc bản">04 / Quần áo, túi xách &amp; Phụ kiện thiết kế</option>
                 <option value="Thiết bị Công nghệ & Góc Desk Setup">05 / Phím cơ, phụ kiện bàn làm việc &amp; Công nghệ</option>
                 <option value="Gốm Thủ Công, Trà Cụ & Đạo cụ Studio">06 / Gốm thủ công, ấm chén trà &amp; Đạo cụ chụp hình</option>
+                <option value="CUSTOM_OTHER">07 / Mặt hàng khác (Tự nhập ngành hàng bên dưới...)</option>
               </select>
             </div>
 
             <div class="form-group">
               <label class="form-label" for="huntScale">04. Quy Mô Đặt Hàng</label>
               <select id="huntScale" class="editorial-select">
+                <option value="Mua lẻ 1 - 3 món theo ảnh chụp màn hình">Mua lẻ 1 - 3 món theo ảnh chụp màn hình</option>
                 <option value="Decor trọn gói 1 Phòng (5 - 10 món đồng bộ)">Làm trọn gói 1 Phòng (khoảng 5 - 10 món)</option>
                 <option value="Decor nguyên Căn Hộ / Nhà / Shop (12 - 30+ món)">Làm nguyên Căn hộ / Nhà / Quán (12 - 30+ món)</option>
                 <option value="Nhập sỉ số lượng cho Showroom / Chủ Shop">Nhập sỉ số lượng cho Cửa hàng / Local Brand / Dự án</option>
-                <option value="Săn lẻ 1 - 3 món theo ảnh chụp màn hình">Mua lẻ 1 - 3 món theo ảnh chụp màn hình</option>
+                <option value="Số lượng tùy chọn (Ghi rõ ở mục 05)">Khác / Tùy chỉnh số lượng theo nhu cầu riêng</option>
               </select>
+            </div>
+
+            <!-- Custom Category Input (Shows when user selects "07 / Mặt hàng khác") -->
+            <div class="form-group full" id="customCategoryWrap" style="display: none;">
+              <label class="form-label" for="huntCustomCategory" style="color: var(--accent);">03B. Nhập Tên Ngành Hàng / Loại Sản Phẩm Bạn Cần Tìm *</label>
+              <input type="text" id="huntCustomCategory" class="editorial-input" placeholder="VD: Mỹ phẩm nội địa, Phụ kiện thú cưng, Thiết bị máy móc, Đồ cắm trại, Bao bì hộp quà..." />
             </div>
 
             <div class="form-group full">
@@ -2141,7 +2367,7 @@
             </div>
 
             <div class="form-group full" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding-top: 0.5rem;">
-              <span class="mono" style="color: var(--ink-muted);">ẢNH &amp; YÊU CẦU ĐƯỢC BẢO MẬT RIÊNG CHO BẠN</span>
+              <span class="mono" style="color: var(--ink-muted);">ẢNH &amp; YÊU CẦU ĐƯỢC LƯU VÀO HỆ THỐNG ĐỂ BÁO GIÁ NHANH</span>
               <button type="submit" class="btn-editorial-primary">
                 <span>+ THÊM ẢNH NÀY VÀO PHIẾU BÁO GIÁ</span>
               </button>
@@ -2276,7 +2502,12 @@
 
       <div class="footer-bottom-bar mono">
         <div>© 2026 ATELIER — DỊCH VỤ TÌM NGUỒN HÀNG QUA ẢNH, NỘI THẤT TRỌN GÓI &amp; NHẬP SỈ TẬN XƯỞNG.</div>
-        <div>HOTLINE / ZALO / WHATSAPP: <strong>0823.230.703</strong> • LƯU Ý: KHÔNG NHẬN NGÀNH HÀNG THỰC PHẨM &amp; HÀNG CẤM</div>
+        <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+          <span>HOTLINE / ZALO / WHATSAPP: <strong>0823.230.703</strong></span>
+          <button type="button" id="openCrmSetupBtn" class="mono" style="font-size: 0.68rem; color: var(--ink-muted); border: 1px solid var(--hairline); padding: 0.25rem 0.6rem;">
+            ⚙️ Database Google Drive &amp; CRM
+          </button>
+        </div>
       </div>
     </footer>
   </main>
@@ -2359,6 +2590,51 @@
     <div id="compareTableContainer"></div>
   </div>
 
+  <!-- Google Drive & Customer CRM Setup / Lead Manager Modal -->
+  <div class="crm-modal" id="crmModal" role="dialog" aria-modal="true">
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--hairline-strong); padding-bottom: 0.9rem; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.75rem;">
+      <div>
+        <span class="mono" style="color: var(--accent); display: block;">GOOGLE DRIVE FOLDER PER CUSTOMER &amp; GOOGLE SHEETS CRM</span>
+        <h3 class="serif" style="font-size: 1.65rem; font-weight: 600;">Quản Lý Dữ Liệu Khách Hàng &amp; Đồng Bộ Google Drive</h3>
+      </div>
+      <button type="button" id="closeCrmModalBtn" class="mono" style="padding: 0.4rem 0.75rem; border: 1px solid var(--hairline-strong);">[ ĐÓNG × ]</button>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr; gap: 1.25rem;">
+      <div style="padding: 1.1rem; background: var(--bg-secondary); border: 1px solid var(--hairline);">
+        <div class="mono" style="color: var(--accent); margin-bottom: 0.4rem;">1. KẾT NỐI GOOGLE DRIVE (TỰ ĐỘNG TẠO THƯ MỤC RIÊNG TỪNG KHÁCH + LƯU ẢNH &amp; GOOGLE SHEETS CRM)</div>
+        <p style="font-size: 0.84rem; color: var(--ink-secondary); line-height: 1.6; margin-bottom: 0.85rem;">
+          Khi kết nối, mỗi lần khách gửi báo giá, hệ thống sẽ tự động tạo thư mục riêng mang tên khách hàng (VD: <strong>0763048771 - Emvy (Đà Nẵng)</strong>) trên Google Drive của bạn, lưu toàn bộ hình ảnh khách tải lên vào đúng thư mục đó, đồng thời ghi SĐT &amp; nhu cầu của khách vào bảng <strong>Google Sheets CRM Remarketing</strong> để bạn chăm sóc ưu đãi mua lại.
+        </p>
+        <div style="display: flex; gap: 0.65rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.75rem;">
+          <input type="text" id="gasWebhookInput" class="editorial-input" style="flex: 1; min-width: 260px;" placeholder="Dán link Web App Google Apps Script (https://script.google.com/macros/s/.../exec) vào đây..." />
+          <button type="button" id="saveGasWebhookBtn" class="btn-editorial-primary mono" style="padding: 0.75rem 1.1rem; font-size: 0.72rem;">
+            LƯU KẾT NỐI DRIVE
+          </button>
+          <button type="button" id="testGasWebhookBtn" class="btn-editorial-outline mono" style="padding: 0.75rem 1rem; font-size: 0.72rem;">
+            ⚡ GỬI THỬ 1 ĐƠN LÊN DRIVE
+          </button>
+        </div>
+        <div id="gasStatusText" class="mono" style="font-size: 0.72rem; color: var(--olive);"></div>
+      </div>
+
+      <div style="padding: 1.1rem; background: var(--bg-elevated); border: 1px solid var(--hairline);">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem;">
+          <div>
+            <span class="mono" style="color: var(--ink-primary);">2. DANH SÁCH KHÁCH HÀNG &amp; ĐƠN HÀNG ĐÃ LƯU TRÊN TRÌNH DUYỆT NÀY</span>
+            <p style="font-size: 0.8rem; color: var(--ink-secondary);">Bạn có thể xem lại ảnh khách gửi và xuất danh sách ra file Excel (.CSV) bất cứ lúc nào để làm Marketing ưu đãi mua lại.</p>
+          </div>
+          <div style="display: flex; gap: 0.5rem;">
+            <button type="button" id="exportCrmCsvBtn" class="btn-editorial-primary mono" style="padding: 0.55rem 0.95rem; font-size: 0.7rem;">
+              📥 XUẤT FILE EXCEL (.CSV) KHÁCH HÀNG
+            </button>
+          </div>
+        </div>
+        <div id="localCrmTableWrap" style="max-height: 260px; overflow-y: auto; border: 1px solid var(--hairline);"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- Slide-Over Private Quote Brief Drawer -->
   <aside class="brief-drawer" id="briefDrawer" aria-label="Phiếu Yêu Cầu Báo Giá">
     <div class="drawer-header">
@@ -2382,25 +2658,20 @@
         <div class="tier-steps-list" id="tierStepsList"></div>
       </div>
 
-      <!-- Priority Slot Notice -->
-      <div id="drawerCareNotice" style="padding: 0.7rem 0.9rem; background: var(--accent-soft); border-left: 3px solid var(--accent); font-size: 0.78rem; color: var(--ink-primary); display: flex; justify-content: space-between; align-items: center; gap: 0.5rem;">
-        <span>● <strong>Đã lưu tự động:</strong> Danh sách bạn chọn vẫn được giữ nguyên trên trình duyệt này. Gửi qua Zalo để nhận báo giá chi tiết nhé!</span>
-      </div>
-
       <div id="briefItemsContainer" style="display: flex; flex-direction: column; gap: 0.75rem;"></div>
 
       <!-- Dynamic Upsell / Frequently Sourced Together inside Drawer -->
       <div id="drawerUpsellContainer"></div>
 
       <div style="border-top: 1px solid var(--hairline); padding-top: 1rem; display: flex; flex-direction: column; gap: 0.85rem;">
-        <div class="mono" style="color: var(--ink-primary);">THÔNG TIN ĐỂ CHÚNG TÔI GỬI BÁO GIÁ (ZALO / WHATSAPP: 0823.230.703)</div>
+        <div class="mono" style="color: var(--ink-primary);">THÔNG TIN ĐỂ CHÚNG TÔI GỬI BÁO GIÁ &amp; TÍCH ĐIỂM KHÁCH QUEN</div>
         <div class="form-group">
-          <label class="form-label" for="clientNameInput">Tên Của Bạn (Hoặc Tên Shop / Studio)</label>
+          <label class="form-label" for="clientNameInput">Tên Của Bạn (Hoặc Tên Shop / Studio) *</label>
           <input type="text" id="clientNameInput" class="editorial-input" placeholder="VD: Minh Anh / Tiệm Decor..." />
         </div>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
           <div class="form-group">
-            <label class="form-label" for="clientZaloInput">SĐT Zalo / WhatsApp Của Bạn</label>
+            <label class="form-label" for="clientZaloInput">SĐT Zalo / WhatsApp *</label>
             <input type="text" id="clientZaloInput" class="editorial-input" placeholder="VD: 0987..." />
           </div>
           <div class="form-group">
@@ -2415,15 +2686,34 @@
         </div>
       </div>
 
+      <!-- Visual Order Card Box (Solves seeing image in Zalo!) -->
+      <div class="visual-order-card-box" id="visualOrderCardBox" style="display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 0.5rem;">
+          <span class="mono" style="color: var(--accent);">🖼️ PHIẾU ĐƠN HÀNG KÈM ẢNH (GỬI QUA ZALO ĐỂ SHOP XEM ẢNH NGAY)</span>
+          <span class="mono" id="cloudSyncBadge" style="color: var(--olive); font-size: 0.65rem;">● SẴN SÀNG</span>
+        </div>
+        <p style="font-size: 0.78rem; color: var(--ink-secondary); line-height: 1.45;">
+          Hệ thống đã ghép sẵn <strong>ảnh mẫu bạn chọn + thông tin đơn</strong> thành 1 tấm ảnh phiếu đơn hàng. Khi mở Zalo, bạn có thể dán (Ctrl+V) hoặc gửi tấm ảnh này để shop thấy hình ngay lập tức!
+        </p>
+        <div class="visual-order-actions">
+          <button type="button" class="btn-editorial-outline mono" id="copyOrderImageBtn" style="padding: 0.58rem 0.5rem; font-size: 0.68rem; text-align: center;">
+            📸 COPY ẢNH ĐƠN HÀNG
+          </button>
+          <button type="button" class="btn-editorial-outline mono" id="downloadOrderImageBtn" style="padding: 0.58rem 0.5rem; font-size: 0.68rem; text-align: center;">
+            📥 TẢI ẢNH PHIẾU ĐƠN
+          </button>
+        </div>
+      </div>
+
       <div>
-        <div class="mono" style="margin-bottom: 0.4rem; color: var(--ink-secondary);">TIN NHẮN TÓM TẮT SẼ SAO CHÉP ĐỂ GỬI QUA ZALO / WHATSAPP:</div>
+        <div class="mono" style="margin-bottom: 0.4rem; color: var(--ink-secondary);">TIN NHẮN TÓM TẮT (ĐÃ KÈM LINK XEM ẢNH TRỰC TIẾP):</div>
         <div class="brief-preview-box" id="briefMessagePreview"></div>
       </div>
     </div>
 
     <div class="drawer-footer">
       <button type="button" class="btn-editorial-primary" id="sendZaloBriefBtn" style="width: 100%; justify-content: center;">
-        <span>SAO CHÉP PHIẾU &amp; MỞ ZALO (0823.230.703)</span>
+        <span>GỬI ĐƠN &amp; MỞ ZALO NHẬN BÁO GIÁ (0823.230.703)</span>
         <span>↗</span>
       </button>
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.55rem;">
@@ -2666,46 +2956,56 @@
       zaloPhone: "0823230703"
     };
 
+    // Clean v2 state: Start at 0 items (never pre-populate sample items into customer's cart/wishlist/compare)
+    try {
+      localStorage.removeItem("atelier_wishlist_v1");
+      localStorage.removeItem("atelier_compare_v1");
+      localStorage.removeItem("atelier_brief_v1");
+    } catch (e) {}
+
     let wishlistIds = [];
     try {
-      const savedWish = JSON.parse(localStorage.getItem("atelier_wishlist_v1"));
-      wishlistIds = Array.isArray(savedWish) ? savedWish : ["CN-01", "CN-05"];
+      const savedWish = JSON.parse(localStorage.getItem("atelier_wishlist_v2"));
+      wishlistIds = Array.isArray(savedWish) ? savedWish : [];
     } catch (e) {
-      wishlistIds = ["CN-01", "CN-05"];
+      wishlistIds = [];
     }
 
     let compareIds = [];
     try {
-      const savedCmp = JSON.parse(localStorage.getItem("atelier_compare_v1"));
-      compareIds = Array.isArray(savedCmp) ? savedCmp : ["CN-01", "CN-08"];
+      const savedCmp = JSON.parse(localStorage.getItem("atelier_compare_v2"));
+      compareIds = Array.isArray(savedCmp) ? savedCmp : [];
     } catch (e) {
-      compareIds = ["CN-01", "CN-08"];
+      compareIds = [];
     }
 
-    // Initial Brief has 1 sample item (or restored from unfinished session)
-    let quoteBrief = [
-      {
-        uid: "init-1",
-        code: ARCHIVE_ITEMS[0].code,
-        title: ARCHIVE_ITEMS[0].title,
-        origin: ARCHIVE_ITEMS[0].origin,
-        mode: "Mua lẻ 1 món (Báo giá trọn gói về tận tay)",
-        note: "Màu Kem Đá / Nhờ báo giá trọn gói về VN",
-        image: ARCHIVE_ITEMS[0].image
-      }
-    ];
+    let quoteBrief = [];
     try {
-      const savedBrief = JSON.parse(localStorage.getItem("atelier_brief_v1"));
-      if (Array.isArray(savedBrief) && savedBrief.length > 0) {
-        quoteBrief = savedBrief;
-      }
+      const savedBrief = JSON.parse(localStorage.getItem("atelier_brief_v2"));
+      quoteBrief = Array.isArray(savedBrief) ? savedBrief : [];
+    } catch (e) {
+      quoteBrief = [];
+    }
+
+    // Default or saved Google Apps Script Web App URL for per-customer Google Drive folder + Sheets CRM
+    let gasWebhookUrl = "";
+    try {
+      gasWebhookUrl = localStorage.getItem("atelier_gas_webhook_v1") || "";
     } catch (e) {}
+
+    let crmLeads = [];
+    try {
+      const savedLeads = JSON.parse(localStorage.getItem("atelier_crm_leads_v1"));
+      crmLeads = Array.isArray(savedLeads) ? savedLeads : [];
+    } catch (e) {
+      crmLeads = [];
+    }
 
     function persistState() {
       try {
-        localStorage.setItem("atelier_wishlist_v1", JSON.stringify(wishlistIds));
-        localStorage.setItem("atelier_compare_v1", JSON.stringify(compareIds));
-        localStorage.setItem("atelier_brief_v1", JSON.stringify(quoteBrief));
+        localStorage.setItem("atelier_wishlist_v2", JSON.stringify(wishlistIds));
+        localStorage.setItem("atelier_compare_v2", JSON.stringify(compareIds));
+        localStorage.setItem("atelier_brief_v2", JSON.stringify(quoteBrief));
       } catch (e) {}
     }
 
@@ -2962,8 +3262,15 @@
       } else {
         quoteBrief.forEach((b, idx) => {
           lines.push(`${idx + 1}. [${b.code}] ${b.title}`);
+          if (b.origin) lines.push(`   - Nhóm / Nguồn: ${b.origin}`);
           lines.push(`   - Số lượng / Quy mô: ${b.mode}`);
           if (b.note) lines.push(`   - Dặn dò thêm: ${b.note}`);
+          const viewableUrl = b.remoteImageUrl || (b.image && /^https?:\/\//i.test(b.image) ? b.image : "");
+          if (viewableUrl) {
+            lines.push(`   - 🖼️ Link xem ảnh mẫu: ${viewableUrl}`);
+          } else if (b.image && b.image.startsWith("data:image")) {
+            lines.push(`   - 🖼️ Ảnh mẫu: Đã lưu trong Phiếu Đơn Bằng Ảnh / Google Drive CRM`);
+          }
         });
       }
 
@@ -2996,6 +3303,11 @@
         </div>
       `).join("");
 
+      const visualCardBox = document.getElementById("visualOrderCardBox");
+      if (visualCardBox) {
+        visualCardBox.style.display = quoteBrief.length > 0 ? "flex" : "none";
+      }
+
       if (quoteBrief.length === 0) {
         briefItemsContainer.innerHTML = `
           <div style="padding: 2rem 1rem; border: 1px dashed var(--hairline); text-align: center; color: var(--ink-muted); font-size: 0.86rem;">
@@ -3011,6 +3323,7 @@
               <div class="serif" style="font-size: 1.1rem; font-weight: 600; line-height: 1.25;">${item.title}</div>
               <div style="font-size: 0.76rem; color: var(--ink-secondary); margin-top: 0.2rem;">${item.mode}</div>
               ${item.note ? `<div style="font-size: 0.74rem; color: var(--ink-muted); margin-top: 0.15rem;">Ghi chú: ${item.note}</div>` : ''}
+              ${item.remoteImageUrl ? `<a href="${item.remoteImageUrl}" target="_blank" rel="noopener" class="mono" style="font-size: 0.65rem; color: var(--olive); text-decoration: underline; display: inline-block; margin-top: 0.2rem;">✓ Đã tạo link ảnh xem trực tiếp ↗</a>` : ''}
             </div>
             <button type="button" class="mono" data-remove-uid="${item.uid}" style="padding: 0.35rem 0.55rem; border: 1px solid var(--hairline); color: var(--ink-secondary);" title="Bỏ món này">
               ×
@@ -3046,10 +3359,13 @@
     }
 
     function addToBrief(entry) {
-      const existingIdx = quoteBrief.findIndex(b => b.code === entry.code && b.title === entry.title);
+      const isCustomImg = entry.code && entry.code.includes("TÌM QUA ẢNH");
+      const existingIdx = isCustomImg ? -1 : quoteBrief.findIndex(b => b.code === entry.code && b.title === entry.title);
       if (existingIdx > -1) {
         quoteBrief[existingIdx].mode = entry.mode;
         quoteBrief[existingIdx].note = entry.note;
+        if (entry.image) quoteBrief[existingIdx].image = entry.image;
+        if (entry.remoteImageUrl) quoteBrief[existingIdx].remoteImageUrl = entry.remoteImageUrl;
         showToast(`ĐÃ CẬP NHẬT MÓN: ${entry.code}`);
       } else {
         quoteBrief.push({
@@ -3228,6 +3544,8 @@
       specModal.classList.remove("open");
       compareModal.classList.remove("open");
       briefDrawer.classList.remove("open");
+      const crmModalEl = document.getElementById("crmModal");
+      if (crmModalEl) crmModalEl.classList.remove("open");
     }
 
     function openBriefDrawer() {
@@ -3309,6 +3627,48 @@
 
     let uploadedCustomImageData = null;
     let uploadedCustomImageName = "";
+    let uploadedCustomRemoteUrl = "";
+
+    async function uploadBlobForInstantLink(blob, fileName, targetUid) {
+      try {
+        const fd = new FormData();
+        fd.append("file", blob, fileName || "atelier-item.jpg");
+        const res = await fetch("https://tmpfiles.org/api/v1/upload", {
+          method: "POST",
+          body: fd
+        });
+        if (!res.ok) return "";
+        const data = await res.json();
+        if (data && data.data && data.data.url) {
+          const directUrl = data.data.url.replace("http://", "https://").replace("https://tmpfiles.org/", "https://tmpfiles.org/dl/");
+          uploadedCustomRemoteUrl = directUrl;
+          if (targetUid) {
+            const found = quoteBrief.find(b => b.uid === targetUid);
+            if (found) {
+              found.remoteImageUrl = directUrl;
+              renderBriefDrawer();
+            }
+          } else {
+            // Also update the most recently added custom item if it doesn't have a remote URL yet
+            for (let i = quoteBrief.length - 1; i >= 0; i--) {
+              if (quoteBrief[i].code.includes("TÌM QUA ẢNH") && !quoteBrief[i].remoteImageUrl) {
+                quoteBrief[i].remoteImageUrl = directUrl;
+                renderBriefDrawer();
+                break;
+              }
+            }
+          }
+          const fnEl = document.getElementById("dropzoneFileName");
+          if (fnEl && uploadedCustomImageData) {
+            fnEl.textContent = `Đã đính kèm & tạo link xem ảnh trực tiếp: ${fileName}`;
+          }
+          return directUrl;
+        }
+      } catch (err) {
+        // Fallback relies on Visual Order Card image + Google Drive webhook
+      }
+      return "";
+    }
 
     function renderInteriorPackages() {
       const grid = document.getElementById("interiorPackagesGrid");
@@ -3352,12 +3712,13 @@
         showToast("BẠN HÃY CHỌN HOẶC DÁN FILE HÌNH ẢNH NHÉ!");
         return;
       }
+      uploadedCustomRemoteUrl = "";
       const reader = new FileReader();
       reader.onload = (ev) => {
         const img = new Image();
         img.onload = () => {
           const canvas = document.createElement("canvas");
-          const maxDim = 480;
+          const maxDim = 720;
           let w = img.width;
           let h = img.height;
           if (w > h && w > maxDim) {
@@ -3371,17 +3732,255 @@
           canvas.height = h;
           const ctx = canvas.getContext("2d");
           ctx.drawImage(img, 0, 0, w, h);
-          uploadedCustomImageData = canvas.toDataURL("image/jpeg", 0.82);
-          uploadedCustomImageName = file.name || "Anh-chup-man-hinh.jpg";
+          uploadedCustomImageData = canvas.toDataURL("image/jpeg", 0.84);
+          uploadedCustomImageName = file.name || "Anh-khach-gui.jpg";
 
           document.getElementById("dropzonePreviewImg").src = uploadedCustomImageData;
-          document.getElementById("dropzoneFileName").textContent = `Đã đính kèm: ${uploadedCustomImageName} (Sẵn sàng gửi báo giá)`;
+          document.getElementById("dropzoneFileName").textContent = `Đã đính kèm: ${uploadedCustomImageName} (Đang tạo link xem ảnh...)`;
           document.getElementById("dropzonePreviewWrap").classList.add("has-img");
           showToast("📷 ĐÃ NHẬN ẢNH! BẠN GHI THÊM DẶN DÒ RỒI BẤM THÊM VÀO PHIẾU NHÉ.");
+
+          canvas.toBlob((blob) => {
+            if (blob) {
+              uploadBlobForInstantLink(blob, uploadedCustomImageName, null);
+            }
+          }, "image/jpeg", 0.85);
         };
         img.src = ev.target.result;
       };
       reader.readAsDataURL(file);
+    }
+
+    // Generate Visual Order Card Canvas (Combines customer info + item photos into 1 shareable image)
+    async function generateVisualOrderCardCanvas() {
+      const canvas = document.createElement("canvas");
+      const width = 820;
+      const items = quoteBrief.length > 0 ? quoteBrief : [];
+      const rowHeight = 135;
+      const headerHeight = 175;
+      const footerHeight = 75;
+      const height = headerHeight + Math.max(1, items.length) * rowHeight + footerHeight;
+
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext("2d");
+
+      // Background
+      ctx.fillStyle = "#F6F3EC";
+      ctx.fillRect(0, 0, width, height);
+
+      // Border
+      ctx.strokeStyle = "#181615";
+      ctx.lineWidth = 2;
+      ctx.strokeRect(16, 16, width - 32, height - 32);
+
+      // Header Banner
+      ctx.fillStyle = "#181615";
+      ctx.fillRect(16, 16, width - 32, 64);
+      ctx.fillStyle = "#FAF8F4";
+      ctx.font = "bold 20px sans-serif";
+      ctx.fillText("PHIẾU YÊU CẦU BÁO GIÁ & HÌNH ẢNH MẪU // ATELIER", 36, 55);
+
+      ctx.fillStyle = "#9E3B24";
+      ctx.font = "bold 14px monospace";
+      ctx.fillText("ZALO / HOTLINE: 0823.230.703", width - 270, 54);
+
+      // Customer Metadata
+      const clientName = document.getElementById("clientNameInput").value.trim() || "Khách xem web";
+      const clientZalo = document.getElementById("clientZaloInput").value.trim() || "Chưa điền SĐT";
+      const clientCity = document.getElementById("clientCitySelect").value;
+      const nowStr = new Date().toLocaleString("vi-VN");
+
+      ctx.fillStyle = "#181615";
+      ctx.font = "bold 16px sans-serif";
+      ctx.fillText(`Khách hàng: ${clientName}   |   SĐT Zalo: ${clientZalo}   |   Khu vực: ${clientCity}`, 36, 112);
+      ctx.fillStyle = "#5A554C";
+      ctx.font = "13px sans-serif";
+      ctx.fillText(`Thời gian tạo phiếu: ${nowStr}   •   Tổng số mục: ${items.length} món`, 36, 138);
+
+      // Divider
+      ctx.strokeStyle = "#D5CEC2";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(32, 155);
+      ctx.lineTo(width - 32, 155);
+      ctx.stroke();
+
+      // Load helper for images
+      function loadImg(src) {
+        return new Promise((resolve) => {
+          if (!src) return resolve(null);
+          const im = new Image();
+          im.crossOrigin = "anonymous";
+          im.onload = () => resolve(im);
+          im.onerror = () => resolve(null);
+          im.src = src;
+        });
+      }
+
+      for (let i = 0; i < items.length; i++) {
+        const it = items[i];
+        const yTop = headerHeight + i * rowHeight;
+
+        // Card row box
+        ctx.fillStyle = "#FAF8F4";
+        ctx.fillRect(32, yTop, width - 64, rowHeight - 14);
+        ctx.strokeStyle = "#D5CEC2";
+        ctx.strokeRect(32, yTop, width - 64, rowHeight - 14);
+
+        // Draw thumbnail
+        const im = await loadImg(it.image);
+        if (im) {
+          ctx.drawImage(im, 44, yTop + 12, 96, 96);
+        } else {
+          ctx.fillStyle = "#EAE4D7";
+          ctx.fillRect(44, yTop + 12, 96, 96);
+          ctx.fillStyle = "#9E3B24";
+          ctx.font = "11px monospace";
+          ctx.fillText("ẢNH MẪU", 62, yTop + 64);
+        }
+
+        // Item text details
+        ctx.fillStyle = "#9E3B24";
+        ctx.font = "bold 12px monospace";
+        ctx.fillText(`${i + 1}. [${it.code}] • ${it.origin || ""}`.slice(0, 75), 156, yTop + 30);
+
+        ctx.fillStyle = "#181615";
+        ctx.font = "bold 16px sans-serif";
+        ctx.fillText((it.title || "").slice(0, 58), 156, yTop + 55);
+
+        ctx.fillStyle = "#5A554C";
+        ctx.font = "13px sans-serif";
+        ctx.fillText(`Quy mô: ${(it.mode || "").slice(0, 68)}`, 156, yTop + 80);
+
+        if (it.note) {
+          ctx.fillStyle = "#2E2B28";
+          ctx.font = "italic 12px sans-serif";
+          ctx.fillText(`Ghi chú: ${it.note.slice(0, 78)}`, 156, yTop + 102);
+        }
+      }
+
+      // Footer
+      const fY = height - 36;
+      ctx.fillStyle = "#5A554C";
+      ctx.font = "12px monospace";
+      ctx.fillText("ATELIER CONCIERGE • Gửi kèm ảnh phiếu này qua Zalo 0823.230.703 để nhận báo giá nhanh nhất", 36, fY);
+
+      return canvas;
+    }
+
+    // Save customer lead locally & push to Google Drive Per-Customer Folder + Google Sheets CRM
+    async function syncOrderToGoogleDriveAndCrm(triggerSource) {
+      const clientName = document.getElementById("clientNameInput").value.trim() || "Khách xem web";
+      const clientZalo = document.getElementById("clientZaloInput").value.trim() || "Chưa điền SĐT";
+      const clientCity = document.getElementById("clientCitySelect").value;
+      const summaryText = buildZaloBriefText();
+
+      const orderId = "ATL-" + Date.now().toString().slice(-6);
+      const leadRecord = {
+        orderId,
+        createdAt: new Date().toLocaleString("vi-VN"),
+        clientName,
+        clientZalo,
+        clientCity,
+        itemCount: quoteBrief.length,
+        itemsSummary: quoteBrief.map(b => `[${b.code}] ${b.title} (${b.mode})`).join(" | "),
+        firstImage: quoteBrief[0] ? quoteBrief[0].image : "",
+        remoteUrls: quoteBrief.map(b => b.remoteImageUrl).filter(Boolean).join(", "),
+        driveFolderUrl: ""
+      };
+
+      crmLeads.unshift(leadRecord);
+      if (crmLeads.length > 100) crmLeads = crmLeads.slice(0, 100);
+      try {
+        localStorage.setItem("atelier_crm_leads_v1", JSON.stringify(crmLeads));
+      } catch (e) {}
+
+      const badge = document.getElementById("cloudSyncBadge");
+      if (!gasWebhookUrl) {
+        if (badge) badge.textContent = "● ĐÃ LƯU CRM TRÌNH DUYỆT";
+        return null;
+      }
+
+      if (badge) badge.textContent = "● ĐANG ĐỒNG BỘ GOOGLE DRIVE...";
+
+      try {
+        const payload = {
+          orderId,
+          source: triggerSource || "Web ATELIER",
+          clientName,
+          clientZalo,
+          clientCity,
+          summaryText,
+          unlockedPrivileges: getAutoPrivileges(quoteBrief.length).filter(t => t.unlocked).map(t => t.title),
+          items: quoteBrief.map(b => ({
+            code: b.code,
+            title: b.title,
+            origin: b.origin,
+            mode: b.mode,
+            note: b.note,
+            remoteImageUrl: b.remoteImageUrl || "",
+            image: b.image || ""
+          }))
+        };
+
+        const res = await fetch(gasWebhookUrl, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (data && data.ok && data.folderUrl) {
+          leadRecord.driveFolderUrl = data.folderUrl;
+          try {
+            localStorage.setItem("atelier_crm_leads_v1", JSON.stringify(crmLeads));
+          } catch (e) {}
+          if (badge) badge.textContent = "✓ ĐÃ LƯU VÀO GOOGLE DRIVE";
+          return data;
+        }
+      } catch (err) {
+        if (badge) badge.textContent = "● ĐÃ LƯU BẢN DỰ PHÒNG";
+      }
+      return null;
+    }
+
+    function renderLocalCrmTable() {
+      const wrap = document.getElementById("localCrmTableWrap");
+      if (!wrap) return;
+      if (crmLeads.length === 0) {
+        wrap.innerHTML = `<div style="padding: 1.5rem; text-align: center; color: var(--ink-muted); font-size: 0.82rem;">Chưa có đơn hàng nào được ghi nhận trên thiết bị này.</div>`;
+        return;
+      }
+      wrap.innerHTML = `
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.78rem;">
+          <thead>
+            <tr style="background: var(--bg-secondary); text-align: left; border-bottom: 1px solid var(--hairline);">
+              <th style="padding: 0.55rem;">Thời Gian</th>
+              <th style="padding: 0.55rem;">Khách Hàng</th>
+              <th style="padding: 0.55rem;">SĐT Zalo</th>
+              <th style="padding: 0.55rem;">Khu Vực</th>
+              <th style="padding: 0.55rem;">Ảnh &amp; Sản Phẩm</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${crmLeads.map(l => `
+              <tr style="border-bottom: 1px solid var(--hairline);">
+                <td class="mono" style="padding: 0.55rem;">${l.createdAt}</td>
+                <td style="padding: 0.55rem;"><strong>${l.clientName}</strong></td>
+                <td class="mono" style="padding: 0.55rem; color: var(--accent);">${l.clientZalo}</td>
+                <td style="padding: 0.55rem;">${l.clientCity}</td>
+                <td style="padding: 0.55rem; display: flex; align-items: center; gap: 0.5rem;">
+                  ${l.firstImage ? `<img src="${l.firstImage}" alt="thumb" style="width: 38px; height: 38px; object-fit: cover; border: 1px solid var(--hairline);" />` : ''}
+                  <div>
+                    <div>${l.itemsSummary}</div>
+                    ${l.driveFolderUrl ? `<a href="${l.driveFolderUrl}" target="_blank" class="mono" style="color: var(--olive); text-decoration: underline;">Mở thư mục Google Drive ↗</a>` : ''}
+                  </div>
+                </td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      `;
     }
 
     // Event Listeners
@@ -3755,6 +4354,7 @@
       e.stopPropagation();
       uploadedCustomImageData = null;
       uploadedCustomImageName = "";
+      uploadedCustomRemoteUrl = "";
       huntImageInput.value = "";
       document.getElementById("dropzonePreviewWrap").classList.remove("has-img");
       showToast("ĐÃ XÓA ẢNH ĐÍNH KÈM");
@@ -3783,12 +4383,30 @@
       }
     });
 
+    // Section 04 - Category 03 Custom Option Toggle ("07 / Mặt hàng khác")
+    const huntCategorySelect = document.getElementById("huntCategory");
+    const customCategoryWrap = document.getElementById("customCategoryWrap");
+    const huntCustomCategoryInput = document.getElementById("huntCustomCategory");
+
+    huntCategorySelect.addEventListener("change", () => {
+      if (huntCategorySelect.value === "CUSTOM_OTHER") {
+        customCategoryWrap.style.display = "flex";
+        setTimeout(() => huntCustomCategoryInput.focus(), 80);
+      } else {
+        customCategoryWrap.style.display = "none";
+      }
+    });
+
     // Bespoke Custom Hunt Form (Image-first)
     document.getElementById("customHuntForm").addEventListener("submit", (e) => {
       e.preventDefault();
       const nameDesc = document.getElementById("huntItemName").value.trim();
       if (!nameDesc) return;
-      const cat = document.getElementById("huntCategory").value;
+      let cat = huntCategorySelect.value;
+      if (cat === "CUSTOM_OTHER") {
+        const customCatVal = huntCustomCategoryInput.value.trim();
+        cat = customCatVal ? `Mặt hàng khác: ${customCatVal}` : "Mặt hàng khác (Khách tự chọn)";
+      }
       const scale = document.getElementById("huntScale").value;
       const notes = document.getElementById("huntNotes").value.trim();
       const hasCustomImg = Boolean(uploadedCustomImageData);
@@ -3798,17 +4416,70 @@
         title: nameDesc,
         origin: cat,
         mode: scale,
-        note: (hasCustomImg ? `[Đã đính kèm ảnh: ${uploadedCustomImageName} — Khách gửi ảnh này qua Zalo] ` : "[Khách sẽ gửi ảnh chụp màn hình qua khung chat Zalo] ") + (notes || "Nhờ tìm đúng xưởng & báo giá trọn gói"),
-        image: uploadedCustomImageData || ARCHIVE_ITEMS[3].image
+        note: (hasCustomImg ? `[Đã đính kèm ảnh: ${uploadedCustomImageName}] ` : "[Khách gửi ảnh qua Zalo] ") + (notes || "Nhờ tìm đúng xưởng & báo giá trọn gói"),
+        image: uploadedCustomImageData || ARCHIVE_ITEMS[3].image,
+        remoteImageUrl: uploadedCustomRemoteUrl || ""
       });
 
       document.getElementById("huntItemName").value = "";
       document.getElementById("huntNotes").value = "";
+      if (huntCustomCategoryInput) huntCustomCategoryInput.value = "";
       uploadedCustomImageData = null;
       uploadedCustomImageName = "";
+      uploadedCustomRemoteUrl = "";
       huntImageInput.value = "";
       document.getElementById("dropzonePreviewWrap").classList.remove("has-img");
       openBriefDrawer();
+    });
+
+    // Visual Order Card Actions (Copy Image to Clipboard / Download Image)
+    document.getElementById("copyOrderImageBtn").addEventListener("click", async () => {
+      showToast("ĐANG TẠO ẢNH PHIẾU ĐƠN HÀNG...");
+      const canvas = await generateVisualOrderCardCanvas();
+      canvas.toBlob(async (blob) => {
+        if (!blob) return;
+        try {
+          if (navigator.clipboard && window.ClipboardItem) {
+            await navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
+            showToast("📸 ĐÃ COPY ẢNH ĐƠN HÀNG! KHI MỞ ZALO BẠN BẤM DÁN (CTRL+V) LÀ GỬI ĐƯỢC ẢNH NGAY!");
+            return;
+          }
+        } catch (err) {}
+        // Fallback: download image directly if browser blocks image clipboard
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "Phieu-Bao-Gia-ATELIER.png";
+        a.click();
+        URL.revokeObjectURL(url);
+        showToast("📥 ĐÃ TẢI ẢNH PHIẾU ĐƠN VỀ MÁY ĐỂ BẠN GỬI QUA ZALO!");
+      }, "image/png");
+    });
+
+    document.getElementById("downloadOrderImageBtn").addEventListener("click", async () => {
+      showToast("ĐANG TẢI ẢNH PHIẾU ĐƠN HÀNG...");
+      const canvas = await generateVisualOrderCardCanvas();
+      canvas.toBlob(async (blob) => {
+        if (!blob) return;
+        const file = new File([blob], "Phieu-Bao-Gia-ATELIER.png", { type: "image/png" });
+        if (navigator.canShare && navigator.canShare({ files: [file] }) && /Mobi|Android|iPhone/i.test(navigator.userAgent)) {
+          try {
+            await navigator.share({
+              title: "Phiếu Báo Giá ATELIER",
+              text: buildZaloBriefText(),
+              files: [file]
+            });
+            return;
+          } catch (e) {}
+        }
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "Phieu-Bao-Gia-ATELIER.png";
+        a.click();
+        URL.revokeObjectURL(url);
+        showToast("📥 ĐÃ TẢI ẢNH PHIẾU ĐƠN HÀNG VỀ MÁY!");
+      }, "image/png");
     });
 
     // Drawer & Modal Controls
@@ -3817,6 +4488,83 @@
     document.getElementById("closeDrawerBtn").addEventListener("click", closeAllOverlays);
     sharedBackdrop.addEventListener("click", closeAllOverlays);
 
+    // Google Drive & Customer CRM Modal Controls
+    const crmModal = document.getElementById("crmModal");
+    const gasWebhookInput = document.getElementById("gasWebhookInput");
+    const gasStatusText = document.getElementById("gasStatusText");
+
+    document.getElementById("openCrmSetupBtn").addEventListener("click", () => {
+      gasWebhookInput.value = gasWebhookUrl;
+      gasStatusText.textContent = gasWebhookUrl
+        ? "✓ Đang kết nối tự động với Google Drive & Google Sheets CRM của bạn."
+        : "Chưa dán link Google Apps Script. Đơn hàng vẫn được lưu đầy đủ trên trình duyệt và xuất được ra file Excel (.CSV).";
+      renderLocalCrmTable();
+      sharedBackdrop.classList.add("open");
+      crmModal.classList.add("open");
+    });
+
+    document.getElementById("closeCrmModalBtn").addEventListener("click", closeAllOverlays);
+
+    document.getElementById("saveGasWebhookBtn").addEventListener("click", () => {
+      gasWebhookUrl = gasWebhookInput.value.trim();
+      try {
+        localStorage.setItem("atelier_gas_webhook_v1", gasWebhookUrl);
+      } catch (e) {}
+      gasStatusText.textContent = gasWebhookUrl
+        ? "✓ ĐÃ LƯU KẾT NỐI GOOGLE DRIVE! Mọi đơn hàng mới sẽ tự động tạo thư mục riêng theo tên khách trên Google Drive."
+        : "Đã xóa link kết nối Google Drive.";
+      showToast("ĐÃ LƯU CẤU HÌNH GOOGLE DRIVE & CRM!");
+    });
+
+    document.getElementById("testGasWebhookBtn").addEventListener("click", async () => {
+      gasWebhookUrl = gasWebhookInput.value.trim();
+      if (!gasWebhookUrl) {
+        showToast("BẠN HÃY DÁN LINK WEB APP GOOGLE APPS SCRIPT TRƯỚC KHI BẤM GỬI THỬ NHÉ!");
+        return;
+      }
+      try {
+        localStorage.setItem("atelier_gas_webhook_v1", gasWebhookUrl);
+      } catch (e) {}
+      gasStatusText.textContent = "⏳ Đang gửi thử 1 đơn hàng & tạo thư mục khách hàng trên Google Drive...";
+      const res = await syncOrderToGoogleDriveAndCrm("Test Kết Nối CRM");
+      renderLocalCrmTable();
+      if (res && res.ok) {
+        gasStatusText.innerHTML = `✓ KẾT NỐI THÀNH CÔNG! Đã tạo thư mục khách hàng trên Google Drive: <a href="${res.folderUrl}" target="_blank" style="text-decoration: underline;">Mở Thư Mục Drive Ngay ↗</a>`;
+        showToast("✓ ĐÃ TẠO THƯ MỤC KHÁCH HÀNG TRÊN GOOGLE DRIVE THÀNH CÔNG!");
+      } else {
+        gasStatusText.textContent = "Đã gửi tín hiệu. Hãy kiểm tra quyền truy cập 'Anyone (Bất kỳ ai)' trên Google Apps Script.";
+      }
+    });
+
+    document.getElementById("exportCrmCsvBtn").addEventListener("click", () => {
+      if (crmLeads.length === 0) {
+        showToast("CHƯA CÓ DỮ LIỆU KHÁCH HÀNG ĐỂ XUẤT EXCEL!");
+        return;
+      }
+      const headers = ["Ma_Don", "Thoi_Gian", "Ten_Khach_Hang", "SDT_Zalo", "Khu_Vuc", "So_Mon", "Chi_Tiet_San_Pham", "Link_Anh_Cloud", "Link_Thu_Muc_Google_Drive"];
+      const rows = crmLeads.map(l => [
+        l.orderId,
+        l.createdAt,
+        l.clientName,
+        l.clientZalo,
+        l.clientCity,
+        l.itemCount,
+        l.itemsSummary,
+        l.remoteUrls || "",
+        l.driveFolderUrl || ""
+      ].map(v => `"${String(v || "").replace(/"/g, '""')}"`).join(","));
+
+      const csvContent = "\uFEFF" + [headers.join(","), ...rows].join("\r\n");
+      const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `Khach-Hang-ATELIER-CRM-${new Date().toISOString().slice(0, 10)}.csv`;
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast("📥 ĐÃ XUẤT FILE EXCEL (.CSV) DANH SÁCH KHÁCH HÀNG!");
+    });
+
     // Live update brief preview when user types name/phone/city
     ["clientNameInput", "clientZaloInput", "clientCitySelect"].forEach(id => {
       document.getElementById(id).addEventListener("input", () => {
@@ -3824,21 +4572,23 @@
       });
     });
 
-    // Copy & Open Zalo (0823230703)
+    // Copy & Open Zalo (0823230703) + Auto Sync to Google Drive & CRM
     document.getElementById("sendZaloBriefBtn").addEventListener("click", () => {
       const text = buildZaloBriefText();
       copyTextToClipboard(text);
-      showToast("ĐÃ SAO CHÉP PHIẾU BÁO GIÁ! ĐANG MỞ ZALO 0823.230.703...");
+      syncOrderToGoogleDriveAndCrm("Zalo 0823.230.703");
+      showToast("ĐÃ SAO CHÉP PHIẾU (KÈM LINK ẢNH) & LƯU CRM! ĐANG MỞ ZALO 0823.230.703...");
       setTimeout(() => {
         window.open("https://zalo.me/0823230703", "_blank", "noopener,noreferrer");
       }, 450);
     });
 
-    // Copy & Open WhatsApp (+84823230703)
+    // Copy & Open WhatsApp (+84823230703) + Auto Sync to Google Drive & CRM
     document.getElementById("sendWhatsappBriefBtn").addEventListener("click", () => {
       const text = buildZaloBriefText();
       copyTextToClipboard(text);
-      showToast("ĐÃ SAO CHÉP PHIẾU BÁO GIÁ! ĐANG MỞ WHATSAPP...");
+      syncOrderToGoogleDriveAndCrm("WhatsApp 0823.230.703");
+      showToast("ĐÃ SAO CHÉP PHIẾU & LƯU CRM! ĐANG MỞ WHATSAPP...");
       const encoded = encodeURIComponent(text);
       setTimeout(() => {
         window.open(`https://wa.me/84823230703?text=${encoded}`, "_blank", "noopener,noreferrer");
@@ -3848,7 +4598,8 @@
     document.getElementById("copyOnlyBriefBtn").addEventListener("click", () => {
       const text = buildZaloBriefText();
       copyTextToClipboard(text);
-      showToast("ĐÃ SAO CHÉP NỘI DUNG TÓM TẮT VÀO BỘ NHỚ TẠM!");
+      syncOrderToGoogleDriveAndCrm("Copy Nội Dung");
+      showToast("ĐÃ SAO CHÉP NỘI DUNG TÓM TẮT (KÈM LINK ẢNH) & LƯU CRM!");
     });
 
     // Initial Render
