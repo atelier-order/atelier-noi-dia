@@ -1386,6 +1386,136 @@
       display: flex;
     }
 
+    /* Interior Room & House Packages Grid */
+    .interior-packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-bottom: 1px solid var(--hairline-strong);
+      background: var(--bg-primary);
+    }
+
+    .package-card {
+      border-right: 1px solid var(--hairline);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: background 0.25s;
+    }
+
+    .package-card:last-child {
+      border-right: none;
+    }
+
+    .package-card:hover {
+      background: var(--bg-elevated);
+    }
+
+    .package-visual {
+      position: relative;
+      aspect-ratio: 16 / 10.5;
+      overflow: hidden;
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .package-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .package-card:hover .package-visual img {
+      transform: scale(1.04);
+    }
+
+    .package-badge-top {
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      background: var(--ink-primary);
+      color: var(--bg-primary);
+      padding: 0.28rem 0.65rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.63rem;
+      letter-spacing: 0.08em;
+    }
+
+    .package-saving-pill {
+      position: absolute;
+      bottom: 0.75rem;
+      right: 0.75rem;
+      background: var(--accent);
+      color: #FAF8F4;
+      padding: 0.28rem 0.65rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.63rem;
+    }
+
+    .package-content {
+      padding: 1.65rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+    }
+
+    .package-items-checklist {
+      list-style: none;
+      margin: 1rem 0 1.35rem 0;
+      padding: 0.85rem 1rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--hairline);
+      display: flex;
+      flex-direction: column;
+      gap: 0.42rem;
+      font-size: 0.78rem;
+      color: var(--ink-secondary);
+    }
+
+    .package-items-checklist li strong {
+      color: var(--ink-primary);
+    }
+
+    /* Visual Upload & Clipboard Paste Dropzone (No Links) */
+    .visual-dropzone {
+      border: 1.5px dashed var(--hairline-strong);
+      background: var(--bg-elevated);
+      padding: 1.4rem 1.25rem;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      position: relative;
+    }
+
+    .visual-dropzone:hover, .visual-dropzone.dragover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .dropzone-preview-wrap {
+      display: none;
+      margin-top: 0.9rem;
+      padding-top: 0.9rem;
+      border-top: 1px solid var(--hairline);
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      text-align: left;
+    }
+
+    .dropzone-preview-wrap.has-img {
+      display: flex;
+    }
+
+    .dropzone-preview-img {
+      width: 68px;
+      height: 82px;
+      object-fit: cover;
+      border: 1px solid var(--hairline-strong);
+      flex-shrink: 0;
+    }
+
     @media (max-width: 1080px) {
       .hero-spread, .bespoke-spread {
         grid-template-columns: 1fr;
@@ -1404,10 +1534,10 @@
       .lookbook-card:nth-child(2n) {
         border-right: none;
       }
-      .section-header-bar, .process-grid {
+      .section-header-bar, .process-grid, .interior-packages-grid {
         grid-template-columns: 1fr;
       }
-      .sec-index-cell, .sec-title-cell, .process-cell {
+      .sec-index-cell, .sec-title-cell, .process-cell, .package-card {
         border-right: none;
         border-bottom: 1px solid var(--hairline);
       }
@@ -1446,8 +1576,8 @@
   <!-- Top Archival Metadata Bar -->
   <div class="top-ticker mono">
     <div class="ticker-left">
-      <span><span class="status-dot"></span>ARCHIVE ISSUE 04 // HỆ THỐNG CHUYỂN ĐỔI THỰC CHIẾN 5 TRỤ CỘT</span>
-      <span>WISHLIST CÁ NHÂN HÓA • SO SÁNH THÔNG SỐ • GHÉP KIỆN ƯU ĐÃI TỰ ĐỘNG</span>
+      <span><span class="status-dot"></span>ARCHIVE ISSUE 04 // ORDER NỘI THẤT THEO GÓI DECOR PHÒNG - NHÀ &amp; ĐỒ ĐỘC BẢN</span>
+      <span>KHÔNG CẦN TÌM LINK • CHỈ CẦN TẢI ẢNH / DÁN ẢNH (CTRL+V) ĐỂ NHẬN BÁO GIÁ KÍN</span>
     </div>
     <div>
       <span>CHẾ ĐỘ BÁO GIÁ KÍN 1-1 QUA ZALO: <strong id="topZaloDisplay">0905.888.999</strong></span>
@@ -1463,8 +1593,9 @@
 
     <nav class="nav-links">
       <a href="#lookbook-section" class="nav-link active">01 / Danh Mục Tuyển Chọn</a>
-      <a href="#bespoke-section" class="nav-link">02 / Ủy Thác Săn Mẫu Riêng</a>
-      <a href="#process-section" class="nav-link">03 / Quy Trình Báo Giá Kín</a>
+      <a href="#interior-packages-section" class="nav-link">02 / Gói Nội Thất Decor Phòng &amp; Nhà</a>
+      <a href="#bespoke-section" class="nav-link">03 / Gửi Ảnh Săn Hàng (Không Cần Link)</a>
+      <a href="#process-section" class="nav-link">04 / Quy Trình Báo Giá Kín</a>
     </nav>
 
     <div class="masthead-actions">
@@ -1496,39 +1627,39 @@
           </div>
 
           <h1 class="hero-headline">
-            Tuyển lựa đồ <em>độc bản</em> từ các Studio &amp; Xưởng ẩn mình nội địa Trung.
+            Tuyển lựa đồ <em>độc bản</em> &amp; Nội thất theo gói từ Xưởng ẩn mình nội địa Trung.
           </h1>
 
           <p class="hero-lead">
-            Chúng tôi không vận hành như một sàn thương mại đại trà và <strong>không niêm yết giá công khai</strong>. Mỗi sản phẩm trong danh mục lưu trữ này — hoặc bất kỳ mẫu thiết kế nào bạn bắt gặp trên Xiaohongshu, Taobao, 1688, Tmall — đều được đội ngũ trực tiếp thẩm định xưởng gốc, đàm phán theo số lượng và gửi <strong>báo giá trọn gói riêng biệt</strong> qua Zalo.
+            Chúng tôi không vận hành như sàn thương mại đại trà và <strong>không niêm yết giá công khai</strong>. Bạn cũng <strong>không cần mất công tìm link</strong>: chỉ cần chọn từ danh mục Lookbook, chọn <strong>Gói Decor Phòng &amp; Nhà</strong>, hoặc <strong>chụp màn hình / dán ảnh sản phẩm</strong> bạn thích — đội ngũ sẽ trực tiếp truy tìm xưởng gốc và gửi báo giá trọn gói riêng qua Zalo.
           </p>
 
           <div class="policy-strip">
             <div class="policy-cell">
               <span class="policy-num mono">NGUYÊN TẮC 01</span>
-              <div class="policy-title">Báo Giá Kín Theo Lô / Món</div>
-              <p class="policy-desc">Bảo mật tuyệt đối biên độ giá cho khách sỉ, chủ shop &amp; người sưu tầm cá nhân.</p>
+              <div class="policy-title">Chỉ Cần Ảnh — Không Cần Link</div>
+              <p class="policy-desc">Tải ảnh lên hoặc bấm Ctrl+V dán ảnh chụp màn hình. Bảo mật tuyệt đối biên độ giá &amp; nguồn hàng.</p>
             </div>
             <div class="policy-cell">
               <span class="policy-num mono">NGUYÊN TẮC 02</span>
-              <div class="policy-title">Đa Ngành Hàng Chọn Lọc</div>
-              <p class="policy-desc">Thời trang thiết kế, nội thất Bauhaus, bàn phím/audio, gốm &amp; phụ kiện (Trừ Thực phẩm).</p>
+              <div class="policy-title">Order Nội Thất Theo Gói Phòng/Nhà</div>
+              <p class="policy-desc">Bóc tách trọn bộ nội thất rời từ ảnh 3D/Pinterest tại cụm xưởng Phật Sơn, tiết kiệm 25–40%.</p>
             </div>
             <div class="policy-cell">
               <span class="policy-num mono">NGUYÊN TẮC 03</span>
-              <div class="policy-title">Kiểm Định Tại Kho Gốc</div>
-              <p class="policy-desc">Quay video kiểm tra chất liệu, đường may và đóng kiện gỗ/chống sốc trước khi về VN.</p>
+              <div class="policy-title">Kiểm Định &amp; Đóng Kiện Gỗ Tại Kho</div>
+              <p class="policy-desc">Quay video nghiệm thu chất liệu, đóng khung gỗ chống sốc &amp; bảo hiểm 100% về tận nhà.</p>
             </div>
           </div>
         </div>
 
         <div class="hero-cta-row">
-          <a href="#lookbook-section" class="btn-editorial-primary">
-            <span>XEM HỒ SƠ LOOKBOOK (08 MẪU)</span>
+          <a href="#interior-packages-section" class="btn-editorial-primary">
+            <span>XEM GÓI NỘI THẤT DECOR PHÒNG &amp; NHÀ</span>
             <span>→</span>
           </a>
           <a href="#bespoke-section" class="btn-editorial-outline">
-            <span>GỬI ẢNH / LINK NHỜ SĂN RIÊNG</span>
+            <span>TẢI ẢNH / DÁN ẢNH NHỜ SĂN HÀNG</span>
           </a>
         </div>
       </div>
@@ -1666,22 +1797,48 @@
       </table>
     </section>
 
-    <!-- Section 02: Bespoke Sourcing Desk (Custom Hunt Form) -->
+    <!-- Section 02: Full-Room & Full-House Interior Decor Packages -->
+    <section id="interior-packages-section">
+      <div class="section-header-bar">
+        <div class="sec-index-cell mono">
+          <span>SECTION // 02</span>
+          <span style="color: var(--accent);">CURATED INTERIOR PACKAGES</span>
+        </div>
+        <div class="sec-title-cell">
+          <h2 class="sec-heading">Order Nội Thất Theo Gói Decor Phòng &amp; Nhà</h2>
+          <p style="font-size: 0.88rem; color: var(--ink-secondary);">
+            Giải pháp trọn gói cho chủ căn hộ, homestay, studio &amp; kiến trúc sư: Bóc tách đồng bộ toàn bộ đồ rời từ các xưởng nội thất Phật Sơn (Foshan) hạng A. <strong>Không cần tìm link lẻ từng món</strong> — đóng chung kiện gỗ, tiết kiệm 25–40% chi phí so với mua lẻ.
+          </p>
+        </div>
+        <div class="sec-meta-cell">
+          <div class="mono" style="margin-bottom: 0.35rem; color: var(--ink-primary);">ĐẶC QUYỀN GÓI DECOR</div>
+          <p>Miễn phí duyệt mẫu vật liệu (da/vải/đá) tại xưởng, đóng khung gỗ chống sốc &amp; bảo hiểm gãy vỡ 100%.</p>
+        </div>
+      </div>
+
+      <div class="interior-packages-grid" id="interiorPackagesGrid"></div>
+    </section>
+
+    <!-- Section 03: Bespoke Visual Sourcing Desk (STRICTLY IMAGE ONLY - NO LINKS) -->
     <section id="bespoke-section" class="bespoke-spread">
       <div class="bespoke-left">
         <div>
-          <span class="mono" style="color: var(--accent); display: block; margin-bottom: 0.75rem;">SECTION // 02 — BESPOKE COMMISSION</span>
-          <h2 class="sec-heading" style="margin-bottom: 1rem;">Ủy Thác Săn Hàng Ngoài Danh Mục</h2>
-          <p style="font-size: 0.9rem; color: var(--ink-secondary); line-height: 1.65;">
-            Bạn vừa lướt thấy một chiếc ghế thiết kế trên Xiaohongshu (Tiểu Hồng Thư), một mẫu áo local brand Thượng Hải trên Douyin, hay cần tìm xưởng 1688 gia công phụ kiện riêng? Hãy điền thông tin ủy thác bên cạnh.
+          <span class="mono" style="color: var(--accent); display: block; margin-bottom: 0.75rem;">SECTION // 03 — VISUAL SOURCING DESK (NO LINKS NEEDED)</span>
+          <h2 class="sec-heading" style="margin-bottom: 1rem;">Gửi Ảnh Săn Hàng &amp; Bóc Tách Nội Thất (Không Cần Tìm Link)</h2>
+          <p style="font-size: 0.9rem; color: var(--ink-secondary); line-height: 1.65; margin-bottom: 1rem;">
+            Bạn bắt gặp một căn phòng đẹp trên Pinterest, Xiaohongshu (Tiểu Hồng Thư), Instagram hay có bản vẽ 3D nội thất nhưng <strong>không biết tìm link ở đâu vì bất tiện và sợ mua nhầm xưởng kém chất lượng</strong>?
+          </p>
+          <p style="font-size: 0.9rem; color: var(--ink-primary); line-height: 1.65; font-weight: 500;">
+            Chính sách của chúng tôi là <strong>KHÔNG nhận link sàn đại trà</strong> để bảo mật tuyệt đối biên độ giá &amp; giúp bạn không phải tự mò mẫm. Bạn chỉ cần <strong>Tải Ảnh Lên</strong> hoặc <strong>Bấm Ctrl + V Dán Ảnh</strong> vừa copy vào khung bên phải!
           </p>
         </div>
 
         <div class="bespoke-quote-box">
-          <div class="mono" style="color: var(--accent); margin-bottom: 0.45rem;">LƯU Ý PHẠM VI THU MUA</div>
+          <div class="mono" style="color: var(--accent); margin-bottom: 0.45rem;">VÌ SAO CHỈ NHẬN HÌNH ẢNH MÀ KHÔNG CẦN LINK?</div>
           <p style="font-size: 0.82rem; color: var(--ink-secondary); line-height: 1.55;">
-            • Nhận săn mọi ngành hàng: Thời trang, Giày túi, Nội thất Decor, Đèn kiến trúc, Đồ công nghệ, Bàn phím custom, Gia dụng thẩm mỹ, Phụ kiện.<br/>
-            • <strong>Từ chối nhận:</strong> Thực phẩm ăn uống, hàng tươi sống và danh mục cấm vận chuyển.
+            • <strong>Tiết kiệm 100% thời gian cho bạn:</strong> Chỉ cần chụp màn hình món đồ hoặc góc phòng bạn thích.<br/>
+            • <strong>Truy xuất thẳng xưởng gốc Phật Sơn / Hàng Châu:</strong> Đội ngũ tự lọc bỏ các shop thương mại trung gian đội giá.<br/>
+            • <strong>Bảo mật giá tuyệt đối:</strong> Không lộ giá nhập cho khách của chủ shop &amp; đơn vị thiết kế thi công.
           </p>
         </div>
       </div>
@@ -1689,40 +1846,63 @@
       <div class="bespoke-right">
         <form id="customHuntForm">
           <div class="form-grid">
+            <!-- Image Dropzone & Clipboard Paste Box -->
             <div class="form-group full">
-              <label class="form-label" for="huntItemName">01. Tên Mẫu Hàng Hoặc Link Tham Khảo (Taobao / 1688 / Xiaohongshu / Douyin) *</label>
-              <input type="text" id="huntItemName" class="editorial-input" placeholder="VD: Đèn sàn giấy Dướng phong cách Noguchi hoặc dán link sản phẩm..." required />
+              <label class="form-label">01. Tải Ảnh Sản Phẩm / Ảnh Phòng Decor Hoặc Dán Ảnh Đã Copy (Ctrl + V) *</label>
+              <input type="file" id="huntImageInput" accept="image/*" style="display: none;" />
+              <div class="visual-dropzone" id="visualDropzone" tabindex="0">
+                <div class="mono" style="color: var(--accent); margin-bottom: 0.35rem;">[ 📷 BẤM ĐỂ TẢI ẢNH LÊN • KÉO THẢ ẢNH • HOẶC BẤM CTRL + V ĐỂ DÁN ẢNH ]</div>
+                <p style="font-size: 0.82rem; color: var(--ink-secondary);">
+                  Hỗ trợ ảnh chụp màn hình điện thoại, ảnh concept phòng ngủ/phòng khách, bản vẽ 3D hoặc ảnh sản phẩm bất kỳ (Không cần gửi link)
+                </p>
+                <div class="dropzone-preview-wrap" id="dropzonePreviewWrap">
+                  <div style="display: flex; align-items: center; gap: 0.85rem;">
+                    <img id="dropzonePreviewImg" src="" alt="Preview" class="dropzone-preview-img" />
+                    <div>
+                      <span class="mono" style="color: var(--olive); display: block;">✓ ĐÃ ĐÍNH KÈM ẢNH MẪU THÀNH CÔNG</span>
+                      <span style="font-size: 0.78rem; color: var(--ink-secondary);" id="dropzoneFileName">Hình ảnh đã sẵn sàng đưa vào Phiếu thẩm định xưởng</span>
+                    </div>
+                  </div>
+                  <button type="button" id="removeUploadedImgBtn" class="mono" style="padding: 0.35rem 0.65rem; border: 1px solid var(--hairline-strong); font-size: 0.65rem;">[ ĐỔI ẢNH × ]</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group full">
+              <label class="form-label" for="huntItemName">02. Tên Gợi Nhớ Món Đồ Hoặc Không Gian Bạn Muốn Decor *</label>
+              <input type="text" id="huntItemName" class="editorial-input" placeholder="VD: Trọn bộ sofa + bàn trà + đèn sàn như ảnh chụp màn hình (Không cần điền link)..." required />
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="huntCategory">02. Phân Loại Ngành Hàng</label>
+              <label class="form-label" for="huntCategory">03. Hạng Mục Ủy Thác</label>
               <select id="huntCategory" class="editorial-select">
-                <option value="Thời trang & Local Brand Nội Địa">01 / Thời trang &amp; Local Brand Nội Địa</option>
-                <option value="Nội thất & Decor Kiến Trúc">02 / Nội thất &amp; Decor Kiến Trúc</option>
-                <option value="Thiết bị Công nghệ & Desk Setup">03 / Thiết bị Công nghệ &amp; Desk Setup</option>
-                <option value="Gốm Thủ Công & Đồ Lifestyle">04 / Gốm Thủ Công &amp; Đồ Lifestyle</option>
-                <option value="Máy móc nhỏ & Phụ kiện chuyên dụng">05 / Máy móc nhỏ &amp; Phụ kiện chuyên dụng</option>
+                <option value="Gói Nội Thất Decor Phòng / Nhà Trọn Bộ">01 / Gói Nội Thất Decor Phòng / Nhà Trọn Bộ</option>
+                <option value="Nội thất rời & Đèn Kiến Trúc theo ảnh">02 / Nội thất rời &amp; Đèn Kiến Trúc theo ảnh</option>
+                <option value="Thời trang & Phụ kiện thiết kế độc bản">03 / Thời trang &amp; Phụ kiện thiết kế độc bản</option>
+                <option value="Thiết bị Công nghệ & Góc Desk Setup">04 / Thiết bị Công nghệ &amp; Góc Desk Setup</option>
+                <option value="Gốm Thủ Công, Trà Cụ & Đạo cụ Studio">05 / Gốm Thủ Công, Trà Cụ &amp; Đạo cụ Studio</option>
               </select>
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="huntScale">03. Quy Mô Thu Mua Dự Kiến</label>
+              <label class="form-label" for="huntScale">04. Quy Mô Đặt Hàng / Decor</label>
               <select id="huntScale" class="editorial-select">
-                <option value="Săn lẻ 1 - 3 món (Dùng cá nhân / Mẫu thử)">Săn lẻ 1 - 3 món (Dùng cá nhân / Mẫu thử)</option>
-                <option value="Nhập lô nhỏ 5 - 30 món (Bán shop chọn lọc)">Nhập lô nhỏ 5 - 30 món (Bán shop chọn lọc)</option>
-                <option value="Đặt sỉ số lượng lớn / Đàm phán giá xưởng">Đặt sỉ số lượng lớn / Đàm phán giá xưởng</option>
+                <option value="Decor trọn gói 1 Phòng (5 - 10 món đồng bộ)">Decor trọn gói 1 Phòng (5 - 10 món đồng bộ)</option>
+                <option value="Decor nguyên Căn Hộ / Nhà / Shop (12 - 30+ món)">Decor nguyên Căn Hộ / Nhà / Shop (12 - 30+ món)</option>
+                <option value="Săn lẻ 1 - 3 món theo ảnh chụp màn hình">Săn lẻ 1 - 3 món theo ảnh chụp màn hình</option>
+                <option value="Nhập sỉ số lượng cho Showroom / Chủ Shop">Nhập sỉ số lượng cho Showroom / Chủ Shop</option>
               </select>
             </div>
 
             <div class="form-group full">
-              <label class="form-label" for="huntNotes">04. Yêu Cầu Chi Tiết Về Chất Liệu, Màu Sắc Hoặc Mức Ngân Sách Kỳ Vọng</label>
-              <textarea id="huntNotes" class="editorial-textarea" placeholder="Mô tả thêm về bản chuẩn bạn muốn tìm (VD: Bản chuẩn studio có tag mác, ưu tiên chất liệu da thật / thép không gỉ, cần kiểm hàng kỹ tại kho)..."></textarea>
+              <label class="form-label" for="huntNotes">05. Ghi Chú Kích Thước Phòng, Tông Màu Hoặc Yêu Cầu Riêng</label>
+              <textarea id="huntNotes" class="editorial-textarea" placeholder="VD: Phòng khách 25m2 tông kem-gỗ óc chó, cần tìm đúng mẫu ghế và bàn trà trong ảnh đính kèm, ưu tiên da thật / vải chống mèo cào..."></textarea>
             </div>
 
             <div class="form-group full" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding-top: 0.5rem;">
-              <span class="mono" style="color: var(--ink-muted);">YÊU CẦU SẼ ĐƯỢC ĐƯA VÀO PHIẾU BÁO GIÁ RIÊNG</span>
+              <span class="mono" style="color: var(--ink-muted);">HÌNH ẢNH &amp; YÊU CẦU SẼ ĐƯỢC LƯU KÍN VÀO PHIẾU BÁO GIÁ</span>
               <button type="submit" class="btn-editorial-primary">
-                <span>+ ĐƯA YÊU CẦU NÀY VÀO PHIẾU BÁO GIÁ</span>
+                <span>+ ĐƯA ẢNH &amp; YÊU CẦU NÀY VÀO PHIẾU BÁO GIÁ</span>
               </button>
             </div>
           </div>
@@ -1730,22 +1910,22 @@
       </div>
     </section>
 
-    <!-- Section 03: 3-Step Private Concierge Process -->
+    <!-- Section 04: 3-Step Private Concierge Process -->
     <section id="process-section">
       <div class="section-header-bar">
         <div class="sec-index-cell mono">
-          <span>SECTION // 03</span>
+          <span>SECTION // 04</span>
           <span style="color: var(--accent);">PRIVATE QUOTING PROTOCOL</span>
         </div>
         <div class="sec-title-cell">
           <h2 class="sec-heading">Quy Trình Thu Mua &amp; Làm Giá Kín</h2>
           <p style="font-size: 0.88rem; color: var(--ink-secondary);">
-            Thay vì công thức tính tự động cứng nhắc, mỗi đơn hàng được chuyên viên thẩm định nguồn và tối ưu chi phí vận chuyển riêng.
+            Thay vì công thức tính tự động cứng nhắc hay bắt khách tự tìm link, mỗi đơn hàng &amp; gói nội thất được chuyên viên bóc tách trực tiếp từ hình ảnh.
           </p>
         </div>
         <div class="sec-meta-cell">
           <div class="mono" style="margin-bottom: 0.35rem; color: var(--ink-primary);">CAM KẾT BẢO MẬT</div>
-          <p>Không lộ nguồn hàng của chủ shop, không công khai giá nhập trên mặt bằng chung.</p>
+          <p>Không lộ nguồn hàng của chủ shop &amp; KTS, không công khai giá nhập trên mặt bằng chung.</p>
         </div>
       </div>
 
@@ -1753,12 +1933,12 @@
         <div class="process-cell">
           <div>
             <div class="process-step-num">01.</div>
-            <h3 class="process-step-title">Chọn Hồ Sơ Mẫu Hoặc Gửi Ảnh Săn Hàng</h3>
+            <h3 class="process-step-title">Chọn Gói Decor / Mẫu Có Sẵn Hoặc Dán Ảnh</h3>
             <p class="process-step-text">
-              Duyệt qua danh mục Lookbook trên trang và bấm <strong>+ Yêu Cầu Báo Giá</strong> cho các mã bạn ưng ý, hoặc điền Phiếu Ủy Thác Săn Mẫu Riêng nếu bạn có sẵn hình ảnh từ TikTok, Instagram, Xiaohongshu.
+              Chọn các mẫu từ Lookbook, chọn <strong>Gói Nội Thất Decor Phòng - Nhà</strong>, hoặc <strong>tải lên / dán ảnh chụp màn hình</strong> món đồ bạn muốn săn mà không cần tốn công tìm link sàn.
             </p>
           </div>
-          <div class="mono" style="margin-top: 1.5rem; color: var(--ink-muted);">[ SELECTION &amp; BRIEFING ]</div>
+          <div class="mono" style="margin-top: 1.5rem; color: var(--ink-muted);">[ VISUAL BRIEFING — NO LINKS ]</div>
         </div>
 
         <div class="process-cell">
@@ -2776,8 +2956,174 @@
       document.body.removeChild(ta);
     }
 
+    // Interior Full-Room & Full-House Packages Database
+    const INTERIOR_PACKAGES = [
+      {
+        id: "PKG-ROOM-01",
+        code: "PACKAGE // ROOM-01",
+        badge: "GÓI PHÒNG NGỦ & STUDIO (06 MÓN)",
+        savingTag: "TIẾT KIỆM ~25% SO VỚI MUA LẺ",
+        title: "Gói Decor Phòng Ngủ & Studio Aesthetic (15–25m²)",
+        origin: "FOSHAN & HANGZHOU INTERIOR CLUSTER",
+        desc: "Giải pháp đồng bộ tông màu ấm (Warm Minimalism / Kinfolk) cho phòng ngủ cá nhân, căn hộ studio hoặc phòng homestay cao cấp.",
+        itemsList: [
+          "<strong>01. Giường ngủ bọc vải Bouclé / Da lộn:</strong> Khung gỗ thông Nga sấy khô chống mối mọt",
+          "<strong>02. Bàn trà / Tab đầu giường thép ống:</strong> Mạ crôm sáng bóng chuẩn Bauhaus",
+          "<strong>03. Đèn sàn giấy Dướng Akari:</strong> Ánh sáng vàng ấm thư giãn mắt",
+          "<strong>04. Ghế đơn thư giãn (Lounge Chair):</strong> Đệm mút bọt biển mật độ cao",
+          "<strong>05. Gương đứng toàn thân lượn sóng:</strong> Kính thủy Bỉ chống méo hình",
+          "<strong>06. Thảm dệt thủ công trải sàn:</strong> Sợi len pha chống bám bụi"
+        ],
+        image: ARCHIVE_ITEMS[1].image
+      },
+      {
+        id: "PKG-LIVING-02",
+        code: "PACKAGE // LIVING-02",
+        badge: "GÓI PHÒNG KHÁCH & WORKSPACE (08 MÓN)",
+        savingTag: "MIỄN PHÍ ĐÓNG KIỆN GỖ & BẢO HIỂM 100%",
+        title: "Gói Decor Phòng Khách & Góc Làm Việc Mid-Century (25–45m²)",
+        origin: "FOSHAN DESIGNER FURNITURE FACTORY",
+        desc: "Tổ hợp nội thất rời tạo điểm nhấn kiến trúc mạnh mẽ cho phòng khách căn hộ, văn phòng sáng tạo hoặc studio chụp hình.",
+        itemsList: [
+          "<strong>01. Sofa Mô-đun (2–3 băng):</strong> Tùy chọn vải nỉ chống mèo cào hoặc da bò lớp đầu",
+          "<strong>02. Bàn trà trung tâm kính cường lực / Đá Travertine:</strong> Gia công cạnh bo an toàn",
+          "<strong>03. Hệ tủ kệ mô-đun thép sơn tĩnh điện (USM Style):</strong> Lắp ghép linh hoạt theo tường",
+          "<strong>04. Ghế bành điểm nhấn (Accent Chair):</strong> Khung thép không gỉ uốn nguyên khối",
+          "<strong>05. Bàn làm việc / Bàn ăn thiết kế + 02 Ghế đồng bộ:</strong> Gỗ tần bì / Óc chó",
+          "<strong>06. Đèn cây kiến trúc + Khay đạo cụ đồng thau &amp; Bình gốm:</strong> Hoàn thiện không gian"
+        ],
+        image: ARCHIVE_ITEMS[6].image
+      },
+      {
+        id: "PKG-HOUSE-03",
+        code: "PACKAGE // FULL-HOUSE-03",
+        badge: "GÓI NGUYÊN CĂN HỘ / NHÀ PHỐ / SHOP (12–30+ MÓN)",
+        savingTag: "GIÁ GỐC TẬN XƯỞNG — TIẾT KIỆM 30–40%",
+        title: "Bóc Tách Trọn Gói Theo Ảnh 3D / Moodboard Toàn Căn",
+        origin: "DIRECT FOSHAN OEM & BESPOKE WORKSHOPS",
+        desc: "Bạn có bản vẽ 3D từ kiến trúc sư hoặc bộ ảnh mẫu Pinterest cho cả căn hộ 1–3PN, biệt thự, quán cafe hay boutique? Chỉ cần gửi ảnh, chúng tôi bóc tách toàn bộ tại xưởng Phật Sơn.",
+        itemsList: [
+          "<strong>01. Bóc tách 100% bằng hình ảnh:</strong> Không cần tự tìm link, chỉ cần gửi ảnh 3D hoặc ảnh chụp mẫu",
+          "<strong>02. Duyệt mẫu vật liệu thật (Swatches):</strong> Quay video đối chiếu vân gỗ, mẫu da, mẫu vải tại xưởng",
+          "<strong>03. Gom chung 01 lô kiện gỗ đồng bộ:</strong> Tối ưu tối đa cước vận chuyển thể tích lớn (CBM)",
+          "<strong>04. Tùy chỉnh kích thước theo mặt bằng:</strong> Đặt xưởng cắt đá, đóng sofa theo số đo riêng",
+          "<strong>05. Đồng kiểm &amp; Bảo hiểm 1-1:</strong> Đền bù 100% nếu sai mẫu hoặc hư hại khi vận chuyển"
+        ],
+        image: ARCHIVE_ITEMS[3].image
+      }
+    ];
+
+    let uploadedCustomImageData = null;
+    let uploadedCustomImageName = "";
+
+    function renderInteriorPackages() {
+      const grid = document.getElementById("interiorPackagesGrid");
+      if (!grid) return;
+      grid.innerHTML = INTERIOR_PACKAGES.map(pkg => {
+        const inBrief = isItemInBrief(pkg.code);
+        return `
+          <article class="package-card">
+            <div>
+              <div class="package-visual">
+                <img src="${pkg.image}" alt="${pkg.title}" loading="lazy" />
+                <span class="package-badge-top">${pkg.badge}</span>
+                <span class="package-saving-pill">${pkg.savingTag}</span>
+              </div>
+              <div class="package-content">
+                <div>
+                  <span class="mono" style="color: var(--accent); display: block; margin-bottom: 0.3rem;">${pkg.code} • ${pkg.origin}</span>
+                  <h3 class="serif" style="font-size: 1.55rem; font-weight: 600; line-height: 1.15; margin-bottom: 0.55rem;">${pkg.title}</h3>
+                  <p style="font-size: 0.82rem; color: var(--ink-secondary); line-height: 1.55;">${pkg.desc}</p>
+                  <ul class="package-items-checklist">
+                    ${pkg.itemsList.map(li => `<li>• ${li}</li>`).join("")}
+                  </ul>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.55rem;">
+                  <button type="button" class="btn-editorial-primary mono" style="padding: 0.8rem 0.5rem; font-size: 0.68rem; justify-content: center;" data-action="add-package" data-pkg-id="${pkg.id}">
+                    <span>${inBrief ? '✓ ĐÃ TRONG PHIẾU' : '+ BÁO GIÁ GÓI NÀY'}</span>
+                  </button>
+                  <button type="button" class="btn-editorial-outline mono" style="padding: 0.8rem 0.5rem; font-size: 0.68rem; text-align: center;" data-action="upload-for-package" data-pkg-title="${pkg.title}">
+                    <span>📷 GỬI ẢNH PHÒNG RIÊNG</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function handleVisualFile(file) {
+      if (!file || !file.type.startsWith("image/")) {
+        showToast("VUI LÒNG CHỌN HOẶC DÁN FILE HÌNH ẢNH HỢP LỆ!");
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement("canvas");
+          const maxDim = 480;
+          let w = img.width;
+          let h = img.height;
+          if (w > h && w > maxDim) {
+            h = Math.round((h * maxDim) / w);
+            w = maxDim;
+          } else if (h > maxDim) {
+            w = Math.round((w * maxDim) / h);
+            h = maxDim;
+          }
+          canvas.width = w;
+          canvas.height = h;
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0, w, h);
+          uploadedCustomImageData = canvas.toDataURL("image/jpeg", 0.82);
+          uploadedCustomImageName = file.name || "Anh-dan-clipboard.jpg";
+
+          document.getElementById("dropzonePreviewImg").src = uploadedCustomImageData;
+          document.getElementById("dropzoneFileName").textContent = `Đã đính kèm: ${uploadedCustomImageName} (Sẵn sàng gửi thẩm định)`;
+          document.getElementById("dropzonePreviewWrap").classList.add("has-img");
+          showToast("📷 ĐÃ NHẬN ẢNH MẪU! HÃY ĐIỀN GHI CHÚ RỒI THÊM VÀO PHIẾU.");
+        };
+        img.src = ev.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
     // Event Listeners
     document.addEventListener("click", (e) => {
+      const pkgAddBtn = e.target.closest("[data-action='add-package']");
+      if (pkgAddBtn) {
+        const pkgId = pkgAddBtn.getAttribute("data-pkg-id");
+        const pkg = INTERIOR_PACKAGES.find(p => p.id === pkgId);
+        if (pkg) {
+          addToBrief({
+            code: pkg.code,
+            title: pkg.title,
+            origin: pkg.origin,
+            mode: `${pkg.badge} — ${pkg.savingTag}`,
+            note: "Nhận báo giá trọn gói nội thất theo phòng/nhà (Có thể thêm/bớt món khi tư vấn qua Zalo)",
+            image: pkg.image
+          });
+          renderInteriorPackages();
+          openBriefDrawer();
+        }
+        return;
+      }
+
+      const pkgUploadBtn = e.target.closest("[data-action='upload-for-package']");
+      if (pkgUploadBtn) {
+        const pkgTitle = pkgUploadBtn.getAttribute("data-pkg-title");
+        document.getElementById("huntCategory").value = "Gói Nội Thất Decor Phòng / Nhà Trọn Bộ";
+        document.getElementById("huntScale").value = "Decor trọn gói 1 Phòng (5 - 10 món đồng bộ)";
+        document.getElementById("huntItemName").value = `Tư vấn theo ${pkgTitle} (Kèm ảnh mẫu riêng)`;
+        document.getElementById("bespoke-section").scrollIntoView({ behavior: "smooth" });
+        setTimeout(() => {
+          document.getElementById("huntImageInput").click();
+        }, 450);
+        return;
+      }
+
       const wishTrigger = e.target.closest("[data-action='toggle-wish']");
       if (wishTrigger) {
         e.stopPropagation();
@@ -3051,26 +3397,95 @@
       }, 400);
     });
 
-    // Bespoke Custom Hunt Form
+    // Visual Upload Dropzone & Clipboard Paste (Strictly Image-Based, No URLs)
+    const visualDropzone = document.getElementById("visualDropzone");
+    const huntImageInput = document.getElementById("huntImageInput");
+
+    visualDropzone.addEventListener("click", (e) => {
+      if (e.target.closest("#removeUploadedImgBtn")) return;
+      huntImageInput.click();
+    });
+
+    huntImageInput.addEventListener("change", (e) => {
+      if (e.target.files && e.target.files[0]) {
+        handleVisualFile(e.target.files[0]);
+      }
+    });
+
+    visualDropzone.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      visualDropzone.classList.add("dragover");
+    });
+
+    visualDropzone.addEventListener("dragleave", () => {
+      visualDropzone.classList.remove("dragover");
+    });
+
+    visualDropzone.addEventListener("drop", (e) => {
+      e.preventDefault();
+      visualDropzone.classList.remove("dragover");
+      if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) {
+        handleVisualFile(e.dataTransfer.files[0]);
+      }
+    });
+
+    document.getElementById("removeUploadedImgBtn").addEventListener("click", (e) => {
+      e.stopPropagation();
+      uploadedCustomImageData = null;
+      uploadedCustomImageName = "";
+      huntImageInput.value = "";
+      document.getElementById("dropzonePreviewWrap").classList.remove("has-img");
+      showToast("ĐÃ XÓA ẢNH ĐÍNH KÈM");
+    });
+
+    // Global Paste Listener so user can press Ctrl+V with any copied screenshot/image
+    document.addEventListener("paste", (e) => {
+      const items = (e.clipboardData || e.originalEvent?.clipboardData)?.items;
+      if (!items) return;
+      for (let i = 0; i < items.length; i++) {
+        if (items[i].type.indexOf("image") !== -1) {
+          const blob = items[i].getAsFile();
+          handleVisualFile(blob);
+          document.getElementById("bespoke-section").scrollIntoView({ behavior: "smooth" });
+          break;
+        }
+      }
+    });
+
+    // Prevent pasting raw Taobao/1688 links into the item name field to protect pricing privacy
+    document.getElementById("huntItemName").addEventListener("input", (e) => {
+      const val = e.target.value;
+      if (/https?:\/\/|taobao\.com|1688\.com|tmall\.com|tb\.cn/i.test(val)) {
+        e.target.value = val.replace(/https?:\/\/\S+/gi, "").trim();
+        showToast("KHÔNG CẦN DÁN LINK! HÃY TẢI ẢNH HOẶC BẤM CTRL+V DÁN ẢNH CHỤP MÀN HÌNH NHÉ.");
+      }
+    });
+
+    // Bespoke Custom Hunt Form (Image-first)
     document.getElementById("customHuntForm").addEventListener("submit", (e) => {
       e.preventDefault();
-      const nameOrLink = document.getElementById("huntItemName").value.trim();
-      if (!nameOrLink) return;
+      const nameDesc = document.getElementById("huntItemName").value.trim();
+      if (!nameDesc) return;
       const cat = document.getElementById("huntCategory").value;
       const scale = document.getElementById("huntScale").value;
       const notes = document.getElementById("huntNotes").value.trim();
+      const hasCustomImg = Boolean(uploadedCustomImageData);
 
       addToBrief({
-        code: "BESPOKE // SĂN RIÊNG",
-        title: nameOrLink,
+        code: hasCustomImg ? "VISUAL // ẢNH KHÁCH GỬI" : "BESPOKE // SĂN THEO MÔ TẢ",
+        title: nameDesc,
         origin: cat,
         mode: scale,
-        note: notes || "Nhờ tìm xưởng gốc & báo giá kín qua Zalo",
-        image: ARCHIVE_ITEMS[3].image
+        note: (hasCustomImg ? `[Đã đính kèm ảnh: ${uploadedCustomImageName} — Khách gửi ảnh này qua Zalo] ` : "[Khách sẽ gửi ảnh chụp màn hình qua khung chat Zalo] ") + (notes || "Nhờ bóc tách xưởng gốc & báo giá kín"),
+        image: uploadedCustomImageData || ARCHIVE_ITEMS[3].image
       });
 
       document.getElementById("huntItemName").value = "";
       document.getElementById("huntNotes").value = "";
+      uploadedCustomImageData = null;
+      uploadedCustomImageName = "";
+      huntImageInput.value = "";
+      document.getElementById("dropzonePreviewWrap").classList.remove("has-img");
       openBriefDrawer();
     });
 
@@ -3129,6 +3544,7 @@
     document.getElementById("topZaloDisplay").textContent = formatZaloDisplay(studioConfig.zaloPhone);
     document.getElementById("footerZaloDisplay").textContent = formatZaloDisplay(studioConfig.zaloPhone);
     renderArchive();
+    renderInteriorPackages();
     renderBriefDrawer();
   </script>
 </body>
