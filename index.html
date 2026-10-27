@@ -3,7 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ATELIER NỘI ĐỊA — Săn Đồ Độc Bản &amp; Đặt Nội Thất Theo Gói Trực Tiếp Từ Xưởng</title>
+  <title>ATELIER — Săn Đồ Thiết Kế, Nội Thất Trọn Gói &amp; Nguồn Hàng Sỉ Tận Xưởng</title>
+  <meta name="description" content="Chuyên tìm nguồn hàng qua hình ảnh (không cần link), đặt nội thất trọn gói theo phòng &amp; nhà, và kết nối xưởng sản xuất sỉ cho chủ shop, studio. Hotline/Zalo/WhatsApp: 0823.230.703" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="ATELIER — Săn Đồ Thiết Kế, Nội Thất Trọn Gói &amp; Nguồn Hàng Sỉ Tận Xưởng" />
+  <meta property="og:description" content="Chỉ cần gửi ảnh, không cần mò link. Đặt lẻ đồ độc bản, làm trọn gói nội thất theo phòng và nhập sỉ trực tiếp từ xưởng. Hotline/Zalo/WhatsApp: 0823.230.703" />
+  <meta property="og:site_name" content="ATELIER" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ATELIER — Săn Đồ Thiết Kế, Nội Thất Trọn Gói &amp; Nguồn Hàng Sỉ Tận Xưởng" />
+  <meta name="twitter:description" content="Chỉ cần gửi ảnh, không cần mò link. Đặt lẻ đồ độc bản, làm trọn gói nội thất theo phòng và nhập sỉ trực tiếp từ xưởng." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
@@ -884,41 +892,159 @@
       line-height: 1.65;
     }
 
-    /* Owner Studio Config Bar (For customizing Zalo & Brand Name live) */
-    .studio-config-bar {
-      padding: 1.5rem 2rem;
-      border-bottom: 1px solid var(--hairline);
+    /* Wholesale & B2B Factory Sourcing Grid */
+    .wholesale-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-bottom: 1px solid var(--hairline-strong);
+      background: var(--bg-primary);
+    }
+
+    .wholesale-card {
+      padding: 2.25rem 2rem;
+      border-right: 1px solid var(--hairline);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.5rem;
+      transition: background 0.25s ease;
+    }
+
+    .wholesale-card:last-child {
+      border-right: none;
+    }
+
+    .wholesale-card:hover {
+      background: var(--bg-elevated);
+    }
+
+    .wholesale-tag {
+      display: inline-block;
+      padding: 0.28rem 0.65rem;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.7rem;
+      font-weight: 600;
+      margin-bottom: 0.85rem;
+    }
+
+    .wholesale-list {
+      list-style: none;
+      margin: 1rem 0 0;
+      padding-top: 1rem;
+      border-top: 1px dashed var(--hairline);
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      font-size: 0.84rem;
+      color: var(--ink-secondary);
+      line-height: 1.55;
+    }
+
+    /* Pre-Footer Direct Contact Banner */
+    .direct-contact-strip {
+      padding: 1.75rem 2.25rem;
+      border-bottom: 1px solid var(--hairline-strong);
       background: var(--bg-secondary);
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 1.25rem;
     }
 
-    .config-inputs {
+    .contact-strip-actions {
       display: flex;
-      gap: 1rem;
+      gap: 0.75rem;
       align-items: center;
       flex-wrap: wrap;
     }
 
-    .config-mini-input {
-      padding: 0.45rem 0.75rem;
-      border: 1px solid var(--hairline-strong);
+    /* Standard 4-Column Professional Footer */
+    .editorial-footer {
       background: var(--bg-primary);
-      font-size: 0.8rem;
-      width: 185px;
     }
 
-    /* Footer */
-    .editorial-footer {
-      padding: 3rem 2.25rem;
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr 1.1fr 1.15fr;
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .footer-col {
+      padding: 2.75rem 2rem;
+      border-right: 1px solid var(--hairline);
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .footer-col:last-child {
+      border-right: none;
+    }
+
+    .footer-col-title {
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .footer-links-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      font-size: 0.84rem;
+      color: var(--ink-secondary);
+      line-height: 1.5;
+    }
+
+    .footer-links-list a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom-bar {
+      padding: 1.35rem 2.25rem;
       display: flex;
       justify-content: space-between;
-      align-items: flex-end;
+      align-items: center;
       flex-wrap: wrap;
-      gap: 2rem;
+      gap: 1rem;
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+    }
+
+    @media (max-width: 1024px) {
+      .wholesale-grid {
+        grid-template-columns: 1fr;
+      }
+      .wholesale-card {
+        border-right: none;
+        border-bottom: 1px solid var(--hairline);
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .footer-col:nth-child(2) {
+        border-right: none;
+      }
+      .footer-col:nth-child(1),
+      .footer-col:nth-child(2) {
+        border-bottom: 1px solid var(--hairline);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-col {
+        border-right: none;
+        border-bottom: 1px solid var(--hairline);
+      }
     }
 
     /* Modal & Slide-over Drawer */
@@ -1592,26 +1718,27 @@
   <!-- Top Archival Metadata Bar -->
   <div class="top-ticker mono">
     <div class="ticker-left">
-      <span><span class="status-dot"></span>CHUYÊN SĂN ĐỒ ĐỘC BẢN &amp; ĐẶT NỘI THẤT THEO GÓI TRỰC TIẾP TỪ XƯỞNG NỘI ĐỊA</span>
+      <span><span class="status-dot"></span>SĂN ĐỒ THIẾT KẾ • DECOR NỘI THẤT THEO PHÒNG &amp; NHẬP HÀNG SỈ TẬN XƯỞNG</span>
       <span>KHÔNG CẦN TÌM LINK • CHỈ CẦN TẢI ẢNH HOẶC DÁN ẢNH (CTRL+V)</span>
     </div>
     <div>
-      <span>TƯ VẤN &amp; BÁO GIÁ RIÊNG QUA ZALO: <strong id="topZaloDisplay">0905.888.999</strong></span>
+      <span>HOTLINE / ZALO / WHATSAPP: <strong id="topZaloDisplay">0823.230.703</strong></span>
     </div>
   </div>
 
   <!-- Sticky Editorial Masthead -->
   <header class="masthead">
     <a href="#top" class="brand-cell">
-      <span class="brand-title" id="brandNameDisplay">ATELIER NỘI ĐỊA</span>
-      <span class="brand-sub mono">SĂN HÀNG XƯỞNG GỐC &amp; DECOR TRỌN GÓI</span>
+      <span class="brand-title" id="brandNameDisplay">ATELIER</span>
+      <span class="brand-sub mono">ĐỒ THIẾT KẾ • NỘI THẤT TRỌN GÓI &amp; NGUỒN SỈ</span>
     </a>
 
     <nav class="nav-links">
       <a href="#lookbook-section" class="nav-link active">01 / Mẫu Chọn Lọc</a>
       <a href="#interior-packages-section" class="nav-link">02 / Gói Decor Phòng &amp; Nhà</a>
-      <a href="#bespoke-section" class="nav-link">03 / Gửi Ảnh Tìm Hàng</a>
-      <a href="#process-section" class="nav-link">04 / Cách Tụi Mình Làm Việc</a>
+      <a href="#wholesale-section" class="nav-link">03 / Nhập Hàng Sỉ</a>
+      <a href="#bespoke-section" class="nav-link">04 / Gửi Ảnh Tìm Hàng</a>
+      <a href="#process-section" class="nav-link">05 / Quy Trình</a>
     </nav>
 
     <div class="masthead-actions">
@@ -1835,14 +1962,111 @@
       <div class="interior-packages-grid" id="interiorPackagesGrid"></div>
     </section>
 
-    <!-- Section 03: Bespoke Visual Sourcing Desk (STRICTLY IMAGE ONLY - NO LINKS) -->
+    <!-- Section 03: Wholesale & B2B Factory Sourcing for Shop Owners / Brands -->
+    <section id="wholesale-section">
+      <div class="section-header-bar">
+        <div class="sec-index-cell mono">
+          <span>PHẦN // 03</span>
+          <span style="color: var(--accent);">NHẬP HÀNG SỈ &amp; ĐẶT XƯỞNG</span>
+        </div>
+        <div class="sec-title-cell">
+          <h2 class="sec-heading">Nhập Hàng Sỉ Tận Gốc Cho Chủ Shop, Local Brand &amp; Dự Án</h2>
+          <p style="font-size: 0.9rem; color: var(--ink-secondary);">
+            Bạn đang mở shop thời trang, tiệm đồ decor, studio hay cần nguồn hàng ổn định với biên lợi nhuận tốt? Chúng tôi làm việc trực tiếp với nhà máy và showroom gốc tại Quảng Châu, Hàng Châu, Phật Sơn, Cảnh Đức Trấn — <strong>báo giá sỉ gốc theo số lượng, không qua thương lái trung gian</strong>.
+          </p>
+        </div>
+        <div class="sec-meta-cell">
+          <div class="mono" style="margin-bottom: 0.35rem; color: var(--ink-primary);">CAM KẾT ĐỐI TÁC SỈ</div>
+          <p>Giữ kín 100% mẫu hàng của shop bạn. Hỗ trợ lấy mẫu thử (Sample) về xem chất lượng trước khi lên đơn lớn.</p>
+        </div>
+      </div>
+
+      <div class="wholesale-grid">
+        <article class="wholesale-card">
+          <div>
+            <span class="wholesale-tag mono">MẢNG SỈ 01 // THỜI TRANG &amp; PHỤ KIỆN</span>
+            <h3 class="serif" style="font-size: 1.48rem; font-weight: 600; line-height: 1.28; margin-bottom: 0.6rem;">
+              Sỉ Quần Áo Thiết Kế, Túi Da &amp; Giày Dép Cho Boutique
+            </h3>
+            <p style="font-size: 0.86rem; color: var(--ink-secondary); line-height: 1.6;">
+              Kết nối thẳng với các xưởng cắt may Hàng Châu và phòng trưng bày (Showroom) Quảng Châu chuyên làm hàng chất lượng cao, phom chuẩn, không đụng hàng chợ.
+            </p>
+            <ul class="wholesale-list">
+              <li>• <strong>Số lượng nhập linh hoạt:</strong> Nhận lấy sỉ từ 5–10 sản phẩm/mẫu hoặc nhặt lộn xộn theo dây.</li>
+              <li>• <strong>Làm thương hiệu riêng (Private Label):</strong> Hỗ trợ may nhãn cổ, gắn tag giấy và bao bì mang tên shop của bạn.</li>
+              <li>• <strong>Kiểm vải &amp; đường may tại kho:</strong> Loại bỏ hàng lỗi chỉ, lệch phom ngay tại kho Trung trước khi về Việt Nam.</li>
+            </ul>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.55rem;">
+            <button type="button" class="btn-editorial-primary mono" style="padding: 0.78rem 0.5rem; font-size: 0.7rem; justify-content: center;" data-action="add-wholesale" data-ws-title="Tư Vấn Nhập Sỉ Thời Trang & Phụ Kiện Boutique" data-ws-mode="Nhập sỉ Thời trang / Phụ kiện (Từ 5 - 50+ sản phẩm)">
+              <span>+ NHẬN BÁO GIÁ SỈ</span>
+            </button>
+            <button type="button" class="btn-editorial-outline mono" style="padding: 0.78rem 0.5rem; font-size: 0.7rem; text-align: center;" data-action="upload-wholesale" data-ws-title="Nhập sỉ mẫu Thời trang / Phụ kiện theo ảnh">
+              <span>📷 GỬI ẢNH MẪU SỈ</span>
+            </button>
+          </div>
+        </article>
+
+        <article class="wholesale-card">
+          <div>
+            <span class="wholesale-tag mono">MẢNG SỈ 02 // ĐỒ DECOR, GỐM &amp; PHỤ KIỆN</span>
+            <h3 class="serif" style="font-size: 1.48rem; font-weight: 600; line-height: 1.28; margin-bottom: 0.6rem;">
+              Sỉ Đồ Trang Trí, Đèn, Gốm Trà Cụ &amp; Quà Tặng Doanh Nghiệp
+            </h3>
+            <p style="font-size: 0.86rem; color: var(--ink-secondary); line-height: 1.6;">
+              Nguồn hàng tận lò gốm Cảnh Đức Trấn và cụm xưởng Phật Sơn dành cho các tiệm bán đồ decor, chuỗi quán cafe, nhà hàng, khách sạn hoặc đơn vị làm quà tặng.
+            </p>
+            <ul class="wholesale-list">
+              <li>• <strong>Chiết khấu bậc thang theo lô:</strong> Giá xuất xưởng cực tốt khi lấy theo thùng hoặc ghép lô nhiều mã.</li>
+              <li>• <strong>In khắc logo theo yêu cầu:</strong> Nhận khắc tên thương hiệu lên bộ trà cụ, khay gỗ, ly sứ, nến thơm, đồ da.</li>
+              <li>• <strong>Đóng kiện gỗ &amp; xốp định hình:</strong> Đảm bảo hàng gốm sứ, thủy tinh, đèn trang trí về nguyên vẹn 100%.</li>
+            </ul>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.55rem;">
+            <button type="button" class="btn-editorial-primary mono" style="padding: 0.78rem 0.5rem; font-size: 0.7rem; justify-content: center;" data-action="add-wholesale" data-ws-title="Tư Vấn Nhập Sỉ Đồ Decor, Gốm & Quà Tặng" data-ws-mode="Nhập sỉ Đồ Decor / Gốm / Quà tặng theo lô">
+              <span>+ NHẬN BÁO GIÁ SỈ</span>
+            </button>
+            <button type="button" class="btn-editorial-outline mono" style="padding: 0.78rem 0.5rem; font-size: 0.7rem; text-align: center;" data-action="upload-wholesale" data-ws-title="Nhập sỉ mẫu Đồ Decor / Gốm theo ảnh">
+              <span>📷 GỬI ẢNH MẪU SỈ</span>
+            </button>
+          </div>
+        </article>
+
+        <article class="wholesale-card">
+          <div>
+            <span class="wholesale-tag mono">MẢNG SỈ 03 // ĐẶT SẢN XUẤT RIÊNG (OEM / ODM)</span>
+            <h3 class="serif" style="font-size: 1.48rem; font-weight: 600; line-height: 1.28; margin-bottom: 0.6rem;">
+              Tìm Nhà Máy Gia Công Theo Ảnh Hoặc Bản Vẽ Của Bạn
+            </h3>
+            <p style="font-size: 0.86rem; color: var(--ink-secondary); line-height: 1.6;">
+              Bạn có một mẫu sản phẩm đang bán chạy hoặc bản thiết kế riêng cần tìm nhà máy sản xuất số lượng lớn với giá gốc? Chỉ cần gửi ảnh, chúng tôi lo trọn khâu đàm phán xưởng.
+            </p>
+            <ul class="wholesale-list">
+              <li>• <strong>Lấy mẫu thử (Sample) tận tay:</strong> Đặt xưởng làm 1–2 mẫu gửi về Việt Nam để bạn cầm xem thực tế trước khi chốt lô lớn.</li>
+              <li>• <strong>Đàm phán giá trực tiếp với nhà máy:</strong> Bóc tách minh bạch giá xuất xưởng và cước vận chuyển theo khối/cân.</li>
+              <li>• <strong>Bảo mật tuyệt đối mẫu mã:</strong> Cam kết không chia sẻ mẫu hàng hay nguồn xưởng của bạn cho bất kỳ bên thứ ba nào.</li>
+            </ul>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.55rem;">
+            <button type="button" class="btn-editorial-primary mono" style="padding: 0.78rem 0.5rem; font-size: 0.7rem; justify-content: center;" data-action="add-wholesale" data-ws-title="Tư Vấn Đặt Xưởng Sản Xuất Riêng (OEM / Lấy Mẫu Thử)" data-ws-mode="Đặt xưởng gia công OEM / Nhập sỉ số lượng lớn">
+              <span>+ TRAO ĐỔI ĐƠN SỈ</span>
+            </button>
+            <button type="button" class="btn-editorial-outline mono" style="padding: 0.78rem 0.5rem; font-size: 0.7rem; text-align: center;" data-action="upload-wholesale" data-ws-title="Tìm nhà máy gia công theo ảnh mẫu">
+              <span>📷 GỬI ẢNH MẪU CẦN LÀM</span>
+            </button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Section 04: Bespoke Visual Sourcing Desk (STRICTLY IMAGE ONLY - NO LINKS) -->
     <section id="bespoke-section" class="bespoke-spread">
       <div class="bespoke-left">
         <div>
-          <span class="mono" style="color: var(--accent); display: block; margin-bottom: 0.75rem;">PHẦN // 03 — TÌM HÀNG QUA ẢNH (KHÔNG CẦN GỬI LINK)</span>
-          <h2 class="sec-heading" style="margin-bottom: 1rem;">Thấy Món Đẹp Hay Phòng Ưng Ý? Chỉ Cần Gửi Ảnh Cho Chúng Tôi</h2>
+          <span class="mono" style="color: var(--accent); display: block; margin-bottom: 0.75rem;">PHẦN // 04 — TÌM HÀNG QUA ẢNH (LẺ, DECOR &amp; SỈ)</span>
+          <h2 class="sec-heading" style="margin-bottom: 1rem;">Thấy Món Đẹp, Phòng Ưng Ý Hay Mẫu Cần Nhập Sỉ? Chỉ Cần Gửi Ảnh</h2>
           <p style="font-size: 0.92rem; color: var(--ink-secondary); line-height: 1.68; margin-bottom: 1rem;">
-            Bạn lướt Pinterest, Tiểu Hồng Thư (Xiaohongshu), Instagram thấy một góc phòng quá mê, hay đang cầm bản vẽ 3D mà <strong>ngại mò tìm link tiếng Trung, lại sợ mua nhầm shop treo đầu dê bán thịt chó</strong>?
+            Bạn lướt Pinterest, Tiểu Hồng Thư (Xiaohongshu), Instagram thấy một góc phòng quá mê, một món đồ muốn nhập về bán sỉ hay đang cầm bản vẽ 3D mà <strong>ngại mò tìm link tiếng Trung, lại sợ mua nhầm shop kém chất lượng</strong>?
           </p>
           <p style="font-size: 0.92rem; color: var(--ink-primary); line-height: 1.68; font-weight: 500;">
             Ở đây chúng tôi <strong>không yêu cầu khách gửi link</strong> — vừa đỡ phiền cho bạn, vừa giữ kín mức giá nhập nếu bạn là chủ shop hay bên thiết kế. Bạn chỉ việc <strong>Tải Ảnh Lên</strong> hoặc <strong>Bấm Ctrl + V Dán Ảnh</strong> vừa copy vào khung bên cạnh!
@@ -1852,9 +2076,9 @@
         <div class="bespoke-quote-box">
           <div class="mono" style="color: var(--accent); margin-bottom: 0.45rem;">VÌ SAO CHỈ CẦN GỬI ẢNH LÀ ĐỦ?</div>
           <p style="font-size: 0.84rem; color: var(--ink-secondary); line-height: 1.6;">
-            • <strong>Đỡ tốn công mò mẫm:</strong> Chụp màn hình món đồ hoặc cả góc phòng bạn muốn làm giống là xong.<br/>
-            • <strong>Lọc đúng xưởng làm thật:</strong> Đội ngũ tự đối chiếu ảnh để tìm thẳng xưởng gốc ở Phật Sơn / Hàng Châu, né các shop trung gian kê giá.<br/>
-            • <strong>Giữ kín giá tuyệt đối:</strong> Không để lộ nguồn hay giá gốc khi bạn làm hàng cho khách.
+            • <strong>Đỡ tốn công mò mẫm:</strong> Chụp màn hình món đồ, mẫu hàng sỉ hoặc cả góc phòng bạn muốn làm giống là xong.<br/>
+            • <strong>Lọc đúng xưởng làm thật:</strong> Đội ngũ tự đối chiếu ảnh để tìm thẳng xưởng gốc ở Phật Sơn / Hàng Châu / Quảng Châu, né các shop trung gian kê giá.<br/>
+            • <strong>Giữ kín giá tuyệt đối:</strong> Không để lộ nguồn hay giá gốc khi bạn nhập sỉ hoặc làm hàng cho khách.
           </p>
         </div>
       </div>
@@ -1864,12 +2088,12 @@
           <div class="form-grid">
             <!-- Image Dropzone & Clipboard Paste Box -->
             <div class="form-group full">
-              <label class="form-label">01. Tải Ảnh Món Đồ / Ảnh Góc Phòng Hoặc Bấm Ctrl + V Để Dán Ảnh Vừa Copy *</label>
+              <label class="form-label">01. Tải Ảnh Món Đồ / Ảnh Mẫu Nhập Sỉ / Ảnh Phòng Hoặc Bấm Ctrl + V Để Dán Ảnh *</label>
               <input type="file" id="huntImageInput" accept="image/*" style="display: none;" />
               <div class="visual-dropzone" id="visualDropzone" tabindex="0">
                 <div class="mono" style="color: var(--accent); margin-bottom: 0.35rem;">[ 📷 BẤM CHỌN ẢNH TỪ MÁY • KÉO THẢ ẢNH VÀO ĐÂY • HOẶC BẤM CTRL + V ĐỂ DÁN ]</div>
                 <p style="font-size: 0.84rem; color: var(--ink-secondary);">
-                  Nhận mọi ảnh chụp màn hình điện thoại, ảnh phòng mẫu Pinterest/Xiaohongshu, phối cảnh 3D hoặc ảnh chụp món đồ thực tế (Không cần tìm link)
+                  Nhận mọi ảnh chụp màn hình điện thoại, ảnh mẫu cần tìm xưởng sỉ, ảnh phòng Pinterest/Xiaohongshu hoặc phối cảnh 3D (Không cần tìm link)
                 </p>
                 <div class="dropzone-preview-wrap" id="dropzonePreviewWrap">
                   <div style="display: flex; align-items: center; gap: 0.85rem;">
@@ -1885,38 +2109,39 @@
             </div>
 
             <div class="form-group full">
-              <label class="form-label" for="huntItemName">02. Bạn Đang Tìm Món Gì Trong Bức Ảnh Trên? *</label>
-              <input type="text" id="huntItemName" class="editorial-input" placeholder="VD: Tìm giúp mình bộ sofa kem + bàn trà và cây đèn đứng như trong ảnh..." required />
+              <label class="form-label" for="huntItemName">02. Bạn Đang Tìm Món Gì Hoặc Cần Nhập Sỉ Mặt Hàng Nào Trong Ảnh? *</label>
+              <input type="text" id="huntItemName" class="editorial-input" placeholder="VD: Tìm xưởng sỉ mẫu túi da trong ảnh (hoặc: Bộ sofa kem + bàn trà như ảnh)..." required />
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="huntCategory">03. Nhóm Đồ Bạn Cần Tìm</label>
+              <label class="form-label" for="huntCategory">03. Nhóm Hàng Bạn Cần Tìm</label>
               <select id="huntCategory" class="editorial-select">
                 <option value="Gói Nội Thất Decor Phòng / Nhà Trọn Bộ">01 / Trọn gói nội thất decor Phòng / Nhà</option>
-                <option value="Nội thất rời & Đèn Kiến Trúc theo ảnh">02 / Đồ nội thất rời &amp; Đèn trang trí theo ảnh</option>
-                <option value="Thời trang & Phụ kiện thiết kế độc bản">03 / Quần áo, túi xách &amp; Phụ kiện thiết kế</option>
-                <option value="Thiết bị Công nghệ & Góc Desk Setup">04 / Phím cơ, phụ kiện bàn làm việc &amp; Công nghệ</option>
-                <option value="Gốm Thủ Công, Trà Cụ & Đạo cụ Studio">05 / Gốm thủ công, ấm chén trà &amp; Đạo cụ chụp hình</option>
+                <option value="Nhập Hàng Sỉ Tận Xưởng Cho Chủ Shop / Brand">02 / Nhập hàng sỉ tận xưởng cho Chủ Shop / Brand</option>
+                <option value="Nội thất rời & Đèn Kiến Trúc theo ảnh">03 / Đồ nội thất rời &amp; Đèn trang trí theo ảnh</option>
+                <option value="Thời trang & Phụ kiện thiết kế độc bản">04 / Quần áo, túi xách &amp; Phụ kiện thiết kế</option>
+                <option value="Thiết bị Công nghệ & Góc Desk Setup">05 / Phím cơ, phụ kiện bàn làm việc &amp; Công nghệ</option>
+                <option value="Gốm Thủ Công, Trà Cụ & Đạo cụ Studio">06 / Gốm thủ công, ấm chén trà &amp; Đạo cụ chụp hình</option>
               </select>
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="huntScale">04. Số Lượng Dự Kiến</label>
+              <label class="form-label" for="huntScale">04. Quy Mô Đặt Hàng</label>
               <select id="huntScale" class="editorial-select">
                 <option value="Decor trọn gói 1 Phòng (5 - 10 món đồng bộ)">Làm trọn gói 1 Phòng (khoảng 5 - 10 món)</option>
                 <option value="Decor nguyên Căn Hộ / Nhà / Shop (12 - 30+ món)">Làm nguyên Căn hộ / Nhà / Quán (12 - 30+ món)</option>
+                <option value="Nhập sỉ số lượng cho Showroom / Chủ Shop">Nhập sỉ số lượng cho Cửa hàng / Local Brand / Dự án</option>
                 <option value="Săn lẻ 1 - 3 món theo ảnh chụp màn hình">Mua lẻ 1 - 3 món theo ảnh chụp màn hình</option>
-                <option value="Nhập sỉ số lượng cho Showroom / Chủ Shop">Nhập sỉ số lượng cho Cửa hàng / Dự án</option>
               </select>
             </div>
 
             <div class="form-group full">
-              <label class="form-label" for="huntNotes">05. Dặn Dò Thêm Về Kích Thước, Màu Sắc Hoặc Ngân Sách Dự Kiến</label>
-              <textarea id="huntNotes" class="editorial-textarea" placeholder="VD: Phòng khách ngang 3m8, tông kem ấm kết hợp gỗ tối màu. Mình nuôi mèo nên cần tìm chất vải chống cào xước..."></textarea>
+              <label class="form-label" for="huntNotes">05. Dặn Dò Thêm Về Số Lượng Sỉ, Kích Thước Hoặc Yêu Cầu Riêng</label>
+              <textarea id="huntNotes" class="editorial-textarea" placeholder="VD: Cần báo giá sỉ mốc 20 - 50 cái kèm làm tag riêng (hoặc: Phòng khách ngang 3m8, cần tìm chất vải chống mèo cào)..."></textarea>
             </div>
 
             <div class="form-group full" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding-top: 0.5rem;">
-              <span class="mono" style="color: var(--ink-muted);">ẢNH &amp; GHI CHÚ ĐƯỢC BẢO MẬT RIÊNG CHO BẠN</span>
+              <span class="mono" style="color: var(--ink-muted);">ẢNH &amp; YÊU CẦU ĐƯỢC BẢO MẬT RIÊNG CHO BẠN</span>
               <button type="submit" class="btn-editorial-primary">
                 <span>+ THÊM ẢNH NÀY VÀO PHIẾU BÁO GIÁ</span>
               </button>
@@ -1926,22 +2151,22 @@
       </div>
     </section>
 
-    <!-- Section 04: 3-Step Private Concierge Process -->
+    <!-- Section 05: 3-Step Private Concierge Process -->
     <section id="process-section">
       <div class="section-header-bar">
         <div class="sec-index-cell mono">
-          <span>PHẦN // 04</span>
-          <span style="color: var(--accent);">CÁCH CHÚNG TÔI LÀM VIỆC</span>
+          <span>PHẦN // 05</span>
+          <span style="color: var(--accent);">QUY TRÌNH LÀM VIỆC</span>
         </div>
         <div class="sec-title-cell">
-          <h2 class="sec-heading">3 Bước Đặt Hàng Gọn Gàng &amp; Kín Đáo</h2>
+          <h2 class="sec-heading">3 Bước Đặt Hàng Gọn Gàng &amp; Rõ Ràng</h2>
           <p style="font-size: 0.9rem; color: var(--ink-secondary);">
-            Không bắt bạn tự cài app tiếng Trung hay tính công thức cân nặng rối rắm. Bạn gửi ảnh, chúng tôi lo phần tìm xưởng và đưa hàng về tận cửa.
+            Không bắt bạn tự cài app tiếng Trung hay tính công thức cân nặng rối rắm. Bạn gửi ảnh, chúng tôi lo phần tìm xưởng, đàm phán giá và đưa hàng về tận nơi.
           </p>
         </div>
         <div class="sec-meta-cell">
-          <div class="mono" style="margin-bottom: 0.35rem; color: var(--ink-primary);">CAM KẾT RÕ RÀNG</div>
-          <p>Giữ kín thông tin nguồn hàng của chủ shop &amp; kiến trúc sư. Báo giá trọn gói một lần, không đẻ thêm phụ phí lúc nhận hàng.</p>
+          <div class="mono" style="margin-bottom: 0.35rem; color: var(--ink-primary);">CAM KẾT MINH BẠCH</div>
+          <p>Giữ kín thông tin nguồn hàng của chủ shop &amp; kiến trúc sư. Báo giá trọn gói một lần, không phát sinh phụ phí lúc nhận hàng.</p>
         </div>
       </div>
 
@@ -1949,9 +2174,9 @@
         <div class="process-cell">
           <div>
             <div class="process-step-num">01.</div>
-            <h3 class="process-step-title">Chọn Mẫu Sẵn, Chọn Gói Decor Hoặc Dán Ảnh</h3>
+            <h3 class="process-step-title">Chọn Mẫu, Chọn Gói Decor, Nhập Sỉ Hoặc Dán Ảnh</h3>
             <p class="process-step-text">
-              Dạo xem các mẫu có sẵn trên trang, chọn một <strong>Gói Nội Thất Theo Phòng</strong>, hoặc đơn giản là <strong>dán bức ảnh chụp màn hình</strong> món đồ bạn muốn tìm mà chẳng cần đụng tới một đường link nào.
+              Dạo xem các mẫu có sẵn trên trang, chọn một <strong>Gói Nội Thất Theo Phòng</strong>, chọn <strong>Mảng Nhập Sỉ</strong>, hoặc đơn giản là <strong>dán bức ảnh chụp màn hình</strong> món đồ bạn muốn tìm mà chẳng cần gửi link.
             </p>
           </div>
           <div class="mono" style="margin-top: 1.5rem; color: var(--ink-muted);">[ CHỈ CẦN ẢNH — KHÔNG CẦN LINK ]</div>
@@ -1960,20 +2185,20 @@
         <div class="process-cell">
           <div>
             <div class="process-step-num">02.</div>
-            <h3 class="process-step-title">Tìm Đúng Xưởng &amp; Báo Giá Trọn Gói Qua Zalo</h3>
+            <h3 class="process-step-title">Check Thẳng Với Xưởng &amp; Báo Giá Qua Zalo / WhatsApp</h3>
             <p class="process-step-text">
-              Ngay khi nhận phiếu của bạn qua Zalo, đội ngũ sẽ check trực tiếp với xưởng nội địa để xem ảnh thật, kiểm tra lịch xuất hàng và gửi bạn <strong>bảng giá trọn gói về tận tay</strong> chỉ trong 15–30 phút.
+              Ngay khi nhận phiếu của bạn qua Zalo hoặc WhatsApp, đội ngũ sẽ làm việc trực tiếp với xưởng sản xuất để xem ảnh/video thật, đàm phán chiết khấu theo số lượng và gửi bạn <strong>bảng giá trọn gói</strong> trong 15–30 phút.
             </p>
           </div>
-          <div class="mono" style="margin-top: 1.5rem; color: var(--ink-muted);">[ LÀM VIỆC THẲNG VỚI XƯỞNG ]</div>
+          <div class="mono" style="margin-top: 1.5rem; color: var(--ink-muted);">[ ĐÀM PHÁN TRỰC TIẾP VỚI XƯỞNG ]</div>
         </div>
 
         <div class="process-cell">
           <div>
             <div class="process-step-num">03.</div>
-            <h3 class="process-step-title">Quay Video Kiểm Hàng Tại Kho &amp; Giao Tận Nhà</h3>
+            <h3 class="process-step-title">Quay Video Kiểm Hàng Tại Kho &amp; Giao Tận Nơi</h3>
             <p class="process-step-text">
-              Khi hàng tới kho Quảng Châu / Bằng Tường, nhân viên sẽ mở kiểm tra bề mặt, đo lại kích thước, quay video thực tế gửi bạn duyệt rồi mới đóng kiện gỗ chống sốc chuyển về Hà Nội, Đà Nẵng, TP.HCM.
+              Khi hàng tới kho tập kết, nhân viên sẽ mở kiểm tra bề mặt, đo lại kích thước, đếm đủ số lượng sỉ và quay video thực tế gửi bạn duyệt trước khi đóng kiện gỗ chống sốc chuyển về Hà Nội, Đà Nẵng, TP.HCM.
             </p>
           </div>
           <div class="mono" style="margin-top: 1.5rem; color: var(--ink-muted);">[ ĐỒNG KIỂM &amp; BẢO HIỂM 100% ]</div>
@@ -1981,29 +2206,77 @@
       </div>
     </section>
 
-    <!-- Studio Config Bar (Allows user to set their own Brand & Zalo number) -->
-    <div class="studio-config-bar">
+    <!-- Pre-Footer Direct Contact Banner -->
+    <div class="direct-contact-strip">
       <div>
-        <span class="mono" style="color: var(--accent);">CÀI ĐẶT NHANH CHO CHỦ WEB (ĐỔI TÊN THƯƠNG HIỆU &amp; SỐ ZALO NHẬN ĐƠN):</span>
+        <span class="mono" style="color: var(--accent); display: block; margin-bottom: 0.25rem;">LIÊN HỆ TRỰC TIẾP ĐỘI NGŨ THU MUA &amp; BÁO GIÁ</span>
+        <div class="serif" style="font-size: 1.45rem; font-weight: 600;">
+          Hotline / Zalo / WhatsApp: <a href="tel:0823230703" style="color: var(--accent); text-decoration: underline;">0823.230.703</a>
+        </div>
       </div>
-      <div class="config-inputs">
-        <input type="text" id="configBrandInput" class="config-mini-input" value="ATELIER NỘI ĐỊA" placeholder="Tên thương hiệu..." />
-        <input type="text" id="configZaloInput" class="config-mini-input" value="0905888999" placeholder="Số Zalo nhận báo giá..." />
-        <button type="button" id="saveConfigBtn" class="btn-editorial-outline" style="padding: 0.48rem 1rem; font-size: 0.72rem;">LƯU THAY ĐỔI</button>
+      <div class="contact-strip-actions">
+        <a href="https://zalo.me/0823230703" target="_blank" rel="noopener noreferrer" class="btn-editorial-primary" style="padding: 0.78rem 1.25rem;">
+          <span>NHẮN ZALO: 0823.230.703</span>
+          <span>↗</span>
+        </a>
+        <a href="https://wa.me/84823230703" target="_blank" rel="noopener noreferrer" class="btn-editorial-outline" style="padding: 0.78rem 1.25rem;">
+          <span>WHATSAPP: +84 823.230.703</span>
+        </a>
+        <a href="tel:0823230703" class="btn-editorial-outline" style="padding: 0.78rem 1.15rem;">
+          <span>📞 GỌI TRỰC TIẾP</span>
+        </a>
       </div>
     </div>
 
-    <!-- Footer -->
+    <!-- Standard 4-Column Professional Website Footer -->
     <footer class="editorial-footer">
-      <div>
-        <div class="serif" style="font-size: 2rem; font-weight: 600;" id="footerBrandName">ATELIER NỘI ĐỊA</div>
-        <p style="font-size: 0.84rem; color: var(--ink-secondary); max-width: 48ch; margin-top: 0.35rem;">
-          Dịch vụ săn hàng thiết kế nội địa Trung &amp; đặt nội thất trọn gói theo phòng trực tiếp từ xưởng. Chỉ cần gửi ảnh, làm giá kín 1-1 qua Zalo.
-        </p>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="serif" style="font-size: 2rem; font-weight: 600; line-height: 1.1;" id="footerBrandName">ATELIER</div>
+          <p style="font-size: 0.84rem; color: var(--ink-secondary); line-height: 1.65;">
+            Đơn vị chuyên tìm nguồn hàng thiết kế qua hình ảnh, cung ứng nội thất trọn gói theo phòng &amp; kết nối xưởng sản xuất sỉ trực tiếp cho chủ shop, local brand và kiến trúc sư tại Việt Nam.
+          </p>
+          <div class="mono" style="color: var(--olive); font-size: 0.7rem;">
+            ● LÀM GIÁ TRỌN GÓI 1-1 • BẢO MẬT NGUỒN HÀNG ĐỐI TÁC
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">Dịch Vụ Cung Ứng</div>
+          <ul class="footer-links-list">
+            <li><a href="#lookbook-section">• Đặt lẻ đồ thiết kế &amp; phụ kiện chọn lọc</a></li>
+            <li><a href="#interior-packages-section">• Gói nội thất decor phòng ngủ &amp; phòng khách</a></li>
+            <li><a href="#interior-packages-section">• Bóc tách nội thất nguyên căn theo ảnh 3D</a></li>
+            <li><a href="#wholesale-section">• Nhập hàng sỉ &amp; làm nhãn riêng (OEM) cho shop</a></li>
+            <li><a href="#bespoke-section">• Tìm nguồn hàng theo ảnh chụp màn hình</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">Cam Kết &amp; Chính Sách</div>
+          <ul class="footer-links-list">
+            <li>• Quay video kiểm hàng thực tế trước khi đóng kiện</li>
+            <li>• Đóng khung gỗ chống sốc &amp; bảo hiểm gãy vỡ 100%</li>
+            <li>• Đền bù 100% nếu giao sai mẫu hoặc thất lạc</li>
+            <li>• Giữ kín tuyệt đối mẫu mã &amp; giá nhập của khách sỉ</li>
+            <li>• Báo giá trọn gói một lần, không phát sinh phụ phí</li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">Thông Tin Liên Hệ</div>
+          <ul class="footer-links-list">
+            <li><strong>Hotline / Zalo / WhatsApp:</strong> <a href="https://zalo.me/0823230703" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: 600;" id="footerZaloDisplay">0823.230.703</a></li>
+            <li><strong>Khung giờ hỗ trợ:</strong> 08:30 – 22:30 (Thứ 2 – Chủ Nhật)</li>
+            <li><strong>Cụm xưởng kết nối:</strong> Quảng Châu • Hàng Châu • Phật Sơn • Cảnh Đức Trấn • Thẩm Quyến</li>
+            <li><strong>Điểm trả hàng:</strong> Giao tận nơi tại Hà Nội, Đà Nẵng, TP.HCM &amp; 63 tỉnh thành</li>
+          </ul>
+        </div>
       </div>
-      <div class="mono" style="text-align: right; color: var(--ink-muted);">
-        <div>ATELIER NỘI ĐỊA // SĂN HÀNG QUA ẢNH &amp; DECOR TRỌN GÓI</div>
-        <div style="margin-top: 0.3rem;">ZALO TƯ VẤN RIÊNG: <span id="footerZaloDisplay">0905.888.999</span> • KHÔNG NHẬN HÀNG THỰC PHẨM</div>
+
+      <div class="footer-bottom-bar mono">
+        <div>© 2026 ATELIER — DỊCH VỤ TÌM NGUỒN HÀNG QUA ẢNH, NỘI THẤT TRỌN GÓI &amp; NHẬP SỈ TẬN XƯỞNG.</div>
+        <div>HOTLINE / ZALO / WHATSAPP: <strong>0823.230.703</strong> • LƯU Ý: KHÔNG NHẬN NGÀNH HÀNG THỰC PHẨM &amp; HÀNG CẤM</div>
       </div>
     </footer>
   </main>
@@ -2120,14 +2393,14 @@
       <div id="drawerUpsellContainer"></div>
 
       <div style="border-top: 1px solid var(--hairline); padding-top: 1rem; display: flex; flex-direction: column; gap: 0.85rem;">
-        <div class="mono" style="color: var(--ink-primary);">THÔNG TIN ĐỂ CHÚNG TÔI GỬI BÁO GIÁ QUA ZALO</div>
+        <div class="mono" style="color: var(--ink-primary);">THÔNG TIN ĐỂ CHÚNG TÔI GỬI BÁO GIÁ (ZALO / WHATSAPP: 0823.230.703)</div>
         <div class="form-group">
           <label class="form-label" for="clientNameInput">Tên Của Bạn (Hoặc Tên Shop / Studio)</label>
           <input type="text" id="clientNameInput" class="editorial-input" placeholder="VD: Minh Anh / Tiệm Decor..." />
         </div>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
           <div class="form-group">
-            <label class="form-label" for="clientZaloInput">Số Điện Thoại Zalo</label>
+            <label class="form-label" for="clientZaloInput">SĐT Zalo / WhatsApp Của Bạn</label>
             <input type="text" id="clientZaloInput" class="editorial-input" placeholder="VD: 0987..." />
           </div>
           <div class="form-group">
@@ -2143,19 +2416,24 @@
       </div>
 
       <div>
-        <div class="mono" style="margin-bottom: 0.4rem; color: var(--ink-secondary);">TIN NHẮN TÓM TẮT SẼ SAO CHÉP ĐỂ GỬI QUA ZALO:</div>
+        <div class="mono" style="margin-bottom: 0.4rem; color: var(--ink-secondary);">TIN NHẮN TÓM TẮT SẼ SAO CHÉP ĐỂ GỬI QUA ZALO / WHATSAPP:</div>
         <div class="brief-preview-box" id="briefMessagePreview"></div>
       </div>
     </div>
 
     <div class="drawer-footer">
       <button type="button" class="btn-editorial-primary" id="sendZaloBriefBtn" style="width: 100%; justify-content: center;">
-        <span>SAO CHÉP PHIẾU &amp; MỞ ZALO NHẬN BÁO GIÁ</span>
+        <span>SAO CHÉP PHIẾU &amp; MỞ ZALO (0823.230.703)</span>
         <span>↗</span>
       </button>
-      <button type="button" class="btn-editorial-outline" id="copyOnlyBriefBtn" style="width: 100%; text-align: center; padding: 0.7rem;">
-        <span>CHỈ SAO CHÉP NỘI DUNG TÓM TẮT</span>
-      </button>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.55rem;">
+        <button type="button" class="btn-editorial-outline" id="sendWhatsappBriefBtn" style="width: 100%; text-align: center; padding: 0.7rem; font-size: 0.7rem;">
+          <span>GỬI QUA WHATSAPP ↗</span>
+        </button>
+        <button type="button" class="btn-editorial-outline" id="copyOnlyBriefBtn" style="width: 100%; text-align: center; padding: 0.7rem; font-size: 0.7rem;">
+          <span>SAO CHÉP NỘI DUNG</span>
+        </button>
+      </div>
     </div>
   </aside>
 
@@ -2384,8 +2662,8 @@
     let activeModalItem = null;
     let careBarDismissed = false;
     let studioConfig = {
-      brandName: localStorage.getItem("atelier_brand") || "ATELIER NỘI ĐỊA",
-      zaloPhone: localStorage.getItem("atelier_zalo") || "0905888999"
+      brandName: "ATELIER",
+      zaloPhone: "0823230703"
     };
 
     let wishlistIds = [];
@@ -3140,6 +3418,35 @@
         return;
       }
 
+      const wsAddBtn = e.target.closest("[data-action='add-wholesale']");
+      if (wsAddBtn) {
+        const wsTitle = wsAddBtn.getAttribute("data-ws-title");
+        const wsMode = wsAddBtn.getAttribute("data-ws-mode");
+        addToBrief({
+          code: "NHẬP SỈ // XƯỞNG GỐC",
+          title: wsTitle,
+          origin: "QUẢNG CHÂU • HÀNG CHÂU • PHẬT SƠN",
+          mode: wsMode,
+          note: "Nhận báo giá sỉ tận xưởng & chính sách chiết khấu cho chủ shop (Hotline/Zalo/WhatsApp: 0823.230.703)",
+          image: ARCHIVE_ITEMS[7].image
+        });
+        openBriefDrawer();
+        return;
+      }
+
+      const wsUploadBtn = e.target.closest("[data-action='upload-wholesale']");
+      if (wsUploadBtn) {
+        const wsTitle = wsUploadBtn.getAttribute("data-ws-title");
+        document.getElementById("huntCategory").value = "Nhập Hàng Sỉ Tận Xưởng Cho Chủ Shop / Brand";
+        document.getElementById("huntScale").value = "Nhập sỉ số lượng cho Showroom / Chủ Shop";
+        document.getElementById("huntItemName").value = `${wsTitle} (Nhờ check giá sỉ tận xưởng)`;
+        document.getElementById("bespoke-section").scrollIntoView({ behavior: "smooth" });
+        setTimeout(() => {
+          document.getElementById("huntImageInput").click();
+        }, 450);
+        return;
+      }
+
       const wishTrigger = e.target.closest("[data-action='toggle-wish']");
       if (wishTrigger) {
         e.stopPropagation();
@@ -3406,10 +3713,9 @@
       });
       const text = buildZaloBriefText();
       copyTextToClipboard(text);
-      showToast("ĐÃ SAO CHÉP THÔNG TIN MẪU! ĐANG MỞ ZALO...");
-      const cleanPhone = studioConfig.zaloPhone.replace(/\D/g, "") || "0905888999";
+      showToast("ĐÃ SAO CHÉP THÔNG TIN MẪU! ĐANG MỞ ZALO 0823.230.703...");
       setTimeout(() => {
-        window.open(`https://zalo.me/${cleanPhone}`, "_blank", "noopener,noreferrer");
+        window.open("https://zalo.me/0823230703", "_blank", "noopener,noreferrer");
       }, 400);
     });
 
@@ -3518,14 +3824,24 @@
       });
     });
 
-    // Copy & Open Zalo
+    // Copy & Open Zalo (0823230703)
     document.getElementById("sendZaloBriefBtn").addEventListener("click", () => {
       const text = buildZaloBriefText();
       copyTextToClipboard(text);
-      showToast("ĐÃ SAO CHÉP PHIẾU BÁO GIÁ! ĐANG MỞ ZALO...");
-      const cleanPhone = studioConfig.zaloPhone.replace(/\D/g, "") || "0905888999";
+      showToast("ĐÃ SAO CHÉP PHIẾU BÁO GIÁ! ĐANG MỞ ZALO 0823.230.703...");
       setTimeout(() => {
-        window.open(`https://zalo.me/${cleanPhone}`, "_blank", "noopener,noreferrer");
+        window.open("https://zalo.me/0823230703", "_blank", "noopener,noreferrer");
+      }, 450);
+    });
+
+    // Copy & Open WhatsApp (+84823230703)
+    document.getElementById("sendWhatsappBriefBtn").addEventListener("click", () => {
+      const text = buildZaloBriefText();
+      copyTextToClipboard(text);
+      showToast("ĐÃ SAO CHÉP PHIẾU BÁO GIÁ! ĐANG MỞ WHATSAPP...");
+      const encoded = encodeURIComponent(text);
+      setTimeout(() => {
+        window.open(`https://wa.me/84823230703?text=${encoded}`, "_blank", "noopener,noreferrer");
       }, 450);
     });
 
@@ -3533,25 +3849,6 @@
       const text = buildZaloBriefText();
       copyTextToClipboard(text);
       showToast("ĐÃ SAO CHÉP NỘI DUNG TÓM TẮT VÀO BỘ NHỚ TẠM!");
-    });
-
-    // Studio Config Live Update
-    document.getElementById("saveConfigBtn").addEventListener("click", () => {
-      const newBrand = document.getElementById("configBrandInput").value.trim() || "ATELIER NỘI ĐỊA";
-      const newZalo = document.getElementById("configZaloInput").value.trim() || "0905888999";
-      studioConfig.brandName = newBrand;
-      studioConfig.zaloPhone = newZalo;
-      try {
-        localStorage.setItem("atelier_brand", newBrand);
-        localStorage.setItem("atelier_zalo", newZalo);
-      } catch (e) {}
-
-      document.getElementById("brandNameDisplay").textContent = newBrand;
-      document.getElementById("footerBrandName").textContent = newBrand;
-      document.getElementById("topZaloDisplay").textContent = formatZaloDisplay(newZalo);
-      document.getElementById("footerZaloDisplay").textContent = formatZaloDisplay(newZalo);
-      renderBriefDrawer();
-      showToast("ĐÃ LƯU TÊN THƯƠNG HIỆU & SỐ ZALO MỚI!");
     });
 
     // Initial Render
