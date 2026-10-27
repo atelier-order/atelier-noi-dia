@@ -2124,9 +2124,9 @@
         <div class="bespoke-quote-box" style="margin-top: 0;">
           <div class="mono" style="color: var(--accent); margin-bottom: 0.5rem;">3 TIỆN ÍCH KHI ĐẶT MUA HỘ TẠI ATELIER</div>
           <p style="font-size: 0.84rem; color: var(--ink-secondary); line-height: 1.65;">
-            • <strong>Nhận cả Ảnh chụp màn hình lẫn Link Shopee:</strong> Thấy link Shopee bán đắt? Gửi link Shopee sang để tụi mình tìm đúng nguồn gốc bên Trung giá mềm hơn hẳn.<br/>
+            • <strong>Nhận cả Ảnh chụp màn hình lẫn Link Shopee:</strong> Thấy link Shopee bán đắt? Gửi link Shopee hoặc ảnh sang để tụi mình tìm đúng nguồn gốc bên Trung giá mềm hơn hẳn.<br/>
             • <strong>Quay video kiểm hàng thật tại kho:</strong> Kiểm tra đúng mẫu, đúng chất liệu trước khi đóng kiện gỗ về Việt Nam.<br/>
-            • <strong>Gửi thẳng qua Zalo 1 chạm:</strong> Không cần qua giỏ hàng, thông tin và ảnh của bạn được tạo phiếu tự động để shop báo giá ngay trong 15–30 phút.
+            • <strong>Chỉ cần điền thông tin &amp; bấm Lưu:</strong> Khách không cần tải file hay thao tác phức tạp — hình ảnh và yêu cầu của bạn được lưu thẳng về hệ thống theo Tên &amp; SĐT, đội ngũ ATELIER sẽ chủ động liên hệ gửi báo giá.
           </p>
         </div>
       </div>
@@ -2137,7 +2137,7 @@
             <span class="mono" style="color: var(--accent); display: block;">PHIẾU TÌM &amp; ĐẶT MUA HỘ NHANH (KHÔNG CẦN QUA GIỎ HÀNG)</span>
             <h2 class="serif" style="font-size: 1.55rem; font-weight: 600;">Gửi Ảnh Hoặc Link Shopee Để Nhận Báo Giá Về Tay</h2>
           </div>
-          <span class="mono" style="background: var(--ink-primary); color: var(--bg-primary); padding: 0.3rem 0.65rem; font-size: 0.68rem;">PHẢN HỒI TRONG 15 PHÚT</span>
+          <span class="mono" style="background: var(--ink-primary); color: var(--bg-primary); padding: 0.3rem 0.65rem; font-size: 0.68rem;">GỬI BÁO GIÁ</span>
         </div>
 
         <form id="customHuntForm">
@@ -2155,8 +2155,8 @@
                   <div style="display: flex; align-items: center; gap: 0.85rem;">
                     <img id="dropzonePreviewImg" src="" alt="Preview" class="dropzone-preview-img" />
                     <div>
-                      <span class="mono" style="color: var(--olive); display: block;">✓ ĐÃ ĐÍNH KÈM ẢNH THÀNH CÔNG</span>
-                      <span style="font-size: 0.8rem; color: var(--ink-secondary);" id="dropzoneFileName">Đã tự động tạo link xem ảnh trực tiếp cho Zalo</span>
+                      <span class="mono" style="color: var(--olive); display: block;">✓ ĐÃ ĐÍNH KÈM ẢNH SẢN PHẨM THÀNH CÔNG</span>
+                      <span style="font-size: 0.8rem; color: var(--ink-secondary);" id="dropzoneFileName">Ảnh sẽ được lưu tự động vào hồ sơ của bạn khi bấm Lưu</span>
                     </div>
                   </div>
                   <button type="button" id="removeUploadedImgBtn" class="mono" style="padding: 0.35rem 0.65rem; border: 1px solid var(--hairline-strong); font-size: 0.68rem;">[ ĐỔI ẢNH KHÁC × ]</button>
@@ -2191,7 +2191,7 @@
             <div class="form-group">
               <label class="form-label" for="huntScale">04. Số Lượng &amp; Ưu Đãi Gộp Đơn</label>
               <select id="huntScale" class="editorial-select">
-                <option value="Đặt lẻ 1 - 2 món về dùng (Báo giá trọn gói)">Đặt lẻ 1 - 2 món (Báo giá trọn gói về tận tay)</option>
+                <option value="Đặt lẻ 1 - 2 món về dùng (Báo giá trọn gói)">Đặt lẻ 1 - 2 món (Nhận báo giá trọn gói về tận tay)</option>
                 <option value="Đặt từ 3 món trở lên (🔥 Áp dụng Chiết khấu 15%)">🔥 Đặt từ 3 món trở lên (Được chiết khấu ngay 15%)</option>
                 <option value="Đặt theo Gói Nội Thất Phòng / Nhà (5 - 20+ món)">Đặt theo Gói Nội Thất Phòng / Nhà (Tiết kiệm 25 - 40%)</option>
                 <option value="Nhập sỉ số lượng cho Chủ Shop / Brand">Nhập sỉ số lượng cho Chủ Shop / Local Brand (Giá gốc nhà máy)</option>
@@ -2212,7 +2212,7 @@
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="clientZaloInput">06. SĐT Zalo Nhận Báo Giá *</label>
+              <label class="form-label" for="clientZaloInput">06. Số Điện Thoại / Zalo Nhận Báo Giá *</label>
               <input type="text" id="clientZaloInput" class="editorial-input" placeholder="VD: 0987..." required />
             </div>
 
@@ -2232,35 +2232,20 @@
             </div>
 
             <div class="form-group full" style="padding-top: 0.35rem;">
-              <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 0.75rem;">
-                <button type="submit" class="btn-editorial-primary" style="width: 100%; justify-content: center; padding: 1.05rem 1rem; font-size: 0.8rem;">
-                  <span>⚡ GỬI YÊU CẦU MUA HỘ QUA ZALO (0823.230.703)</span>
-                  <span>↗</span>
-                </button>
-                <button type="button" id="directWhatsappSubmitBtn" class="btn-editorial-outline" style="width: 100%; text-align: center; padding: 1.05rem 0.75rem; font-size: 0.75rem;">
-                  <span>GỬI QUA WHATSAPP ↗</span>
-                </button>
-              </div>
+              <button type="submit" id="huntSubmitMainBtn" class="btn-editorial-primary" style="width: 100%; justify-content: center; padding: 1.1rem 1.25rem; font-size: 0.85rem;">
+                <span>✓ LƯU THÔNG TIN &amp; NHẬN BÁO GIÁ</span>
+              </button>
             </div>
 
-            <!-- Hộp Phiếu Đơn Bằng Ảnh hiện ngay sau khi khách tải ảnh hoặc bấm gửi -->
-            <div class="form-group full" id="visualOrderCardBox" style="display: none; margin-top: 0.25rem;">
-              <div class="visual-order-card-box">
-                <div style="display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
-                  <span class="mono" style="color: var(--accent); font-weight: 700;">🖼️ PHIẾU ĐƠN KÈM ẢNH ĐÃ TẠO SẴN (BẤM COPY ĐỂ DÁN ẢNH VÀO ZALO)</span>
-                  <span class="mono" id="cloudSyncBadge" style="color: var(--olive); font-size: 0.68rem;">✓ ĐÃ KÈM LINK ẢNH TRONG TIN NHẮN</span>
+            <!-- Thông báo xác nhận ngay trên màn hình sau khi khách bấm Lưu (Khách không phải tải file gì về máy) -->
+            <div class="form-group full" id="orderSuccessBanner" style="display: none; margin-top: 0.25rem;">
+              <div style="padding: 1.15rem 1.25rem; background: var(--bg-elevated); border: 1.5px solid var(--olive); border-left: 5px solid var(--olive);">
+                <div class="mono" style="color: var(--olive); font-weight: 700; font-size: 0.78rem; margin-bottom: 0.35rem;">
+                  ✓ ĐÃ LƯU HÌNH ẢNH &amp; YÊU CẦU BÁO GIÁ THÀNH CÔNG!
                 </div>
-                <p style="font-size: 0.8rem; color: var(--ink-secondary); line-height: 1.45;">
-                  Ngoài đường link xem ảnh đã có sẵn trong tin nhắn văn bản, bạn có thể bấm <strong>📸 COPY ẢNH ĐƠN HÀNG</strong> rồi dán (Ctrl+V) thẳng vào khung chat Zalo để shop thấy hình ngay lập tức!
+                <p style="font-size: 0.85rem; color: var(--ink-primary); line-height: 1.55;" id="orderSuccessMessage">
+                  Hệ thống đã lưu đầy đủ hình ảnh mẫu và thông tin liên hệ của bạn. Đội ngũ ATELIER (Hotline/Zalo: <strong>0823.230.703</strong>) sẽ kiểm tra trực tiếp với xưởng và chủ động liên hệ gửi báo giá cho bạn sớm nhất!
                 </p>
-                <div class="visual-order-actions">
-                  <button type="button" class="btn-editorial-outline mono" id="copyOrderImageBtn" style="padding: 0.65rem 0.5rem; font-size: 0.72rem; text-align: center;">
-                    📸 COPY ẢNH ĐƠN HÀNG
-                  </button>
-                  <button type="button" class="btn-editorial-outline mono" id="downloadOrderImageBtn" style="padding: 0.65rem 0.5rem; font-size: 0.72rem; text-align: center;">
-                    📥 TẢI / CHIA SẺ ẢNH ĐƠN
-                  </button>
-                </div>
               </div>
             </div>
           </div>
@@ -2269,7 +2254,7 @@
     </section>
 
     <!-- =========================================================================
-         MỤC 02 (THỨ HAI): XEM NHỮNG MẶT HÀNG ĐANG CÓ GIÁ TỐT TRONG THÁNG (CẬP NHẬT TỪ FILE EXCEL)
+         MỤC 02 (THỨ HAI): XEM NHỮNG MẶT HÀNG ĐANG CÓ GIÁ TỐT TRONG THÁNG (KHÔNG PUBLIC GIÁ - BÁO GIÁ RIÊNG)
          ========================================================================= -->
     <section id="monthly-deals-section">
       <div class="section-header-bar">
@@ -2280,7 +2265,7 @@
         <div class="sec-title-cell">
           <h2 class="sec-heading">Những Mặt Hàng Đang Có Giá Tốt Sẵn Trong Tháng Này</h2>
           <p style="font-size: 0.9rem; color: var(--ink-secondary);">
-            Bảng tổng hợp các sản phẩm đang có <strong>giá gom lô cực tốt tại xưởng trong tháng</strong> (đã bao gồm công kiểm hàng &amp; vận chuyển về Việt Nam). Bạn ưng món nào chỉ cần bấm <strong>⚡ Đặt Món Này Qua Zalo</strong>, hoặc tích chọn <strong>từ 03 món để được giảm thêm 15%</strong>!
+            Danh sách các sản phẩm đang có <strong>suất gom lô giá tốt tại xưởng trong tháng</strong> (giữ kín giá xuất xưởng để bảo vệ quyền lợi khách hàng &amp; chủ shop). Bạn ưng món nào chỉ cần bấm <strong>Nhận Báo Giá Riêng</strong>, hoặc tích chọn <strong>từ 03 món để được giảm thêm 15%</strong>!
           </p>
         </div>
         <div class="sec-meta-cell">
@@ -2300,7 +2285,7 @@
         </div>
 
         <div class="search-and-view">
-          <input type="text" id="archiveSearchInput" class="archive-search-input" placeholder="Tìm theo tên sản phẩm, mức giá, chất liệu..." />
+          <input type="text" id="archiveSearchInput" class="archive-search-input" placeholder="Tìm theo tên sản phẩm, chất liệu, xưởng..." />
           <button type="button" class="view-switch-btn active" id="viewGridBtn">Dạng Thẻ Lớn</button>
           <button type="button" class="view-switch-btn" id="viewTableBtn">Xem Dạng Bảng</button>
         </div>
@@ -2309,17 +2294,16 @@
       <!-- Lưới sản phẩm Giá Tốt Trong Tháng -->
       <div class="lookbook-grid" id="lookbookGrid"></div>
 
-      <!-- Bảng danh sách dạng Excel -->
+      <!-- Bảng danh sách dạng Excel (Không public giá) -->
       <table class="archive-index-table" id="archiveIndexTable">
         <thead>
           <tr>
             <th>Ảnh</th>
             <th>Mã SP</th>
             <th>Tên Sản Phẩm &amp; Thông Tin Chi Tiết</th>
-            <th>Giá Tốt Tháng Này</th>
-            <th>Giá Thị Trường</th>
+            <th>Trạng Thái Ưu Đãi Tháng</th>
             <th>Xuất Xứ &amp; Lịch Về</th>
-            <th>Đặt Nhanh / Gộp 3 Món (-15%)</th>
+            <th>Nhận Báo Giá / Gộp 3 Món (-15%)</th>
           </tr>
         </thead>
         <tbody id="archiveTableBody"></tbody>
@@ -2499,9 +2483,9 @@
         <div class="process-cell">
           <div>
             <div class="process-step-num">02.</div>
-            <h3 class="process-step-title">Báo Giá Trọn Gói &amp; Áp Dụng Chiết Khấu 15%</h3>
+            <h3 class="process-step-title">Bấm Lưu Thông Tin &amp; Đội Ngũ Chủ Động Gửi Báo Giá</h3>
             <p class="process-step-text">
-              Đội ngũ làm việc thẳng với xưởng sản xuất để gửi ảnh/video thật và báo giá trọn gói qua Zalo <strong>0823.230.703</strong> trong 15–30 phút (tự động giảm 15% khi bạn đặt từ 3 món).
+              Sau khi điền tên và SĐT rồi bấm <strong>Lưu Thông Tin &amp; Nhận Báo Giá</strong>, hình ảnh và yêu cầu của bạn được lưu thẳng vào thư mục riêng theo Tên &amp; SĐT. Đội ngũ ATELIER (<strong>0823.230.703</strong>) sẽ kiểm tra xưởng và chủ động liên hệ gửi báo giá trọn gói cho bạn (tự động giảm 15% khi đặt từ 3 món).
             </p>
           </div>
           <div class="mono" style="margin-top: 1.5rem; color: var(--ink-muted);">[ ĐẶT TỪ 3 MÓN GIẢM NGAY 15% ]</div>
@@ -2600,12 +2584,12 @@
   <!-- Shared Backdrop -->
   <div class="backdrop" id="sharedBackdrop"></div>
 
-  <!-- Quick 1-Step Direct Zalo Order Modal (Replaces Complicated Cart!) -->
+  <!-- Quick 1-Step Order Modal (Save Directly to Drive Folder, No Downloads Required!) -->
   <div class="quick-order-modal" id="quickOrderModal" role="dialog" aria-modal="true">
     <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--hairline-strong); padding-bottom: 0.85rem; margin-bottom: 1rem;">
       <div>
-        <span class="mono" style="color: var(--accent); display: block;" id="qoHeaderBadge">ĐẶT NHANH TRỰC TIẾP QUA ZALO // KHÔNG CẦN GIỎ HÀNG</span>
-        <h3 class="serif" style="font-size: 1.5rem; font-weight: 600;" id="qoModalTitle">Xác Nhận Thông Tin Nhận Báo Giá &amp; Đặt Hàng</h3>
+        <span class="mono" style="color: var(--accent); display: block;" id="qoHeaderBadge">GỬI YÊU CẦU BÁO GIÁ // LƯU THÔNG TIN TRỰC TIẾP</span>
+        <h3 class="serif" style="font-size: 1.5rem; font-weight: 600;" id="qoModalTitle">Điền Thông Tin Để Nhận Báo Giá Riêng</h3>
       </div>
       <button type="button" id="closeQuickOrderBtn" class="mono" style="padding: 0.35rem 0.65rem; border: 1px solid var(--hairline-strong);">[ ĐÓNG × ]</button>
     </div>
@@ -2620,7 +2604,7 @@
           <input type="text" id="qoClientName" class="editorial-input" placeholder="VD: Minh Anh / Tiệm Decor..." required />
         </div>
         <div class="form-group">
-          <label class="form-label" for="qoClientZalo">SĐT Zalo / WhatsApp *</label>
+          <label class="form-label" for="qoClientZalo">Số Điện Thoại / Zalo Nhận Báo Giá *</label>
           <input type="text" id="qoClientZalo" class="editorial-input" placeholder="VD: 0987..." required />
         </div>
         <div class="form-group">
@@ -2635,56 +2619,104 @@
         <div class="form-group">
           <label class="form-label" for="qoOrderQty">Số Lượng &amp; Ưu Đãi</label>
           <select id="qoOrderQty" class="editorial-select">
-            <option value="Đặt 01 món / 01 gói theo giá niêm yết">Đặt 01 món / 01 gói theo thông tin trên</option>
+            <option value="Đặt 01 món / 01 gói (Nhận báo giá riêng)">Đặt 01 món / 01 gói theo thông tin trên</option>
             <option value="Đặt từ 03 món trở lên (🔥 Giảm ngay 15%)">🔥 Đặt từ 03 món trở lên (Giảm ngay 15%)</option>
             <option value="Nhập sỉ số lượng cho Chủ Shop / Dự án">Nhập sỉ số lượng cho Chủ Shop / Dự án</option>
           </select>
         </div>
         <div class="form-group full">
           <label class="form-label" for="qoClientNote">Ghi Chú Thêm (Màu sắc, kích cỡ, hoặc dán thêm Link Shopee nếu có)</label>
-          <input type="text" id="qoClientNote" class="editorial-input" placeholder="VD: Lấy màu kem đá, size M (hoặc cần tư vấn thêm qua Zalo)..." />
+          <input type="text" id="qoClientNote" class="editorial-input" placeholder="VD: Lấy màu kem đá, size M..." />
         </div>
       </div>
 
-      <div style="display: grid; grid-template-columns: 1.4fr 1fr; gap: 0.65rem; margin-top: 0.25rem;">
-        <button type="submit" class="btn-editorial-primary" style="width: 100%; justify-content: center; padding: 0.95rem 0.75rem;">
-          <span>⚡ GỬI ĐƠN &amp; MỞ ZALO (0823.230.703)</span>
-          <span>↗</span>
-        </button>
-        <button type="button" id="qoWhatsappBtn" class="btn-editorial-outline" style="width: 100%; text-align: center; padding: 0.95rem 0.5rem; font-size: 0.72rem;">
-          <span>GỬI QUA WHATSAPP ↗</span>
-        </button>
-      </div>
+      <button type="submit" id="qoSubmitMainBtn" class="btn-editorial-primary" style="width: 100%; justify-content: center; padding: 1.05rem 0.85rem; margin-top: 0.25rem; font-size: 0.84rem;">
+        <span>✓ LƯU THÔNG TIN &amp; NHẬN BÁO GIÁ</span>
+      </button>
 
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.55rem;">
-        <button type="button" id="qoCopyImageBtn" class="btn-editorial-outline mono" style="padding: 0.58rem; font-size: 0.68rem; text-align: center;">
-          📸 COPY ẢNH PHIẾU ĐƠN
-        </button>
-        <button type="button" id="qoDownloadImageBtn" class="btn-editorial-outline mono" style="padding: 0.58rem; font-size: 0.68rem; text-align: center;">
-          📥 TẢI ẢNH PHIẾU ĐƠN
-        </button>
+      <div id="qoSuccessBanner" style="display: none; padding: 1rem 1.15rem; background: var(--bg-elevated); border: 1.5px solid var(--olive); border-left: 5px solid var(--olive);">
+        <div class="mono" style="color: var(--olive); font-weight: 700; font-size: 0.76rem; margin-bottom: 0.3rem;">
+          ✓ ĐÃ LƯU THÔNG TIN &amp; SẢN PHẨM BẠN CHỌN THÀNH CÔNG!
+        </div>
+        <p style="font-size: 0.82rem; color: var(--ink-primary); line-height: 1.5;" id="qoSuccessMessage">
+          Hồ sơ và sản phẩm của bạn đã được lưu lại. Đội ngũ ATELIER (0823.230.703) sẽ chủ động liên hệ gửi báo giá riêng cho bạn sớm nhất!
+        </p>
       </div>
     </form>
   </div>
 
-  <!-- Excel Product Manager + Google Drive & Customer CRM Modal -->
+  <!-- Excel Product Manager + Google Drive & Customer CRM Modal (Secret Owner View: ?quanly=2307) -->
   <div class="crm-modal" id="crmModal" role="dialog" aria-modal="true">
     <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--hairline-strong); padding-bottom: 0.9rem; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.75rem;">
       <div>
-        <span class="mono" style="color: var(--accent); display: block;">QUẢN TRỊ SẢN PHẨM GIÁ TỐT BẰNG EXCEL &amp; DATABASE KHÁCH HÀNG GOOGLE DRIVE</span>
-        <h3 class="serif" style="font-size: 1.65rem; font-weight: 600;">Cập Nhật Hàng Giá Tốt Bằng File Excel &amp; Quản Lý CRM</h3>
+        <span class="mono" style="color: var(--accent); display: block;">TRANG QUẢN TRỊ RIÊNG CỦA CHỦ SHOP ATELIER (ẨN 100% VỚI KHÁCH HÀNG)</span>
+        <h3 class="serif" style="font-size: 1.65rem; font-weight: 600;">Kết Nối Tự Động Lưu Ảnh Về Thư Mục Google Drive &amp; Cập Nhật Hàng Giá Tốt</h3>
       </div>
       <button type="button" id="closeCrmModalBtn" class="mono" style="padding: 0.4rem 0.75rem; border: 1px solid var(--hairline-strong);">[ ĐÓNG × ]</button>
     </div>
 
     <div style="display: grid; grid-template-columns: 1fr; gap: 1.25rem;">
-      <!-- KHỐI 1: CẬP NHẬT MỤC 02 (GIÁ TỐT TRONG THÁNG) BẰNG FILE EXCEL / CSV -->
-      <div style="padding: 1.15rem; background: var(--bg-elevated); border: 2px solid var(--accent);">
-        <div class="mono" style="color: var(--accent); font-weight: 700; margin-bottom: 0.35rem;">
-          📊 1. FORM FILE EXCEL CẬP NHẬT "MẶT HÀNG ĐANG CÓ GIÁ TỐT TRONG THÁNG" (MỤC 02)
+      <!-- KHỐI 1: KẾT NỐI GOOGLE DRIVE PER-CUSTOMER FOLDER (TỰ ĐỘNG LƯU ẢNH + TÊN + SĐT KHÁCH) -->
+      <div style="padding: 1.2rem; background: var(--bg-elevated); border: 2px solid var(--accent);">
+        <div class="mono" style="color: var(--accent); font-weight: 700; margin-bottom: 0.4rem;">
+          ☁️ 1. TỰ ĐỘNG ĐẨY ẢNH &amp; THÔNG TIN KHÁCH VỀ THƯ MỤC RIÊNG TRÊN GOOGLE DRIVE ([SĐT] - [TÊN KHÁCH])
         </div>
         <p style="font-size: 0.84rem; color: var(--ink-secondary); line-height: 1.6; margin-bottom: 0.85rem;">
-          Bạn tải <strong>File Excel Mẫu (.CSV)</strong> bên dưới về máy, điền danh sách sản phẩm theo 9 cột chuẩn: <code>Ma_SP</code>, <code>Ten_San_Pham</code>, <code>Danh_Muc</code>, <code>Gia_Tot_Trong_Thang</code>, <code>Gia_Thi_Truong</code>, <code>Thong_Tin_San_Pham</code>, <code>Xuat_Xu_Xuong</code>, <code>Thoi_Gian_Ve</code>, <code>Link_Anh</code>. Sau đó bấm <strong>📤 Tải File Excel Lên</strong> để cập nhật ngay lên trang (hoặc gửi file Excel đó cho mình để mình nhúng cố định lên web!).
+          Khi khách bấm <strong>"✓ LƯU THÔNG TIN &amp; NHẬN BÁO GIÁ"</strong>, hệ thống sẽ tự động tạo ngay 1 folder riêng trên Google Drive của bạn với tên <strong>[SĐT Khách] - [Tên Khách]</strong> (VD: <code>0934966923 - Hưng test (TP. Hồ Chí Minh)</code>) và <strong>lưu thẳng file Ảnh sản phẩm (.jpg) + File thông tin khách</strong> vào đúng folder đó!
+        </p>
+
+        <!-- Hướng dẫn 3 bước bấm 1 chạm để lấy link Google Drive của chủ shop -->
+        <div style="padding: 0.9rem 1rem; background: var(--bg-secondary); border: 1px dashed var(--hairline-strong); margin-bottom: 0.9rem; font-size: 0.81rem; line-height: 1.6;">
+          <strong style="color: var(--ink-primary); display: block; margin-bottom: 0.35rem;">⚡ Cài đặt 1 lần duy nhất trong 30 giây (Để nối thẳng vào Google Drive cá nhân của bạn):</strong>
+          1️⃣ Bấm nút <strong>[📋 BƯỚC 1: COPY MÃ GOOGLE DRIVE SCRIPT]</strong> bên dưới.<br/>
+          2️⃣ Bấm <strong>[🚀 BƯỚC 2: MỞ SCRIPT.GOOGLE.COM]</strong> → Bấm <strong>Dự án mới (New project)</strong> → Xóa chữ có sẵn và <strong>Dán (Ctrl+V)</strong> mã vừa copy vào.<br/>
+          3️⃣ Ở góc phải trên cùng, bấm nút màu xanh <strong>Triển khai (Deploy) → Triển khai mới (New deployment)</strong> → Chọn bánh răng <strong>Ứng dụng web (Web app)</strong> → Phần <em>Ai có quyền truy cập (Who has access)</em> chọn <strong>Bất kỳ ai (Anyone)</strong> → Bấm Triển khai &amp; Copy đường link <code>https://script.google.com/macros/s/.../exec</code> dán vào ô dưới đây:
+          <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.6rem;">
+            <button type="button" id="copyGasCodeBtn" class="btn-editorial-primary mono" style="padding: 0.55rem 0.95rem; font-size: 0.7rem;">
+              📋 BƯỚC 1: COPY MÃ GOOGLE DRIVE SCRIPT
+            </button>
+            <a href="https://script.google.com/home/start" target="_blank" rel="noopener noreferrer" class="btn-editorial-outline mono" style="padding: 0.55rem 0.95rem; font-size: 0.7rem;">
+              🚀 BƯỚC 2: MỞ SCRIPT.GOOGLE.COM ↗
+            </a>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 0.65rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.65rem;">
+          <input type="text" id="gasWebhookInput" class="editorial-input" style="flex: 1; min-width: 260px;" placeholder="BƯỚC 3: Dán link Web App Google Apps Script (https://script.google.com/macros/s/.../exec) vào đây..." />
+          <button type="button" id="saveGasWebhookBtn" class="btn-editorial-primary mono" style="padding: 0.75rem 1.1rem; font-size: 0.72rem;">
+            ✓ LƯU KẾT NỐI DRIVE
+          </button>
+          <button type="button" id="testGasWebhookBtn" class="btn-editorial-outline mono" style="padding: 0.75rem 0.95rem; font-size: 0.72rem;">
+            ⚡ GỬI THỬ 1 FOLDER KÈM ẢNH LÊN DRIVE
+          </button>
+          <button type="button" id="syncAllOldLeadsBtn" class="btn-editorial-outline mono" style="padding: 0.75rem 0.95rem; font-size: 0.72rem;">
+            ☁️ ĐẨY CÁC ĐƠN CŨ (KÈM ẢNH) LÊN DRIVE
+          </button>
+        </div>
+        <div id="gasStatusText" class="mono" style="font-size: 0.74rem; color: var(--olive);"></div>
+      </div>
+
+      <!-- KHỐI 2: DANH SÁCH KHÁCH HÀNG & TẢI ẢNH TRỰC TIẾP TRÊN WEB + XUẤT EXCEL CHUẨN CỘT -->
+      <div style="padding: 1.1rem; background: var(--bg-elevated); border: 1px solid var(--hairline);">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem;">
+          <div>
+            <span class="mono" style="color: var(--ink-primary); font-weight: 700;">2. DANH SÁCH KHÁCH ĐÃ LƯU (CÓ SẴN ẢNH KHÁCH GỬI + NÚT MỞ FOLDER GOOGLE DRIVE)</span>
+            <p style="font-size: 0.8rem; color: var(--ink-secondary);">Bạn có thể bấm mở thẳng Folder Google Drive của từng khách, bấm <strong>📥 Tải Ảnh</strong> của khách, hoặc xuất bảng Excel đã chia sẵn cột rõ ràng.</p>
+          </div>
+          <button type="button" id="exportCrmCsvBtn" class="btn-editorial-primary mono" style="padding: 0.55rem 0.95rem; font-size: 0.7rem;">
+            📊 XUẤT BẢNG EXCEL (.XLS) CHIA CỘT RÕ RÀNG
+          </button>
+        </div>
+        <div id="localCrmTableWrap" style="max-height: 260px; overflow-y: auto; border: 1px solid var(--hairline);"></div>
+      </div>
+
+      <!-- KHỐI 3: CẬP NHẬT MỤC 02 (GIÁ TỐT TRONG THÁNG) BẰNG FILE EXCEL / CSV -->
+      <div style="padding: 1.1rem; background: var(--bg-secondary); border: 1px solid var(--hairline);">
+        <div class="mono" style="color: var(--accent); font-weight: 700; margin-bottom: 0.35rem;">
+          📊 3. FORM FILE EXCEL CẬP NHẬT "MẶT HÀNG ĐANG CÓ GIÁ TỐT TRONG THÁNG" (MỤC 02 — KHÔNG PUBLIC GIÁ)
+        </div>
+        <p style="font-size: 0.84rem; color: var(--ink-secondary); line-height: 1.6; margin-bottom: 0.85rem;">
+          Tải <strong>File Excel Mẫu (.CSV)</strong> bên dưới về máy, điền danh sách sản phẩm trong tháng rồi bấm <strong>📤 Tải File Excel Lên</strong> để cập nhật Mục 02.
         </p>
         <div style="display: flex; gap: 0.65rem; flex-wrap: wrap; align-items: center;">
           <a href="mau-san-pham-gia-tot-atelier.csv" download="mau-san-pham-gia-tot-atelier.csv" class="btn-editorial-primary mono" style="padding: 0.7rem 1.1rem; font-size: 0.72rem;">
@@ -2699,38 +2731,6 @@
           </button>
         </div>
         <div id="excelUploadStatus" class="mono" style="font-size: 0.72rem; color: var(--olive); margin-top: 0.6rem;"></div>
-      </div>
-
-      <!-- KHỐI 2: KẾT NỐI GOOGLE DRIVE PER-CUSTOMER FOLDER & GOOGLE SHEETS CRM -->
-      <div style="padding: 1.1rem; background: var(--bg-secondary); border: 1px solid var(--hairline);">
-        <div class="mono" style="color: var(--accent); margin-bottom: 0.4rem;">2. KẾT NỐI GOOGLE DRIVE (TỰ ĐỘNG TẠO THƯ MỤC RIÊNG TỪNG KHÁCH + LƯU ẢNH &amp; GOOGLE SHEETS CRM)</div>
-        <p style="font-size: 0.84rem; color: var(--ink-secondary); line-height: 1.6; margin-bottom: 0.85rem;">
-          Khi kết nối, mỗi lần khách gửi yêu cầu mua hộ hoặc đặt hàng, hệ thống tự động tạo thư mục riêng mang tên khách (VD: <strong>0763048771 - Emvy (Đà Nẵng)</strong>) trên Google Drive của bạn, lưu ảnh khách gửi vào đúng thư mục đó và ghi SĐT vào <strong>Google Sheets CRM Remarketing</strong>.
-        </p>
-        <div style="display: flex; gap: 0.65rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.75rem;">
-          <input type="text" id="gasWebhookInput" class="editorial-input" style="flex: 1; min-width: 260px;" placeholder="Dán link Web App Google Apps Script (https://script.google.com/macros/s/.../exec) vào đây..." />
-          <button type="button" id="saveGasWebhookBtn" class="btn-editorial-primary mono" style="padding: 0.75rem 1.1rem; font-size: 0.72rem;">
-            LƯU KẾT NỐI DRIVE
-          </button>
-          <button type="button" id="testGasWebhookBtn" class="btn-editorial-outline mono" style="padding: 0.75rem 1rem; font-size: 0.72rem;">
-            ⚡ GỬI THỬ 1 ĐƠN LÊN DRIVE
-          </button>
-        </div>
-        <div id="gasStatusText" class="mono" style="font-size: 0.72rem; color: var(--olive);"></div>
-      </div>
-
-      <!-- KHỐI 3: DANH SÁCH KHÁCH HÀNG LƯU TRÊN TRÌNH DUYỆT & XUẤT EXCEL -->
-      <div style="padding: 1.1rem; background: var(--bg-elevated); border: 1px solid var(--hairline);">
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem;">
-          <div>
-            <span class="mono" style="color: var(--ink-primary);">3. DANH SÁCH KHÁCH HÀNG &amp; ĐƠN ĐẶT ĐÃ LƯU (DÙNG CHO REMARKETING ƯU ĐÃI MUA LẠI)</span>
-            <p style="font-size: 0.8rem; color: var(--ink-secondary);">Xem lại ảnh/link Shopee khách gửi và xuất danh sách ra file Excel (.CSV) bất cứ lúc nào.</p>
-          </div>
-          <button type="button" id="exportCrmCsvBtn" class="btn-editorial-primary mono" style="padding: 0.55rem 0.95rem; font-size: 0.7rem;">
-            📥 XUẤT FILE EXCEL (.CSV) KHÁCH HÀNG
-          </button>
-        </div>
-        <div id="localCrmTableWrap" style="max-height: 240px; overflow-y: auto; border: 1px solid var(--hairline);"></div>
       </div>
     </div>
   </div>
@@ -2748,7 +2748,7 @@
         BỎ CHỌN
       </button>
       <button type="button" id="orderSelectedBundleBtn" class="btn-editorial-primary mono" style="background: var(--accent); color: #FAF8F4; padding: 0.6rem 1.05rem; font-size: 0.72rem;">
-        ⚡ ĐẶT CÁC MÓN ĐÃ CHỌN QUA ZALO →
+        ✓ LƯU &amp; NHẬN BÁO GIÁ CÁC MÓN ĐÃ CHỌN →
       </button>
     </div>
   </div>
@@ -2937,29 +2937,30 @@
       Object.assign(item, CRO_METADATA[item.id] || {});
     });
 
-    // Default Monthly Deals Metadata (Prices + Market Comparison for Section 02)
+    // Default Monthly Deals Metadata (Strictly NO Public Prices — Private Quote Only)
     const DEFAULT_MONTHLY_PRICES = {
-      "CN-01": { dealPrice: "2.450.000đ", marketPrice: "3.600.000đ", saveLabel: "TIẾT KIỆM 1.150K" },
-      "CN-02": { dealPrice: "3.290.000đ", marketPrice: "5.100.000đ", saveLabel: "TIẾT KIỆM 1.810K" },
-      "CN-03": { dealPrice: "2.790.000đ", marketPrice: "4.200.000đ", saveLabel: "TIẾT KIỆM 1.410K" },
-      "CN-04": { dealPrice: "1.150.000đ", marketPrice: "1.950.000đ", saveLabel: "TIẾT KIỆM 800K" },
-      "CN-05": { dealPrice: "1.890.000đ", marketPrice: "2.950.000đ", saveLabel: "TIẾT KIỆM 1.060K" },
-      "CN-06": { dealPrice: "4.650.000đ", marketPrice: "7.200.000đ", saveLabel: "TIẾT KIỆM 2.550K" },
-      "CN-07": { dealPrice: "890.000đ", marketPrice: "1.550.000đ", saveLabel: "TIẾT KIỆM 660K" },
-      "CN-08": { dealPrice: "2.690.000đ", marketPrice: "4.100.000đ", saveLabel: "TIẾT KIỆM 1.410K" }
+      "CN-01": { dealPrice: "🔥 Đang có giá tốt trong tháng", marketPrice: "", saveLabel: "NHẬN BÁO GIÁ RIÊNG" },
+      "CN-02": { dealPrice: "🔥 Đang có giá tốt trong tháng", marketPrice: "", saveLabel: "NHẬN BÁO GIÁ RIÊNG" },
+      "CN-03": { dealPrice: "🔥 Đang có giá tốt trong tháng", marketPrice: "", saveLabel: "NHẬN BÁO GIÁ RIÊNG" },
+      "CN-04": { dealPrice: "🔥 Đang có giá tốt trong tháng", marketPrice: "", saveLabel: "NHẬN BÁO GIÁ RIÊNG" },
+      "CN-05": { dealPrice: "🔥 Đang có giá tốt trong tháng", marketPrice: "", saveLabel: "NHẬN BÁO GIÁ RIÊNG" },
+      "CN-06": { dealPrice: "🔥 Đang có giá tốt trong tháng", marketPrice: "", saveLabel: "NHẬN BÁO GIÁ RIÊNG" },
+      "CN-07": { dealPrice: "🔥 Đang có giá tốt trong tháng", marketPrice: "", saveLabel: "NHẬN BÁO GIÁ RIÊNG" },
+      "CN-08": { dealPrice: "🔥 Đang có giá tốt trong tháng", marketPrice: "", saveLabel: "NHẬN BÁO GIÁ RIÊNG" }
     };
 
     ARCHIVE_ITEMS.forEach(item => {
-      const p = DEFAULT_MONTHLY_PRICES[item.id] || { dealPrice: "Báo giá ưu đãi tháng", marketPrice: "", saveLabel: "GIÁ TỐT THÁNG" };
+      const p = DEFAULT_MONTHLY_PRICES[item.id] || { dealPrice: "🔥 Đang có giá tốt trong tháng", marketPrice: "", saveLabel: "NHẬN BÁO GIÁ RIÊNG" };
       item.dealPrice = p.dealPrice;
       item.marketPrice = p.marketPrice;
       item.saveLabel = p.saveLabel;
     });
 
-    // Load custom Excel/CSV deals if owner uploaded a sheet previously
+    // Clear legacy v1 public-price cache & load v2 custom Excel/CSV deals if owner uploaded a sheet
     let monthlyDealsList = [...ARCHIVE_ITEMS];
     try {
-      const savedCustomDeals = JSON.parse(localStorage.getItem("atelier_excel_deals_v1"));
+      localStorage.removeItem("atelier_excel_deals_v1");
+      const savedCustomDeals = JSON.parse(localStorage.getItem("atelier_excel_deals_v2"));
       if (Array.isArray(savedCustomDeals) && savedCustomDeals.length > 0) {
         monthlyDealsList = savedCustomDeals;
       }
@@ -3004,7 +3005,7 @@
       editorialToast.classList.add("show");
       setTimeout(() => {
         editorialToast.classList.remove("show");
-      }, 2800);
+      }, 3200);
     }
 
     function formatZaloDisplay(phone) {
@@ -3044,8 +3045,7 @@
           (item.title && item.title.toLowerCase().includes(q)) ||
           (item.code && item.code.toLowerCase().includes(q)) ||
           (item.origin && item.origin.toLowerCase().includes(q)) ||
-          (item.material && item.material.toLowerCase().includes(q)) ||
-          (item.dealPrice && item.dealPrice.toLowerCase().includes(q));
+          (item.material && item.material.toLowerCase().includes(q));
         return matchCat && matchSearch;
       });
     }
@@ -3063,7 +3063,7 @@
         const remain = 3 - count;
         textEl.innerHTML = `Đang chọn <strong>0${count} món</strong> Giá Tốt. Chọn thêm <strong>0${remain} món nữa</strong> để được <strong>Chiết khấu ngay 15% tổng đơn</strong>!`;
       } else {
-        textEl.innerHTML = `🎉 Đã chọn <strong>0${count} món</strong> — Đơn của bạn được <strong>Áp dụng Chiết Khấu 15% (Từ 3 món)</strong>! Bấm gửi Zalo ngay.`;
+        textEl.innerHTML = `🎉 Đã chọn <strong>0${count} món</strong> — Đơn của bạn được <strong>Áp dụng Chiết Khấu 15% (Từ 3 món)</strong>! Bấm Lưu thông tin để nhận báo giá ngay.`;
       }
     }
 
@@ -3083,7 +3083,7 @@
         return;
       }
 
-      // Render Grid Cards with Monthly Deal Prices & Direct Order Buttons
+      // Render Grid Cards (Strictly NO Public Prices — Private Quote Only)
       lookbookGrid.innerHTML = items.map(item => {
         const isSelected = selectedDealIds.includes(item.id);
         return `
@@ -3095,7 +3095,7 @@
               </div>
               <div class="card-image-wrap" data-action="quick-order-item" data-id="${item.id}">
                 <img src="${item.image}" alt="${item.title}" loading="lazy" />
-                <span class="private-quote-pill">🔥 GIÁ TỐT THÁNG • ${item.eta || "5–7 ngày"}</span>
+                <span class="private-quote-pill">🔥 GIÁ TỐT TRONG THÁNG • ${item.eta || "5–7 ngày"}</span>
               </div>
             </div>
             <div class="card-body">
@@ -3103,20 +3103,19 @@
                 <span class="card-category-label mono">${item.categoryLabel || "Mặt Hàng Giá Tốt"}</span>
                 <h3 class="card-title" data-action="quick-order-item" data-id="${item.id}">${item.title}</h3>
 
-                <!-- Monthly Deal Price Box -->
+                <!-- Private Deal Status Row (No Public Prices) -->
                 <div class="monthly-price-row">
-                  <span class="deal-price-current">${item.dealPrice || "Liên hệ"}</span>
-                  ${item.marketPrice ? `<span class="deal-price-old">${item.marketPrice}</span>` : ""}
-                  <span class="deal-save-tag mono">${item.saveLabel || "GIÁ TỐT"}</span>
+                  <span class="deal-price-current" style="font-size: 0.92rem;">${item.dealPrice || "🔥 Đang có giá tốt trong tháng"}</span>
+                  <span class="deal-save-tag mono">${item.saveLabel || "NHẬN BÁO GIÁ RIÊNG"}</span>
                 </div>
 
                 <p class="card-specs">${item.material || item.desc || ""}</p>
               </div>
               <div>
-                <div class="card-batch-note mono" style="color: var(--olive);">🎁 ĐẶT TỪ 3 MÓN GIẢM THÊM 15% • KIỂM HÀNG VIDEO</div>
+                <div class="card-batch-note mono" style="color: var(--olive);">🎁 ĐẶT TỪ 3 MÓN GIẢM THÊM 15% • BÁO GIÁ RIÊNG</div>
                 <div class="card-actions">
                   <button type="button" class="btn-card-add mono" style="background: var(--ink-primary); color: var(--bg-primary);" data-action="quick-order-item" data-id="${item.id}">
-                    ⚡ ĐẶT QUA ZALO
+                    ✓ NHẬN BÁO GIÁ
                   </button>
                   <button type="button" class="btn-card-spec mono ${isSelected ? 'in-brief' : ''}" style="${isSelected ? 'background: var(--olive); color: #FAF8F4;' : ''}" data-action="toggle-bundle-item" data-id="${item.id}">
                     ${isSelected ? '✓ ĐÃ CHỌN GỘP (-15%)' : '+ CHỌN GỘP 3 MÓN (-15%)'}
@@ -3128,7 +3127,7 @@
         `;
       }).join("");
 
-      // Render Excel-like Table View
+      // Render Table View (No Public Prices)
       archiveTableBody.innerHTML = items.map(item => {
         const isSelected = selectedDealIds.includes(item.id);
         return `
@@ -3139,13 +3138,15 @@
               <strong class="serif" style="font-size: 1.12rem; display: block;">${item.title}</strong>
               <span style="font-size: 0.78rem; color: var(--ink-secondary);">${item.material || item.desc || ""}</span>
             </td>
-            <td><strong style="color: var(--accent); font-size: 1.05rem;">${item.dealPrice}</strong></td>
-            <td style="text-decoration: line-through; color: var(--ink-muted);">${item.marketPrice || "—"}</td>
+            <td>
+              <strong style="color: var(--accent); font-size: 0.88rem; display: block;">${item.dealPrice || "🔥 Đang có giá tốt trong tháng"}</strong>
+              <span class="mono" style="font-size: 0.68rem; color: var(--ink-muted);">${item.saveLabel || "Nhận báo giá riêng (-15% từ 3 món)"}</span>
+            </td>
             <td class="mono" style="font-size: 0.72rem;">${item.origin}<br/><span style="color: var(--olive);">${item.eta || "5-7 ngày"}</span></td>
             <td>
               <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
                 <button type="button" class="btn-editorial-primary mono" style="padding: 0.45rem 0.75rem; font-size: 0.68rem;" data-action="quick-order-item" data-id="${item.id}">
-                  ⚡ ĐẶT ZALO
+                  ✓ NHẬN BÁO GIÁ
                 </button>
                 <button type="button" class="btn-editorial-outline mono" style="padding: 0.45rem 0.65rem; font-size: 0.68rem;" data-action="toggle-bundle-item" data-id="${item.id}">
                   ${isSelected ? '✓ ĐÃ GỘP' : '+ GỘP (-15%)'}
@@ -3238,7 +3239,7 @@
               </div>
               <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.55rem;">
                 <button type="button" class="btn-editorial-primary mono" style="padding: 0.8rem 0.5rem; font-size: 0.7rem; justify-content: center;" data-action="quick-order-interior" data-pkg-id="${pkg.id}">
-                  <span>⚡ ĐẶT &amp; TƯ VẤN GÓI NÀY</span>
+                  <span>✓ NHẬN BÁO GIÁ GÓI NÀY</span>
                 </button>
                 <button type="button" class="btn-editorial-outline mono" style="padding: 0.8rem 0.5rem; font-size: 0.7rem; text-align: center;" data-action="scroll-to-hunt" data-hunt-cat="Gói Nội Thất Decor Phòng / Nhà Trọn Bộ" data-hunt-title="Tư vấn ${pkg.title} (Kèm ảnh phòng riêng)">
                   <span>📷 GỬI ẢNH PHÒNG CỦA BẠN</span>
@@ -3250,7 +3251,7 @@
       `).join("");
     }
 
-    // Image Upload & Instant Cloud Link (tmpfiles.org CORS API)
+    // Image Upload & Instant Cloud Link (tmpfiles.org CORS API + Base64 for Google Drive Folder)
     let uploadedCustomImageData = null;
     let uploadedCustomImageName = "";
     let uploadedCustomRemoteUrl = "";
@@ -3271,7 +3272,7 @@
           uploadedCustomRemoteUrl = directUrl;
           const fnEl = document.getElementById("dropzoneFileName");
           if (fnEl && uploadedCustomImageData) {
-            fnEl.textContent = `Đã đính kèm & tạo link xem ảnh trực tiếp: ${fileName}`;
+            fnEl.textContent = `Đã đính kèm: ${fileName} (Sẵn sàng lưu về hồ sơ Google Drive)`;
           }
           return directUrl;
         }
@@ -3290,7 +3291,7 @@
         const img = new Image();
         img.onload = () => {
           const canvas = document.createElement("canvas");
-          const maxDim = 720;
+          const maxDim = 900;
           let w = img.width;
           let h = img.height;
           if (w > h && w > maxDim) {
@@ -3304,29 +3305,28 @@
           canvas.height = h;
           const ctx = canvas.getContext("2d");
           ctx.drawImage(img, 0, 0, w, h);
-          uploadedCustomImageData = canvas.toDataURL("image/jpeg", 0.84);
+          uploadedCustomImageData = canvas.toDataURL("image/jpeg", 0.86);
           uploadedCustomImageName = file.name || "Anh-khach-gui.jpg";
 
           document.getElementById("dropzonePreviewImg").src = uploadedCustomImageData;
-          document.getElementById("dropzoneFileName").textContent = `Đã đính kèm: ${uploadedCustomImageName} (Đang tạo link ảnh Zalo...)`;
+          document.getElementById("dropzoneFileName").textContent = `Đã đính kèm: ${uploadedCustomImageName} (Sẽ tự động lưu về Drive khi bấm Lưu)`;
           document.getElementById("dropzonePreviewWrap").classList.add("has-img");
-          document.getElementById("visualOrderCardBox").style.display = "block";
-          showToast("📷 ĐÃ NHẬN ẢNH! BẠN ĐIỀN SĐT RỒI BẤM GỬI QUA ZALO NHÉ.");
+          showToast("📷 ĐÃ ĐÍNH KÈM ẢNH! BẠN ĐIỀN THÔNG TIN RỒI BẤM 'LƯU THÔNG TIN & NHẬN BÁO GIÁ' NHÉ.");
 
           canvas.toBlob((blob) => {
             if (blob) uploadBlobForInstantLink(blob, uploadedCustomImageName);
-          }, "image/jpeg", 0.85);
+          }, "image/jpeg", 0.86);
         };
         img.src = ev.target.result;
       };
       reader.readAsDataURL(file);
     }
 
-    // Build Zalo Order Text Message (Direct, includes Shopee link & Cloud image link & 15% discount status)
+    // Build Order Summary Text (For Google Drive Folder Info File & CRM)
     function buildDirectOrderText(orderData) {
       const hasDiscount15 = orderData.items.length >= 3 || (orderData.scale && orderData.scale.includes("3 món"));
       let lines = [
-        `[PHIẾU ĐẶT HÀNG & BÁO GIÁ // ${studioConfig.brandName}]`,
+        `[PHIẾU YÊU CẦU BÁO GIÁ // ${studioConfig.brandName}]`,
         `• Khách hàng: ${orderData.clientName} (${orderData.clientZalo})`,
         `• Khu vực nhận: ${orderData.clientCity}`,
         `----------------------------------------`,
@@ -3335,7 +3335,6 @@
 
       orderData.items.forEach((it, idx) => {
         lines.push(`${idx + 1}. [${it.code}] ${it.title}`);
-        if (it.dealPrice) lines.push(`   - Giá ưu đãi: ${it.dealPrice}`);
         if (it.origin) lines.push(`   - Nhóm / Nguồn: ${it.origin}`);
         if (it.mode) lines.push(`   - Số lượng / Quy mô: ${it.mode}`);
         if (it.shopeeLink) lines.push(`   - 🔗 Link Shopee / Sản phẩm mẫu: ${it.shopeeLink}`);
@@ -3344,7 +3343,7 @@
         if (viewableUrl) {
           lines.push(`   - 🖼️ Link xem ảnh mẫu: ${viewableUrl}`);
         } else if (it.image && it.image.startsWith("data:image")) {
-          lines.push(`   - 🖼️ Ảnh mẫu: Đã lưu trong Phiếu Đơn Bằng Ảnh / Google Drive CRM`);
+          lines.push(`   - 🖼️ Ảnh mẫu: Đã lưu trực tiếp file ảnh trong thư mục Google Drive của khách`);
         }
       });
 
@@ -3354,168 +3353,41 @@
       }
 
       lines.push(`----------------------------------------`);
-      lines.push(`Nhờ ATELIER kiểm tra xưởng và phản hồi báo giá trọn gói về tận tay giúp mình nhé!`);
+      lines.push(`Khách hàng đã bấm Lưu thông tin trên web. Đội ngũ ATELIER chủ động liên hệ báo giá qua SĐT/Zalo: ${orderData.clientZalo}`);
       return lines.join("\n");
     }
 
-    // Generate Visual Order Card Canvas for 1-click Copy Image / Download Image
-    async function generateVisualOrderCardCanvas(itemsToRender, customerMeta) {
-      const canvas = document.createElement("canvas");
-      const width = 820;
-      const items = itemsToRender && itemsToRender.length > 0 ? itemsToRender : [
-        {
-          code: "MUA HỘ // ATELIER",
-          title: document.getElementById("huntItemName").value.trim() || "Yêu cầu đặt mua hộ qua ảnh / link Shopee",
-          origin: document.getElementById("huntCategory").value,
-          mode: document.getElementById("huntScale").value,
-          note: (document.getElementById("huntShopeeLink").value.trim() ? "Link: " + document.getElementById("huntShopeeLink").value.trim() + " | " : "") + document.getElementById("huntNotes").value.trim(),
-          image: uploadedCustomImageData || ARCHIVE_ITEMS[0].image
-        }
-      ];
-
-      const rowHeight = 135;
-      const headerHeight = 175;
-      const footerHeight = 75;
-      const height = headerHeight + items.length * rowHeight + footerHeight;
-
-      canvas.width = width;
-      canvas.height = height;
-      const ctx = canvas.getContext("2d");
-
-      ctx.fillStyle = "#F6F3EC";
-      ctx.fillRect(0, 0, width, height);
-
-      ctx.strokeStyle = "#181615";
-      ctx.lineWidth = 2;
-      ctx.strokeRect(16, 16, width - 32, height - 32);
-
-      ctx.fillStyle = "#181615";
-      ctx.fillRect(16, 16, width - 32, 64);
-      ctx.fillStyle = "#FAF8F4";
-      ctx.font = "bold 20px sans-serif";
-      ctx.fillText("PHIẾU ĐẶT MUA HỘ & BÁO GIÁ // ATELIER", 36, 55);
-
-      ctx.fillStyle = "#9E3B24";
-      ctx.font = "bold 14px monospace";
-      ctx.fillText("ZALO / HOTLINE: 0823.230.703", width - 270, 54);
-
-      const cName = (customerMeta && customerMeta.clientName) || document.getElementById("clientNameInput").value.trim() || "Khách đặt hàng";
-      const cZalo = (customerMeta && customerMeta.clientZalo) || document.getElementById("clientZaloInput").value.trim() || "Chưa điền SĐT";
-      const cCity = (customerMeta && customerMeta.clientCity) || document.getElementById("clientCitySelect").value;
-      const nowStr = new Date().toLocaleString("vi-VN");
-
-      ctx.fillStyle = "#181615";
-      ctx.font = "bold 16px sans-serif";
-      ctx.fillText(`Khách hàng: ${cName}   |   SĐT Zalo: ${cZalo}   |   Khu vực: ${cCity}`, 36, 112);
-      ctx.fillStyle = "#5A554C";
-      ctx.font = "13px sans-serif";
-      ctx.fillText(`Thời gian: ${nowStr}   •   Số mục: ${items.length}   •   Ưu đãi từ 3 món: Giảm 15%`, 36, 138);
-
-      ctx.strokeStyle = "#D5CEC2";
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.moveTo(32, 155);
-      ctx.lineTo(width - 32, 155);
-      ctx.stroke();
-
-      function loadImg(src) {
-        return new Promise((resolve) => {
-          if (!src) return resolve(null);
-          const im = new Image();
-          im.crossOrigin = "anonymous";
-          im.onload = () => resolve(im);
-          im.onerror = () => resolve(null);
-          im.src = src;
-        });
-      }
-
-      for (let i = 0; i < items.length; i++) {
-        const it = items[i];
-        const yTop = headerHeight + i * rowHeight;
-
-        ctx.fillStyle = "#FAF8F4";
-        ctx.fillRect(32, yTop, width - 64, rowHeight - 14);
-        ctx.strokeStyle = "#D5CEC2";
-        ctx.strokeRect(32, yTop, width - 64, rowHeight - 14);
-
-        const im = await loadImg(it.image);
-        if (im) {
-          ctx.drawImage(im, 44, yTop + 12, 96, 96);
-        } else {
-          ctx.fillStyle = "#EAE4D7";
-          ctx.fillRect(44, yTop + 12, 96, 96);
-          ctx.fillStyle = "#9E3B24";
-          ctx.font = "11px monospace";
-          ctx.fillText("ẢNH MẪU", 62, yTop + 64);
-        }
-
-        ctx.fillStyle = "#9E3B24";
-        ctx.font = "bold 12px monospace";
-        ctx.fillText(`${i + 1}. [${it.code || "ATELIER"}] ${it.dealPrice ? "• GIÁ: " + it.dealPrice : ""}`.slice(0, 75), 156, yTop + 30);
-
-        ctx.fillStyle = "#181615";
-        ctx.font = "bold 16px sans-serif";
-        ctx.fillText((it.title || "").slice(0, 58), 156, yTop + 55);
-
-        ctx.fillStyle = "#5A554C";
-        ctx.font = "13px sans-serif";
-        ctx.fillText(`Quy mô: ${(it.mode || "").slice(0, 68)}`, 156, yTop + 80);
-
-        const noteLine = [it.shopeeLink ? "Link: " + it.shopeeLink : "", it.note || ""].filter(Boolean).join(" | ");
-        if (noteLine) {
-          ctx.fillStyle = "#2E2B28";
-          ctx.font = "italic 12px sans-serif";
-          ctx.fillText(`Chi tiết: ${noteLine.slice(0, 75)}`, 156, yTop + 102);
-        }
-      }
-
-      const fY = height - 36;
-      ctx.fillStyle = "#5A554C";
-      ctx.font = "12px monospace";
-      ctx.fillText("ATELIER CONCIERGE • Dán ảnh phiếu này vào Zalo 0823.230.703 để shop báo giá ngay!", 36, fY);
-
-      return canvas;
-    }
-
-    // Sync Order & Customer Lead to Google Drive Per-Customer Folder & Local CRM
-    async function syncOrderToGoogleDriveAndCrm(orderData, summaryText) {
-      const orderId = "ATL-" + Date.now().toString().slice(-6);
-      const leadRecord = {
-        orderId,
-        createdAt: new Date().toLocaleString("vi-VN"),
-        clientName: orderData.clientName,
-        clientZalo: orderData.clientZalo,
-        clientCity: orderData.clientCity,
-        itemCount: orderData.items.length,
-        itemsSummary: orderData.items.map(b => `[${b.code}] ${b.title} ${b.dealPrice ? "(" + b.dealPrice + ")" : ""} ${b.shopeeLink ? "[Link: " + b.shopeeLink + "]" : ""}`).join(" | "),
-        firstImage: orderData.items[0] ? orderData.items[0].image : "",
-        remoteUrls: orderData.items.map(b => b.remoteImageUrl || b.shopeeLink).filter(Boolean).join(", "),
-        driveFolderUrl: ""
-      };
-
-      crmLeads.unshift(leadRecord);
-      if (crmLeads.length > 100) crmLeads = crmLeads.slice(0, 100);
-      try {
-        localStorage.setItem("atelier_crm_leads_v1", JSON.stringify(crmLeads));
-      } catch (e) {}
-
+    // Push a single Lead Record to Google Drive Per-Customer Folder ([SĐT] - [Tên Khách])
+    async function pushLeadRecordToGoogleDrive(leadRecord) {
       if (!gasWebhookUrl) return null;
-
       try {
+        const itemsToPush = Array.isArray(leadRecord.items) && leadRecord.items.length > 0
+          ? leadRecord.items
+          : [{
+              code: "MUA HỘ // ATELIER",
+              title: leadRecord.itemsSummary || "Yêu cầu báo giá của khách",
+              origin: leadRecord.clientCity || "",
+              mode: "",
+              note: leadRecord.remoteUrls || "",
+              remoteImageUrl: leadRecord.remoteUrls || "",
+              image: leadRecord.firstImage || ""
+            }];
+
         const payload = {
-          orderId,
-          source: orderData.source || "Web ATELIER",
-          clientName: orderData.clientName,
-          clientZalo: orderData.clientZalo,
-          clientCity: orderData.clientCity,
-          summaryText,
-          unlockedPrivileges: orderData.items.length >= 3 ? ["Chiết khấu 15% (Đặt từ 3 món)"] : [],
-          items: orderData.items.map(b => ({
-            code: b.code,
-            title: b.title,
+          orderId: leadRecord.orderId,
+          source: leadRecord.source || "Web ATELIER",
+          clientName: leadRecord.clientName,
+          clientZalo: leadRecord.clientZalo,
+          clientPhone: leadRecord.clientZalo,
+          clientCity: leadRecord.clientCity,
+          summaryText: leadRecord.summaryText || `${leadRecord.clientName} - ${leadRecord.clientZalo}\n${leadRecord.itemsSummary}`,
+          unlockedPrivileges: (leadRecord.itemCount >= 3) ? ["Chiết khấu 15% (Đặt từ 3 món)"] : [],
+          items: itemsToPush.map(b => ({
+            code: b.code || "ATELIER",
+            title: b.title || "",
             origin: b.origin || "",
             mode: b.mode || "",
-            note: [b.dealPrice ? "Giá: " + b.dealPrice : "", b.shopeeLink ? "Link Shopee: " + b.shopeeLink : "", b.note || ""].filter(Boolean).join(" | "),
+            note: [b.shopeeLink ? "Link Shopee: " + b.shopeeLink : "", b.note || ""].filter(Boolean).join(" | "),
             remoteImageUrl: b.remoteImageUrl || "",
             image: b.image || ""
           }))
@@ -3527,8 +3399,8 @@
           body: JSON.stringify(payload)
         });
         const data = await res.json();
-        if (data && data.ok && data.folderUrl) {
-          leadRecord.driveFolderUrl = data.folderUrl;
+        if (data && data.ok && (data.folderUrl || data.customerFolderUrl)) {
+          leadRecord.driveFolderUrl = data.folderUrl || data.customerFolderUrl;
           try {
             localStorage.setItem("atelier_crm_leads_v1", JSON.stringify(crmLeads));
           } catch (e) {}
@@ -3538,12 +3410,42 @@
       return null;
     }
 
+    // Sync Order & Customer Lead to Google Drive Per-Customer Folder & Local CRM
+    async function syncOrderToGoogleDriveAndCrm(orderData, summaryText) {
+      const orderId = "ATL-" + Date.now().toString().slice(-6);
+      const leadRecord = {
+        orderId,
+        createdAt: new Date().toLocaleString("vi-VN"),
+        source: orderData.source || "Web ATELIER",
+        clientName: orderData.clientName,
+        clientZalo: orderData.clientZalo,
+        clientCity: orderData.clientCity,
+        itemCount: orderData.items.length,
+        itemsSummary: orderData.items.map(b => `[${b.code}] ${b.title}${b.mode ? " (" + b.mode + ")" : ""}${b.shopeeLink ? " [Link: " + b.shopeeLink + "]" : ""}${b.note ? " - " + b.note : ""}`).join(" | "),
+        firstImage: orderData.items[0] ? orderData.items[0].image : "",
+        remoteUrls: orderData.items.map(b => b.remoteImageUrl || b.shopeeLink).filter(Boolean).join(", "),
+        summaryText,
+        items: orderData.items,
+        driveFolderUrl: ""
+      };
+
+      crmLeads.unshift(leadRecord);
+      if (crmLeads.length > 100) crmLeads = crmLeads.slice(0, 100);
+      try {
+        localStorage.setItem("atelier_crm_leads_v1", JSON.stringify(crmLeads));
+      } catch (e) {}
+
+      return await pushLeadRecordToGoogleDrive(leadRecord);
+    }
+
     // Open 1-Step Quick Order Modal (For Section 02 Monthly Deals & Section 03 Packages)
     function openQuickOrderModal(items, titleText, badgeText) {
       activeQuickOrderItems = items;
       lastSubmittedItems = items;
-      document.getElementById("qoModalTitle").textContent = titleText || "Xác Nhận Thông Tin Nhận Báo Giá & Đặt Hàng";
-      document.getElementById("qoHeaderBadge").textContent = badgeText || "ĐẶT NHANH TRỰC TIẾP QUA ZALO // KHÔNG CẦN GIỎ HÀNG";
+      document.getElementById("qoModalTitle").textContent = titleText || "Điền Thông Tin Để Nhận Báo Giá Riêng";
+      document.getElementById("qoHeaderBadge").textContent = badgeText || "GỬI YÊU CẦU BÁO GIÁ // LƯU THÔNG TIN TRỰC TIẾP";
+      const qoBanner = document.getElementById("qoSuccessBanner");
+      if (qoBanner) qoBanner.style.display = "none";
 
       // Pre-fill saved customer info if typed earlier
       const mainName = document.getElementById("clientNameInput").value.trim();
@@ -3558,7 +3460,7 @@
       if (items.length >= 3) {
         document.getElementById("qoOrderQty").value = "Đặt từ 03 món trở lên (🔥 Giảm ngay 15%)";
       } else {
-        document.getElementById("qoOrderQty").value = "Đặt 01 món / 01 gói theo giá niêm yết";
+        document.getElementById("qoOrderQty").value = "Đặt 01 món / 01 gói (Nhận báo giá riêng)";
       }
 
       const previewEl = document.getElementById("qoItemsPreview");
@@ -3566,7 +3468,7 @@
         <div style="display: flex; align-items: center; gap: 0.75rem; background: var(--bg-primary); padding: 0.55rem; border: 1px solid var(--hairline);">
           <img src="${it.image}" alt="${it.title}" style="width: 52px; height: 52px; object-fit: cover; border: 1px solid var(--hairline);" />
           <div style="flex: 1;">
-            <div class="mono" style="color: var(--accent); font-size: 0.65rem;">${it.code} ${it.dealPrice ? "• " + it.dealPrice : ""}</div>
+            <div class="mono" style="color: var(--accent); font-size: 0.65rem;">${it.code} • NHẬN BÁO GIÁ RIÊNG</div>
             <div class="serif" style="font-size: 1.05rem; font-weight: 600;">${it.title}</div>
           </div>
         </div>
@@ -3576,9 +3478,9 @@
       quickOrderModal.classList.add("open");
     }
 
-    // Event Delegation for Cards & Package Buttons
+    // Event Delegation for Cards, Package Buttons, and CRM Image Downloads
     document.addEventListener("click", (e) => {
-      // 1. Direct order a single Monthly Deal item (Section 02)
+      // 1. Direct quote request for a single Monthly Deal item (Section 02)
       const orderItemBtn = e.target.closest("[data-action='quick-order-item']");
       if (orderItemBtn) {
         const id = orderItemBtn.getAttribute("data-id");
@@ -3588,13 +3490,12 @@
             [{
               code: item.code || item.id,
               title: item.title,
-              dealPrice: item.dealPrice,
               origin: item.origin,
-              mode: "Đặt hàng Giá Tốt Trong Tháng",
+              mode: "Mặt hàng đang có giá tốt trong tháng",
               image: item.image
             }],
-            `Đặt Nhanh: ${item.title}`,
-            `GIÁ TỐT TRONG THÁNG: ${item.dealPrice} // ĐẶT TỪ 3 MÓN GIẢM 15%`
+            `Nhận Báo Giá: ${item.title}`,
+            `MẶT HÀNG GIÁ TỐT TRONG THÁNG // ĐẶT TỪ 3 MÓN GIẢM 15%`
           );
         }
         return;
@@ -3620,17 +3521,15 @@
         return;
       }
 
-      // 3. Direct order a Wholesale Package (Section 03A)
+      // 3. Direct quote request for a Wholesale Package (Section 03A)
       const orderPkgBtn = e.target.closest("[data-action='quick-order-pkg']");
       if (orderPkgBtn) {
         const code = orderPkgBtn.getAttribute("data-pkg-code");
         const title = orderPkgBtn.getAttribute("data-pkg-title");
-        const price = orderPkgBtn.getAttribute("data-pkg-price");
         openQuickOrderModal(
           [{
             code,
             title,
-            dealPrice: price,
             origin: "TẤT CẢ NGÀNH HÀNG (TRỪ THỰC PHẨM)",
             mode: "Đặt theo Gói Nhập Sỉ Tận Xưởng",
             image: ARCHIVE_ITEMS[7].image
@@ -3641,7 +3540,7 @@
         return;
       }
 
-      // 4. Direct order an Interior Package (Section 03B)
+      // 4. Direct quote request for an Interior Package (Section 03B)
       const orderInteriorBtn = e.target.closest("[data-action='quick-order-interior']");
       if (orderInteriorBtn) {
         const pkgId = orderInteriorBtn.getAttribute("data-pkg-id");
@@ -3651,7 +3550,6 @@
             [{
               code: pkg.code,
               title: pkg.title,
-              dealPrice: pkg.savingTag,
               origin: pkg.origin,
               mode: pkg.badge,
               image: pkg.image
@@ -3677,7 +3575,23 @@
         return;
       }
 
-      // 6. Reset empty search filter
+      // 6. Owner CRM Table: Download customer's uploaded image directly
+      const dlLeadImgBtn = e.target.closest("[data-action='download-lead-img']");
+      if (dlLeadImgBtn) {
+        const idx = Number(dlLeadImgBtn.getAttribute("data-lead-idx"));
+        const lead = crmLeads[idx];
+        if (lead && lead.firstImage) {
+          const a = document.createElement("a");
+          a.href = lead.firstImage;
+          const safeName = `${lead.clientZalo || "SDT"}-${lead.clientName || "Khach"}`.replace(/[^a-zA-Z0-9_\-\u00C0-\u024F\u1E00-\u1EFF]/g, "_");
+          a.download = `Anh-Khach-${safeName}.jpg`;
+          a.click();
+          showToast(`📥 ĐÃ TẢI ẢNH CỦA KHÁCH: ${lead.clientName}`);
+        }
+        return;
+      }
+
+      // 7. Reset empty search filter
       if (e.target.closest("#resetFilterEmptyBtn")) {
         currentCategory = "all";
         searchQuery = "";
@@ -3698,27 +3612,32 @@
       const chosen = monthlyDealsList.filter(i => selectedDealIds.includes(i.id)).map(it => ({
         code: it.code || it.id,
         title: it.title,
-        dealPrice: it.dealPrice,
         origin: it.origin,
-        mode: selectedDealIds.length >= 3 ? "Gộp đơn từ 3 món (🔥 Giảm 15%)" : "Đặt hàng Giá Tốt Trong Tháng",
+        mode: selectedDealIds.length >= 3 ? "Gộp đơn từ 3 món (🔥 Giảm 15%)" : "Mặt hàng Giá Tốt Trong Tháng",
         image: it.image
       }));
       if (chosen.length > 0) {
         openQuickOrderModal(
           chosen,
-          `Đặt Gộp ${chosen.length} Sản Phẩm Giá Tốt Trong Tháng`,
+          `Nhận Báo Giá ${chosen.length} Sản Phẩm Đã Chọn`,
           chosen.length >= 3 ? "🎉 ĐÃ ÁP DỤNG CHIẾT KHẤU 15% (TỪ 3 MÓN)" : "CHỌN ĐỦ 3 MÓN ĐỂ ĐƯỢC GIẢM 15%"
         );
       }
     });
 
-    // Quick Order Modal Submit -> Direct to Zalo & Google Drive CRM
-    function executeQuickOrderSubmit(channel) {
+    // Quick Order Modal Submit -> Automatically Save to Google Drive Folder ([SĐT] - [Tên Khách]), No Redirect!
+    document.getElementById("quickOrderForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
       const clientName = document.getElementById("qoClientName").value.trim() || "Khách đặt hàng";
       const clientZalo = document.getElementById("qoClientZalo").value.trim() || "Chưa điền SĐT";
       const clientCity = document.getElementById("qoClientCity").value;
       const qtyMode = document.getElementById("qoOrderQty").value;
       const note = document.getElementById("qoClientNote").value.trim();
+
+      const btn = document.getElementById("qoSubmitMainBtn");
+      const origHtml = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = `<span>⏳ ĐANG LƯU HỒ SƠ &amp; YÊU CẦU BÁO GIÁ...</span>`;
 
       const items = activeQuickOrderItems.map(it => ({
         ...it,
@@ -3727,7 +3646,7 @@
       }));
 
       const orderData = {
-        source: channel,
+        source: "Web ATELIER (Nhận Báo Giá Nhanh)",
         clientName,
         clientZalo,
         clientCity,
@@ -3736,81 +3655,21 @@
       };
 
       const text = buildDirectOrderText(orderData);
-      copyTextToClipboard(text);
-      syncOrderToGoogleDriveAndCrm(orderData, text);
+      await syncOrderToGoogleDriveAndCrm(orderData, text);
 
-      if (channel === "WhatsApp") {
-        showToast("ĐÃ SAO CHÉP ĐƠN HÀNG! ĐANG MỞ WHATSAPP 0823.230.703...");
-        const encoded = encodeURIComponent(text);
-        setTimeout(() => {
-          window.open(`https://wa.me/84823230703?text=${encoded}`, "_blank", "noopener,noreferrer");
-        }, 400);
-      } else {
-        showToast("ĐÃ SAO CHÉP ĐƠN HÀNG! ĐANG MỞ ZALO 0823.230.703...");
-        setTimeout(() => {
-          window.open("https://zalo.me/0823230703", "_blank", "noopener,noreferrer");
-        }, 400);
+      btn.disabled = false;
+      btn.innerHTML = origHtml;
+
+      const banner = document.getElementById("qoSuccessBanner");
+      const msg = document.getElementById("qoSuccessMessage");
+      if (banner && msg) {
+        msg.innerHTML = `Đã lưu thông tin của <strong>${clientName} (${clientZalo})</strong> vào hồ sơ khách hàng. Đội ngũ ATELIER (<strong>0823.230.703</strong>) sẽ chủ động liên hệ gửi báo giá riêng cho bạn sớm nhất!`;
+        banner.style.display = "block";
       }
-    }
-
-    document.getElementById("quickOrderForm").addEventListener("submit", (e) => {
-      e.preventDefault();
-      executeQuickOrderSubmit("Zalo 0823.230.703");
-    });
-
-    document.getElementById("qoWhatsappBtn").addEventListener("click", () => {
-      if (!document.getElementById("qoClientName").value.trim() || !document.getElementById("qoClientZalo").value.trim()) {
-        showToast("BẠN HÃY ĐIỀN TÊN & SĐT ZALO TRƯỚC KHI GỬI NHÉ!");
-        return;
-      }
-      executeQuickOrderSubmit("WhatsApp");
+      showToast("✓ ĐÃ LƯU THÔNG TIN THÀNH CÔNG! ATELIER SẼ CHỦ ĐỘNG LIÊN HỆ BÁO GIÁ CHO BẠN.");
     });
 
     document.getElementById("closeQuickOrderBtn").addEventListener("click", closeAllOverlays);
-
-    document.getElementById("qoCopyImageBtn").addEventListener("click", async () => {
-      showToast("ĐANG TẠO ẢNH PHIẾU ĐƠN HÀNG...");
-      const canvas = await generateVisualOrderCardCanvas(activeQuickOrderItems, {
-        clientName: document.getElementById("qoClientName").value.trim(),
-        clientZalo: document.getElementById("qoClientZalo").value.trim(),
-        clientCity: document.getElementById("qoClientCity").value
-      });
-      canvas.toBlob(async (blob) => {
-        if (!blob) return;
-        try {
-          if (navigator.clipboard && window.ClipboardItem) {
-            await navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
-            showToast("📸 ĐÃ COPY ẢNH PHIẾU ĐƠN! BẤM CTRL+V TRONG ZALO ĐỂ GỬI ẢNH NGAY!");
-            return;
-          }
-        } catch (err) {}
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = "Phieu-Dat-Hang-ATELIER.png";
-        a.click();
-        URL.revokeObjectURL(url);
-        showToast("📥 ĐÃ TẢI ẢNH PHIẾU ĐƠN VỀ MÁY!");
-      }, "image/png");
-    });
-
-    document.getElementById("qoDownloadImageBtn").addEventListener("click", async () => {
-      const canvas = await generateVisualOrderCardCanvas(activeQuickOrderItems, {
-        clientName: document.getElementById("qoClientName").value.trim(),
-        clientZalo: document.getElementById("qoClientZalo").value.trim(),
-        clientCity: document.getElementById("qoClientCity").value
-      });
-      canvas.toBlob((blob) => {
-        if (!blob) return;
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = "Phieu-Dat-Hang-ATELIER.png";
-        a.click();
-        URL.revokeObjectURL(url);
-        showToast("📥 ĐÃ TẢI ẢNH PHIẾU ĐƠN VỀ MÁY!");
-      }, "image/png");
-    });
 
     // Section 02 Category Filter & Search & View Switcher
     document.querySelectorAll("#categoryFilterBar .cat-btn").forEach(btn => {
@@ -3910,8 +3769,9 @@
       }
     });
 
-    // Section 01 Direct Submit (Image OR Shopee Link -> Direct to Zalo + Google Drive CRM)
-    function submitSourcingDesk(channel) {
+    // Section 01 Submit: Customer clicks "✓ LƯU THÔNG TIN & NHẬN BÁO GIÁ" -> Saves Image + Info straight to Google Drive Folder ([SĐT] - [Tên Khách])
+    document.getElementById("customHuntForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
       const nameDesc = document.getElementById("huntItemName").value.trim();
       const shopeeLink = document.getElementById("huntShopeeLink").value.trim();
       const clientName = document.getElementById("clientNameInput").value.trim() || "Khách đặt mua hộ";
@@ -3922,6 +3782,11 @@
         showToast("BẠN HÃY TẢI ẢNH HOẶC DÁN LINK SHOPEE / TÊN MÓN CẦN TÌM NHÉ!");
         return;
       }
+
+      const submitBtn = document.getElementById("huntSubmitMainBtn");
+      const origBtnHtml = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<span>⏳ ĐANG LƯU HÌNH ẢNH &amp; THÔNG TIN CỦA BẠN...</span>`;
 
       let cat = huntCategorySelect.value;
       if (cat === "CUSTOM_OTHER") {
@@ -3944,10 +3809,9 @@
       };
 
       lastSubmittedItems = [itemEntry];
-      document.getElementById("visualOrderCardBox").style.display = "block";
 
       const orderData = {
-        source: channel + " (Mục 01 Đặt Mua Hộ)",
+        source: "Mục 01 Đặt Mua Hộ",
         clientName,
         clientZalo,
         clientCity,
@@ -3956,80 +3820,21 @@
       };
 
       const text = buildDirectOrderText(orderData);
-      copyTextToClipboard(text);
-      syncOrderToGoogleDriveAndCrm(orderData, text);
+      await syncOrderToGoogleDriveAndCrm(orderData, text);
 
-      if (channel === "WhatsApp") {
-        showToast("ĐÃ SAO CHÉP YÊU CẦU MUA HỘ! ĐANG MỞ WHATSAPP...");
-        const encoded = encodeURIComponent(text);
-        setTimeout(() => {
-          window.open(`https://wa.me/84823230703?text=${encoded}`, "_blank", "noopener,noreferrer");
-        }, 450);
-      } else {
-        showToast("ĐÃ SAO CHÉP YÊU CẦU MUA HỘ (KÈM LINK ẢNH / SHOPEE)! ĐANG MỞ ZALO 0823.230.703...");
-        setTimeout(() => {
-          window.open("https://zalo.me/0823230703", "_blank", "noopener,noreferrer");
-        }, 450);
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = origBtnHtml;
+
+      const successBanner = document.getElementById("orderSuccessBanner");
+      const successMsg = document.getElementById("orderSuccessMessage");
+      if (successBanner && successMsg) {
+        successMsg.innerHTML = `Đã lưu thành công hình ảnh sản phẩm và thông tin của <strong>${clientName} (${clientZalo} - ${clientCity})</strong> vào hồ sơ đơn hàng. Đội ngũ ATELIER (Hotline/Zalo: <strong>0823.230.703</strong>) sẽ kiểm tra xưởng và chủ động liên hệ gửi báo giá cho bạn!`;
+        successBanner.style.display = "block";
       }
-    }
-
-    document.getElementById("customHuntForm").addEventListener("submit", (e) => {
-      e.preventDefault();
-      submitSourcingDesk("Zalo 0823.230.703");
+      showToast("✓ ĐÃ LƯU ẢNH & THÔNG TIN THÀNH CÔNG! ATELIER SẼ CHỦ ĐỘNG LIÊN HỆ BÁO GIÁ CHO BẠN.");
     });
 
-    document.getElementById("directWhatsappSubmitBtn").addEventListener("click", () => {
-      submitSourcingDesk("WhatsApp");
-    });
-
-    // Visual Order Card Buttons in Section 01
-    document.getElementById("copyOrderImageBtn").addEventListener("click", async () => {
-      showToast("ĐANG TẠO ẢNH PHIẾU ĐƠN HÀNG...");
-      const canvas = await generateVisualOrderCardCanvas(lastSubmittedItems, null);
-      canvas.toBlob(async (blob) => {
-        if (!blob) return;
-        try {
-          if (navigator.clipboard && window.ClipboardItem) {
-            await navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
-            showToast("📸 ĐÃ COPY ẢNH ĐƠN HÀNG! KHI MỞ ZALO BẠN BẤM DÁN (CTRL+V) LÀ GỬI ĐƯỢC ẢNH NGAY!");
-            return;
-          }
-        } catch (err) {}
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = "Phieu-Mua-Ho-ATELIER.png";
-        a.click();
-        URL.revokeObjectURL(url);
-        showToast("📥 ĐÃ TẢI ẢNH PHIẾU ĐƠN VỀ MÁY ĐỂ BẠN GỬI QUA ZALO!");
-      }, "image/png");
-    });
-
-    document.getElementById("downloadOrderImageBtn").addEventListener("click", async () => {
-      const canvas = await generateVisualOrderCardCanvas(lastSubmittedItems, null);
-      canvas.toBlob(async (blob) => {
-        if (!blob) return;
-        const file = new File([blob], "Phieu-Mua-Ho-ATELIER.png", { type: "image/png" });
-        if (navigator.canShare && navigator.canShare({ files: [file] }) && /Mobi|Android|iPhone/i.test(navigator.userAgent)) {
-          try {
-            await navigator.share({
-              title: "Phiếu Đặt Hàng ATELIER",
-              files: [file]
-            });
-            return;
-          } catch (e) {}
-        }
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = "Phieu-Mua-Ho-ATELIER.png";
-        a.click();
-        URL.revokeObjectURL(url);
-        showToast("📥 ĐÃ TẢI ẢNH PHIẾU ĐƠN HÀNG VỀ MÁY!");
-      }, "image/png");
-    });
-
-    // Excel / CSV Parser for Section 02 ("Mặt Hàng Đang Có Giá Tốt Trong Tháng")
+    // Excel / CSV Parser for Section 02 ("Mặt Hàng Đang Có Giá Tốt Trong Tháng" — No Public Prices)
     function parseCsvLine(line) {
       const result = [];
       let cur = "";
@@ -4082,18 +3887,22 @@
         for (let i = 1; i < rows.length; i++) {
           const cols = parseCsvLine(rows[i]);
           if (cols.length < 4) continue;
-          const [maSp, tenSp, danhMuc, giaTot, giaThiTruong, thongTin, xuatXu, thoiGianVe, linkAnh] = cols;
+          const [maSp, tenSp, danhMuc, trangThaiGia, uuDaiGop, thongTin, xuatXu, thoiGianVe, linkAnh] = cols;
           if (!tenSp) continue;
           const fallbackArch = ARCHIVE_ITEMS.find(a => a.id === maSp) || ARCHIVE_ITEMS[(i - 1) % ARCHIVE_ITEMS.length];
+          // Ensure no public prices are displayed even if the CSV had numbers
+          const cleanStatus = (trangThaiGia && !/\d{3}\.\d{3}/.test(trangThaiGia))
+            ? trangThaiGia
+            : "🔥 Đang có giá tốt trong tháng";
           parsedItems.push({
             id: maSp || `GD-0${i}`,
             code: `GIÁ TỐT // ${maSp || "GD-0" + i}`,
             title: tenSp,
             category: mapCatSlug(danhMuc),
             categoryLabel: danhMuc || "Mặt Hàng Giá Tốt",
-            dealPrice: giaTot || "Liên hệ",
-            marketPrice: giaThiTruong || "",
-            saveLabel: "GIÁ TỐT THÁNG",
+            dealPrice: cleanStatus,
+            marketPrice: "",
+            saveLabel: (uuDaiGop && !/\d{3}\.\d{3}/.test(uuDaiGop)) ? uuDaiGop : "NHẬN BÁO GIÁ RIÊNG",
             material: thongTin || "",
             desc: thongTin || "",
             origin: xuatXu || "XƯỞNG NỘI ĐỊA",
@@ -4104,7 +3913,7 @@
         if (parsedItems.length > 0) {
           monthlyDealsList = parsedItems;
           try {
-            localStorage.setItem("atelier_excel_deals_v1", JSON.stringify(monthlyDealsList));
+            localStorage.setItem("atelier_excel_deals_v2", JSON.stringify(monthlyDealsList));
           } catch (err) {}
           renderArchive();
           document.getElementById("excelUploadStatus").textContent = `✓ ĐÃ CẬP NHẬT THÀNH CÔNG ${parsedItems.length} SẢN PHẨM GIÁ TỐT TỪ FILE: ${file.name}`;
@@ -4117,11 +3926,78 @@
     document.getElementById("resetDefaultDealsBtn").addEventListener("click", () => {
       monthlyDealsList = [...ARCHIVE_ITEMS];
       try {
-        localStorage.removeItem("atelier_excel_deals_v1");
+        localStorage.removeItem("atelier_excel_deals_v2");
       } catch (e) {}
       renderArchive();
-      document.getElementById("excelUploadStatus").textContent = "Đã khôi phục 08 mặt hàng Giá Tốt mặc định.";
+      document.getElementById("excelUploadStatus").textContent = "Đã khôi phục 08 mặt hàng Giá Tốt mặc định (Không public giá).";
       showToast("ĐÃ KHÔI PHỤC DANH SÁCH MẶC ĐỊNH");
+    });
+
+    // Embedded Google Apps Script Code for 1-Click Copy in Owner Modal (?quanly=2307)
+    const GOOGLE_DRIVE_CRM_SCRIPT_CODE = [
+      "const ROOT_DRIVE_FOLDER_NAME = 'ATELIER — Dữ Liệu Khách Hàng & Đơn Hàng';",
+      "const CRM_SHEET_FILE_NAME = 'ATELIER — Danh Sách Khách Hàng CRM (Remarketing)';",
+      "function doPost(e) {",
+      "  try {",
+      "    const data = JSON.parse(e.postData.contents || '{}');",
+      "    const rootFolder = getOrCreateFolder_(DriveApp.getRootFolder(), ROOT_DRIVE_FOLDER_NAME);",
+      "    const clientName = (data.clientName || 'Khach-Hang').trim();",
+      "    const clientPhone = (data.clientZalo || data.clientPhone || 'Chua-Co-SDT').trim();",
+      "    const clientCity = (data.clientCity || 'VN').trim();",
+      "    const customerFolderName = clientPhone + ' - ' + clientName + ' (' + clientCity + ')';",
+      "    const customerFolder = getOrCreateFolder_(rootFolder, customerFolderName);",
+      "    const timestamp = Utilities.formatDate(new Date(), 'GMT+7', 'yyyy-MM-dd_HH-mm');",
+      "    const orderCode = data.orderId || ('ORD-' + timestamp);",
+      "    const items = Array.isArray(data.items) ? data.items : [];",
+      "    const savedImageLinks = [];",
+      "    for (var i = 0; i < items.length; i++) {",
+      "      var item = items[i];",
+      "      var safeTitle = String(item.title || ('San-pham-' + (i + 1))).replace(/[^a-zA-Z0-9_\\-\\u00C0-\\u024F\\u1E00-\\u1EFF ]/g, '').slice(0, 35).trim();",
+      "      if (item.image && String(item.image).indexOf('data:image/') === 0) {",
+      "        var parts = String(item.image).split(',');",
+      "        var mimeMatch = parts[0].match(/data:(image\\/[a-zA-Z0-9+.-]+);base64/);",
+      "        var mimeType = mimeMatch ? mimeMatch[1] : 'image/jpeg';",
+      "        var ext = mimeType.indexOf('png') !== -1 ? 'png' : 'jpg';",
+      "        var bytes = Utilities.base64Decode(parts[1]);",
+      "        var blob = Utilities.newBlob(bytes, mimeType, orderCode + '_Anh-' + (i + 1) + '_' + safeTitle + '.' + ext);",
+      "        var imgFile = customerFolder.createFile(blob);",
+      "        savedImageLinks.push(imgFile.getUrl());",
+      "      } else if (item.remoteImageUrl && String(item.remoteImageUrl).indexOf('http') === 0) {",
+      "        try {",
+      "          var resp = UrlFetchApp.fetch(item.remoteImageUrl, { muteHttpExceptions: true });",
+      "          if (resp.getResponseCode() === 200) {",
+      "            var rBlob = resp.getBlob().setName(orderCode + '_Anh-' + (i + 1) + '_' + safeTitle + '.jpg');",
+      "            var rFile = customerFolder.createFile(rBlob);",
+      "            savedImageLinks.push(rFile.getUrl());",
+      "          }",
+      "        } catch (fErr) { savedImageLinks.push(item.remoteImageUrl); }",
+      "      }",
+      "    }",
+      "    customerFolder.createFile('Thong-Tin-' + clientPhone + '_' + orderCode + '.txt', data.summaryText || JSON.stringify(data, null, 2), MimeType.PLAIN_TEXT);",
+      "    appendCustomerToSheet_(rootFolder, { timestamp: timestamp, orderCode: orderCode, clientName: clientName, clientPhone: clientPhone, clientCity: clientCity, itemCount: items.length, itemsSummary: items.map(function(x){ return x.title; }).join(' | '), customerFolderUrl: customerFolder.getUrl(), imageLinks: savedImageLinks.join(', ') });",
+      "    return ContentService.createTextOutput(JSON.stringify({ ok: true, folderUrl: customerFolder.getUrl(), customerFolderUrl: customerFolder.getUrl() })).setMimeType(ContentService.MimeType.JSON);",
+      "  } catch (err) {",
+      "    return ContentService.createTextOutput(JSON.stringify({ ok: false, error: String(err) })).setMimeType(ContentService.MimeType.JSON);",
+      "  }",
+      "}",
+      "function getOrCreateFolder_(parent, name) {",
+      "  var it = parent.getFoldersByName(name);",
+      "  return it.hasNext() ? it.next() : parent.createFolder(name);",
+      "}",
+      "function appendCustomerToSheet_(rootFolder, row) {",
+      "  var files = rootFolder.getFilesByName(CRM_SHEET_FILE_NAME);",
+      "  var ss = files.hasNext() ? SpreadsheetApp.open(files.next()) : SpreadsheetApp.create(CRM_SHEET_FILE_NAME);",
+      "  if (!files.hasNext()) { DriveApp.getFileById(ss.getId()).moveTo(rootFolder); }",
+      "  var sh = ss.getActiveSheet();",
+      "  if (sh.getLastRow() === 0) { sh.appendRow(['Thời Gian', 'Mã Đơn', 'Tên Khách Hàng', 'SĐT Liên Hệ', 'Khu Vực', 'Số Món', 'Sản Phẩm Yêu Cầu', 'Link Thư Mục Google Drive Của Khách', 'Link Ảnh Trong Drive']); }",
+      "  sh.appendRow([row.timestamp, row.orderCode, row.clientName, row.clientPhone, row.clientCity, row.itemCount, row.itemsSummary, row.customerFolderUrl, row.imageLinks]);",
+      "}"
+    ].join("\n");
+
+    document.getElementById("copyGasCodeBtn").addEventListener("click", () => {
+      copyTextToClipboard(GOOGLE_DRIVE_CRM_SCRIPT_CODE);
+      showToast("📋 ĐÃ COPY ĐOẠN MÃ GOOGLE DRIVE SCRIPT! HÃY DÁN (CTRL+V) VÀO SCRIPT.GOOGLE.COM NHÉ!");
+      document.getElementById("gasStatusText").textContent = "✓ Đã copy mã Google Drive Script vào bộ nhớ tạm! Bạn bấm 'BƯỚC 2: MỞ SCRIPT.GOOGLE.COM' rồi dán (Ctrl+V) vào nhé.";
     });
 
     // Secret Owner-Only CRM & Excel Modal Controls (Completely hidden from regular customers!)
@@ -4131,8 +4007,8 @@
     function openCrmAndExcelModal() {
       gasWebhookInput.value = gasWebhookUrl;
       gasStatusText.textContent = gasWebhookUrl
-        ? "✓ Đang kết nối tự động với Google Drive & Google Sheets CRM của bạn."
-        : "Chưa dán link Google Apps Script. Đơn hàng vẫn được lưu đầy đủ trên trình duyệt và xuất được ra file Excel (.CSV).";
+        ? "✓ Đang kết nối tự động với Google Drive! Mỗi khi khách bấm Lưu, hệ thống tự tạo folder [SĐT - Tên Khách] kèm file ảnh trên Drive."
+        : "⚠️ Bạn chưa dán link Google Apps Script ở Bước 3 nên đơn hàng đang lưu tạm trên trình duyệt này. Hãy làm 3 bước ở trên để tự động đẩy thẳng ảnh & tên khách về Google Drive nhé!";
       renderLocalCrmTable();
       sharedBackdrop.classList.add("open");
       crmModal.classList.add("open");
@@ -4198,23 +4074,26 @@
             <tr style="background: var(--bg-secondary); text-align: left; border-bottom: 1px solid var(--hairline);">
               <th style="padding: 0.55rem;">Thời Gian</th>
               <th style="padding: 0.55rem;">Khách Hàng</th>
-              <th style="padding: 0.55rem;">SĐT Zalo</th>
+              <th style="padding: 0.55rem;">SĐT Liên Hệ</th>
               <th style="padding: 0.55rem;">Khu Vực</th>
-              <th style="padding: 0.55rem;">Ảnh / Link Shopee &amp; Sản Phẩm</th>
+              <th style="padding: 0.55rem;">Ảnh Khách Gửi &amp; Thư Mục Google Drive</th>
             </tr>
           </thead>
           <tbody>
-            ${crmLeads.map(l => `
+            ${crmLeads.map((l, idx) => `
               <tr style="border-bottom: 1px solid var(--hairline);">
                 <td class="mono" style="padding: 0.55rem;">${l.createdAt}</td>
                 <td style="padding: 0.55rem;"><strong>${l.clientName}</strong></td>
-                <td class="mono" style="padding: 0.55rem; color: var(--accent);">${l.clientZalo}</td>
+                <td class="mono" style="padding: 0.55rem; color: var(--accent); font-weight: 700;">${l.clientZalo}</td>
                 <td style="padding: 0.55rem;">${l.clientCity}</td>
-                <td style="padding: 0.55rem; display: flex; align-items: center; gap: 0.5rem;">
-                  ${l.firstImage ? `<img src="${l.firstImage}" alt="thumb" style="width: 38px; height: 38px; object-fit: cover; border: 1px solid var(--hairline);" />` : ''}
-                  <div>
-                    <div>${l.itemsSummary}</div>
-                    ${l.driveFolderUrl ? `<a href="${l.driveFolderUrl}" target="_blank" class="mono" style="color: var(--olive); text-decoration: underline;">Mở thư mục Google Drive ↗</a>` : ''}
+                <td style="padding: 0.55rem; display: flex; align-items: center; gap: 0.65rem; flex-wrap: wrap;">
+                  ${l.firstImage ? `<img src="${l.firstImage}" alt="thumb" style="width: 44px; height: 44px; object-fit: cover; border: 1px solid var(--hairline-strong);" />` : ''}
+                  <div style="flex: 1; min-width: 180px;">
+                    <div style="margin-bottom: 0.25rem;">${l.itemsSummary}</div>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                      ${l.firstImage ? `<button type="button" class="mono" data-action="download-lead-img" data-lead-idx="${idx}" style="padding: 0.2rem 0.5rem; border: 1px solid var(--hairline-strong); background: var(--bg-secondary); font-size: 0.66rem; color: var(--ink-primary);">📥 Tải Ảnh Về Máy</button>` : ''}
+                      ${l.driveFolderUrl ? `<a href="${l.driveFolderUrl}" target="_blank" class="mono" style="padding: 0.2rem 0.55rem; background: var(--olive); color: #FAF8F4; font-size: 0.66rem;">📂 Mở Folder Drive Của Khách ↗</a>` : `<span class="mono" style="font-size: 0.65rem; color: var(--ink-muted);">[Chưa nối Drive — Bấm 'Đẩy các đơn cũ lên Drive' ở trên]</span>`}
+                    </div>
                   </div>
                 </td>
               </tr>
@@ -4230,72 +4109,122 @@
         localStorage.setItem("atelier_gas_webhook_v1", gasWebhookUrl);
       } catch (e) {}
       gasStatusText.textContent = gasWebhookUrl
-        ? "✓ ĐÃ LƯU KẾT NỐI GOOGLE DRIVE! Mọi đơn hàng mới sẽ tự động tạo thư mục riêng theo tên khách trên Google Drive."
+        ? "✓ ĐÃ LƯU KẾT NỐI GOOGLE DRIVE! Từ giờ khách bấm Lưu là tự động tạo folder [SĐT - Tên Khách] kèm file ảnh trên Google Drive của bạn."
         : "Đã xóa link kết nối Google Drive.";
-      showToast("ĐÃ LƯU CẤU HÌNH GOOGLE DRIVE & CRM!");
+      showToast("✓ ĐÃ LƯU KẾT NỐI GOOGLE DRIVE!");
     });
 
     document.getElementById("testGasWebhookBtn").addEventListener("click", async () => {
       gasWebhookUrl = gasWebhookInput.value.trim();
       if (!gasWebhookUrl) {
-        showToast("BẠN HÃY DÁN LINK WEB APP GOOGLE APPS SCRIPT TRƯỚC KHI BẤM GỬI THỬ NHÉ!");
+        showToast("BẠN HÃY DÁN LINK WEB APP GOOGLE APPS SCRIPT Ở BƯỚC 3 TRƯỚC NHÉ!");
         return;
       }
       try {
         localStorage.setItem("atelier_gas_webhook_v1", gasWebhookUrl);
       } catch (e) {}
-      gasStatusText.textContent = "⏳ Đang gửi thử 1 đơn hàng & tạo thư mục khách hàng trên Google Drive...";
+      gasStatusText.textContent = "⏳ Đang tạo thử thư mục khách hàng kèm file ảnh trên Google Drive của bạn...";
       const testOrder = {
-        source: "Test Kết Nối CRM",
+        source: "Test Kết Nối Google Drive",
         clientName: "Khách Thử Nghiệm",
         clientZalo: "0823230703",
         clientCity: "TP. Hồ Chí Minh",
         items: [{
-          code: "TEST-01",
-          title: "Đơn thử nghiệm kết nối Google Drive & Sheets CRM",
-          dealPrice: "2.450.000đ",
+          code: "TEST-DRIVE",
+          title: "Kiểm tra tự động lưu Ảnh & Thông tin khách vào Folder riêng",
           origin: "ATELIER",
-          mode: "Kiểm tra tự động tạo thư mục khách hàng",
+          mode: "Lưu thẳng về Google Drive",
           image: ARCHIVE_ITEMS[0].image
         }]
       };
       const res = await syncOrderToGoogleDriveAndCrm(testOrder, buildDirectOrderText(testOrder));
       renderLocalCrmTable();
       if (res && res.ok) {
-        gasStatusText.innerHTML = `✓ KẾT NỐI THÀNH CÔNG! Đã tạo thư mục khách hàng trên Google Drive: <a href="${res.folderUrl}" target="_blank" style="text-decoration: underline;">Mở Thư Mục Drive Ngay ↗</a>`;
-        showToast("✓ ĐÃ TẠO THƯ MỤC KHÁCH HÀNG TRÊN GOOGLE DRIVE THÀNH CÔNG!");
+        const fUrl = res.folderUrl || res.customerFolderUrl;
+        gasStatusText.innerHTML = `✓ KẾT NỐI THÀNH CÔNG! Đã tạo folder <strong>0823230703 - Khách Thử Nghiệm</strong> kèm ảnh trên Google Drive: <a href="${fUrl}" target="_blank" style="text-decoration: underline; font-weight: 700;">📂 BẤM MỞ THƯ MỤC GOOGLE DRIVE NGAY ↗</a>`;
+        showToast("✓ ĐÃ TẠO THƯ MỤC KHÁCH HÀNG KÈM ẢNH TRÊN GOOGLE DRIVE!");
       } else {
-        gasStatusText.textContent = "Đã gửi tín hiệu. Hãy kiểm tra quyền truy cập 'Anyone (Bất kỳ ai)' trên Google Apps Script.";
+        gasStatusText.textContent = "⚠️ Không thể kết nối. Hãy kiểm tra chắc chắn bạn đã chọn 'Who has access: Anyone (Bất kỳ ai)' khi Deploy trên Google Apps Script.";
       }
     });
 
+    // Push all previously saved local leads (including their uploaded images!) to Google Drive folders
+    document.getElementById("syncAllOldLeadsBtn").addEventListener("click", async () => {
+      gasWebhookUrl = gasWebhookInput.value.trim();
+      if (!gasWebhookUrl) {
+        showToast("HÃY DÁN LINK WEB APP GOOGLE APPS SCRIPT TRƯỚC KHI ĐỒNG BỘ NHÉ!");
+        return;
+      }
+      try {
+        localStorage.setItem("atelier_gas_webhook_v1", gasWebhookUrl);
+      } catch (e) {}
+      const unsynced = crmLeads.filter(l => !l.driveFolderUrl);
+      if (unsynced.length === 0) {
+        showToast("TẤT CẢ ĐƠN HÀNG ĐỀU ĐÃ CÓ THƯ MỤC TRÊN GOOGLE DRIVE!");
+        return;
+      }
+      gasStatusText.textContent = `⏳ Đang đẩy ${unsynced.length} đơn khách hàng (kèm ảnh) lên Google Drive...`;
+      let okCount = 0;
+      for (let i = 0; i < unsynced.length; i++) {
+        const res = await pushLeadRecordToGoogleDrive(unsynced[i]);
+        if (res && res.ok) okCount++;
+      }
+      renderLocalCrmTable();
+      gasStatusText.textContent = `✓ ĐÃ ĐẨY THÀNH CÔNG ${okCount}/${unsynced.length} ĐƠN KHÁCH HÀNG (KÈM ẢNH) VÀO THƯ MỤC RIÊNG TRÊN GOOGLE DRIVE!`;
+      showToast(`☁️ ĐÃ ĐỒNG BỘ ${okCount} FOLDER KHÁCH HÀNG LÊN GOOGLE DRIVE!`);
+    });
+
+    // Export Multi-Column Excel (.xls HTML Table) so Vietnamese Excel splits columns A-H cleanly + clickable links
     document.getElementById("exportCrmCsvBtn").addEventListener("click", () => {
       if (crmLeads.length === 0) {
         showToast("CHƯA CÓ DỮ LIỆU KHÁCH HÀNG ĐỂ XUẤT EXCEL!");
         return;
       }
-      const headers = ["Ma_Don", "Thoi_Gian", "Ten_Khach_Hang", "SDT_Zalo", "Khu_Vuc", "So_Mon", "Chi_Tiet_San_Pham", "Link_Anh_Hoac_Shopee", "Link_Thu_Muc_Google_Drive"];
-      const rows = crmLeads.map(l => [
-        l.orderId,
-        l.createdAt,
-        l.clientName,
-        l.clientZalo,
-        l.clientCity,
-        l.itemCount,
-        l.itemsSummary,
-        l.remoteUrls || "",
-        l.driveFolderUrl || ""
-      ].map(v => `"${String(v || "").replace(/"/g, '""')}"`).join(","));
+      const esc = (s) => String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+      const tableRows = crmLeads.map(l => `
+        <tr>
+          <td style="border:1px solid #ccc; padding:6px;">${esc(l.orderId)}</td>
+          <td style="border:1px solid #ccc; padding:6px;">${esc(l.createdAt)}</td>
+          <td style="border:1px solid #ccc; padding:6px; font-weight:bold;">${esc(l.clientName)}</td>
+          <td style="border:1px solid #ccc; padding:6px; mso-number-format:'\\@'; font-weight:bold; color:#9E3B24;">${esc(l.clientZalo)}</td>
+          <td style="border:1px solid #ccc; padding:6px;">${esc(l.clientCity)}</td>
+          <td style="border:1px solid #ccc; padding:6px;">${esc(l.itemsSummary)}</td>
+          <td style="border:1px solid #ccc; padding:6px;">${l.remoteUrls ? `<a href="${esc(l.remoteUrls)}">${esc(l.remoteUrls)}</a>` : "Đã lưu ảnh trong Folder Drive"}</td>
+          <td style="border:1px solid #ccc; padding:6px;">${l.driveFolderUrl ? `<a href="${esc(l.driveFolderUrl)}">Mở Folder Google Drive</a>` : "Chưa đồng bộ Drive"}</td>
+        </tr>
+      `).join("");
 
-      const csvContent = "\uFEFF" + [headers.join(","), ...rows].join("\r\n");
-      const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+      const excelHtml = `
+        <html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+        <head><meta charset="UTF-8"></head>
+        <body>
+          <table border="1" style="border-collapse:collapse; font-family:Arial, sans-serif; font-size:13px;">
+            <thead>
+              <tr style="background:#181615; color:#FAF8F4; font-weight:bold;">
+                <th style="padding:8px;">Mã Đơn</th>
+                <th style="padding:8px;">Thời Gian</th>
+                <th style="padding:8px;">Tên Khách Hàng</th>
+                <th style="padding:8px;">SĐT Liên Hệ</th>
+                <th style="padding:8px;">Khu Vực</th>
+                <th style="padding:8px;">Chi Tiết Sản Phẩm Yêu Cầu</th>
+                <th style="padding:8px;">Link Ảnh / Shopee</th>
+                <th style="padding:8px;">Thư Mục Google Drive Của Khách</th>
+              </tr>
+            </thead>
+            <tbody>${tableRows}</tbody>
+          </table>
+        </body>
+        </html>
+      `;
+
+      const blob = new Blob(["\uFEFF" + excelHtml], { type: "application/vnd.ms-excel;charset=utf-8;" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = `Khach-Hang-ATELIER-CRM-${new Date().toISOString().slice(0, 10)}.csv`;
+      a.download = `Danh-Sach-Khach-Hang-ATELIER-${new Date().toISOString().slice(0, 10)}.xls`;
       a.click();
       URL.revokeObjectURL(url);
-      showToast("📥 ĐÃ XUẤT FILE EXCEL (.CSV) DANH SÁCH KHÁCH HÀNG!");
+      showToast("📊 ĐÃ XUẤT BẢNG EXCEL (.XLS) CHIA CỘT RÕ RÀNG!");
     });
 
     // Initial Render

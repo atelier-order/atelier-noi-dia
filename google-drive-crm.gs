@@ -25,14 +25,15 @@ function doPost(e) {
     const orderId = data.orderId || ("ATL-" + dateShort);
 
     const clientName = (data.clientName || "Khach-Hang").trim();
-    const clientPhone = (data.clientPhone || "Chua-Co-SDT").replace(/[^\d+]/g, "") || "Chua-Co-SDT";
+    const rawPhone = data.clientZalo || data.clientPhone || "Chua-Co-SDT";
+    const clientPhone = String(rawPhone).replace(/[^\d+]/g, "") || "Chua-Co-SDT";
     const clientCity = (data.clientCity || "Toàn quốc").trim();
     const items = Array.isArray(data.items) ? data.items : [];
 
     // 1. Tìm hoặc tạo Thư mục gốc trên Google Drive
     const rootFolder = getOrCreateFolder_(DriveApp.getRootFolder(), ROOT_FOLDER_NAME);
 
-    // 2. Tìm hoặc tạo Thư mục riêng cho từng Khách Hàng (Gộp theo SĐT để khách quay lại vẫn vào đúng folder)
+    // 2. Tìm hoặc tạo Thư mục riêng cho từng Khách Hàng: "[SĐT] - [Tên Khách] ([Khu Vực])"
     const customerFolderKey = clientPhone !== "Chua-Co-SDT" ? clientPhone : clientName;
     const customerFolderName = `${clientPhone} - ${clientName} (${clientCity})`;
     const customerFolder = getOrCreateCustomerFolder_(rootFolder, customerFolderKey, customerFolderName);
@@ -42,9 +43,10 @@ function doPost(e) {
       customerFolder.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
     } catch (err) {}
 
-    // 3. Lưu từng hình ảnh khách tải lên / dán vào Thư mục riêng của khách hàng
+    // 3. Lưu từng hình ảnh khách tải lên / dán vào Thư mục riêng của khách hàng thành file .JPG/.PNG thật
     const savedImageLinks = [];
     items.forEach((item, idx) => {
+      const safeTitle = (item.title || "San-pham").replace(/[\\/:*?"<>|]/g, "-").slice(0, 40);
       if (item.image && typeof item.image === "string" && item.image.indexOf("data:image/") === 0) {
         try {
           const parts = item.image.split(",");
@@ -53,8 +55,7 @@ function doPost(e) {
           const mimeMatch = meta.match(/data:(image\/[a-zA-Z0-9.+-]+);base64/);
           const mimeType = mimeMatch ? mimeMatch[1] : "image/jpeg";
           const ext = mimeType.indexOf("png") > -1 ? "png" : "jpg";
-          const safeTitle = (item.title || "San-pham").replace(/[\\/:*?"<>|]/g, "-").slice(0, 40);
-          const fileName = `${dateShort}_Mon-${idx + 1}_${safeTitle}.${ext}`;
+          const fileName = `${dateShort}_Anh-${idx + 1}_${safeTitle}.${ext}`;
 
           const blob = Utilities.newBlob(Utilities.base64Decode(base64Data), mimeType, fileName);
           const file = customerFolder.createFile(blob);
@@ -68,12 +69,45 @@ function doPost(e) {
             url: file.getUrl()
           });
         } catch (imgErr) {}
+      } else if (item.image && typeof item.image === "string" && item.image.indexOf("http") === 0) {
+        try {
+          const resp = UrlFetchApp.fetch(item.image, { muteHttpExceptions: true });
+          if (resp.getResponseCode() === 200) {
+            const blob = resp.getBlob().setName(`${dateShort}_Anh-${idx + 1}_${safeTitle}.jpg`);
+            const file = customerFolder.createFile(blob);
+            savedImageLinks.push({
+              index: idx + 1,
+              title: item.title,
+              url: file.getUrl()
+            });
+          }
+        } catch (urlErr) {}
       }
     });
 
-    // 4. Tạo 1 file Phiếu Đơn Hàng (HTML có kèm ảnh trực quan) lưu trong thư mục của khách
+    // 4. Tạo file Text (.txt) và file Phiếu HTML có kèm ảnh trực quan lưu ngay trong thư mục của khách
+    const txtContent = [
+      `====================================================`,
+      `THÔNG TIN KHÁCH HÀNG & YÊU CẦU BÁO GIÁ // ${orderId}`,
+      `====================================================`,
+      `• Thời gian gửi : ${timestamp}`,
+      `• Tên khách hàng: ${clientName}`,
+      `• SĐT liên hệ   : ${clientPhone}`,
+      `• Khu vực nhận  : ${clientCity}`,
+      `----------------------------------------------------`,
+      `DANH SÁCH YÊU CẦU (${items.length} mục):`,
+      ...items.map((it, i) => [
+        `${i + 1}. [${it.code || "MUA HỘ"}] ${it.title || ""}`,
+        `   - Nhóm / Nguồn: ${it.origin || ""}`,
+        `   - Số lượng    : ${it.mode || ""}`,
+        `   - Chi tiết    : ${it.note || "Không có ghi chú thêm"}`
+      ].join("\n")),
+      `====================================================`
+    ].join("\n");
+    customerFolder.createFile(Utilities.newBlob(txtContent, "text/plain", `Thong-Tin-${clientPhone}-${dateShort}.txt`));
+
     const summaryHtml = buildOrderHtmlFile_(orderId, timestamp, clientName, clientPhone, clientCity, items, savedImageLinks);
-    const htmlBlob = Utilities.newBlob(summaryHtml, "text/html", `Phieu-${orderId}.html`);
+    const htmlBlob = Utilities.newBlob(summaryHtml, "text/html", `Phieu-Kem-Anh-${orderId}.html`);
     const orderFile = customerFolder.createFile(htmlBlob);
 
     // 5. Ghi vào Google Sheets CRM (Lưu cả lịch sử đơn hàng & Danh sách khách hàng Remarketing)
@@ -93,6 +127,7 @@ function doPost(e) {
       .createTextOutput(JSON.stringify({
         ok: true,
         orderId: orderId,
+        folderUrl: customerFolder.getUrl(),
         customerFolderUrl: customerFolder.getUrl(),
         orderFileUrl: orderFile.getUrl(),
         imageLinks: savedImageLinks,
