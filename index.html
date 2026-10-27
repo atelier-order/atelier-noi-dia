@@ -141,7 +141,7 @@
       vertical-align: middle;
     }
 
-    /* Editorial Masthead Navigation */
+    /* Editorial Masthead Navigation (Redesigned for spacious, zero-squish layout) */
     .masthead {
       position: sticky;
       top: 0;
@@ -154,32 +154,35 @@
     }
 
     .brand-cell {
-      padding: 1.1rem 1.75rem;
+      padding: 0.9rem 1.4rem;
       border-right: 1px solid var(--hairline);
       display: flex;
       flex-direction: column;
       justify-content: center;
+      flex-shrink: 0;
     }
 
     .brand-title {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 1.55rem;
+      font-size: 1.5rem;
       font-weight: 700;
       letter-spacing: 0.03em;
-      line-height: 1.15;
+      line-height: 1.1;
     }
 
     .brand-sub {
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       color: var(--ink-muted);
-      margin-top: 0.25rem;
+      margin-top: 0.2rem;
+      white-space: nowrap;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      padding: 0 1.75rem;
-      gap: 1.85rem;
+      justify-content: center;
+      padding: 0 1.25rem;
+      gap: clamp(1rem, 2vw, 2.1rem);
       overflow-x: auto;
       scrollbar-width: none;
       -ms-overflow-style: none;
@@ -190,15 +193,16 @@
     }
 
     .nav-link {
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
       font-weight: 600;
       color: var(--ink-secondary);
       padding: 0.35rem 0;
       border-bottom: 2px solid transparent;
       transition: color 0.2s, border-color 0.2s;
       white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .nav-link:hover, .nav-link.active {
@@ -209,16 +213,18 @@
     .masthead-actions {
       display: flex;
       align-items: stretch;
+      flex-shrink: 0;
     }
 
     .theme-btn {
-      padding: 0 1.25rem;
+      padding: 0 1rem;
       border-left: 1px solid var(--hairline);
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       display: flex;
       align-items: center;
-      gap: 0.45rem;
+      gap: 0.4rem;
       color: var(--ink-secondary);
+      white-space: nowrap;
       transition: background 0.2s, color 0.2s;
     }
 
@@ -228,16 +234,17 @@
     }
 
     .brief-trigger-btn {
-      padding: 0 1.6rem;
+      padding: 0 1.35rem;
       background: var(--ink-primary);
       color: var(--bg-primary);
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      font-size: 0.74rem;
-      letter-spacing: 0.06em;
+      gap: 0.55rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
       font-weight: 600;
+      white-space: nowrap;
       transition: background 0.25s;
     }
 
@@ -2067,24 +2074,21 @@
     </div>
   </div>
 
-  <!-- Clean Sticky Masthead (Removed clutter buttons & hidden scrollbar) -->
+  <!-- Clean Sticky Masthead (Spacious 3-zone layout, zero squishing) -->
   <header class="masthead">
     <a href="#top" class="brand-cell">
       <span class="brand-title" id="brandNameDisplay">ATELIER</span>
-      <span class="brand-sub mono">MUA HỘ TẬN XƯỞNG • GIÁ TỐT THÁNG • SỈ &amp; NỘI THẤT</span>
+      <span class="brand-sub mono">MUA HỘ TẬN XƯỞNG • SỈ &amp; NỘI THẤT</span>
     </a>
 
     <nav class="nav-links">
       <a href="#sourcing-section" class="nav-link active">01 / Tìm &amp; Đặt Mua Hộ</a>
       <a href="#monthly-deals-section" class="nav-link">02 / Giá Tốt Trong Tháng</a>
-      <a href="#packages-section" class="nav-link">03 / Đặt Theo Gói (Sỉ &amp; Nội Thất)</a>
+      <a href="#packages-section" class="nav-link">03 / Gói Sỉ &amp; Nội Thất</a>
       <a href="#process-section" class="nav-link">04 / Quy Trình 3 Bước</a>
     </nav>
 
     <div class="masthead-actions">
-      <a href="#monthly-deals-section" class="theme-btn mono" style="color: var(--accent); font-weight: 700;">
-        <span>🎁 ĐẶT TỪ 3 MÓN: -15%</span>
-      </a>
       <a href="https://zalo.me/0823230703" target="_blank" rel="noopener noreferrer" class="brief-trigger-btn">
         <span>💬 ZALO BÁO GIÁ: 0823.230.703</span>
       </a>
@@ -3251,10 +3255,12 @@
       `).join("");
     }
 
-    // Image Upload & Instant Cloud Link (tmpfiles.org CORS API + Base64 for Google Drive Folder)
+    // Image Upload & Instant Cloud Link (tmpfiles.org CORS API + Base64 for Localhost CRM)
+    const ATELIER_CLOUD_RELAY_TOPIC = "atelier_crm_sync_78f4cba0_0823230703";
     let uploadedCustomImageData = null;
     let uploadedCustomImageName = "";
     let uploadedCustomRemoteUrl = "";
+    let pendingImageUploadPromise = null;
     let lastSubmittedItems = [];
 
     async function uploadBlobForInstantLink(blob, fileName) {
@@ -3272,7 +3278,7 @@
           uploadedCustomRemoteUrl = directUrl;
           const fnEl = document.getElementById("dropzoneFileName");
           if (fnEl && uploadedCustomImageData) {
-            fnEl.textContent = `Đã đính kèm: ${fileName} (Sẵn sàng lưu về hồ sơ Google Drive)`;
+            fnEl.textContent = `Đã đính kèm: ${fileName} (Sẵn sàng đồng bộ về CRM)`;
           }
           return directUrl;
         }
@@ -3286,6 +3292,7 @@
         return;
       }
       uploadedCustomRemoteUrl = "";
+      pendingImageUploadPromise = null;
       const reader = new FileReader();
       reader.onload = (ev) => {
         const img = new Image();
@@ -3309,13 +3316,20 @@
           uploadedCustomImageName = file.name || "Anh-khach-gui.jpg";
 
           document.getElementById("dropzonePreviewImg").src = uploadedCustomImageData;
-          document.getElementById("dropzoneFileName").textContent = `Đã đính kèm: ${uploadedCustomImageName} (Sẽ tự động lưu về Drive khi bấm Lưu)`;
+          document.getElementById("dropzoneFileName").textContent = `Đã đính kèm: ${uploadedCustomImageName} (Sẽ tự động lưu khi bấm Lưu)`;
           document.getElementById("dropzonePreviewWrap").classList.add("has-img");
           showToast("📷 ĐÃ ĐÍNH KÈM ẢNH! BẠN ĐIỀN THÔNG TIN RỒI BẤM 'LƯU THÔNG TIN & NHẬN BÁO GIÁ' NHÉ.");
 
-          canvas.toBlob((blob) => {
-            if (blob) uploadBlobForInstantLink(blob, uploadedCustomImageName);
-          }, "image/jpeg", 0.86);
+          pendingImageUploadPromise = new Promise((resolve) => {
+            canvas.toBlob(async (blob) => {
+              if (blob) {
+                const u = await uploadBlobForInstantLink(blob, uploadedCustomImageName);
+                resolve(u);
+              } else {
+                resolve("");
+              }
+            }, "image/jpeg", 0.86);
+          });
         };
         img.src = ev.target.result;
       };
@@ -3410,16 +3424,20 @@
       return null;
     }
 
-    // Sync Order & Customer Lead to Google Drive Per-Customer Folder & Local CRM
+    // Sync Order & Customer Lead to Localhost CRM (http://localhost:3456) + Cloud Relay + Google Drive
     async function syncOrderToGoogleDriveAndCrm(orderData, summaryText) {
       const orderId = "ATL-" + Date.now().toString().slice(-6);
       const leadRecord = {
         orderId,
         createdAt: new Date().toLocaleString("vi-VN"),
+        createdAtIso: new Date().toISOString(),
+        status: "pending", // pending | quoted | shipping | cleared
+        trackingNote: "",
         source: orderData.source || "Web ATELIER",
         clientName: orderData.clientName,
         clientZalo: orderData.clientZalo,
         clientCity: orderData.clientCity,
+        scale: orderData.scale || "",
         itemCount: orderData.items.length,
         itemsSummary: orderData.items.map(b => `[${b.code}] ${b.title}${b.mode ? " (" + b.mode + ")" : ""}${b.shopeeLink ? " [Link: " + b.shopeeLink + "]" : ""}${b.note ? " - " + b.note : ""}`).join(" | "),
         firstImage: orderData.items[0] ? orderData.items[0].image : "",
@@ -3433,6 +3451,47 @@
       if (crmLeads.length > 100) crmLeads = crmLeads.slice(0, 100);
       try {
         localStorage.setItem("atelier_crm_leads_v1", JSON.stringify(crmLeads));
+      } catch (e) {}
+
+      // 1. Push directly to Owner's Localhost CRM Server (http://localhost:3456/api/orders) if running on this machine
+      try {
+        fetch("http://localhost:3456/api/orders", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(leadRecord)
+        }).catch(() => {});
+      } catch (e) {}
+
+      // 2. Push to Cloud Relay Queue (ntfy.sh) so orders from ANY customer phone/PC on GitHub Pages sync to Owner's Localhost CRM when opened!
+      try {
+        const cloudCompactLead = {
+          orderId: leadRecord.orderId,
+          createdAt: leadRecord.createdAt,
+          createdAtIso: leadRecord.createdAtIso,
+          status: "pending",
+          source: leadRecord.source,
+          clientName: leadRecord.clientName,
+          clientZalo: leadRecord.clientZalo,
+          clientCity: leadRecord.clientCity,
+          scale: leadRecord.scale,
+          itemCount: leadRecord.itemCount,
+          itemsSummary: leadRecord.itemsSummary,
+          remoteUrls: leadRecord.remoteUrls,
+          items: orderData.items.map(b => ({
+            code: b.code,
+            title: b.title,
+            origin: b.origin || "",
+            mode: b.mode || "",
+            shopeeLink: b.shopeeLink || "",
+            note: b.note || "",
+            remoteImageUrl: b.remoteImageUrl || ""
+          }))
+        };
+        fetch(`https://ntfy.sh/${ATELIER_CLOUD_RELAY_TOPIC}`, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(cloudCompactLead)
+        }).catch(() => {});
       } catch (e) {}
 
       return await pushLeadRecordToGoogleDrive(leadRecord);
@@ -3787,6 +3846,15 @@
       const origBtnHtml = submitBtn.innerHTML;
       submitBtn.disabled = true;
       submitBtn.innerHTML = `<span>⏳ ĐANG LƯU HÌNH ẢNH &amp; THÔNG TIN CỦA BẠN...</span>`;
+
+      if (pendingImageUploadPromise && !uploadedCustomRemoteUrl) {
+        try {
+          await Promise.race([
+            pendingImageUploadPromise,
+            new Promise(r => setTimeout(r, 3500))
+          ]);
+        } catch (e) {}
+      }
 
       let cat = huntCategorySelect.value;
       if (cat === "CUSTOM_OTHER") {
@@ -4234,6 +4302,17 @@
     document.getElementById("footerZaloDisplay").textContent = formatZaloDisplay(studioConfig.zaloPhone);
     renderArchive();
     renderInteriorPackages();
+
+    // Auto-sync any browser-cached leads to Localhost CRM (http://localhost:3456) when running on owner's PC
+    if (crmLeads.length > 0) {
+      setTimeout(() => {
+        fetch("http://localhost:3456/api/orders/bulk", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ leads: crmLeads })
+        }).catch(() => {});
+      }, 600);
+    }
   </script>
 </body>
 </html>
