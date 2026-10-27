@@ -1064,7 +1064,7 @@
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.74rem;
       letter-spacing: 0.06em;
-      z-index: 300;
+      z-index: 350;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.25s, transform 0.25s;
@@ -1076,9 +1076,322 @@
       transform: translateX(-50%) translateY(0);
     }
 
+    /* === CRO OPTIMIZATION EXTENSIONS (5 PILLARS) === */
+
+    /* 1. Conversion Showcase Strip */
+    .cro-architecture-bar {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      border-bottom: 1px solid var(--hairline-strong);
+      background: var(--bg-secondary);
+    }
+
+    .cro-arch-cell {
+      padding: 1rem 1.2rem;
+      border-right: 1px solid var(--hairline);
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .cro-arch-cell:last-child {
+      border-right: none;
+    }
+
+    .cro-arch-cell:hover {
+      background: var(--bg-elevated);
+    }
+
+    .cro-arch-tag {
+      color: var(--accent);
+      font-size: 0.63rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cro-arch-title {
+      font-weight: 600;
+      font-size: 0.8rem;
+      color: var(--ink-primary);
+    }
+
+    .cro-arch-sub {
+      font-size: 0.72rem;
+      color: var(--ink-secondary);
+      line-height: 1.35;
+    }
+
+    /* 2. Card Floating Utility Buttons (Wishlist & Compare) */
+    .card-floating-tools {
+      position: absolute;
+      top: 0.65rem;
+      right: 0.65rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      z-index: 5;
+    }
+
+    .card-tool-btn {
+      background: var(--bg-primary);
+      color: var(--ink-primary);
+      border: 1px solid var(--hairline-strong);
+      padding: 0.32rem 0.55rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.64rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .card-tool-btn:hover {
+      background: var(--ink-primary);
+      color: var(--bg-primary);
+    }
+
+    .card-tool-btn.active-wish {
+      background: var(--accent);
+      color: #FAF8F4;
+      border-color: var(--accent);
+    }
+
+    .card-tool-btn.active-cmp {
+      background: var(--olive);
+      color: #FAF8F4;
+      border-color: var(--olive);
+    }
+
+    /* 3. High-Conversion Card Signals & Bundle Pairing */
+    .card-cro-signals {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .cro-signal-Chip {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      padding: 0.18rem 0.48rem;
+      border: 1px solid var(--hairline);
+      background: var(--bg-secondary);
+      color: var(--ink-secondary);
+    }
+
+    .cro-signal-Chip.urgent {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .card-bundle-strip {
+      padding: 0.6rem 0.7rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--hairline);
+      margin-bottom: 0.85rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .bundle-strip-text {
+      font-size: 0.71rem;
+      line-height: 1.35;
+      color: var(--ink-secondary);
+    }
+
+    .bundle-strip-text strong {
+      color: var(--ink-primary);
+    }
+
+    .btn-bundle-mini {
+      padding: 0.28rem 0.55rem;
+      background: var(--ink-primary);
+      color: var(--bg-primary);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+
+    .btn-bundle-mini:hover {
+      background: var(--accent);
+      color: #FAF8F4;
+    }
+
+    /* 4. Auto-Applied Tiered Privilege Progress Box */
+    .privilege-tier-box {
+      border: 1px solid var(--hairline-strong);
+      background: var(--bg-elevated);
+      padding: 1rem 1.15rem;
+    }
+
+    .tier-progress-track {
+      width: 100%;
+      height: 6px;
+      background: var(--hairline);
+      margin: 0.65rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tier-progress-fill {
+      height: 100%;
+      background: var(--accent);
+      transition: width 0.35s ease;
+    }
+
+    .tier-steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.38rem;
+      margin-top: 0.5rem;
+    }
+
+    .tier-step-item {
+      font-size: 0.74rem;
+      color: var(--ink-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .tier-step-item.unlocked {
+      color: var(--ink-primary);
+      font-weight: 600;
+    }
+
+    .tier-step-item.unlocked .tier-check {
+      color: var(--accent);
+    }
+
+    /* 5. Abandoned Brief / Cart Care Bar & Compare Dock */
+    .floating-care-bar {
+      position: fixed;
+      bottom: 1.25rem;
+      left: 1.5rem;
+      z-index: 180;
+      background: var(--bg-elevated);
+      border: 1px solid var(--hairline-strong);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16);
+      padding: 0.9rem 1.15rem;
+      max-width: 430px;
+      display: none;
+      flex-direction: column;
+      gap: 0.6rem;
+      border-left: 4px solid var(--accent);
+    }
+
+    .floating-care-bar.active {
+      display: flex;
+    }
+
+    .compare-floating-dock {
+      position: fixed;
+      bottom: 1.25rem;
+      right: 1.5rem;
+      z-index: 185;
+      background: var(--ink-primary);
+      color: var(--bg-primary);
+      border: 1px solid var(--accent);
+      padding: 0.85rem 1.2rem;
+      display: none;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.24);
+    }
+
+    .compare-floating-dock.active {
+      display: flex;
+    }
+
+    .cmp-thumbs-row {
+      display: flex;
+      gap: 0.4rem;
+    }
+
+    .cmp-dock-thumb {
+      width: 34px;
+      height: 42px;
+      object-fit: cover;
+      border: 1px solid var(--bg-primary);
+    }
+
+    /* Compare Modal */
+    .compare-modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -48%) scale(0.97);
+      width: min(1080px, 95vw);
+      max-height: 90vh;
+      overflow-y: auto;
+      background: var(--bg-primary);
+      border: 1px solid var(--hairline-strong);
+      z-index: 240;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.28s ease, transform 0.28s ease;
+      padding: 2rem;
+    }
+
+    .compare-modal.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    .compare-table th, .compare-table td {
+      border: 1px solid var(--hairline);
+      padding: 0.9rem 1rem;
+      vertical-align: top;
+      text-align: left;
+      font-size: 0.82rem;
+    }
+
+    .compare-table th {
+      width: 170px;
+      background: var(--bg-secondary);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      color: var(--ink-secondary);
+    }
+
+    /* Personalization / Wishlist Banner */
+    .wishlist-personal-bar {
+      padding: 1rem 1.5rem;
+      background: var(--accent-soft);
+      border-bottom: 1px solid var(--hairline);
+      display: none;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .wishlist-personal-bar.active {
+      display: flex;
+    }
+
     @media (max-width: 1080px) {
       .hero-spread, .bespoke-spread {
         grid-template-columns: 1fr;
+      }
+      .cro-architecture-bar {
+        grid-template-columns: repeat(2, 1fr);
       }
       .hero-manifesto {
         border-right: none;
@@ -1107,11 +1420,23 @@
       .nav-links {
         display: none;
       }
-      .lookbook-grid, .policy-strip, .form-grid, .spec-modal {
+      .cro-architecture-bar, .lookbook-grid, .policy-strip, .form-grid, .spec-modal {
         grid-template-columns: 1fr;
       }
       .lookbook-card {
         border-right: none;
+      }
+      .floating-care-bar {
+        left: 0.75rem;
+        right: 0.75rem;
+        bottom: 4.5rem;
+        max-width: none;
+      }
+      .compare-floating-dock {
+        left: 0.75rem;
+        right: 0.75rem;
+        bottom: 0.75rem;
+        justify-content: space-between;
       }
     }
   </style>
@@ -1121,8 +1446,8 @@
   <!-- Top Archival Metadata Bar -->
   <div class="top-ticker mono">
     <div class="ticker-left">
-      <span><span class="status-dot"></span>ARCHIVE ISSUE 04 // PRIVATE SOURCING & CURATED OBJECTS</span>
-      <span>TUYỂN CHỌN TỪ STUDIO & XƯỞNG NỘI ĐỊA TRUNG (TRỪ THỰC PHẨM)</span>
+      <span><span class="status-dot"></span>ARCHIVE ISSUE 04 // HỆ THỐNG CHUYỂN ĐỔI THỰC CHIẾN 5 TRỤ CỘT</span>
+      <span>WISHLIST CÁ NHÂN HÓA • SO SÁNH THÔNG SỐ • GHÉP KIỆN ƯU ĐÃI TỰ ĐỘNG</span>
     </div>
     <div>
       <span>CHẾ ĐỘ BÁO GIÁ KÍN 1-1 QUA ZALO: <strong id="topZaloDisplay">0905.888.999</strong></span>
@@ -1143,11 +1468,17 @@
     </nav>
 
     <div class="masthead-actions">
+      <button type="button" class="theme-btn mono" id="wishlistHeaderBtn" title="Xem danh sách yêu thích đã lưu">
+        <span>♥ YÊU THÍCH (<strong id="wishlistCountHeader">0</strong>)</span>
+      </button>
+      <button type="button" class="theme-btn mono" id="compareHeaderBtn" title="Mở bảng đặt cạnh so sánh sản phẩm">
+        <span>⇄ SO SÁNH (<strong id="compareCountHeader">0</strong>/3)</span>
+      </button>
       <button type="button" class="theme-btn mono" id="themeToggleBtn" title="Chuyển đổi giao diện Giấy Tạp Chí / Phòng Trưng Bày Đêm">
         <span id="themeToggleLabel">CHẾ ĐỘ: GIẤY IN</span>
       </button>
       <button type="button" class="brief-trigger-btn" id="openBriefBtn">
-        <span>PHIẾU YÊU CẦU BÁO GIÁ</span>
+        <span>PHIẾU BÁO GIÁ</span>
         <span class="brief-count-badge" id="briefCountBadge">0</span>
       </button>
     </div>
@@ -1232,6 +1563,35 @@
       </div>
     </section>
 
+    <!-- 5 Pillars of High-Conversion Commerce Bar -->
+    <div class="cro-architecture-bar">
+      <div class="cro-arch-cell" id="pillarWishlistTrigger">
+        <div class="cro-arch-tag mono"><span>01 / PERSONALIZED</span><span>♥ WISHLIST</span></div>
+        <div class="cro-arch-title">Cá Nhân Hóa Danh Sách Yêu Thích</div>
+        <p class="cro-arch-sub">Lưu mẫu ưng ý vào bộ nhớ riêng &amp; gợi ý tuyển chọn theo gu thẩm mỹ của bạn.</p>
+      </div>
+      <div class="cro-arch-cell" id="pillarCareTrigger">
+        <div class="cro-arch-tag mono"><span>02 / BRIEF CARE</span><span>● AUTO-SAVE</span></div>
+        <div class="cro-arch-title">Chăm Sóc Đơn Hàng Trong Giỏ</div>
+        <p class="cro-arch-sub">Tự động bảo lưu Phiếu báo giá chưa gửi &amp; giữ suất ghép lô ưu tiên trong tuần.</p>
+      </div>
+      <div class="cro-arch-cell" id="pillarCompareTrigger">
+        <div class="cro-arch-tag mono"><span>03 / SIDE-BY-SIDE</span><span>⇄ COMPARE</span></div>
+        <div class="cro-arch-title">So Sánh Chuyên Sâu Từng Mẫu</div>
+        <p class="cro-arch-sub">Đặt cạnh nhau tối đa 3 hồ sơ để đối chiếu xưởng gốc, định lượng vật liệu &amp; độ hiếm.</p>
+      </div>
+      <div class="cro-arch-cell" id="pillarBundleTrigger">
+        <div class="cro-arch-tag mono"><span>04 / AUTO PRIVILEGE</span><span>★ BUNDLE</span></div>
+        <div class="cro-arch-title">Mua Kèm &amp; Ưu Đãi Tự Động</div>
+        <p class="cro-arch-sub">Tự động mở khóa 3 bậc đặc quyền vận chuyển &amp; chiết khấu khi ghép từ 2–3 mẫu.</p>
+      </div>
+      <div class="cro-arch-cell" id="pillarCroTrigger">
+        <div class="cro-arch-tag mono"><span>05 / HIGH-CONVERSION</span><span>⚡ 1-CLICK</span></div>
+        <div class="cro-arch-title">Tối Ưu Chuyển Đổi Mỗi Sản Phẩm</div>
+        <p class="cro-arch-sub">Hiển thị minh bạch suất gom lô còn lại, thời gian về tay &amp; nút thẩm định nhanh.</p>
+      </div>
+    </div>
+
     <!-- Section 01: Curated Lookbook Archive -->
     <section id="lookbook-section">
       <div class="section-header-bar">
@@ -1242,12 +1602,28 @@
         <div class="sec-title-cell">
           <h2 class="sec-heading">Danh Mục Tuyển Chọn Định Kỳ</h2>
           <p style="font-size: 0.88rem; color: var(--ink-secondary);">
-            Chọn các mẫu bạn quan tâm vào <strong>Phiếu Yêu Cầu Báo Giá</strong>. Chúng tôi không hiển thị giá đại trà để đảm bảo mức chiết khấu riêng cho từng khách hàng và chủ shop.
+            Mỗi sản phẩm được trang bị công cụ <strong>Lưu Wishlist (♥)</strong>, <strong>Đặt Cạnh So Sánh (⇄)</strong>, <strong>Gợi Ý Ghép Kiện Đồng Điệu</strong> và <strong>Tự Động Áp Dụng Đặc Quyền</strong> trong Phiếu Báo Giá.
           </p>
         </div>
         <div class="sec-meta-cell">
-          <div class="mono" style="margin-bottom: 0.35rem; color: var(--ink-primary);">TRẠNG THÁI LƯU TRỮ</div>
-          <p>Toàn bộ mẫu đều có sẵn nguồn xưởng nội địa hạng A. Nhận đặt lẻ từ 1 sản phẩm hoặc gom lô sỉ độc quyền.</p>
+          <div class="mono" style="margin-bottom: 0.35rem; color: var(--ink-primary);">ĐẶC QUYỀN TỰ ĐỘNG</div>
+          <p>Chọn <strong>2 mẫu</strong> giảm 15% cước ghép kiện • Chọn <strong>3+ mẫu</strong> mở khóa chiết khấu VIP xưởng gốc.</p>
+        </div>
+      </div>
+
+      <!-- Personalized Wishlist Banner (Shows when user has saved items) -->
+      <div class="wishlist-personal-bar" id="wishlistPersonalBar">
+        <div>
+          <span class="mono" style="color: var(--accent); display: block;">HỒ SƠ CÁ NHÂN HÓA // WISHLIST CỦA BẠN</span>
+          <span style="font-size: 0.84rem;" id="wishlistPersonalText">Bạn đã lưu 0 mẫu vào danh sách yêu thích riêng.</span>
+        </div>
+        <div style="display: flex; gap: 0.65rem; flex-wrap: wrap;">
+          <button type="button" class="btn-editorial-outline mono" id="filterWishlistQuickBtn" style="padding: 0.55rem 0.95rem; font-size: 0.68rem;">
+            CHỈ XEM MẪU YÊU THÍCH
+          </button>
+          <button type="button" class="btn-editorial-primary mono" id="moveAllWishlistToBriefBtn" style="padding: 0.55rem 1.05rem; font-size: 0.68rem;">
+            + CHUYỂN TẤT CẢ WISHLIST VÀO PHIẾU &amp; NHẬN ƯU ĐÃI GHÉP ĐƠN
+          </button>
         </div>
       </div>
 
@@ -1259,6 +1635,7 @@
           <button type="button" class="cat-btn" data-cat="decor">02 / Nội Thất &amp; Kiến Trúc</button>
           <button type="button" class="cat-btn" data-cat="tech">03 / Thiết Bị &amp; Desk Setup</button>
           <button type="button" class="cat-btn" data-cat="craft">04 / Gốm Thủ Công &amp; Lifestyle</button>
+          <button type="button" class="cat-btn" data-cat="wishlist" id="wishlistTabBtn">♥ Đã Lưu (<span id="wishlistTabCount">0</span>)</button>
         </div>
 
         <div class="search-and-view">
@@ -1277,11 +1654,11 @@
           <tr>
             <th>Ảnh</th>
             <th>Mã Hồ Sơ</th>
-            <th>Tên Tuyển Chọn</th>
+            <th>Tên Tuyển Chọn &amp; Tín Hiệu Lô</th>
             <th>Ngành Hàng</th>
             <th>Xưởng / Studio Gốc</th>
-            <th>Quy Cách Đặt</th>
-            <th>Trạng Thái Giá</th>
+            <th>Mẫu Mua Kèm Gợi Ý</th>
+            <th>Tiện Ích</th>
             <th>Thao Tác</th>
           </tr>
         </thead>
@@ -1438,27 +1815,38 @@
   <!-- Shared Backdrop -->
   <div class="backdrop" id="sharedBackdrop"></div>
 
-  <!-- Editorial Spec Sheet Modal -->
+  <!-- Editorial Spec Sheet Modal (Enhanced with CRO & Curated Pairing) -->
   <div class="spec-modal" id="specModal" role="dialog" aria-modal="true">
     <div class="modal-img-col">
       <img id="modalItemImg" src="" alt="Spec Sheet Image" />
     </div>
     <div class="modal-info-col">
       <div>
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; gap: 0.5rem; flex-wrap: wrap;">
           <span class="mono" id="modalItemCode" style="color: var(--accent);">ARCHIVE // CN-01</span>
-          <button type="button" id="closeModalBtn" class="mono" style="padding: 0.3rem 0.6rem; border: 1px solid var(--hairline);">[ ĐÓNG × ]</button>
+          <div style="display: flex; gap: 0.4rem;">
+            <button type="button" id="modalWishlistBtn" class="mono" style="padding: 0.3rem 0.6rem; border: 1px solid var(--hairline);">♥ LƯU YÊU THÍCH</button>
+            <button type="button" id="modalCompareBtn" class="mono" style="padding: 0.3rem 0.6rem; border: 1px solid var(--hairline);">⇄ SO SÁNH</button>
+            <button type="button" id="closeModalBtn" class="mono" style="padding: 0.3rem 0.6rem; border: 1px solid var(--hairline);">[ ĐÓNG × ]</button>
+          </div>
         </div>
-        <h3 class="serif" id="modalItemTitle" style="font-size: 2rem; line-height: 1.1; margin-bottom: 0.5rem;"></h3>
-        <div class="mono" id="modalItemOrigin" style="color: var(--ink-muted); margin-bottom: 1.25rem;"></div>
-        <p id="modalItemDesc" style="font-size: 0.88rem; color: var(--ink-secondary); line-height: 1.65; margin-bottom: 1.25rem;"></p>
+        <h3 class="serif" id="modalItemTitle" style="font-size: 1.9rem; line-height: 1.1; margin-bottom: 0.45rem;"></h3>
+        <div class="mono" id="modalItemOrigin" style="color: var(--ink-muted); margin-bottom: 0.75rem;"></div>
 
-        <div style="border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); padding: 0.95rem 0; margin-bottom: 1.25rem;">
-          <div class="mono" style="margin-bottom: 0.35rem; color: var(--ink-primary);">THÔNG SỐ VẬT LIỆU &amp; GIÁM TUYỂN</div>
-          <p id="modalItemMaterial" style="font-size: 0.82rem; color: var(--ink-secondary);"></p>
+        <!-- CRO Live Signals inside Modal -->
+        <div class="card-cro-signals" id="modalCroSignals" style="margin-bottom: 0.95rem;"></div>
+
+        <p id="modalItemDesc" style="font-size: 0.86rem; color: var(--ink-secondary); line-height: 1.6; margin-bottom: 1rem;"></p>
+
+        <div style="border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); padding: 0.8rem 0; margin-bottom: 1rem;">
+          <div class="mono" style="margin-bottom: 0.3rem; color: var(--ink-primary);">THÔNG SỐ VẬT LIỆU &amp; GIÁM TUYỂN</div>
+          <p id="modalItemMaterial" style="font-size: 0.8rem; color: var(--ink-secondary);"></p>
         </div>
 
-        <div class="form-group" style="margin-bottom: 0.9rem;">
+        <!-- Curated Pairing / Bundle Recommendation inside Modal -->
+        <div class="card-bundle-strip" id="modalBundleBox" style="margin-bottom: 1rem;"></div>
+
+        <div class="form-group" style="margin-bottom: 0.75rem;">
           <label class="form-label" for="modalOrderMode">Hình Thức Yêu Cầu Báo Giá</label>
           <select id="modalOrderMode" class="editorial-select">
             <option value="Đặt lẻ 1 món (Báo giá trọn gói về tay)">Đặt lẻ 1 món (Báo giá trọn gói về tay)</option>
@@ -1467,30 +1855,73 @@
           </select>
         </div>
 
-        <div class="form-group" style="margin-bottom: 1.25rem;">
+        <div class="form-group" style="margin-bottom: 1rem;">
           <label class="form-label" for="modalVariantNote">Ghi Chú Size / Màu Sắc / Yêu Cầu Riêng</label>
           <input type="text" id="modalVariantNote" class="editorial-input" placeholder="VD: Màu kem đá, Size M hoặc cần xem thêm ảnh thật tại xưởng..." />
         </div>
       </div>
 
-      <button type="button" class="btn-editorial-primary" id="modalAddBriefBtn" style="width: 100%; justify-content: center;">
-        <span>+ ĐƯA VÀO PHIẾU YÊU CẦU BÁO GIÁ</span>
-      </button>
+      <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 0.65rem;">
+        <button type="button" class="btn-editorial-primary" id="modalAddBriefBtn" style="width: 100%; justify-content: center; padding: 0.9rem 0.75rem;">
+          <span>+ ĐƯA VÀO PHIẾU BÁO GIÁ</span>
+        </button>
+        <button type="button" class="btn-editorial-outline" id="modalInstantZaloBtn" style="width: 100%; text-align: center; padding: 0.9rem 0.65rem; font-size: 0.7rem;">
+          <span>⚡ BÁO GIÁ NHANH 1-CHẠM</span>
+        </button>
+      </div>
     </div>
   </div>
 
-  <!-- Slide-Over Private Quote Brief Drawer -->
+  <!-- Side-by-Side Product Comparison Modal -->
+  <div class="compare-modal" id="compareModal" role="dialog" aria-modal="true">
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--hairline-strong); padding-bottom: 1rem;">
+      <div>
+        <span class="mono" style="color: var(--accent); display: block;">SIDE-BY-SIDE SPECIFICATION MATRIX</span>
+        <h3 class="serif" style="font-size: 1.85rem; font-weight: 600;">Đặt Cạnh So Sánh Hồ Sơ Sản Phẩm</h3>
+      </div>
+      <div style="display: flex; gap: 0.6rem;">
+        <button type="button" id="addAllCompareToBriefBtn" class="btn-editorial-primary mono" style="padding: 0.55rem 1rem; font-size: 0.68rem;">
+          + ĐƯA TẤT CẢ MẪU ĐANG SO SÁNH VÀO PHIẾU
+        </button>
+        <button type="button" id="clearCompareBtn" class="mono" style="padding: 0.45rem 0.75rem; border: 1px solid var(--hairline);">XÓA DANH SÁCH</button>
+        <button type="button" id="closeCompareModalBtn" class="mono" style="padding: 0.45rem 0.75rem; border: 1px solid var(--hairline-strong);">[ ĐÓNG × ]</button>
+      </div>
+    </div>
+    <div id="compareTableContainer"></div>
+  </div>
+
+  <!-- Slide-Over Private Quote Brief Drawer (With Auto-Applied Tiered Privileges & Cart Care) -->
   <aside class="brief-drawer" id="briefDrawer" aria-label="Phiếu Yêu Cầu Báo Giá">
     <div class="drawer-header">
       <div>
-        <span class="mono" style="color: var(--accent); display: block;">PRIVATE SOURCING BRIEF</span>
+        <span class="mono" style="color: var(--accent); display: block;">PRIVATE SOURCING BRIEF // AUTO-SAVED</span>
         <h3 class="serif" style="font-size: 1.5rem; font-weight: 600;">Phiếu Yêu Cầu Báo Giá Riêng</h3>
       </div>
       <button type="button" id="closeDrawerBtn" class="mono" style="padding: 0.35rem 0.65rem; border: 1px solid var(--hairline);">[ ĐÓNG × ]</button>
     </div>
 
     <div class="drawer-body">
+      <!-- Auto-Applied Privilege Progress Bar -->
+      <div class="privilege-tier-box" id="drawerPrivilegeBox">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span class="mono" style="color: var(--accent);">ƯU ĐÃI TỰ ĐỘNG ÁP DỤNG THEO SỐ LƯỢNG MẪU</span>
+          <span class="mono" id="tierStatusBadge" style="font-weight: 600;">0/3 BẬC</span>
+        </div>
+        <div class="tier-progress-track">
+          <div class="tier-progress-fill" id="tierProgressFill" style="width: 0%;"></div>
+        </div>
+        <div class="tier-steps-list" id="tierStepsList"></div>
+      </div>
+
+      <!-- Abandoned Cart Care / Priority Slot Notice -->
+      <div id="drawerCareNotice" style="padding: 0.7rem 0.9rem; background: var(--accent-soft); border-left: 3px solid var(--accent); font-size: 0.76rem; color: var(--ink-primary); display: flex; justify-content: space-between; align-items: center; gap: 0.5rem;">
+        <span>● <strong>Chăm sóc giỏ hàng:</strong> Phiếu của bạn được tự động lưu. Gửi ngay để giữ suất gom lô tuần này.</span>
+      </div>
+
       <div id="briefItemsContainer" style="display: flex; flex-direction: column; gap: 0.75rem;"></div>
+
+      <!-- Dynamic Upsell / Frequently Sourced Together inside Drawer -->
+      <div id="drawerUpsellContainer"></div>
 
       <div style="border-top: 1px solid var(--hairline); padding-top: 1rem; display: flex; flex-direction: column; gap: 0.85rem;">
         <div class="mono" style="color: var(--ink-primary);">THÔNG TIN NHẬN BÁO GIÁ KÍN QUA ZALO</div>
@@ -1516,7 +1947,7 @@
       </div>
 
       <div>
-        <div class="mono" style="margin-bottom: 0.4rem; color: var(--ink-secondary);">NỘI DUNG PHIẾU SẼ GỬI QUA ZALO (KHÔNG HIỂN THỊ GIÁ CÔNG KHAI):</div>
+        <div class="mono" style="margin-bottom: 0.4rem; color: var(--ink-secondary);">NỘI DUNG PHIẾU SẼ GỬI QUA ZALO (ĐÃ KÈM ƯU ĐÃI TỰ ĐỘNG):</div>
         <div class="brief-preview-box" id="briefMessagePreview"></div>
       </div>
     </div>
@@ -1531,6 +1962,34 @@
       </button>
     </div>
   </aside>
+
+  <!-- Floating Unfinished Brief / Cart Care Bar (Pillar 02) -->
+  <div class="floating-care-bar" id="floatingCareBar">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <span class="mono" style="color: var(--accent);">● CHĂM SÓC GIỎ HÀNG CHƯA HOÀN TẤT</span>
+      <button type="button" id="dismissCareBarBtn" class="mono" style="font-size: 0.65rem; color: var(--ink-muted);">[ ẨN × ]</button>
+    </div>
+    <div style="font-size: 0.8rem; line-height: 1.4;" id="floatingCareText">
+      Bạn đang có <strong>1 mẫu</strong> trong Phiếu chờ báo giá. Thêm 1 mẫu nữa để tự động kích hoạt <strong>Giảm 15% cước ghép kiện</strong>!
+    </div>
+    <div style="display: flex; gap: 0.5rem;">
+      <button type="button" id="careOpenBriefBtn" class="btn-editorial-primary mono" style="padding: 0.5rem 0.9rem; font-size: 0.66rem; flex: 1; justify-content: center;">
+        HOÀN TẤT NHẬN BÁO GIÁ NGAY →
+      </button>
+    </div>
+  </div>
+
+  <!-- Floating Product Compare Dock (Pillar 03) -->
+  <div class="compare-floating-dock" id="compareFloatingDock">
+    <div>
+      <div class="mono" style="color: var(--accent); font-size: 0.62rem;">KHAY ĐẶT CẠNH SO SÁNH</div>
+      <div class="mono" style="font-size: 0.72rem;"><span id="dockCompareCount">0</span>/3 HỒ SƠ ĐÃ CHỌN</div>
+    </div>
+    <div class="cmp-thumbs-row" id="dockCompareThumbs"></div>
+    <button type="button" id="dockOpenCompareBtn" class="btn-editorial-primary mono" style="background: var(--accent); color: #FAF8F4; padding: 0.55rem 0.95rem; font-size: 0.68rem;">
+      SO SÁNH NGAY ⇄
+    </button>
+  </div>
 
   <!-- Toast Notification -->
   <div class="editorial-toast" id="editorialToast">ĐÃ CẬP NHẬT PHIẾU YÊU CẦU BÁO GIÁ</div>
@@ -1636,23 +2095,120 @@
       }
     ];
 
+    // Enrich each Archive Item with High-Conversion CRO Metadata & Curated Pairing (5 Pillars)
+    const CRO_METADATA = {
+      "CN-01": {
+        slotLeft: "Còn 03 suất gom lô tuần này",
+        eta: "5–7 ngày về HN/HCM",
+        savedCount: "24 chủ shop đã lưu",
+        rarity: "Độc bản Studio Hàng Châu (Giới hạn 30 set/tháng)",
+        conversionNote: "Tỷ lệ chốt lại của Boutique đạt 94% nhờ phom Lemaire chuẩn xác",
+        pairWith: "CN-05",
+        pairHook: "Ghép kiện cùng Giày Loafer & Kính Bạc CN-05 giảm ngay 15% cước vận chuyển"
+      },
+      "CN-02": {
+        slotLeft: "Còn 02 suất đóng kiện gỗ",
+        eta: "7–9 ngày về kho VN",
+        savedCount: "19 kiến trúc sư đã lưu",
+        rarity: "Xưởng nội thất Phật Sơn hạng A (Gia công xuất Âu)",
+        conversionNote: "Miễn phí gia cố khung gỗ chống sốc & bảo hiểm vỡ hỏng 100%",
+        pairWith: "CN-07",
+        pairHook: "Mua kèm Tổ Hợp Đạo Cụ Đồng Thau CN-07 để đồng bộ góc trưng bày Studio"
+      },
+      "CN-03": {
+        slotLeft: "Còn 04 suất đặt batch CNC",
+        eta: "5–6 ngày đường bay/bộ",
+        savedCount: "31 nhà sưu tầm đã lưu",
+        rarity: "Custom Batch Thẩm Quyến — Anodized nhôm nguyên khối",
+        conversionNote: "Kèm video test âm switch & kiểm tra mạch 1-1 trước khi xuất kho",
+        pairWith: "CN-06",
+        pairHook: "Ghép đơn cùng Máy Pha Espresso CN-06 hoàn thiện góc làm việc Industrial"
+      },
+      "CN-04": {
+        slotLeft: "Còn 03 bộ nghệ nhân nung củi",
+        eta: "6–8 ngày đóng xốp định hình",
+        savedCount: "16 phòng trà đã lưu",
+        rarity: "Lò gốm thủ công Cảnh Đức Trấn (Mỗi vân men là duy nhất)",
+        conversionNote: "Đóng thùng xốp đúc khuôn riêng từng chén, cam kết đền bù 100% nếu sứt mẻ",
+        pairWith: "CN-02",
+        pairHook: "Đặt kèm Bàn Trà Thép Ống Bauhaus CN-02 nhận chiết khấu combo không gian trà"
+      },
+      "CN-05": {
+        slotLeft: "Còn 05 suất đủ size 36–43",
+        eta: "5–7 ngày về tay",
+        savedCount: "27 khách cá nhân đã lưu",
+        rarity: "Xưởng da thủ công Thượng Hải (Da bê thuộc thảo mộc lớp đầu)",
+        conversionNote: "Hỗ trợ đo chiều dài bàn chân & đối chiếu phom thực tế tại studio gốc",
+        pairWith: "CN-01",
+        pairHook: "Ghép cùng Trench Len Lạc Đà CN-01 để hưởng mức cước chung kiện chỉ 50%"
+      },
+      "CN-06": {
+        slotLeft: "Còn 02 máy lô điện áp 220V",
+        eta: "6–8 ngày kiểm định áp suất",
+        savedCount: "22 quán & home-bar đã lưu",
+        rarity: "Tô Châu Home Lab — Thép 304 phay xước cơ khí chính xác",
+        conversionNote: "Đã test áp suất 9-bar tại kho Trung và tặng kèm bộ đá núi lửa khuếch tán",
+        pairWith: "CN-04",
+        pairHook: "Ghép kiện cùng Bộ Trà Cụ Cảnh Đức Trấn CN-04 mở khóa ưu đãi vận chuyển VIP"
+      },
+      "CN-07": {
+        slotLeft: "Còn 04 set đạo cụ trưng bày",
+        eta: "5–7 ngày về HN/HCM",
+        savedCount: "29 chủ shop thời trang đã lưu",
+        rarity: "Phật Sơn Metalwork — Đồng thau đúc cát & đá Travertine tự nhiên",
+        conversionNote: "Tăng ngay 40% cảm xúc cao cấp khi chụp ảnh sản phẩm lookbook tại shop",
+        pairWith: "CN-08",
+        pairHook: "Mua kèm Combo Áo Dạ & Túi Điêu Khắc CN-08 để lên nguyên set trưng bày mẫu"
+      },
+      "CN-08": {
+        slotLeft: "Còn 03 suất cắt may thủ công",
+        eta: "5–7 ngày về kho VN",
+        savedCount: "34 chủ boutique đã lưu",
+        rarity: "Showroom thiết kế kín Quảng Châu (Không bán lẻ đại trà)",
+        conversionNote: "Hỗ trợ gắn tag thương hiệu riêng (Private Label) khi nhập từ 5 set",
+        pairWith: "CN-05",
+        pairHook: "Ghép cùng Giày Loafer & Kính Gọng Bạc CN-05 trọn bộ Outfit Lookbook Thu Đông"
+      }
+    };
+
+    ARCHIVE_ITEMS.forEach(item => {
+      Object.assign(item, CRO_METADATA[item.id] || {});
+    });
+
     const HERO_SLIDES = [
       ARCHIVE_ITEMS[0],
       ARCHIVE_ITEMS[1],
       ARCHIVE_ITEMS[2]
     ];
 
-    // State
+    // State with LocalStorage Persistence (Wishlist + Abandoned Cart Care)
     let currentCategory = "all";
     let searchQuery = "";
     let currentView = "grid"; // 'grid' or 'table'
     let activeModalItem = null;
+    let careBarDismissed = false;
     let studioConfig = {
-      brandName: "ATELIER NỘI ĐỊA",
-      zaloPhone: "0905888999"
+      brandName: localStorage.getItem("atelier_brand") || "ATELIER NỘI ĐỊA",
+      zaloPhone: localStorage.getItem("atelier_zalo") || "0905888999"
     };
 
-    // Initial Brief has 1 sample item so the user immediately sees how the Private Quote Brief works
+    let wishlistIds = [];
+    try {
+      const savedWish = JSON.parse(localStorage.getItem("atelier_wishlist_v1"));
+      wishlistIds = Array.isArray(savedWish) ? savedWish : ["CN-01", "CN-05"];
+    } catch (e) {
+      wishlistIds = ["CN-01", "CN-05"];
+    }
+
+    let compareIds = [];
+    try {
+      const savedCmp = JSON.parse(localStorage.getItem("atelier_compare_v1"));
+      compareIds = Array.isArray(savedCmp) ? savedCmp : ["CN-01", "CN-08"];
+    } catch (e) {
+      compareIds = ["CN-01", "CN-08"];
+    }
+
+    // Initial Brief has 1 sample item (or restored from unfinished session)
     let quoteBrief = [
       {
         uid: "init-1",
@@ -1664,6 +2220,20 @@
         image: ARCHIVE_ITEMS[0].image
       }
     ];
+    try {
+      const savedBrief = JSON.parse(localStorage.getItem("atelier_brief_v1"));
+      if (Array.isArray(savedBrief) && savedBrief.length > 0) {
+        quoteBrief = savedBrief;
+      }
+    } catch (e) {}
+
+    function persistState() {
+      try {
+        localStorage.setItem("atelier_wishlist_v1", JSON.stringify(wishlistIds));
+        localStorage.setItem("atelier_compare_v1", JSON.stringify(compareIds));
+        localStorage.setItem("atelier_brief_v1", JSON.stringify(quoteBrief));
+      } catch (e) {}
+    }
 
     // DOM Elements
     const lookbookGrid = document.getElementById("lookbookGrid");
@@ -1674,6 +2244,7 @@
     const briefMessagePreview = document.getElementById("briefMessagePreview");
     const sharedBackdrop = document.getElementById("sharedBackdrop");
     const specModal = document.getElementById("specModal");
+    const compareModal = document.getElementById("compareModal");
     const briefDrawer = document.getElementById("briefDrawer");
     const editorialToast = document.getElementById("editorialToast");
 
@@ -1682,7 +2253,7 @@
       editorialToast.classList.add("show");
       setTimeout(() => {
         editorialToast.classList.remove("show");
-      }, 2600);
+      }, 2700);
     }
 
     function formatZaloDisplay(phone) {
@@ -1695,7 +2266,9 @@
 
     function filterItems() {
       return ARCHIVE_ITEMS.filter(item => {
-        const matchCat = currentCategory === "all" || item.category === currentCategory;
+        const matchCat =
+          currentCategory === "all" ||
+          (currentCategory === "wishlist" ? wishlistIds.includes(item.id) : item.category === currentCategory);
         const q = searchQuery.trim().toLowerCase();
         const matchSearch = !q ||
           item.title.toLowerCase().includes(q) ||
@@ -1710,12 +2283,98 @@
       return quoteBrief.some(b => b.code === code);
     }
 
+    function getAutoPrivileges(count) {
+      return [
+        {
+          min: 1,
+          unlocked: count >= 1,
+          title: "Bậc 1 (Từ 1 mẫu): Miễn phí thẩm định xưởng gốc & Quay video QC thực tế tại kho Quảng Châu"
+        },
+        {
+          min: 2,
+          unlocked: count >= 2,
+          title: "Bậc 2 (Từ 2 mẫu): Tự động kích hoạt Ghép Kiện Đồng Kiểm — Giảm 15% cước vận chuyển về VN"
+        },
+        {
+          min: 3,
+          unlocked: count >= 3,
+          title: "Bậc 3 (Từ 3+ mẫu): Chiết khấu VIP Chủ Shop / Đàm phán giá sỉ tận xưởng & Bảo hiểm kiện gỗ 100%"
+        }
+      ];
+    }
+
+    function updateWishlistAndCompareUI() {
+      document.getElementById("wishlistCountHeader").textContent = wishlistIds.length;
+      document.getElementById("wishlistTabCount").textContent = wishlistIds.length;
+      document.getElementById("compareCountHeader").textContent = compareIds.length;
+      document.getElementById("dockCompareCount").textContent = compareIds.length;
+
+      // Personalization Wishlist Banner
+      const personalBar = document.getElementById("wishlistPersonalBar");
+      const personalText = document.getElementById("wishlistPersonalText");
+      if (wishlistIds.length > 0) {
+        personalBar.classList.add("active");
+        const favItems = ARCHIVE_ITEMS.filter(i => wishlistIds.includes(i.id));
+        const names = favItems.slice(0, 2).map(i => i.id).join(", ");
+        const recommendedPair = favItems[0] && favItems[0].pairWith ? ARCHIVE_ITEMS.find(x => x.id === favItems[0].pairWith) : null;
+        personalText.innerHTML = `Bạn đã lưu <strong>${wishlistIds.length} mẫu</strong> (${names}${wishlistIds.length > 2 ? '...' : ''}). ${recommendedPair ? `Gợi ý cá nhân hóa: Ghép cùng <strong>[${recommendedPair.id}] ${recommendedPair.title}</strong> để tối ưu 15% phí vận chuyển.` : ''}`;
+      } else {
+        personalBar.classList.remove("active");
+      }
+
+      // Compare Floating Dock
+      const cmpDock = document.getElementById("compareFloatingDock");
+      const cmpThumbs = document.getElementById("dockCompareThumbs");
+      if (compareIds.length > 0) {
+        cmpDock.classList.add("active");
+        cmpThumbs.innerHTML = compareIds.map(id => {
+          const it = ARCHIVE_ITEMS.find(x => x.id === id);
+          return it ? `<img src="${it.image}" alt="${it.id}" class="cmp-dock-thumb" title="${it.title}" />` : '';
+        }).join("");
+      } else {
+        cmpDock.classList.remove("active");
+      }
+
+      // Unfinished Cart Care Bar (Pillar 02)
+      const careBar = document.getElementById("floatingCareBar");
+      const careText = document.getElementById("floatingCareText");
+      if (!careBarDismissed && quoteBrief.length > 0) {
+        careBar.classList.add("active");
+        if (quoteBrief.length === 1) {
+          careText.innerHTML = `Bạn đang có <strong>01 mẫu</strong> chưa gửi trong Phiếu. Chọn thêm <strong>1 mẫu mua kèm</strong> để tự động mở khóa <strong>Giảm 15% cước ghép kiện</strong>!`;
+        } else if (quoteBrief.length === 2) {
+          careText.innerHTML = `Đã mở khóa <strong>Giảm 15% cước ghép kiện</strong> (${quoteBrief.length} mẫu)! Thêm 1 mẫu nữa để nhận <strong>Biên độ chiết khấu VIP Xưởng Gốc</strong>.`;
+        } else {
+          careText.innerHTML = `Phiếu của bạn đã đạt <strong>ĐẶC QUYỀN TỐI ĐA (3/3 Bậc Ưu Đãi)</strong> với ${quoteBrief.length} mẫu. Gửi qua Zalo ngay để giữ suất lô tuần này!`;
+        }
+      } else {
+        careBar.classList.remove("active");
+      }
+    }
+
     function renderArchive() {
       const items = filterItems();
 
-      // Render Grid
+      if (items.length === 0) {
+        lookbookGrid.innerHTML = `
+          <div style="grid-column: 1 / -1; padding: 3.5rem 2rem; text-align: center; color: var(--ink-secondary);">
+            <div class="mono" style="color: var(--accent); margin-bottom: 0.5rem;">KHÔNG TÌM THẤY HỒ SƠ PHÙ HỢP</div>
+            <p style="margin-bottom: 1rem;">Danh mục lọc hoặc từ khóa tìm kiếm hiện chưa có mẫu nào.</p>
+            <button type="button" class="btn-editorial-outline mono" id="resetFilterEmptyBtn" style="padding: 0.6rem 1.2rem; font-size: 0.72rem;">XEM LẠI TẤT CẢ 08 HỒ SƠ</button>
+          </div>
+        `;
+        archiveTableBody.innerHTML = "";
+        updateWishlistAndCompareUI();
+        return;
+      }
+
+      // Render Grid with 5 CRO Pillars integrated
       lookbookGrid.innerHTML = items.map(item => {
         const inBrief = isItemInBrief(item.code);
+        const isWished = wishlistIds.includes(item.id);
+        const isCompared = compareIds.includes(item.id);
+        const pairedItem = item.pairWith ? ARCHIVE_ITEMS.find(x => x.id === item.pairWith) : null;
+
         return `
           <article class="lookbook-card" data-id="${item.id}">
             <div>
@@ -1725,20 +2384,42 @@
               </div>
               <div class="card-image-wrap" data-action="open-spec" data-id="${item.id}">
                 <img src="${item.image}" alt="${item.title}" loading="lazy" />
-                <span class="private-quote-pill">BÁO GIÁ KÍN QUA ZALO</span>
+                <div class="card-floating-tools">
+                  <button type="button" class="card-tool-btn ${isWished ? 'active-wish' : ''}" data-action="toggle-wish" data-id="${item.id}" title="Lưu vào Wishlist cá nhân">
+                    <span>${isWished ? '♥ ĐÃ LƯU' : '♡ YÊU THÍCH'}</span>
+                  </button>
+                  <button type="button" class="card-tool-btn ${isCompared ? 'active-cmp' : ''}" data-action="toggle-compare" data-id="${item.id}" title="Đặt cạnh so sánh thông số">
+                    <span>${isCompared ? '⇄ ĐANG SO SÁNH' : '⇄ SO SÁNH'}</span>
+                  </button>
+                </div>
+                <span class="private-quote-pill">BÁO GIÁ KÍN • ${item.eta}</span>
               </div>
             </div>
             <div class="card-body">
               <div>
+                <div class="card-cro-signals">
+                  <span class="cro-signal-Chip urgent">● ${item.slotLeft}</span>
+                  <span class="cro-signal-Chip">${item.savedCount}</span>
+                </div>
                 <span class="card-category-label mono">${item.categoryLabel}</span>
                 <h3 class="card-title" data-action="open-spec" data-id="${item.id}">${item.title}</h3>
                 <p class="card-specs">${item.material}</p>
               </div>
               <div>
+                ${pairedItem ? `
+                  <div class="card-bundle-strip">
+                    <div class="bundle-strip-text">
+                      <strong>Mua kèm tối ưu cước:</strong> Ghép với [${pairedItem.id}] giảm 15% phí vận chuyển
+                    </div>
+                    <button type="button" class="btn-bundle-mini" data-action="add-bundle" data-id="${item.id}" data-pair="${pairedItem.id}" title="Thêm cả 2 mẫu vào Phiếu báo giá">
+                      + GHÉP ĐÔI
+                    </button>
+                  </div>
+                ` : ''}
                 <div class="card-batch-note mono">QUY CÁCH: ${item.batchMode}</div>
                 <div class="card-actions">
                   <button type="button" class="btn-card-spec mono" data-action="open-spec" data-id="${item.id}">
-                    HỒ SƠ CHI TIẾT
+                    HỒ SƠ &amp; ƯU ĐÃI
                   </button>
                   <button type="button" class="btn-card-add mono ${inBrief ? 'in-brief' : ''}" data-action="quick-add" data-id="${item.id}">
                     ${inBrief ? '✓ ĐÃ TRONG PHIẾU' : '+ YÊU CẦU BÁO GIÁ'}
@@ -1753,15 +2434,29 @@
       // Render Swiss Index Table
       archiveTableBody.innerHTML = items.map(item => {
         const inBrief = isItemInBrief(item.code);
+        const isWished = wishlistIds.includes(item.id);
+        const isCompared = compareIds.includes(item.id);
+        const pairedItem = item.pairWith ? ARCHIVE_ITEMS.find(x => x.id === item.pairWith) : null;
+
         return `
           <tr>
             <td><img src="${item.image}" alt="${item.title}" class="index-thumb" /></td>
             <td class="mono">${item.code}</td>
-            <td><strong class="serif" style="font-size: 1.15rem; cursor: pointer;" data-action="open-spec" data-id="${item.id}">${item.title}</strong></td>
-            <td class="mono" style="color: var(--accent);">${item.categoryLabel}</td>
+            <td>
+              <strong class="serif" style="font-size: 1.15rem; cursor: pointer; display: block;" data-action="open-spec" data-id="${item.id}">${item.title}</strong>
+              <span class="mono" style="color: var(--accent); font-size: 0.63rem;">● ${item.slotLeft} • ${item.eta}</span>
+            </td>
+            <td class="mono" style="color: var(--ink-secondary);">${item.categoryLabel}</td>
             <td class="mono">${item.origin}</td>
-            <td style="font-size: 0.8rem; color: var(--ink-secondary);">${item.batchMode}</td>
-            <td><span class="mono" style="padding: 0.2rem 0.5rem; border: 1px solid var(--hairline-strong); font-size: 0.65rem;">BÁO GIÁ RIÊNG</span></td>
+            <td style="font-size: 0.78rem; color: var(--ink-secondary);">
+              ${pairedItem ? `Ghép <strong>[${pairedItem.id}]</strong> (-15% cước)` : item.batchMode}
+            </td>
+            <td>
+              <div style="display: flex; gap: 0.35rem;">
+                <button type="button" class="card-tool-btn ${isWished ? 'active-wish' : ''}" data-action="toggle-wish" data-id="${item.id}">♥</button>
+                <button type="button" class="card-tool-btn ${isCompared ? 'active-cmp' : ''}" data-action="toggle-compare" data-id="${item.id}">⇄</button>
+              </div>
+            </td>
             <td>
               <button type="button" class="btn-editorial-outline mono" style="padding: 0.45rem 0.8rem; font-size: 0.68rem;" data-action="quick-add" data-id="${item.id}">
                 ${inBrief ? '✓ ĐÃ CHỌN' : '+ BÁO GIÁ'}
@@ -1770,12 +2465,15 @@
           </tr>
         `;
       }).join("");
+
+      updateWishlistAndCompareUI();
     }
 
     function buildZaloBriefText() {
       const clientName = document.getElementById("clientNameInput").value.trim() || "Khách hàng từ Lookbook";
       const clientZalo = document.getElementById("clientZaloInput").value.trim() || "Chưa điền SĐT";
       const clientCity = document.getElementById("clientCitySelect").value;
+      const unlockedTiers = getAutoPrivileges(quoteBrief.length).filter(t => t.unlocked);
 
       let lines = [
         `[PHIẾU YÊU CẦU BÁO GIÁ KÍN // ${studioConfig.brandName}]`,
@@ -1795,18 +2493,39 @@
         });
       }
 
+      if (unlockedTiers.length > 0) {
+        lines.push(`----------------------------------------`);
+        lines.push(`ĐẶC QUYỀN TỰ ĐỘNG ÁP DỤNG TRÊN ĐƠN NÀY (${unlockedTiers.length}/3):`);
+        unlockedTiers.forEach(t => {
+          lines.push(`✓ ${t.title}`);
+        });
+      }
+
       lines.push(`----------------------------------------`);
-      lines.push(`Nhờ shop kiểm tra xưởng gốc và gửi báo giá trọn gói riêng giúp mình nhé!`);
+      lines.push(`Nhờ shop kiểm tra xưởng gốc, áp dụng đặc quyền ghép đơn và gửi báo giá trọn gói riêng giúp mình nhé!`);
       return lines.join("\n");
     }
 
     function renderBriefDrawer() {
       briefCountBadge.textContent = quoteBrief.length;
 
+      // Render Auto-Applied Tier Progress (Pillar 04)
+      const tiers = getAutoPrivileges(quoteBrief.length);
+      const unlockedCount = tiers.filter(t => t.unlocked).length;
+      const pct = Math.min(100, Math.round((quoteBrief.length / 3) * 100));
+      document.getElementById("tierStatusBadge").textContent = `${unlockedCount}/3 ĐẶC QUYỀN MỞ KHÓA`;
+      document.getElementById("tierProgressFill").style.width = `${pct}%`;
+      document.getElementById("tierStepsList").innerHTML = tiers.map(t => `
+        <div class="tier-step-item ${t.unlocked ? 'unlocked' : ''}">
+          <span class="tier-check mono">${t.unlocked ? '[✓ ĐÃ ÁP DỤNG]' : '[○ CHƯA MỞ]'}</span>
+          <span>${t.title}</span>
+        </div>
+      `).join("");
+
       if (quoteBrief.length === 0) {
         briefItemsContainer.innerHTML = `
           <div style="padding: 2rem 1rem; border: 1px dashed var(--hairline); text-align: center; color: var(--ink-muted); font-size: 0.85rem;">
-            Phiếu yêu cầu báo giá đang trống. Hãy chọn các mẫu từ Lookbook hoặc điền Phiếu Ủy Thác Săn Hàng Riêng.
+            Phiếu yêu cầu báo giá đang trống. Hãy chọn các mẫu từ Lookbook, thêm từ Wishlist hoặc điền Phiếu Ủy Thác Săn Hàng Riêng.
           </div>
         `;
       } else {
@@ -1826,7 +2545,30 @@
         `).join("");
       }
 
+      // Dynamic Upsell Recommendation inside Drawer to help unlock next tier
+      const upsellBox = document.getElementById("drawerUpsellContainer");
+      const notInBrief = ARCHIVE_ITEMS.filter(a => !isItemInBrief(a.code));
+      if (notInBrief.length > 0 && quoteBrief.length < 3) {
+        const suggest = notInBrief[0];
+        const needed = 3 - quoteBrief.length;
+        upsellBox.innerHTML = `
+          <div style="padding: 0.85rem; border: 1px dashed var(--accent); background: var(--bg-secondary); display: flex; justify-content: space-between; align-items: center; gap: 0.75rem;">
+            <div style="font-size: 0.76rem; line-height: 1.4;">
+              <span class="mono" style="color: var(--accent); display: block;">GỢI Ý MUA KÈM ĐỂ MỞ KHÓA ĐẶC QUYỀN TIẾP THEO (CÒN THIẾU ${needed} MẪU)</span>
+              <strong>[${suggest.id}] ${suggest.title}</strong> — ${suggest.pairHook}
+            </div>
+            <button type="button" class="btn-bundle-mini" data-action="quick-add" data-id="${suggest.id}">
+              + THÊM KÈM
+            </button>
+          </div>
+        `;
+      } else {
+        upsellBox.innerHTML = "";
+      }
+
       briefMessagePreview.textContent = buildZaloBriefText();
+      persistState();
+      updateWishlistAndCompareUI();
     }
 
     function addToBrief(entry) {
@@ -1840,10 +2582,59 @@
           uid: "brief-" + Date.now() + "-" + Math.random().toString(36).slice(2, 6),
           ...entry
         });
-        showToast(`ĐÃ THÊM VÀO PHIẾU BÁO GIÁ: ${entry.code}`);
+        showToast(`ĐÃ THÊM VÀO PHIẾU & CẬP NHẬT ƯU ĐÃI: ${entry.code}`);
       }
       renderArchive();
       renderBriefDrawer();
+    }
+
+    function toggleWishlist(itemId) {
+      const idx = wishlistIds.indexOf(itemId);
+      if (idx > -1) {
+        wishlistIds.splice(idx, 1);
+        showToast(`ĐÃ BỎ LƯU KHỎI WISHLIST: ${itemId}`);
+      } else {
+        wishlistIds.push(itemId);
+        showToast(`♥ ĐÃ LƯU VÀO WISHLIST CÁ NHÂN: ${itemId}`);
+      }
+      persistState();
+      renderArchive();
+      if (activeModalItem && activeModalItem.id === itemId) {
+        syncModalToolButtons(itemId);
+      }
+    }
+
+    function toggleCompare(itemId) {
+      const idx = compareIds.indexOf(itemId);
+      if (idx > -1) {
+        compareIds.splice(idx, 1);
+        showToast(`ĐÃ BỎ KHỎI KHAY SO SÁNH: ${itemId}`);
+      } else {
+        if (compareIds.length >= 3) {
+          showToast("CHỈ SO SÁNH TỐI ĐA 03 MẪU CÙNG LÚC (HÃY BỎ 1 MẪU TRƯỚC)");
+          return;
+        }
+        compareIds.push(itemId);
+        showToast(`⇄ ĐÃ ĐƯA VÀO KHAY SO SÁNH (${compareIds.length}/3): ${itemId}`);
+      }
+      persistState();
+      renderArchive();
+      if (activeModalItem && activeModalItem.id === itemId) {
+        syncModalToolButtons(itemId);
+      }
+    }
+
+    function syncModalToolButtons(itemId) {
+      const wBtn = document.getElementById("modalWishlistBtn");
+      const cBtn = document.getElementById("modalCompareBtn");
+      const isW = wishlistIds.includes(itemId);
+      const isC = compareIds.includes(itemId);
+      wBtn.textContent = isW ? "♥ ĐÃ TRONG WISHLIST" : "♡ LƯU YÊU THÍCH";
+      wBtn.style.background = isW ? "var(--accent)" : "transparent";
+      wBtn.style.color = isW ? "#FAF8F4" : "inherit";
+      cBtn.textContent = isC ? "⇄ ĐANG SO SÁNH" : "⇄ SO SÁNH";
+      cBtn.style.background = isC ? "var(--olive)" : "transparent";
+      cBtn.style.color = isC ? "#FAF8F4" : "inherit";
     }
 
     function openSpecModal(itemId) {
@@ -1855,16 +2646,113 @@
       document.getElementById("modalItemTitle").textContent = item.title;
       document.getElementById("modalItemOrigin").textContent = "NGUỒN GỐC: " + item.origin + " • " + item.batchMode;
       document.getElementById("modalItemDesc").textContent = item.desc;
-      document.getElementById("modalItemMaterial").textContent = item.material;
+      document.getElementById("modalItemMaterial").textContent = item.material + " — " + item.conversionNote;
       document.getElementById("modalVariantNote").value = "";
 
+      document.getElementById("modalCroSignals").innerHTML = `
+        <span class="cro-signal-Chip urgent">● ${item.slotLeft}</span>
+        <span class="cro-signal-Chip">⏱ ${item.eta}</span>
+        <span class="cro-signal-Chip">★ ${item.savedCount}</span>
+      `;
+
+      const paired = item.pairWith ? ARCHIVE_ITEMS.find(x => x.id === item.pairWith) : null;
+      const modalBundleBox = document.getElementById("modalBundleBox");
+      if (paired) {
+        modalBundleBox.style.display = "flex";
+        modalBundleBox.innerHTML = `
+          <div class="bundle-strip-text">
+            <span class="mono" style="color: var(--accent); display: block;">MUA KÈM TỰ ĐỘNG GIẢM 15% CƯỚC GHÉP KIỆN</span>
+            Ghép cùng <strong>[${paired.id}] ${paired.title}</strong>: ${item.pairHook}
+          </div>
+          <button type="button" class="btn-bundle-mini" data-action="add-bundle" data-id="${item.id}" data-pair="${paired.id}">
+            + CHỌN CẢ ĐÔI
+          </button>
+        `;
+      } else {
+        modalBundleBox.style.display = "none";
+      }
+
+      syncModalToolButtons(item.id);
       sharedBackdrop.classList.add("open");
       specModal.classList.add("open");
+    }
+
+    function openCompareModal() {
+      const container = document.getElementById("compareTableContainer");
+      const cmpItems = ARCHIVE_ITEMS.filter(i => compareIds.includes(i.id));
+
+      if (cmpItems.length === 0) {
+        container.innerHTML = `
+          <div style="padding: 3rem 1rem; text-align: center; color: var(--ink-secondary);">
+            Bạn chưa chọn hồ sơ nào để so sánh. Hãy bấm nút <strong>⇄ SO SÁNH</strong> trên bất kỳ sản phẩm nào (tối đa 3 mẫu).
+          </div>
+        `;
+      } else {
+        container.innerHTML = `
+          <table class="compare-table">
+            <tbody>
+              <tr>
+                <th>Mẫu Tuyển Chọn</th>
+                ${cmpItems.map(it => `
+                  <td>
+                    <img src="${it.image}" alt="${it.title}" style="width: 90px; height: 110px; object-fit: cover; border: 1px solid var(--hairline); margin-bottom: 0.5rem; display: block;" />
+                    <span class="mono" style="color: var(--accent);">${it.code}</span>
+                    <div class="serif" style="font-size: 1.25rem; font-weight: 600; margin: 0.2rem 0;">${it.title}</div>
+                  </td>
+                `).join("")}
+              </tr>
+              <tr>
+                <th>Studio / Xưởng Gốc</th>
+                ${cmpItems.map(it => `<td class="mono">${it.origin}</td>`).join("")}
+              </tr>
+              <tr>
+                <th>Độ Hiếm &amp; Xuất Xứ</th>
+                ${cmpItems.map(it => `<td><strong>${it.rarity}</strong></td>`).join("")}
+              </tr>
+              <tr>
+                <th>Cấu Trúc Vật Liệu</th>
+                ${cmpItems.map(it => `<td>${it.material}</td>`).join("")}
+              </tr>
+              <tr>
+                <th>Tình Trạng Lô &amp; Thời Gian Về VN</th>
+                ${cmpItems.map(it => `<td><span class="cro-signal-Chip urgent">● ${it.slotLeft}</span> <span class="cro-signal-Chip">${it.eta}</span></td>`).join("")}
+              </tr>
+              <tr>
+                <th>Điểm Tối Ưu Chuyển Đổi</th>
+                ${cmpItems.map(it => `<td style="color: var(--ink-secondary);">${it.conversionNote}</td>`).join("")}
+              </tr>
+              <tr>
+                <th>Gợi Ý Mua Kèm</th>
+                ${cmpItems.map(it => `<td>${it.pairHook}</td>`).join("")}
+              </tr>
+              <tr>
+                <th>Thao Tác</th>
+                ${cmpItems.map(it => `
+                  <td>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                      <button type="button" class="btn-editorial-primary mono" style="padding: 0.5rem 0.85rem; font-size: 0.66rem;" data-action="quick-add" data-id="${it.id}">
+                        + ĐƯA VÀO PHIẾU
+                      </button>
+                      <button type="button" class="btn-editorial-outline mono" style="padding: 0.5rem 0.7rem; font-size: 0.66rem;" data-action="toggle-compare" data-id="${it.id}">
+                        BỎ KHỎI BẢNG
+                      </button>
+                    </div>
+                  </td>
+                `).join("")}
+              </tr>
+            </tbody>
+          </table>
+        `;
+      }
+
+      sharedBackdrop.classList.add("open");
+      compareModal.classList.add("open");
     }
 
     function closeAllOverlays() {
       sharedBackdrop.classList.remove("open");
       specModal.classList.remove("open");
+      compareModal.classList.remove("open");
       briefDrawer.classList.remove("open");
     }
 
@@ -1890,6 +2778,46 @@
 
     // Event Listeners
     document.addEventListener("click", (e) => {
+      const wishTrigger = e.target.closest("[data-action='toggle-wish']");
+      if (wishTrigger) {
+        e.stopPropagation();
+        toggleWishlist(wishTrigger.getAttribute("data-id"));
+        return;
+      }
+
+      const cmpTrigger = e.target.closest("[data-action='toggle-compare']");
+      if (cmpTrigger) {
+        e.stopPropagation();
+        toggleCompare(cmpTrigger.getAttribute("data-id"));
+        if (compareModal.classList.contains("open")) {
+          openCompareModal();
+        }
+        return;
+      }
+
+      const bundleTrigger = e.target.closest("[data-action='add-bundle']");
+      if (bundleTrigger) {
+        e.stopPropagation();
+        const id1 = bundleTrigger.getAttribute("data-id");
+        const id2 = bundleTrigger.getAttribute("data-pair");
+        [id1, id2].forEach(id => {
+          const it = ARCHIVE_ITEMS.find(x => x.id === id);
+          if (it) {
+            addToBrief({
+              code: it.code,
+              title: it.title,
+              origin: it.origin,
+              mode: "Combo Ghép Kiện Đồng Kiểm (Ưu đãi tự động -15% cước)",
+              note: `Mua kèm cặp [${id1} + ${id2}]`,
+              image: it.image
+            });
+          }
+        });
+        closeAllOverlays();
+        openBriefDrawer();
+        return;
+      }
+
       const specTrigger = e.target.closest("[data-action='open-spec']");
       if (specTrigger) {
         openSpecModal(specTrigger.getAttribute("data-id"));
@@ -1920,7 +2848,97 @@
         renderArchive();
         renderBriefDrawer();
         showToast("ĐÃ XÓA MỤC KHỎI PHIẾU BÁO GIÁ");
+        return;
       }
+
+      if (e.target.closest("#resetFilterEmptyBtn")) {
+        currentCategory = "all";
+        searchQuery = "";
+        document.getElementById("archiveSearchInput").value = "";
+        document.querySelectorAll("#categoryFilterBar .cat-btn").forEach(b => b.classList.remove("active"));
+        document.querySelector("#categoryFilterBar .cat-btn[data-cat='all']").classList.add("active");
+        renderArchive();
+      }
+    });
+
+    // 5 Pillar Bar Triggers & Header Buttons
+    document.getElementById("wishlistHeaderBtn").addEventListener("click", () => {
+      currentCategory = "wishlist";
+      document.querySelectorAll("#categoryFilterBar .cat-btn").forEach(b => b.classList.remove("active"));
+      document.getElementById("wishlistTabBtn").classList.add("active");
+      renderArchive();
+      document.getElementById("lookbook-section").scrollIntoView({ behavior: "smooth" });
+    });
+
+    document.getElementById("pillarWishlistTrigger").addEventListener("click", () => {
+      document.getElementById("wishlistHeaderBtn").click();
+    });
+
+    document.getElementById("filterWishlistQuickBtn").addEventListener("click", () => {
+      document.getElementById("wishlistHeaderBtn").click();
+    });
+
+    document.getElementById("moveAllWishlistToBriefBtn").addEventListener("click", () => {
+      const favItems = ARCHIVE_ITEMS.filter(i => wishlistIds.includes(i.id));
+      favItems.forEach(item => {
+        addToBrief({
+          code: item.code,
+          title: item.title,
+          origin: item.origin,
+          mode: "Chuyển từ Wishlist cá nhân (Hưởng ưu đãi ghép đơn)",
+          note: "Ưu tiên báo giá combo yêu thích",
+          image: item.image
+        });
+      });
+      openBriefDrawer();
+    });
+
+    document.getElementById("compareHeaderBtn").addEventListener("click", openCompareModal);
+    document.getElementById("dockOpenCompareBtn").addEventListener("click", openCompareModal);
+    document.getElementById("pillarCompareTrigger").addEventListener("click", openCompareModal);
+    document.getElementById("closeCompareModalBtn").addEventListener("click", closeAllOverlays);
+
+    document.getElementById("clearCompareBtn").addEventListener("click", () => {
+      compareIds = [];
+      persistState();
+      renderArchive();
+      openCompareModal();
+    });
+
+    document.getElementById("addAllCompareToBriefBtn").addEventListener("click", () => {
+      const cmpItems = ARCHIVE_ITEMS.filter(i => compareIds.includes(i.id));
+      cmpItems.forEach(item => {
+        addToBrief({
+          code: item.code,
+          title: item.title,
+          origin: item.origin,
+          mode: "Chọn từ Bảng So Sánh Chuyên Sâu",
+          note: "Nhờ tư vấn thêm giữa các mẫu đã đối chiếu",
+          image: item.image
+        });
+      });
+      closeAllOverlays();
+      openBriefDrawer();
+    });
+
+    document.getElementById("pillarCareTrigger").addEventListener("click", openBriefDrawer);
+    document.getElementById("pillarBundleTrigger").addEventListener("click", openBriefDrawer);
+    document.getElementById("pillarCroTrigger").addEventListener("click", () => {
+      openSpecModal("CN-01");
+    });
+
+    document.getElementById("careOpenBriefBtn").addEventListener("click", openBriefDrawer);
+    document.getElementById("dismissCareBarBtn").addEventListener("click", () => {
+      careBarDismissed = true;
+      updateWishlistAndCompareUI();
+    });
+
+    document.getElementById("modalWishlistBtn").addEventListener("click", () => {
+      if (activeModalItem) toggleWishlist(activeModalItem.id);
+    });
+
+    document.getElementById("modalCompareBtn").addEventListener("click", () => {
+      if (activeModalItem) toggleCompare(activeModalItem.id);
     });
 
     // Hero Showcase Switcher
@@ -2011,6 +3029,28 @@
       briefDrawer.classList.add("open");
     });
 
+    // Modal 1-Click Instant Zalo Quote (Pillar 05)
+    document.getElementById("modalInstantZaloBtn").addEventListener("click", () => {
+      if (!activeModalItem) return;
+      const mode = document.getElementById("modalOrderMode").value;
+      const note = document.getElementById("modalVariantNote").value.trim();
+      addToBrief({
+        code: activeModalItem.code,
+        title: activeModalItem.title,
+        origin: activeModalItem.origin,
+        mode: mode,
+        note: note || "Báo giá nhanh 1-chạm từ Hồ sơ sản phẩm",
+        image: activeModalItem.image
+      });
+      const text = buildZaloBriefText();
+      copyTextToClipboard(text);
+      showToast("ĐÃ SAO CHÉP PHIẾU BÁO GIÁ NHANH! ĐANG MỞ ZALO...");
+      const cleanPhone = studioConfig.zaloPhone.replace(/\D/g, "") || "0905888999";
+      setTimeout(() => {
+        window.open(`https://zalo.me/${cleanPhone}`, "_blank", "noopener,noreferrer");
+      }, 400);
+    });
+
     // Bespoke Custom Hunt Form
     document.getElementById("customHuntForm").addEventListener("submit", (e) => {
       e.preventDefault();
@@ -2070,6 +3110,10 @@
       const newZalo = document.getElementById("configZaloInput").value.trim() || "0905888999";
       studioConfig.brandName = newBrand;
       studioConfig.zaloPhone = newZalo;
+      try {
+        localStorage.setItem("atelier_brand", newBrand);
+        localStorage.setItem("atelier_zalo", newZalo);
+      } catch (e) {}
 
       document.getElementById("brandNameDisplay").textContent = newBrand;
       document.getElementById("footerBrandName").textContent = newBrand;
@@ -2080,6 +3124,10 @@
     });
 
     // Initial Render
+    document.getElementById("brandNameDisplay").textContent = studioConfig.brandName;
+    document.getElementById("footerBrandName").textContent = studioConfig.brandName;
+    document.getElementById("topZaloDisplay").textContent = formatZaloDisplay(studioConfig.zaloPhone);
+    document.getElementById("footerZaloDisplay").textContent = formatZaloDisplay(studioConfig.zaloPhone);
     renderArchive();
     renderBriefDrawer();
   </script>
