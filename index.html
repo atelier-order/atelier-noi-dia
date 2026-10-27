@@ -2284,13 +2284,8 @@
           </p>
         </div>
         <div class="sec-meta-cell">
-          <div>
-            <div class="mono" style="margin-bottom: 0.3rem; color: var(--accent); font-weight: 700;">🎁 ĐẶT TỪ 3 MÓN: CHIẾT KHẤU 15%</div>
-            <p style="margin-bottom: 0.65rem;">Chọn từ 3 sản phẩm bất kỳ bên dưới để nhận ngay mức giảm 15% tổng đơn.</p>
-          </div>
-          <button type="button" id="openExcelManagerTopBtn" class="btn-editorial-outline mono" style="padding: 0.5rem 0.85rem; font-size: 0.68rem; width: 100%; text-align: center;">
-            📊 TẢI FORM EXCEL / CẬP NHẬT SẢN PHẨM
-          </button>
+          <div class="mono" style="margin-bottom: 0.35rem; color: var(--accent); font-weight: 700;">🎁 ĐẶT TỪ 3 MÓN: CHIẾT KHẤU 15%</div>
+          <p>Chọn từ 3 sản phẩm bất kỳ bên dưới để được giảm ngay 15% tổng đơn &amp; miễn phí kiểm hàng video tại kho.</p>
         </div>
       </div>
 
@@ -2306,8 +2301,8 @@
 
         <div class="search-and-view">
           <input type="text" id="archiveSearchInput" class="archive-search-input" placeholder="Tìm theo tên sản phẩm, mức giá, chất liệu..." />
-          <button type="button" class="view-switch-btn active" id="viewGridBtn">Dạng Thẻ Giá</button>
-          <button type="button" class="view-switch-btn" id="viewTableBtn">Dạng Bảng Excel</button>
+          <button type="button" class="view-switch-btn active" id="viewGridBtn">Dạng Thẻ Lớn</button>
+          <button type="button" class="view-switch-btn" id="viewTableBtn">Xem Dạng Bảng</button>
         </div>
       </div>
 
@@ -2594,12 +2589,9 @@
       </div>
 
       <div class="footer-bottom-bar mono">
-        <div>© 2026 ATELIER — ĐẶT MUA HỘ QUA ẢNH / LINK SHOPEE, SỈ ĐA NGÀNH HÀNG &amp; GÓI NỘI THẤT.</div>
-        <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+        <div id="secretOwnerTrigger" style="user-select: none;">© 2026 ATELIER — ĐẶT MUA HỘ QUA ẢNH / LINK SHOPEE, SỈ ĐA NGÀNH HÀNG &amp; GÓI NỘI THẤT.</div>
+        <div>
           <span>HOTLINE / ZALO / WHATSAPP: <strong>0823.230.703</strong></span>
-          <button type="button" id="openCrmSetupBtn" class="mono" style="font-size: 0.68rem; color: var(--ink-primary); background: var(--bg-secondary); border: 1px solid var(--hairline-strong); padding: 0.3rem 0.7rem;">
-            📊 Quản Lý File Excel Sản Phẩm &amp; Google Drive CRM
-          </button>
         </div>
       </div>
     </footer>
@@ -4132,7 +4124,7 @@
       showToast("ĐÃ KHÔI PHỤC DANH SÁCH MẶC ĐỊNH");
     });
 
-    // CRM & Excel Modal Controls
+    // Secret Owner-Only CRM & Excel Modal Controls (Completely hidden from regular customers!)
     const gasWebhookInput = document.getElementById("gasWebhookInput");
     const gasStatusText = document.getElementById("gasStatusText");
 
@@ -4146,8 +4138,50 @@
       crmModal.classList.add("open");
     }
 
-    document.getElementById("openCrmSetupBtn").addEventListener("click", openCrmAndExcelModal);
-    document.getElementById("openExcelManagerTopBtn").addEventListener("click", openCrmAndExcelModal);
+    function promptOwnerPinAndOpen() {
+      const pin = window.prompt("Nhập mã PIN Chủ Shop ATELIER để mở Quản Trị Data & Excel:");
+      if (pin === "2307" || pin === "0823230703") {
+        openCrmAndExcelModal();
+      } else if (pin !== null) {
+        showToast("MÃ PIN KHÔNG ĐÚNG!");
+      }
+    }
+
+    // Cách 1: Truy cập bằng link riêng của chủ shop (?quanly=2307 hoặc ?admin=0823230703)
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const qPin = urlParams.get("quanly") || urlParams.get("admin");
+      if (qPin === "2307" || qPin === "0823230703") {
+        setTimeout(openCrmAndExcelModal, 300);
+      } else if (window.location.hash === "#quanly" || window.location.hash === "#admin") {
+        setTimeout(promptOwnerPinAndOpen, 300);
+      }
+    } catch (e) {}
+
+    // Cách 2: Bấm 5 lần liên tiếp vào dòng bản quyền "© 2026 ATELIER" ở cuối trang hoặc bấm Ctrl+Shift+A
+    let ownerTapCount = 0;
+    let ownerTapTimer = null;
+    const secretOwnerTrigger = document.getElementById("secretOwnerTrigger");
+    if (secretOwnerTrigger) {
+      secretOwnerTrigger.addEventListener("click", () => {
+        ownerTapCount++;
+        clearTimeout(ownerTapTimer);
+        if (ownerTapCount >= 5) {
+          ownerTapCount = 0;
+          promptOwnerPinAndOpen();
+        } else {
+          ownerTapTimer = setTimeout(() => { ownerTapCount = 0; }, 1600);
+        }
+      });
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (e.ctrlKey && e.shiftKey && (e.key === "A" || e.key === "a")) {
+        e.preventDefault();
+        promptOwnerPinAndOpen();
+      }
+    });
+
     document.getElementById("closeCrmModalBtn").addEventListener("click", closeAllOverlays);
     sharedBackdrop.addEventListener("click", closeAllOverlays);
 
