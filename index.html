@@ -14,21 +14,21 @@
   <meta name="twitter:description" content="Chỉ cần gửi ảnh, không cần mò link. Đặt lẻ đồ độc bản, làm trọn gói nội thất theo phòng và nhập sỉ trực tiếp từ xưởng." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <style>
     :root, [data-theme="paper"] {
       --bg-primary: #F4F1EA;
-      --bg-secondary: #EAE5DA;
+      --bg-secondary: #EAE4D7;
       --bg-elevated: #FAF8F4;
-      --ink-primary: #141413;
-      --ink-secondary: #5C5852;
-      --ink-muted: #8A847A;
-      --hairline: #D4CFC3;
-      --hairline-strong: #141413;
-      --accent: #B83A24;
-      --accent-soft: rgba(184, 58, 36, 0.09);
-      --olive: #2E4035;
-      --overlay: rgba(20, 20, 19, 0.62);
+      --ink-primary: #161514;
+      --ink-secondary: #5A5650;
+      --ink-muted: #857F75;
+      --hairline: #D5CFC2;
+      --hairline-strong: #161514;
+      --accent: #9E3321;
+      --accent-soft: rgba(158, 51, 33, 0.07);
+      --olive: #2C3E35;
+      --overlay: rgba(22, 21, 20, 0.62);
     }
 
     [data-theme="noir"] {
@@ -40,8 +40,8 @@
       --ink-muted: #6E6A62;
       --hairline: #2C2A27;
       --hairline-strong: #EDE9E0;
-      --accent: #D95338;
-      --accent-soft: rgba(217, 83, 56, 0.14);
+      --accent: #C8A97E;
+      --accent-soft: rgba(200, 169, 126, 0.12);
       --olive: #8FA896;
       --overlay: rgba(0, 0, 0, 0.78);
     }
@@ -56,10 +56,13 @@
       scroll-behavior: smooth;
       background-color: var(--bg-primary);
       color: var(--ink-primary);
-      font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       font-size: 16px;
-      line-height: 1.6;
+      line-height: 1.78;
+      letter-spacing: 0.016em;
+      word-spacing: 0.04em;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     body {
@@ -68,6 +71,14 @@
       overflow-x: hidden;
       transition: background-color 0.35s ease, color 0.35s ease;
       position: relative;
+      letter-spacing: 0.016em;
+      line-height: 1.78;
+    }
+
+    p, li {
+      letter-spacing: 0.018em;
+      word-spacing: 0.04em;
+      line-height: 1.82;
     }
 
     /* Subtle analog paper noise overlay */
@@ -77,21 +88,37 @@
       inset: 0;
       pointer-events: none;
       z-index: 9999;
-      opacity: 0.032;
+      opacity: 0.028;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     }
 
     .serif {
-      font-family: 'Playfair Display', Georgia, serif;
-      line-height: 1.25;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      line-height: 1.32;
+      letter-spacing: 0.015em;
     }
 
     .mono {
-      font-family: 'Be Vietnam Pro', sans-serif;
+      font-family: 'JetBrains Mono', monospace;
       font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      line-height: 1.65;
       text-transform: uppercase;
+    }
+
+    /* Custom Minimal Architectural Line Icon */
+    .arch-icon {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      stroke-width: 1.35;
+      fill: none;
+      stroke-linecap: square;
+      stroke-linejoin: miter;
+      flex-shrink: 0;
+      display: inline-block;
+      vertical-align: middle;
     }
 
     a {
@@ -114,21 +141,22 @@
     /* Top Archival Ticker Bar */
     .top-ticker {
       border-bottom: 1px solid var(--hairline);
-      padding: 0.55rem 1.5rem;
+      padding: 0.7rem 1.75rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 0.7rem;
+      letter-spacing: 0.11em;
       color: var(--ink-secondary);
       background: var(--bg-secondary);
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: 0.75rem;
     }
 
     .ticker-left {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 1.5rem;
       flex-wrap: wrap;
     }
 
@@ -137,7 +165,7 @@
       width: 6px;
       height: 6px;
       background: var(--accent);
-      margin-right: 0.4rem;
+      margin-right: 0.55rem;
       vertical-align: middle;
     }
 
@@ -154,7 +182,7 @@
     }
 
     .brand-cell {
-      padding: 0.9rem 1.4rem;
+      padding: 1.05rem 1.75rem;
       border-right: 1px solid var(--hairline);
       display: flex;
       flex-direction: column;
@@ -163,17 +191,18 @@
     }
 
     .brand-title {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 1.5rem;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.75rem;
       font-weight: 700;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.12em;
       line-height: 1.1;
     }
 
     .brand-sub {
-      font-size: 0.6rem;
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
       color: var(--ink-muted);
-      margin-top: 0.2rem;
+      margin-top: 0.3rem;
       white-space: nowrap;
     }
 
@@ -181,8 +210,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0 1.25rem;
-      gap: clamp(1rem, 2vw, 2.1rem);
+      padding: 0 1.5rem;
+      gap: clamp(1.35rem, 2.5vw, 2.6rem);
       overflow-x: auto;
       scrollbar-width: none;
       -ms-overflow-style: none;
@@ -195,10 +224,10 @@
     .nav-link {
       font-size: 0.76rem;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.09em;
       font-weight: 600;
       color: var(--ink-secondary);
-      padding: 0.35rem 0;
+      padding: 0.45rem 0;
       border-bottom: 2px solid transparent;
       transition: color 0.2s, border-color 0.2s;
       white-space: nowrap;
@@ -217,12 +246,12 @@
     }
 
     .theme-btn {
-      padding: 0 1rem;
+      padding: 0 1.15rem;
       border-left: 1px solid var(--hairline);
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.5rem;
       color: var(--ink-secondary);
       white-space: nowrap;
       transition: background 0.2s, color 0.2s;
@@ -234,14 +263,14 @@
     }
 
     .brief-trigger-btn {
-      padding: 0 1.35rem;
+      padding: 0 1.55rem;
       background: var(--ink-primary);
       color: var(--bg-primary);
       display: flex;
       align-items: center;
-      gap: 0.55rem;
-      font-size: 0.72rem;
-      letter-spacing: 0.05em;
+      gap: 0.65rem;
+      font-size: 0.73rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       font-weight: 600;
       white-space: nowrap;
@@ -257,8 +286,8 @@
       padding: 0.15rem 0.5rem;
       background: var(--accent);
       color: #FAF8F4;
-      font-family: 'Be Vietnam Pro', sans-serif;
-      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
       font-size: 0.72rem;
     }
 
@@ -278,7 +307,7 @@
     }
 
     .hero-manifesto {
-      padding: 3.5rem 3rem;
+      padding: 3.75rem 3.25rem;
       border-right: 1px solid var(--hairline);
       display: flex;
       flex-direction: column;
@@ -288,21 +317,22 @@
     .issue-tag {
       display: inline-flex;
       align-items: center;
-      gap: 0.65rem;
-      padding-bottom: 0.75rem;
+      gap: 0.8rem;
+      padding-bottom: 0.85rem;
       border-bottom: 1px solid var(--hairline);
       color: var(--ink-secondary);
-      margin-bottom: 1.75rem;
+      margin-bottom: 1.85rem;
       width: fit-content;
     }
 
     .hero-headline {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(2.2rem, 3.8vw, 3.65rem);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2.35rem, 3.8vw, 3.55rem);
       font-weight: 600;
-      line-height: 1.24;
-      letter-spacing: -0.01em;
-      margin-bottom: 1.5rem;
+      line-height: 1.32;
+      letter-spacing: 0.015em;
+      word-spacing: 0.03em;
+      margin-bottom: 1.65rem;
     }
 
     .hero-headline em {
@@ -312,11 +342,12 @@
     }
 
     .hero-lead {
-      font-size: 1.02rem;
+      font-size: 1rem;
       color: var(--ink-secondary);
       max-width: 58ch;
-      line-height: 1.7;
-      margin-bottom: 2.25rem;
+      line-height: 1.88;
+      letter-spacing: 0.02em;
+      margin-bottom: 2.35rem;
     }
 
     .policy-strip {
@@ -324,16 +355,16 @@
       grid-template-columns: repeat(3, 1fr);
       border-top: 1px solid var(--hairline);
       border-bottom: 1px solid var(--hairline);
-      margin-bottom: 2.25rem;
+      margin-bottom: 2.35rem;
     }
 
     .policy-cell {
-      padding: 1.1rem 1rem 1.1rem 0;
+      padding: 1.25rem 1.15rem 1.25rem 0;
       border-right: 1px solid var(--hairline);
     }
 
     .policy-cell:not(:first-child) {
-      padding-left: 1rem;
+      padding-left: 1.15rem;
     }
 
     .policy-cell:last-child {
@@ -343,36 +374,37 @@
     .policy-num {
       color: var(--accent);
       display: block;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.35rem;
     }
 
     .policy-title {
       font-weight: 600;
-      font-size: 0.86rem;
-      margin-bottom: 0.2rem;
+      font-size: 0.88rem;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.3rem;
     }
 
     .policy-desc {
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       color: var(--ink-secondary);
-      line-height: 1.45;
+      line-height: 1.65;
     }
 
     .hero-cta-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 1.15rem;
       align-items: center;
     }
 
     .btn-editorial-primary {
-      padding: 1rem 1.85rem;
+      padding: 1.05rem 1.95rem;
       background: var(--ink-primary);
       color: var(--bg-primary);
-      font-size: 0.78rem;
-      letter-spacing: 0.1em;
+      font-size: 0.76rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      font-weight: 500;
+      font-weight: 600;
       display: inline-flex;
       align-items: center;
       gap: 0.75rem;
@@ -385,13 +417,17 @@
     }
 
     .btn-editorial-outline {
-      padding: 1rem 1.65rem;
+      padding: 1.05rem 1.75rem;
       border: 1px solid var(--ink-primary);
       color: var(--ink-primary);
-      font-size: 0.78rem;
-      letter-spacing: 0.1em;
+      font-size: 0.76rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      font-weight: 500;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
       transition: background 0.25s, color 0.25s;
     }
 
@@ -410,7 +446,7 @@
     }
 
     .showcase-top-meta {
-      padding: 1rem 1.5rem;
+      padding: 1.1rem 1.65rem;
       border-bottom: 1px solid var(--hairline);
       display: flex;
       justify-content: space-between;
@@ -437,20 +473,21 @@
     }
 
     .showcase-caption-bar {
-      padding: 1.35rem 1.5rem;
+      padding: 1.45rem 1.65rem;
       border-top: 1px solid var(--hairline);
       background: var(--bg-elevated);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 1rem;
+      gap: 1.15rem;
     }
 
     .showcase-item-title {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 1.32rem;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.42rem;
       font-weight: 600;
-      line-height: 1.3;
+      line-height: 1.35;
+      letter-spacing: 0.015em;
     }
 
     .showcase-tabs {
@@ -460,7 +497,7 @@
     }
 
     .showcase-tab {
-      padding: 0.75rem 1rem;
+      padding: 0.85rem 1.15rem;
       font-size: 0.72rem;
       border-right: 1px solid var(--hairline);
       text-align: left;
@@ -486,32 +523,35 @@
     }
 
     .sec-index-cell {
-      padding: 1.75rem 2rem;
+      padding: 2rem 2.25rem;
       border-right: 1px solid var(--hairline);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      gap: 0.6rem;
     }
 
     .sec-title-cell {
-      padding: 1.75rem 2.25rem;
+      padding: 2rem 2.5rem;
       border-right: 1px solid var(--hairline);
     }
 
     .sec-heading {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(1.75rem, 2.8vw, 2.55rem);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(1.9rem, 2.9vw, 2.7rem);
       font-weight: 600;
-      line-height: 1.25;
-      margin-bottom: 0.55rem;
+      line-height: 1.32;
+      letter-spacing: 0.015em;
+      margin-bottom: 0.75rem;
     }
 
     .sec-meta-cell {
-      padding: 1.75rem 2rem;
+      padding: 2rem 2.25rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      font-size: 0.83rem;
+      font-size: 0.85rem;
+      line-height: 1.78;
       color: var(--ink-secondary);
     }
 
@@ -532,10 +572,10 @@
     }
 
     .cat-btn {
-      padding: 1rem 1.4rem;
+      padding: 1.1rem 1.55rem;
       border-right: 1px solid var(--hairline);
-      font-size: 0.76rem;
-      letter-spacing: 0.05em;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--ink-secondary);
       white-space: nowrap;
@@ -550,7 +590,7 @@
     .cat-btn.active {
       background: var(--ink-primary);
       color: var(--bg-primary);
-      font-weight: 500;
+      font-weight: 600;
     }
 
     .search-and-view {
@@ -560,8 +600,9 @@
     }
 
     .archive-search-input {
-      padding: 0 1.25rem;
-      font-size: 0.82rem;
+      padding: 0 1.4rem;
+      font-size: 0.84rem;
+      letter-spacing: 0.02em;
       min-width: 240px;
       background: transparent;
       color: var(--ink-primary);
@@ -572,11 +613,11 @@
     }
 
     .view-switch-btn {
-      padding: 0 1.15rem;
+      padding: 0 1.25rem;
       border-left: 1px solid var(--hairline);
       font-size: 0.72rem;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.09em;
       color: var(--ink-secondary);
     }
 
@@ -612,12 +653,13 @@
     }
 
     .card-top-bar {
-      padding: 0.85rem 1.15rem;
+      padding: 0.95rem 1.3rem;
       border-bottom: 1px solid var(--hairline);
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 0.68rem;
+      letter-spacing: 0.09em;
       color: var(--ink-secondary);
     }
 
@@ -647,21 +689,21 @@
 
     .private-quote-pill {
       position: absolute;
-      bottom: 0.75rem;
-      left: 0.75rem;
+      bottom: 0.85rem;
+      left: 0.85rem;
       background: var(--bg-primary);
       color: var(--ink-primary);
       border: 1px solid var(--hairline-strong);
-      padding: 0.3rem 0.65rem;
-      font-family: 'Be Vietnam Pro', sans-serif;
-      font-weight: 600;
+      padding: 0.35rem 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
       font-size: 0.66rem;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.09em;
       text-transform: uppercase;
     }
 
     .card-body {
-      padding: 1.25rem 1.15rem;
+      padding: 1.5rem 1.35rem;
       display: flex;
       flex-direction: column;
       flex: 1;
@@ -671,16 +713,17 @@
     .card-category-label {
       font-size: 0.68rem;
       color: var(--accent);
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.45rem;
       display: block;
     }
 
     .card-title {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 1.28rem;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.4rem;
       font-weight: 600;
-      line-height: 1.32;
-      margin-bottom: 0.55rem;
+      line-height: 1.36;
+      letter-spacing: 0.015em;
+      margin-bottom: 0.75rem;
       cursor: pointer;
     }
 
@@ -689,32 +732,34 @@
     }
 
     .card-specs {
-      font-size: 0.8rem;
+      font-size: 0.83rem;
       color: var(--ink-secondary);
-      line-height: 1.55;
-      margin-bottom: 1rem;
+      line-height: 1.78;
+      letter-spacing: 0.018em;
+      margin-bottom: 1.25rem;
     }
 
     .card-batch-note {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       color: var(--ink-muted);
-      padding-top: 0.75rem;
+      padding-top: 0.85rem;
       border-top: 1px dashed var(--hairline);
-      margin-bottom: 1rem;
+      margin-bottom: 1.15rem;
+      letter-spacing: 0.08em;
     }
 
     .card-actions {
       display: grid;
       grid-template-columns: 1fr 1.35fr;
       border-top: 1px solid var(--hairline);
-      margin: 0 -1.15rem -1.25rem -1.15rem;
+      margin: 0 -1.35rem -1.5rem -1.35rem;
     }
 
     .btn-card-spec {
-      padding: 0.85rem 0.5rem;
-      font-size: 0.7rem;
+      padding: 0.95rem 0.6rem;
+      font-size: 0.68rem;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.09em;
       border-right: 1px solid var(--hairline);
       color: var(--ink-secondary);
       text-align: center;
@@ -727,10 +772,10 @@
     }
 
     .btn-card-add {
-      padding: 0.85rem 0.5rem;
-      font-size: 0.7rem;
+      padding: 0.95rem 0.6rem;
+      font-size: 0.68rem;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.09em;
       font-weight: 600;
       color: var(--ink-primary);
       text-align: center;
@@ -764,18 +809,19 @@
     }
 
     .archive-index-table th, .archive-index-table td {
-      padding: 1rem 1.25rem;
+      padding: 1.15rem 1.4rem;
       text-align: left;
       border-bottom: 1px solid var(--hairline);
-      font-size: 0.84rem;
+      font-size: 0.85rem;
+      line-height: 1.72;
     }
 
     .archive-index-table th {
-      font-family: 'Be Vietnam Pro', sans-serif;
+      font-family: 'JetBrains Mono', monospace;
       font-weight: 600;
       font-size: 0.7rem;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.09em;
       color: var(--ink-muted);
       background: var(--bg-secondary);
     }
@@ -799,36 +845,37 @@
     }
 
     .bespoke-left {
-      padding: 3rem 2.5rem;
+      padding: 3.25rem 2.85rem;
       border-right: 1px solid var(--hairline);
       background: var(--bg-secondary);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      gap: 2rem;
     }
 
     .bespoke-quote-box {
-      padding: 1.5rem;
+      padding: 1.65rem 1.75rem;
       border: 1px solid var(--hairline-strong);
       background: var(--bg-primary);
       margin-top: 2rem;
     }
 
     .bespoke-right {
-      padding: 3rem 3rem;
+      padding: 3.25rem 3.25rem;
       background: var(--bg-primary);
     }
 
     .form-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
+      gap: 1.75rem 1.65rem;
     }
 
     .form-group {
       display: flex;
       flex-direction: column;
-      gap: 0.45rem;
+      gap: 0.6rem;
     }
 
     .form-group.full {
@@ -836,21 +883,24 @@
     }
 
     .form-label {
-      font-family: 'Be Vietnam Pro', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-weight: 600;
-      font-size: 0.75rem;
+      font-size: 0.76rem;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.07em;
+      line-height: 1.55;
       color: var(--ink-secondary);
     }
 
     .editorial-input, .editorial-select, .editorial-textarea {
       width: 100%;
-      padding: 0.85rem 1rem;
+      padding: 0.95rem 1.15rem;
       border: 1px solid var(--hairline-strong);
       background: var(--bg-elevated);
       color: var(--ink-primary);
-      font-size: 0.88rem;
+      font-size: 0.9rem;
+      letter-spacing: 0.02em;
+      line-height: 1.6;
       transition: border-color 0.2s;
     }
 
@@ -871,7 +921,7 @@
     }
 
     .process-cell {
-      padding: 2.5rem 2.25rem;
+      padding: 2.75rem 2.5rem;
       border-right: 1px solid var(--hairline);
       display: flex;
       flex-direction: column;
@@ -883,26 +933,28 @@
     }
 
     .process-step-num {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 2.8rem;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 3rem;
       font-style: italic;
       color: var(--accent);
       line-height: 1.1;
-      margin-bottom: 1rem;
+      margin-bottom: 1.15rem;
     }
 
     .process-step-title {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 1.45rem;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.55rem;
       font-weight: 600;
-      line-height: 1.3;
-      margin-bottom: 0.75rem;
+      line-height: 1.35;
+      letter-spacing: 0.015em;
+      margin-bottom: 0.9rem;
     }
 
     .process-step-text {
-      font-size: 0.86rem;
+      font-size: 0.88rem;
       color: var(--ink-secondary);
-      line-height: 1.65;
+      line-height: 1.82;
+      letter-spacing: 0.018em;
     }
 
     /* Wholesale & B2B Factory Sourcing Grid */
@@ -914,12 +966,12 @@
     }
 
     .wholesale-card {
-      padding: 2.25rem 2rem;
+      padding: 2.5rem 2.25rem;
       border-right: 1px solid var(--hairline);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 1.5rem;
+      gap: 1.75rem;
       transition: background 0.25s ease;
     }
 
@@ -933,42 +985,43 @@
 
     .wholesale-tag {
       display: inline-block;
-      padding: 0.28rem 0.65rem;
+      padding: 0.32rem 0.75rem;
       background: var(--accent-soft);
       color: var(--accent);
       font-size: 0.7rem;
       font-weight: 600;
-      margin-bottom: 0.85rem;
+      letter-spacing: 0.09em;
+      margin-bottom: 1rem;
     }
 
     .wholesale-list {
       list-style: none;
-      margin: 1rem 0 0;
-      padding-top: 1rem;
+      margin: 1.25rem 0 0;
+      padding-top: 1.25rem;
       border-top: 1px dashed var(--hairline);
       display: flex;
       flex-direction: column;
-      gap: 0.55rem;
-      font-size: 0.84rem;
+      gap: 0.8rem;
+      font-size: 0.86rem;
       color: var(--ink-secondary);
-      line-height: 1.55;
+      line-height: 1.78;
     }
 
     /* Pre-Footer Direct Contact Banner */
     .direct-contact-strip {
-      padding: 1.75rem 2.25rem;
+      padding: 2rem 2.5rem;
       border-bottom: 1px solid var(--hairline-strong);
       background: var(--bg-secondary);
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 1.25rem;
+      gap: 1.5rem;
     }
 
     .contact-strip-actions {
       display: flex;
-      gap: 0.75rem;
+      gap: 0.85rem;
       align-items: center;
       flex-wrap: wrap;
     }
@@ -985,11 +1038,11 @@
     }
 
     .footer-col {
-      padding: 2.75rem 2rem;
+      padding: 3rem 2.25rem;
       border-right: 1px solid var(--hairline);
       display: flex;
       flex-direction: column;
-      gap: 0.9rem;
+      gap: 1.1rem;
     }
 
     .footer-col:last-child {
@@ -999,20 +1052,20 @@
     .footer-col-title {
       font-size: 0.76rem;
       font-weight: 700;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--ink-primary);
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.35rem;
     }
 
     .footer-links-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0.6rem;
-      font-size: 0.84rem;
+      gap: 0.75rem;
+      font-size: 0.85rem;
       color: var(--ink-secondary);
-      line-height: 1.5;
+      line-height: 1.72;
     }
 
     .footer-links-list a:hover {
@@ -1020,13 +1073,14 @@
     }
 
     .footer-bottom-bar {
-      padding: 1.35rem 2.25rem;
+      padding: 1.5rem 2.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 1rem;
-      font-size: 0.78rem;
+      gap: 1.15rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
       color: var(--ink-muted);
     }
 
@@ -1181,10 +1235,10 @@
       padding: 0.95rem;
       background: var(--bg-secondary);
       border: 1px solid var(--hairline);
-      font-family: 'Be Vietnam Pro', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 0.78rem;
       white-space: pre-wrap;
-      line-height: 1.55;
+      line-height: 1.72;
       max-height: 170px;
       overflow-y: auto;
       color: var(--ink-primary);
@@ -1207,11 +1261,11 @@
       transform: translateX(-50%) translateY(20px);
       background: var(--ink-primary);
       color: var(--bg-primary);
-      padding: 0.85rem 1.5rem;
-      font-family: 'Be Vietnam Pro', sans-serif;
-      font-weight: 600;
-      font-size: 0.76rem;
-      letter-spacing: 0.03em;
+      padding: 0.95rem 1.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
       z-index: 350;
       opacity: 0;
       pointer-events: none;
@@ -1269,7 +1323,7 @@
     .cro-arch-sub {
       font-size: 0.74rem;
       color: var(--ink-secondary);
-      line-height: 1.45;
+      line-height: 1.55;
     }
 
     /* 2. Card Floating Utility Buttons (Wishlist & Compare) */
@@ -1288,8 +1342,8 @@
       color: var(--ink-primary);
       border: 1px solid var(--hairline-strong);
       padding: 0.34rem 0.6rem;
-      font-family: 'Be Vietnam Pro', sans-serif;
-      font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
       font-size: 0.66rem;
       display: inline-flex;
       align-items: center;
@@ -1324,7 +1378,7 @@
     }
 
     .cro-signal-Chip {
-      font-family: 'Be Vietnam Pro', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-weight: 500;
       font-size: 0.65rem;
       padding: 0.2rem 0.52rem;
@@ -1353,7 +1407,7 @@
 
     .bundle-strip-text {
       font-size: 0.73rem;
-      line-height: 1.4;
+      line-height: 1.5;
       color: var(--ink-secondary);
     }
 
@@ -1365,8 +1419,8 @@
       padding: 0.32rem 0.6rem;
       background: var(--ink-primary);
       color: var(--bg-primary);
-      font-family: 'Be Vietnam Pro', sans-serif;
-      font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
       font-size: 0.65rem;
       white-space: nowrap;
       transition: background 0.2s;
@@ -1516,8 +1570,8 @@
     .compare-table th {
       width: 170px;
       background: var(--bg-secondary);
-      font-family: 'Be Vietnam Pro', sans-serif;
-      font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
       font-size: 0.72rem;
       text-transform: uppercase;
       color: var(--ink-secondary);
@@ -1584,31 +1638,32 @@
 
     .package-badge-top {
       position: absolute;
-      top: 0.75rem;
-      left: 0.75rem;
+      top: 0.85rem;
+      left: 0.85rem;
       background: var(--ink-primary);
       color: var(--bg-primary);
-      padding: 0.3rem 0.65rem;
-      font-family: 'Be Vietnam Pro', sans-serif;
-      font-weight: 600;
-      font-size: 0.66rem;
-      letter-spacing: 0.04em;
+      padding: 0.35rem 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
     }
 
     .package-saving-pill {
       position: absolute;
-      bottom: 0.75rem;
-      right: 0.75rem;
+      bottom: 0.85rem;
+      right: 0.85rem;
       background: var(--accent);
       color: #FAF8F4;
-      padding: 0.3rem 0.65rem;
-      font-family: 'Be Vietnam Pro', sans-serif;
-      font-weight: 600;
-      font-size: 0.66rem;
+      padding: 0.35rem 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
     }
 
     .package-content {
-      padding: 1.65rem 1.5rem;
+      padding: 2rem 1.85rem;
       display: flex;
       flex-direction: column;
       flex: 1;
@@ -1617,14 +1672,15 @@
 
     .package-items-checklist {
       list-style: none;
-      margin: 1rem 0 1.35rem 0;
-      padding: 0.85rem 1rem;
+      margin: 1.25rem 0 1.65rem 0;
+      padding: 1.15rem 1.25rem;
       background: var(--bg-secondary);
       border: 1px solid var(--hairline);
       display: flex;
       flex-direction: column;
-      gap: 0.42rem;
-      font-size: 0.78rem;
+      gap: 0.68rem;
+      font-size: 0.82rem;
+      line-height: 1.75;
       color: var(--ink-secondary);
     }
 
@@ -1634,9 +1690,9 @@
 
     /* Visual Upload & Clipboard Paste Dropzone (No Links) */
     .visual-dropzone {
-      border: 1.5px dashed var(--hairline-strong);
+      border: 1px dashed var(--hairline-strong);
       background: var(--bg-elevated);
-      padding: 1.4rem 1.25rem;
+      padding: 1.75rem 1.5rem;
       text-align: center;
       cursor: pointer;
       transition: border-color 0.2s, background 0.2s;
@@ -1650,12 +1706,12 @@
 
     .dropzone-preview-wrap {
       display: none;
-      margin-top: 0.9rem;
-      padding-top: 0.9rem;
+      margin-top: 1.1rem;
+      padding-top: 1.1rem;
       border-top: 1px solid var(--hairline);
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
+      gap: 1.15rem;
       text-align: left;
     }
 
@@ -1702,7 +1758,7 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.28s ease, transform 0.28s ease;
-      padding: 1.75rem;
+      padding: 2rem;
     }
 
     .crm-modal.open {
@@ -1721,7 +1777,7 @@
       .hero-manifesto {
         border-right: none;
         border-bottom: 1px solid var(--hairline);
-        padding: 2rem 1.35rem;
+        padding: 2.25rem 1.5rem;
       }
       .lookbook-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1743,7 +1799,7 @@
         padding-bottom: 4.5rem;
       }
       .top-ticker {
-        padding: 0.45rem 0.85rem;
+        padding: 0.55rem 1rem;
         font-size: 0.65rem;
         justify-content: center;
         text-align: center;
@@ -1755,24 +1811,24 @@
         grid-template-columns: 1fr auto;
       }
       .brand-cell {
-        padding: 0.75rem 1rem;
+        padding: 0.85rem 1.15rem;
         border-right: none;
       }
       .brand-title {
-        font-size: 1.3rem;
+        font-size: 1.45rem;
       }
       .brand-sub {
         font-size: 0.58rem;
       }
       .masthead-actions {
-        padding: 0.55rem 0.85rem;
-        gap: 0.4rem;
+        padding: 0.6rem 0.9rem;
+        gap: 0.45rem;
       }
       #compareHeaderBtn, #themeToggleBtn {
         display: none;
       }
       .brief-trigger-btn {
-        padding: 0.55rem 0.75rem;
+        padding: 0.6rem 0.85rem;
         font-size: 0.68rem;
         gap: 0.4rem;
       }
@@ -1781,8 +1837,8 @@
         order: 3;
         border-right: none;
         border-top: 1px solid var(--hairline);
-        padding: 0.55rem 0.85rem;
-        gap: 1.15rem;
+        padding: 0.65rem 1rem;
+        gap: 1.35rem;
         overflow-x: auto;
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
@@ -1792,21 +1848,21 @@
         display: none;
       }
       .nav-link {
-        font-size: 0.76rem;
-        padding: 0.2rem 0;
+        font-size: 0.74rem;
+        padding: 0.25rem 0;
       }
       .hero-manifesto {
-        padding: 1.5rem 1.1rem;
-        gap: 1.5rem;
+        padding: 1.75rem 1.25rem;
+        gap: 1.65rem;
       }
       .hero-headline {
-        font-size: 2rem;
-        line-height: 1.28;
-        margin-bottom: 1rem;
+        font-size: 2.15rem;
+        line-height: 1.34;
+        margin-bottom: 1.15rem;
       }
       .hero-lead {
-        font-size: 0.9rem;
-        margin-bottom: 1.35rem;
+        font-size: 0.92rem;
+        margin-bottom: 1.5rem;
       }
       .policy-strip {
         grid-template-columns: 1fr;
@@ -1814,7 +1870,7 @@
       .policy-cell {
         border-right: none;
         border-bottom: 1px solid var(--hairline);
-        padding: 0.9rem 1rem;
+        padding: 1rem 1.1rem;
       }
       .policy-cell:last-child {
         border-bottom: none;
@@ -1828,28 +1884,28 @@
         text-align: center;
       }
       .hero-showcase {
-        padding: 1.25rem 1rem;
+        padding: 1.35rem 1.1rem;
       }
       .cro-architecture-bar, .lookbook-grid, .form-grid, .spec-modal {
         grid-template-columns: 1fr;
       }
       .cro-arch-cell {
         border-right: none;
-        padding: 1rem 1.1rem;
+        padding: 1.1rem 1.2rem;
       }
       .sec-index-cell {
-        padding: 0.85rem 1.1rem;
+        padding: 1rem 1.25rem;
         flex-direction: row;
         align-items: center;
       }
       .sec-title-cell, .sec-meta-cell {
-        padding: 1.15rem 1.1rem;
+        padding: 1.35rem 1.25rem;
       }
       .sec-heading {
-        font-size: 1.6rem;
+        font-size: 1.75rem;
       }
       .archive-controls {
-        padding: 0.85rem 1rem;
+        padding: 0.95rem 1.15rem;
         flex-direction: column;
         align-items: stretch;
       }
@@ -1875,18 +1931,18 @@
         border-right: none;
       }
       .bespoke-left, .bespoke-right {
-        padding: 1.5rem 1.1rem;
+        padding: 1.85rem 1.25rem;
         border-right: none;
       }
       .editorial-input, .editorial-select, .editorial-textarea {
         font-size: 16px;
-        padding: 0.78rem 0.85rem;
+        padding: 0.85rem 0.95rem;
       }
       .process-cell, .wholesale-card {
-        padding: 1.5rem 1.1rem;
+        padding: 1.85rem 1.25rem;
       }
       .direct-contact-strip {
-        padding: 1.35rem 1.1rem;
+        padding: 1.5rem 1.25rem;
       }
       .contact-strip-actions {
         width: 100%;
@@ -1898,10 +1954,10 @@
         text-align: center;
       }
       .footer-col {
-        padding: 1.6rem 1.1rem;
+        padding: 1.85rem 1.25rem;
       }
       .footer-bottom-bar {
-        padding: 1.1rem;
+        padding: 1.25rem;
         font-size: 0.7rem;
       }
       .spec-modal {
@@ -1914,20 +1970,20 @@
         border-bottom: 1px solid var(--hairline);
       }
       .modal-info-col {
-        padding: 1.25rem 1rem;
+        padding: 1.35rem 1.15rem;
       }
       .brief-drawer {
         width: 100vw;
       }
       .drawer-header, .drawer-body, .drawer-footer {
-        padding: 1.1rem 1rem;
+        padding: 1.2rem 1.1rem;
       }
       .floating-care-bar {
         left: 0.6rem;
         right: 0.6rem;
         bottom: 0.6rem;
         max-width: none;
-        padding: 0.8rem 0.95rem;
+        padding: 0.85rem 1rem;
       }
       .compare-floating-dock {
         left: 0.6rem;
@@ -1936,7 +1992,7 @@
         width: calc(100vw - 1.2rem);
         transform: translateY(130%);
         justify-content: space-between;
-        padding: 0.65rem 0.85rem;
+        padding: 0.75rem 0.95rem;
       }
       .compare-floating-dock.active {
         transform: translateY(0);
@@ -1948,17 +2004,18 @@
       display: flex;
       align-items: baseline;
       flex-wrap: wrap;
-      gap: 0.55rem;
-      margin: 0.45rem 0 0.65rem;
-      padding: 0.55rem 0.7rem;
+      gap: 0.65rem;
+      margin: 0.6rem 0 0.85rem;
+      padding: 0.7rem 0.85rem;
       background: var(--bg-secondary);
-      border-left: 3px solid var(--accent);
+      border-left: 2px solid var(--accent);
     }
 
     .deal-price-current {
-      font-family: 'Be Vietnam Pro', sans-serif;
-      font-size: 1.25rem;
-      font-weight: 700;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
       color: var(--accent);
     }
 
@@ -1969,9 +2026,10 @@
     }
 
     .deal-save-tag {
-      font-size: 0.65rem;
-      font-weight: 700;
-      padding: 0.15rem 0.45rem;
+      font-size: 0.64rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      padding: 0.2rem 0.55rem;
       background: var(--accent-soft);
       color: var(--accent);
       text-transform: uppercase;
@@ -1980,31 +2038,32 @@
 
     /* Wholesale All-Industries (Except Food) Banner */
     .wholesale-industry-banner {
-      padding: 1.5rem 2.25rem;
+      padding: 1.75rem 2.5rem;
       background: var(--bg-secondary);
       border-bottom: 1px solid var(--hairline-strong);
       display: flex;
       flex-direction: column;
-      gap: 0.85rem;
+      gap: 1rem;
     }
 
     .industry-chips-wrap {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: 0.65rem;
     }
 
     .industry-chip {
-      padding: 0.35rem 0.75rem;
+      padding: 0.45rem 0.9rem;
       background: var(--bg-elevated);
       border: 1px solid var(--hairline-strong);
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       font-weight: 500;
+      letter-spacing: 0.02em;
       color: var(--ink-primary);
     }
 
     .industry-chip.excluded {
-      background: rgba(158, 59, 36, 0.12);
+      background: var(--accent-soft);
       border-color: var(--accent);
       color: var(--accent);
       font-weight: 600;
@@ -2016,7 +2075,7 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -48%) scale(0.97);
-      width: min(620px, 95vw);
+      width: min(640px, 95vw);
       max-height: 92vh;
       overflow-y: auto;
       background: var(--bg-primary);
@@ -2025,7 +2084,7 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.25s ease, transform 0.25s ease;
-      padding: 1.65rem;
+      padding: 2rem;
       box-shadow: 0 20px 50px rgba(0,0,0,0.22);
     }
 
@@ -2038,20 +2097,20 @@
     /* Simple 3-Item 15% Discount Floating Bar */
     .bundle-discount-bar {
       position: fixed;
-      bottom: 1rem;
+      bottom: 1.15rem;
       left: 50%;
       transform: translate(-50%, 140%);
-      width: min(860px, 95vw);
+      width: min(880px, 95vw);
       background: var(--ink-primary);
       color: var(--bg-primary);
       border: 1px solid var(--accent);
-      padding: 0.85rem 1.25rem;
+      padding: 1rem 1.5rem;
       z-index: 180;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 0.85rem;
+      gap: 1rem;
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       box-shadow: 0 14px 34px rgba(0,0,0,0.28);
     }
@@ -2066,8 +2125,8 @@
   <!-- Top Archival Metadata Bar -->
   <div class="top-ticker mono">
     <div class="ticker-left">
-      <span><span class="status-dot"></span>TÌM &amp; ĐẶT MUA HỘ QUA ẢNH / LINK SHOPEE • HÀNG GIÁ TỐT TRONG THÁNG • GÓI SỈ &amp; NỘI THẤT</span>
-      <span>🎁 ƯU ĐÃI CỐ ĐỊNH: CHIẾT KHẤU NGAY 15% KHI ĐẶT TỪ 03 MÓN TRỞ LÊN</span>
+      <span><span class="status-dot"></span>TÌM &amp; ĐẶT MUA HỘ QUA ẢNH / LINK SHOPEE — HÀNG GIÁ TỐT TRONG THÁNG — GÓI SỈ &amp; NỘI THẤT</span>
+      <span>ƯU ĐÃI CỐ ĐỊNH: CHIẾT KHẤU 15% KHI ĐẶT TỪ 03 MÓN TRỞ LÊN</span>
     </div>
     <div>
       <span>HOTLINE / ZALO / WHATSAPP: <strong id="topZaloDisplay">0823.230.703</strong></span>
@@ -2078,7 +2137,7 @@
   <header class="masthead">
     <a href="#top" class="brand-cell">
       <span class="brand-title" id="brandNameDisplay">ATELIER</span>
-      <span class="brand-sub mono">MUA HỘ TẬN XƯỞNG • SỈ &amp; NỘI THẤT</span>
+      <span class="brand-sub mono">MUA HỘ TẬN XƯỞNG — SỈ &amp; NỘI THẤT</span>
     </a>
 
     <nav class="nav-links">
@@ -2090,7 +2149,7 @@
 
     <div class="masthead-actions">
       <a href="https://zalo.me/0823230703" target="_blank" rel="noopener noreferrer" class="brief-trigger-btn">
-        <span>💬 ZALO BÁO GIÁ: 0823.230.703</span>
+        <span>ZALO BÁO GIÁ: 0823.230.703</span>
       </a>
     </div>
   </header>
@@ -2103,80 +2162,80 @@
     <section id="sourcing-section" class="bespoke-spread">
       <div class="bespoke-left">
         <div>
-          <div class="issue-tag mono" style="margin-bottom: 1rem;">
+          <div class="issue-tag mono" style="margin-bottom: 1.35rem;">
             <span>MỤC // 01 — ĐẶT MUA HỘ TRỰC TIẾP</span>
             <span>//</span>
             <span>GỬI ẢNH HOẶC LINK SHOPEE</span>
           </div>
 
-          <h1 class="hero-headline" style="font-size: clamp(2rem, 3.1vw, 3rem); margin-bottom: 1rem;">
+          <h1 class="hero-headline" style="font-size: clamp(2.15rem, 3.2vw, 3.15rem); margin-bottom: 1.35rem;">
             Tìm &amp; Đặt mua hộ <em>tận xưởng gốc</em> — Chỉ cần gửi Ảnh hoặc Link Shopee.
           </h1>
 
-          <p style="font-size: 0.94rem; color: var(--ink-secondary); line-height: 1.68; margin-bottom: 1rem;">
+          <p style="font-size: 0.95rem; color: var(--ink-secondary); line-height: 1.85; margin-bottom: 1.5rem;">
             Bạn lướt thấy một món đồ đẹp trên Pinterest, Tiểu Hồng Thư, Instagram hay thấy <strong>một món trên Shopee đang bán giá cao / hết hàng</strong>? Không cần tạo tài khoản hay thêm vào giỏ hàng rườm rà — bạn chỉ cần <strong>Tải Ảnh Lên (hoặc bấm Ctrl+V dán ảnh)</strong> hoặc <strong>Dán Link Shopee</strong> vào khung bên cạnh. Đội ngũ ATELIER sẽ tìm thẳng xưởng sản xuất gốc để đặt mua hộ về tận tay bạn.
           </p>
 
-          <div style="padding: 1rem 1.15rem; background: var(--accent-soft); border-left: 3px solid var(--accent); margin-bottom: 1.25rem;">
-            <div class="mono" style="color: var(--accent); font-weight: 700; margin-bottom: 0.25rem;">🎁 ƯU ĐÃI CHIẾT KHẤU 15% KHI ĐẶT TỪ 3 MÓN</div>
-            <p style="font-size: 0.84rem; color: var(--ink-primary); line-height: 1.55;">
+          <div style="padding: 1.25rem 1.4rem; background: var(--accent-soft); border-left: 2px solid var(--accent); margin-bottom: 1.5rem;">
+            <div class="mono" style="color: var(--accent); font-weight: 600; margin-bottom: 0.45rem;">ƯU ĐÃI CỐ ĐỊNH — CHIẾT KHẤU 15% KHI ĐẶT TỪ 03 MÓN</div>
+            <p style="font-size: 0.86rem; color: var(--ink-primary); line-height: 1.78;">
               Khi bạn đặt mua hộ <strong>từ 03 món trở lên</strong> (hoặc chọn gộp từ 3 sản phẩm bất kỳ trong mục Giá Tốt Trong Tháng), hệ thống tự động áp dụng <strong>Chiết khấu 15% cước đóng kiện &amp; tính giá ưu đãi tận xưởng</strong>.
             </p>
           </div>
         </div>
 
         <div class="bespoke-quote-box" style="margin-top: 0;">
-          <div class="mono" style="color: var(--accent); margin-bottom: 0.5rem;">3 TIỆN ÍCH KHI ĐẶT MUA HỘ TẠI ATELIER</div>
-          <p style="font-size: 0.84rem; color: var(--ink-secondary); line-height: 1.65;">
-            • <strong>Nhận cả Ảnh chụp màn hình lẫn Link Shopee:</strong> Thấy link Shopee bán đắt? Gửi link Shopee hoặc ảnh sang để tụi mình tìm đúng nguồn gốc bên Trung giá mềm hơn hẳn.<br/>
-            • <strong>Quay video kiểm hàng thật tại kho:</strong> Kiểm tra đúng mẫu, đúng chất liệu trước khi đóng kiện gỗ về Việt Nam.<br/>
-            • <strong>Chỉ cần điền thông tin &amp; bấm Lưu:</strong> Khách không cần tải file hay thao tác phức tạp — hình ảnh và yêu cầu của bạn được lưu thẳng về hệ thống theo Tên &amp; SĐT, đội ngũ ATELIER sẽ chủ động liên hệ gửi báo giá.
+          <div class="mono" style="color: var(--accent); margin-bottom: 0.65rem;">03 TIỆN ÍCH KHI ĐẶT MUA HỘ TẠI ATELIER</div>
+          <p style="font-size: 0.86rem; color: var(--ink-secondary); line-height: 1.85;">
+            — <strong>Nhận cả Ảnh chụp màn hình lẫn Link Shopee:</strong> Thấy link Shopee bán đắt? Gửi link Shopee hoặc ảnh sang để tụi mình tìm đúng nguồn gốc bên Trung giá mềm hơn hẳn.<br/>
+            — <strong>Quay video kiểm hàng thật tại kho:</strong> Kiểm tra đúng mẫu, đúng chất liệu trước khi đóng kiện gỗ về Việt Nam.<br/>
+            — <strong>Chỉ cần điền thông tin &amp; bấm Lưu:</strong> Khách không cần tải file hay thao tác phức tạp — hình ảnh và yêu cầu của bạn được lưu thẳng về hệ thống theo Tên &amp; SĐT, đội ngũ ATELIER sẽ chủ động liên hệ gửi báo giá.
           </p>
         </div>
       </div>
 
       <div class="bespoke-right">
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.15rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--hairline);">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.65rem; padding-bottom: 1rem; border-bottom: 1px solid var(--hairline);">
           <div>
-            <span class="mono" style="color: var(--accent); display: block;">PHIẾU TÌM &amp; ĐẶT MUA HỘ NHANH (KHÔNG CẦN QUA GIỎ HÀNG)</span>
-            <h2 class="serif" style="font-size: 1.55rem; font-weight: 600;">Gửi Ảnh Hoặc Link Shopee Để Nhận Báo Giá Về Tay</h2>
+            <span class="mono" style="color: var(--accent); display: block; margin-bottom: 0.25rem;">PHIẾU TÌM &amp; ĐẶT MUA HỘ NHANH</span>
+            <h2 class="serif" style="font-size: 1.75rem; font-weight: 600;">Gửi Ảnh Hoặc Link Shopee Để Nhận Báo Giá Về Tay</h2>
           </div>
-          <span class="mono" style="background: var(--ink-primary); color: var(--bg-primary); padding: 0.3rem 0.65rem; font-size: 0.68rem;">GỬI BÁO GIÁ</span>
+          <span class="mono" style="background: var(--ink-primary); color: var(--bg-primary); padding: 0.35rem 0.75rem; font-size: 0.68rem;">GỬI BÁO GIÁ</span>
         </div>
 
         <form id="customHuntForm">
           <div class="form-grid">
             <!-- Cách 1: Tải ảnh hoặc dán ảnh Ctrl+V -->
             <div class="form-group full">
-              <label class="form-label">01A. Cách 1 — Tải Ảnh Sản Phẩm Lên Hoặc Bấm Ctrl + V Để Dán Ảnh (Nếu Có Ảnh)</label>
+              <label class="form-label">01A. Cách 1 — Tải Ảnh Sản Phẩm Lên Hoặc Bấm Ctrl + V Để Dán Ảnh</label>
               <input type="file" id="huntImageInput" accept="image/*" style="display: none;" />
               <div class="visual-dropzone" id="visualDropzone" tabindex="0">
-                <div class="mono" style="color: var(--accent); margin-bottom: 0.3rem;">[ 📷 BẤM CHỌN ẢNH TỪ ĐIỆN THOẠI / MÁY TÍNH • HOẶC BẤM CTRL + V ĐỂ DÁN ẢNH ]</div>
-                <p style="font-size: 0.82rem; color: var(--ink-secondary);">
-                  Nhận ảnh chụp màn hình món đồ, ảnh mẫu cần nhập sỉ hoặc ảnh góc phòng decor (Hoặc bạn chỉ cần dán link Shopee ở ô 01B bên dưới đều được!)
+                <div class="mono" style="color: var(--accent); margin-bottom: 0.45rem;">[ CHỌN HÌNH ẢNH TỪ THIẾT BỊ — HOẶC BẤM CTRL + V ĐỂ DÁN ẢNH ]</div>
+                <p style="font-size: 0.84rem; color: var(--ink-secondary);">
+                  Nhận ảnh chụp màn hình món đồ, ảnh mẫu cần nhập sỉ hoặc ảnh góc phòng decor (Hoặc dán đường dẫn Shopee ở mục 01B bên dưới)
                 </p>
                 <div class="dropzone-preview-wrap" id="dropzonePreviewWrap">
-                  <div style="display: flex; align-items: center; gap: 0.85rem;">
+                  <div style="display: flex; align-items: center; gap: 1rem;">
                     <img id="dropzonePreviewImg" src="" alt="Preview" class="dropzone-preview-img" />
                     <div>
-                      <span class="mono" style="color: var(--olive); display: block;">✓ ĐÃ ĐÍNH KÈM ẢNH SẢN PHẨM THÀNH CÔNG</span>
-                      <span style="font-size: 0.8rem; color: var(--ink-secondary);" id="dropzoneFileName">Ảnh sẽ được lưu tự động vào hồ sơ của bạn khi bấm Lưu</span>
+                      <span class="mono" style="color: var(--olive); display: block;">ĐÃ ĐÍNH KÈM ẢNH SẢN PHẨM</span>
+                      <span style="font-size: 0.82rem; color: var(--ink-secondary);" id="dropzoneFileName">Ảnh sẽ được lưu tự động vào hồ sơ của bạn khi bấm Lưu</span>
                     </div>
                   </div>
-                  <button type="button" id="removeUploadedImgBtn" class="mono" style="padding: 0.35rem 0.65rem; border: 1px solid var(--hairline-strong); font-size: 0.68rem;">[ ĐỔI ẢNH KHÁC × ]</button>
+                  <button type="button" id="removeUploadedImgBtn" class="mono" style="padding: 0.4rem 0.75rem; border: 1px solid var(--hairline-strong); font-size: 0.68rem;">[ ĐỔI ẢNH KHÁC ]</button>
                 </div>
               </div>
             </div>
 
             <!-- Cách 2: Hoặc gửi Link Shopee / Link tham khảo -->
             <div class="form-group full">
-              <label class="form-label" for="huntShopeeLink" style="color: var(--accent);">01B. Cách 2 — Hoặc Gửi Link Shopee / Link Sản Phẩm Bạn Cần Đặt Mua Hộ (Không bắt buộc gửi ảnh)</label>
-              <input type="text" id="huntShopeeLink" class="editorial-input" placeholder="Dán link Shopee (https://shopee.vn/...) hoặc link sản phẩm mẫu vào đây nếu bạn không tải ảnh..." />
+              <label class="form-label" for="huntShopeeLink" style="color: var(--accent);">01B. Cách 2 — Đường Dẫn Shopee / Sản Phẩm Cần Mua Hộ (Nếu Không Tải Ảnh)</label>
+              <input type="text" id="huntShopeeLink" class="editorial-input" placeholder="" />
             </div>
 
             <div class="form-group full">
               <label class="form-label" for="huntItemName">02. Tên Món Đồ Hoặc Yêu Cầu Cần Tìm / Mua Hộ *</label>
-              <input type="text" id="huntItemName" class="editorial-input" placeholder="VD: Đặt mua hộ mẫu áo khoác / ghế decor như trong ảnh hoặc trong link Shopee..." required />
+              <input type="text" id="huntItemName" class="editorial-input" placeholder="" required />
             </div>
 
             <div class="form-group">
@@ -2188,16 +2247,16 @@
                 <option value="Phím cơ, Phụ kiện bàn làm việc & Điện tử">04 / Phím cơ, phụ kiện bàn làm việc &amp; công nghệ</option>
                 <option value="Gói Nội Thất Decor Phòng / Nhà Trọn Bộ">05 / Trọn gói nội thất decor Phòng / Nhà</option>
                 <option value="Nhập Hàng Sỉ Tận Xưởng (Đa ngành hàng)">06 / Nhập hàng sỉ tận xưởng (Tất cả ngành hàng trừ thực phẩm)</option>
-                <option value="CUSTOM_OTHER">07 / Mặt hàng khác (Tự nhập ngành hàng bên dưới...)</option>
+                <option value="CUSTOM_OTHER">07 / Mặt hàng khác (Tự nhập ngành hàng bên dưới)</option>
               </select>
             </div>
 
             <div class="form-group">
               <label class="form-label" for="huntScale">04. Số Lượng &amp; Ưu Đãi Gộp Đơn</label>
               <select id="huntScale" class="editorial-select">
-                <option value="Đặt lẻ 1 - 2 món về dùng (Báo giá trọn gói)">Đặt lẻ 1 - 2 món (Nhận báo giá trọn gói về tận tay)</option>
-                <option value="Đặt từ 3 món trở lên (🔥 Áp dụng Chiết khấu 15%)">🔥 Đặt từ 3 món trở lên (Được chiết khấu ngay 15%)</option>
-                <option value="Đặt theo Gói Nội Thất Phòng / Nhà (5 - 20+ món)">Đặt theo Gói Nội Thất Phòng / Nhà (Tiết kiệm 25 - 40%)</option>
+                <option value="Đặt lẻ 1 - 2 món về dùng (Báo giá trọn gói)">Đặt lẻ 1 – 2 món (Nhận báo giá trọn gói về tận tay)</option>
+                <option value="Đặt từ 3 món trở lên (Áp dụng Chiết khấu 15%)">Đặt từ 03 món trở lên (Áp dụng chiết khấu 15%)</option>
+                <option value="Đặt theo Gói Nội Thất Phòng / Nhà (5 - 20+ món)">Đặt theo Gói Nội Thất Phòng / Nhà (Tiết kiệm 25 – 40%)</option>
                 <option value="Nhập sỉ số lượng cho Chủ Shop / Brand">Nhập sỉ số lượng cho Chủ Shop / Local Brand (Giá gốc nhà máy)</option>
                 <option value="Số lượng tùy chọn (Ghi rõ ở mục ghi chú)">Khác / Tùy chỉnh số lượng theo nhu cầu riêng</option>
               </select>
@@ -2206,18 +2265,18 @@
             <!-- Custom Category Input (Shows when user selects "07 / Mặt hàng khác") -->
             <div class="form-group full" id="customCategoryWrap" style="display: none;">
               <label class="form-label" for="huntCustomCategory" style="color: var(--accent);">03B. Nhập Tên Ngành Hàng / Loại Sản Phẩm Bạn Cần Tìm *</label>
-              <input type="text" id="huntCustomCategory" class="editorial-input" placeholder="VD: Phụ kiện thú cưng, Đồ gia dụng, Đồ cắm trại, Bao bì hộp quà, Thiết bị máy móc..." />
+              <input type="text" id="huntCustomCategory" class="editorial-input" placeholder="" />
             </div>
 
             <!-- Thông tin liên hệ khách hàng ngay trên form (Không cần qua giỏ hàng) -->
             <div class="form-group">
               <label class="form-label" for="clientNameInput">05. Tên Của Bạn (Hoặc Tên Shop) *</label>
-              <input type="text" id="clientNameInput" class="editorial-input" placeholder="VD: Minh Anh / Emvy..." required />
+              <input type="text" id="clientNameInput" class="editorial-input" placeholder="" required />
             </div>
 
             <div class="form-group">
               <label class="form-label" for="clientZaloInput">06. Số Điện Thoại / Zalo Nhận Báo Giá *</label>
-              <input type="text" id="clientZaloInput" class="editorial-input" placeholder="VD: 0987..." required />
+              <input type="text" id="clientZaloInput" class="editorial-input" placeholder="" required />
             </div>
 
             <div class="form-group">
@@ -2231,24 +2290,24 @@
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="huntNotes">08. Ghi Chú Màu Sắc / Size / Yêu Cầu</label>
-              <input type="text" id="huntNotes" class="editorial-input" placeholder="VD: Màu kem size M, cần hàng trước ngày..." />
+              <label class="form-label" for="huntNotes">08. Ghi Chú Màu Sắc / Kích Cỡ / Yêu Cầu</label>
+              <input type="text" id="huntNotes" class="editorial-input" placeholder="" />
             </div>
 
-            <div class="form-group full" style="padding-top: 0.35rem;">
-              <button type="submit" id="huntSubmitMainBtn" class="btn-editorial-primary" style="width: 100%; justify-content: center; padding: 1.1rem 1.25rem; font-size: 0.85rem;">
-                <span>✓ LƯU THÔNG TIN &amp; NHẬN BÁO GIÁ</span>
+            <div class="form-group full" style="padding-top: 0.5rem;">
+              <button type="submit" id="huntSubmitMainBtn" class="btn-editorial-primary" style="width: 100%; justify-content: center; padding: 1.15rem 1.35rem; font-size: 0.82rem;">
+                <span>LƯU THÔNG TIN &amp; NHẬN BÁO GIÁ</span>
               </button>
             </div>
 
-            <!-- Thông báo xác nhận ngay trên màn hình sau khi khách bấm Lưu (Khách không phải tải file gì về máy) -->
-            <div class="form-group full" id="orderSuccessBanner" style="display: none; margin-top: 0.25rem;">
-              <div style="padding: 1.15rem 1.25rem; background: var(--bg-elevated); border: 1.5px solid var(--olive); border-left: 5px solid var(--olive);">
-                <div class="mono" style="color: var(--olive); font-weight: 700; font-size: 0.78rem; margin-bottom: 0.35rem;">
-                  ✓ ĐÃ LƯU HÌNH ẢNH &amp; YÊU CẦU BÁO GIÁ THÀNH CÔNG!
+            <!-- Thông báo xác nhận ngay trên màn hình sau khi khách bấm Lưu -->
+            <div class="form-group full" id="orderSuccessBanner" style="display: none; margin-top: 0.35rem;">
+              <div style="padding: 1.25rem 1.4rem; background: var(--bg-elevated); border: 1px solid var(--olive); border-left: 4px solid var(--olive);">
+                <div class="mono" style="color: var(--olive); font-weight: 600; font-size: 0.76rem; margin-bottom: 0.45rem;">
+                  ĐÃ LƯU HÌNH ẢNH &amp; YÊU CẦU BÁO GIÁ THÀNH CÔNG
                 </div>
-                <p style="font-size: 0.85rem; color: var(--ink-primary); line-height: 1.55;" id="orderSuccessMessage">
-                  Hệ thống đã lưu đầy đủ hình ảnh mẫu và thông tin liên hệ của bạn. Đội ngũ ATELIER (Hotline/Zalo: <strong>0823.230.703</strong>) sẽ kiểm tra trực tiếp với xưởng và chủ động liên hệ gửi báo giá cho bạn sớm nhất!
+                <p style="font-size: 0.86rem; color: var(--ink-primary); line-height: 1.75;" id="orderSuccessMessage">
+                  Hệ thống đã lưu đầy đủ hình ảnh mẫu và thông tin liên hệ của bạn. Đội ngũ ATELIER (Hotline/Zalo: <strong>0823.230.703</strong>) sẽ kiểm tra trực tiếp với xưởng và chủ động liên hệ gửi báo giá cho bạn sớm nhất.
                 </p>
               </div>
             </div>
@@ -2268,13 +2327,13 @@
         </div>
         <div class="sec-title-cell">
           <h2 class="sec-heading">Những Mặt Hàng Đang Có Giá Tốt Sẵn Trong Tháng Này</h2>
-          <p style="font-size: 0.9rem; color: var(--ink-secondary);">
-            Danh sách các sản phẩm đang có <strong>suất gom lô giá tốt tại xưởng trong tháng</strong> (giữ kín giá xuất xưởng để bảo vệ quyền lợi khách hàng &amp; chủ shop). Bạn ưng món nào chỉ cần bấm <strong>Nhận Báo Giá Riêng</strong>, hoặc tích chọn <strong>từ 03 món để được giảm thêm 15%</strong>!
+          <p style="font-size: 0.92rem; color: var(--ink-secondary); line-height: 1.82;">
+            Danh sách các sản phẩm đang có <strong>suất gom lô giá tốt tại xưởng trong tháng</strong> (giữ kín giá xuất xưởng để bảo vệ quyền lợi khách hàng &amp; chủ shop). Bạn ưng món nào chỉ cần bấm <strong>Nhận Báo Giá Riêng</strong>, hoặc tích chọn <strong>từ 03 món để được giảm thêm 15%</strong>.
           </p>
         </div>
         <div class="sec-meta-cell">
-          <div class="mono" style="margin-bottom: 0.35rem; color: var(--accent); font-weight: 700;">🎁 ĐẶT TỪ 3 MÓN: CHIẾT KHẤU 15%</div>
-          <p>Chọn từ 3 sản phẩm bất kỳ bên dưới để được giảm ngay 15% tổng đơn &amp; miễn phí kiểm hàng video tại kho.</p>
+          <div class="mono" style="margin-bottom: 0.45rem; color: var(--accent); font-weight: 600;">ƯU ĐÃI GỘP ĐƠN — GIẢM 15% TỪ 03 MÓN</div>
+          <p>Chọn từ 03 sản phẩm bất kỳ bên dưới để được giảm ngay 15% tổng đơn và miễn phí kiểm hàng video tại kho.</p>
         </div>
       </div>
 
@@ -2289,7 +2348,7 @@
         </div>
 
         <div class="search-and-view">
-          <input type="text" id="archiveSearchInput" class="archive-search-input" placeholder="Tìm theo tên sản phẩm, chất liệu, xưởng..." />
+          <input type="text" id="archiveSearchInput" class="archive-search-input" placeholder="Tìm kiếm sản phẩm..." />
           <button type="button" class="view-switch-btn active" id="viewGridBtn">Dạng Thẻ Lớn</button>
           <button type="button" class="view-switch-btn" id="viewTableBtn">Xem Dạng Bảng</button>
         </div>
@@ -2326,30 +2385,30 @@
         </div>
         <div class="sec-title-cell">
           <h2 class="sec-heading">Gói Nhập Hàng Sỉ Tận Xưởng (Nhận Tất Cả Ngành Hàng — Trừ Thực Phẩm)</h2>
-          <p style="font-size: 0.9rem; color: var(--ink-secondary);">
-            Dành cho chủ shop, local brand, người bán Shopee/TikTok hoặc doanh nghiệp cần tìm nguồn sỉ tận gốc. Chúng tôi nhận tìm nhà máy, đàm phán giá xuất xưởng và vận chuyển trọn gói cho <strong>tất cả các ngành hàng (ngoại trừ thực phẩm)</strong> — bấm chọn gói để trao đổi trực tiếp qua Zalo, không cần thêm vào giỏ hàng.
+          <p style="font-size: 0.92rem; color: var(--ink-secondary); line-height: 1.82;">
+            Dành cho chủ shop, local brand, người bán Shopee/TikTok hoặc doanh nghiệp cần tìm nguồn sỉ tận gốc. Chúng tôi nhận tìm nhà máy, đàm phán giá xuất xưởng và vận chuyển trọn gói cho <strong>tất cả các ngành hàng (ngoại trừ thực phẩm)</strong> — bấm chọn gói để nhận báo giá trực tiếp, không cần thêm vào giỏ hàng.
           </p>
         </div>
         <div class="sec-meta-cell">
-          <div class="mono" style="margin-bottom: 0.35rem; color: var(--ink-primary);">QUYỀN LỢI KHÁCH ĐẶT GÓI SỈ</div>
-          <p>Bảo mật 100% mẫu hàng của shop • Hỗ trợ lấy mẫu thử (Sample) trước khi chốt lô lớn • Chiết khấu 15% cước khi gộp từ 3 mã.</p>
+          <div class="mono" style="margin-bottom: 0.45rem; color: var(--ink-primary);">QUYỀN LỢI KHÁCH ĐẶT GÓI SỈ</div>
+          <p>Bảo mật 100% mẫu hàng của shop — Hỗ trợ lấy mẫu thử (Sample) trước khi chốt lô lớn — Chiết khấu 15% cước khi gộp từ 03 mã.</p>
         </div>
       </div>
 
       <!-- Banner danh mục ngành hàng nhận sỉ (Tất cả trừ thực phẩm) -->
       <div class="wholesale-industry-banner">
-        <div class="mono" style="color: var(--ink-primary); font-weight: 700;">
-          ✓ CÁC NGÀNH HÀNG NHẬN ĐẶT SỈ TẬN XƯỞNG &amp; LÀM THƯƠNG HIỆU RIÊNG (OEM / ODM):
+        <div class="mono" style="color: var(--ink-primary); font-weight: 600;">
+          DANH MỤC NGÀNH HÀNG NHẬN ĐẶT SỈ TẬN XƯỞNG &amp; GIA CÔNG THƯƠNG HIỆU RIÊNG (OEM / ODM):
         </div>
         <div class="industry-chips-wrap">
-          <span class="industry-chip">✓ Thời trang, Quần áo, Giày dép, Túi da</span>
-          <span class="industry-chip">✓ Đồ gia dụng &amp; Tiện ích đời sống</span>
-          <span class="industry-chip">✓ Đồ Decor, Đèn trang trí, Gốm sứ</span>
-          <span class="industry-chip">✓ Phụ kiện công nghệ, Phím cơ, Điện tử</span>
-          <span class="industry-chip">✓ Phụ kiện thú cưng, Đồ cắm trại, Thể thao</span>
-          <span class="industry-chip">✓ Văn phòng phẩm, Bao bì, Hộp quà, Phụ liệu</span>
-          <span class="industry-chip">✓ Máy móc thiết bị nhỏ &amp; Linh kiện</span>
-          <span class="industry-chip excluded">✕ Không nhận ngành hàng Thực Phẩm / Đồ ăn thức uống</span>
+          <span class="industry-chip">01 / Thời trang, Quần áo, Giày dép, Túi da</span>
+          <span class="industry-chip">02 / Đồ gia dụng &amp; Tiện ích đời sống</span>
+          <span class="industry-chip">03 / Đồ Decor, Đèn trang trí, Gốm sứ</span>
+          <span class="industry-chip">04 / Phụ kiện công nghệ, Phím cơ, Điện tử</span>
+          <span class="industry-chip">05 / Phụ kiện thú cưng, Đồ cắm trại, Thể thao</span>
+          <span class="industry-chip">06 / Văn phòng phẩm, Bao bì, Hộp quà, Phụ liệu</span>
+          <span class="industry-chip">07 / Máy móc thiết bị nhỏ &amp; Linh kiện</span>
+          <span class="industry-chip excluded">LƯU Ý: Không nhận ngành hàng Thực Phẩm / Đồ ăn thức uống</span>
         </div>
       </div>
 
@@ -2357,24 +2416,24 @@
         <article class="wholesale-card">
           <div>
             <span class="wholesale-tag mono">GÓI SỈ 01 // TEST MẪU &amp; SHOP MỚI KHỞI NGHIỆP</span>
-            <h3 class="serif" style="font-size: 1.48rem; font-weight: 600; line-height: 1.28; margin-bottom: 0.6rem;">
+            <h3 class="serif" style="font-size: 1.58rem; font-weight: 600; line-height: 1.34; margin-bottom: 0.75rem;">
               Gói Nhập Sỉ Số Lượng Nhỏ &amp; Ghép Nhiều Mã (Từ 5 – 20 Sản Phẩm)
             </h3>
-            <p style="font-size: 0.86rem; color: var(--ink-secondary); line-height: 1.6;">
+            <p style="font-size: 0.88rem; color: var(--ink-secondary); line-height: 1.8;">
               Phù hợp cho chủ shop mới mở hoặc muốn nhập thử nhiều mẫu khác nhau (thời trang, phụ kiện, gia dụng, decor, thú cưng...) để đo lường sức mua trước khi ôm lô lớn.
             </p>
             <ul class="wholesale-list">
-              <li>• <strong>Tất cả ngành hàng (Trừ thực phẩm):</strong> Chỉ cần gửi ảnh hoặc link Shopee mẫu đang bán chạy để đội ngũ tìm xưởng gốc.</li>
-              <li>• <strong>Ghép chung kiện tiết kiệm:</strong> Gom từ 3 mã hàng trở lên được giảm ngay 15% cước đóng kiện về Việt Nam.</li>
-              <li>• <strong>Kiểm hàng thực tế tại kho:</strong> Đếm đủ số lượng, quay video kiểm tra ngoại quan từng mẫu trước khi xuất kho.</li>
+              <li>— <strong>Tất cả ngành hàng (Trừ thực phẩm):</strong> Chỉ cần gửi ảnh hoặc link Shopee mẫu đang bán chạy để đội ngũ tìm xưởng gốc.</li>
+              <li>— <strong>Ghép chung kiện tiết kiệm:</strong> Gom từ 03 mã hàng trở lên được giảm ngay 15% cước đóng kiện về Việt Nam.</li>
+              <li>— <strong>Kiểm hàng thực tế tại kho:</strong> Đếm đủ số lượng, quay video kiểm tra ngoại quan từng mẫu trước khi xuất kho.</li>
             </ul>
           </div>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.55rem;">
-            <button type="button" class="btn-editorial-primary mono" style="padding: 0.78rem 0.5rem; font-size: 0.7rem; justify-content: center;" data-action="quick-order-pkg" data-pkg-code="GÓI SỈ 01 // TEST MẪU" data-pkg-title="Gói Nhập Sỉ Số Lượng Nhỏ & Ghép Mã (5 - 20 SP)" data-pkg-price="Báo giá sỉ gốc theo mẫu (-15% từ 3 mã)">
-              <span>⚡ ĐẶT GÓI SỈ NÀY</span>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem;">
+            <button type="button" class="btn-editorial-primary mono" style="padding: 0.85rem 0.6rem; font-size: 0.68rem; justify-content: center;" data-action="quick-order-pkg" data-pkg-code="GÓI SỈ 01 // TEST MẪU" data-pkg-title="Gói Nhập Sỉ Số Lượng Nhỏ & Ghép Mã (5 - 20 SP)" data-pkg-price="Báo giá sỉ gốc theo mẫu (-15% từ 3 mã)">
+              <span>ĐẶT GÓI SỈ NÀY</span>
             </button>
-            <button type="button" class="btn-editorial-outline mono" style="padding: 0.78rem 0.5rem; font-size: 0.7rem; text-align: center;" data-action="scroll-to-hunt" data-hunt-cat="Nhập Hàng Sỉ Tận Xưởng (Đa ngành hàng)" data-hunt-title="Cần tìm nguồn sỉ Gói 01 (Test mẫu 5 - 20 sản phẩm)">
-              <span>📷 GỬI ẢNH / LINK MẪU</span>
+            <button type="button" class="btn-editorial-outline mono" style="padding: 0.85rem 0.6rem; font-size: 0.68rem; text-align: center;" data-action="scroll-to-hunt" data-hunt-cat="Nhập Hàng Sỉ Tận Xưởng (Đa ngành hàng)" data-hunt-title="Cần tìm nguồn sỉ Gói 01 (Test mẫu 5 - 20 sản phẩm)">
+              <span>GỬI ẢNH / LINK MẪU</span>
             </button>
           </div>
         </article>
@@ -2382,24 +2441,24 @@
         <article class="wholesale-card">
           <div>
             <span class="wholesale-tag mono">GÓI SỈ 02 // CHỦ SHOP, STUDIO &amp; BÁN SÀN TMĐT</span>
-            <h3 class="serif" style="font-size: 1.48rem; font-weight: 600; line-height: 1.28; margin-bottom: 0.6rem;">
+            <h3 class="serif" style="font-size: 1.58rem; font-weight: 600; line-height: 1.34; margin-bottom: 0.75rem;">
               Gói Nhập Sỉ Theo Lô Định Kỳ Giá Xuất Xưởng (Từ 20 – 100+ Sản Phẩm)
             </h3>
-            <p style="font-size: 0.86rem; color: var(--ink-secondary); line-height: 1.6;">
+            <p style="font-size: 0.88rem; color: var(--ink-secondary); line-height: 1.8;">
               Làm việc trực tiếp với nhà máy tại Quảng Châu, Hàng Châu, Phật Sơn, Thẩm Quyến, Nghĩa Ô để lấy mức giá sỉ bậc thang tốt nhất cho cửa hàng và kho sỉ của bạn.
             </p>
             <ul class="wholesale-list">
-              <li>• <strong>Đàm phán giá trực tiếp với xưởng:</strong> Bóc tách rõ giá gốc tại nhà máy và cước vận chuyển theo cân/khối (CBM).</li>
-              <li>• <strong>Làm thương hiệu riêng (Private Label):</strong> Hỗ trợ may nhãn mác, in khắc logo, làm hộp quà bao bì riêng cho shop.</li>
-              <li>• <strong>Đóng kiện gỗ &amp; bảo hiểm 100%:</strong> Đảm bảo hàng hóa về nguyên đai nguyên kiện, đúng tiến độ kinh doanh.</li>
+              <li>— <strong>Đàm phán giá trực tiếp với xưởng:</strong> Bóc tách rõ giá gốc tại nhà máy và cước vận chuyển theo cân/khối (CBM).</li>
+              <li>— <strong>Làm thương hiệu riêng (Private Label):</strong> Hỗ trợ may nhãn mác, in khắc logo, làm hộp quà bao bì riêng cho shop.</li>
+              <li>— <strong>Đóng kiện gỗ &amp; bảo hiểm 100%:</strong> Đảm bảo hàng hóa về nguyên đai nguyên kiện, đúng tiến độ kinh doanh.</li>
             </ul>
           </div>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.55rem;">
-            <button type="button" class="btn-editorial-primary mono" style="padding: 0.78rem 0.5rem; font-size: 0.7rem; justify-content: center;" data-action="quick-order-pkg" data-pkg-code="GÓI SỈ 02 // LÔ ĐỊNH KỲ" data-pkg-title="Gói Nhập Sỉ Theo Lô Định Kỳ Cho Chủ Shop (20 - 100+ SP)" data-pkg-price="Giá sỉ bậc thang tận nhà máy">
-              <span>⚡ ĐẶT GÓI SỈ NÀY</span>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem;">
+            <button type="button" class="btn-editorial-primary mono" style="padding: 0.85rem 0.6rem; font-size: 0.68rem; justify-content: center;" data-action="quick-order-pkg" data-pkg-code="GÓI SỈ 02 // LÔ ĐỊNH KỲ" data-pkg-title="Gói Nhập Sỉ Theo Lô Định Kỳ Cho Chủ Shop (20 - 100+ SP)" data-pkg-price="Giá sỉ bậc thang tận nhà máy">
+              <span>ĐẶT GÓI SỈ NÀY</span>
             </button>
-            <button type="button" class="btn-editorial-outline mono" style="padding: 0.78rem 0.5rem; font-size: 0.7rem; text-align: center;" data-action="scroll-to-hunt" data-hunt-cat="Nhập Hàng Sỉ Tận Xưởng (Đa ngành hàng)" data-hunt-title="Cần báo giá Gói Sỉ 02 (Nhập lô định kỳ cho Shop)">
-              <span>📷 GỬI ẢNH / LINK MẪU</span>
+            <button type="button" class="btn-editorial-outline mono" style="padding: 0.85rem 0.6rem; font-size: 0.68rem; text-align: center;" data-action="scroll-to-hunt" data-hunt-cat="Nhập Hàng Sỉ Tận Xưởng (Đa ngành hàng)" data-hunt-title="Cần báo giá Gói Sỉ 02 (Nhập lô định kỳ cho Shop)">
+              <span>GỬI ẢNH / LINK MẪU</span>
             </button>
           </div>
         </article>
@@ -2407,24 +2466,24 @@
         <article class="wholesale-card">
           <div>
             <span class="wholesale-tag mono">GÓI SỈ 03 // ĐẶT NHÀ MÁY GIA CÔNG RIÊNG (OEM / ODM)</span>
-            <h3 class="serif" style="font-size: 1.48rem; font-weight: 600; line-height: 1.28; margin-bottom: 0.6rem;">
+            <h3 class="serif" style="font-size: 1.58rem; font-weight: 600; line-height: 1.34; margin-bottom: 0.75rem;">
               Gói Tìm Nhà Máy Sản Xuất Theo Mẫu Riêng &amp; Lấy Mẫu Thử (Sample)
             </h3>
-            <p style="font-size: 0.86rem; color: var(--ink-secondary); line-height: 1.6;">
+            <p style="font-size: 0.88rem; color: var(--ink-secondary); line-height: 1.8;">
               Bạn có mẫu sản phẩm độc quyền hoặc muốn đặt nhà máy gia công riêng (tất cả ngành hàng trừ thực phẩm)? Chỉ cần gửi ảnh hoặc thông số, chúng tôi lo trọn khâu tìm nhà máy.
             </p>
             <ul class="wholesale-list">
-              <li>• <strong>Đặt mẫu thử (Sample) về tận tay:</strong> Yêu cầu nhà máy làm 1–2 mẫu gửi về Việt Nam để bạn duyệt chất lượng trước khi sản xuất hàng loạt.</li>
-              <li>• <strong>Bảo mật tuyệt đối nguồn hàng:</strong> Cam kết giữ kín 100% thiết kế, mẫu mã và thông tin xưởng của đối tác.</li>
-              <li>• <strong>Hỗ trợ trọn gói thủ tục &amp; vận chuyển:</strong> Giao tận kho Hà Nội, Đà Nẵng, TP.HCM và toàn quốc.</li>
+              <li>— <strong>Đặt mẫu thử (Sample) về tận tay:</strong> Yêu cầu nhà máy làm 1–2 mẫu gửi về Việt Nam để bạn duyệt chất lượng trước khi sản xuất hàng loạt.</li>
+              <li>— <strong>Bảo mật tuyệt đối nguồn hàng:</strong> Cam kết giữ kín 100% thiết kế, mẫu mã và thông tin xưởng của đối tác.</li>
+              <li>— <strong>Hỗ trợ trọn gói thủ tục &amp; vận chuyển:</strong> Giao tận kho Hà Nội, Đà Nẵng, TP.HCM và toàn quốc.</li>
             </ul>
           </div>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.55rem;">
-            <button type="button" class="btn-editorial-primary mono" style="padding: 0.78rem 0.5rem; font-size: 0.7rem; justify-content: center;" data-action="quick-order-pkg" data-pkg-code="GÓI SỈ 03 // GIA CÔNG OEM" data-pkg-title="Gói Đặt Nhà Máy Sản Xuất Riêng OEM/ODM & Lấy Mẫu Thử" data-pkg-price="Báo giá trực tiếp từ nhà máy gia công">
-              <span>⚡ ĐẶT GÓI OEM NÀY</span>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem;">
+            <button type="button" class="btn-editorial-primary mono" style="padding: 0.85rem 0.6rem; font-size: 0.68rem; justify-content: center;" data-action="quick-order-pkg" data-pkg-code="GÓI SỈ 03 // GIA CÔNG OEM" data-pkg-title="Gói Đặt Nhà Máy Sản Xuất Riêng OEM/ODM & Lấy Mẫu Thử" data-pkg-price="Báo giá trực tiếp từ nhà máy gia công">
+              <span>ĐẶT GÓI OEM NÀY</span>
             </button>
-            <button type="button" class="btn-editorial-outline mono" style="padding: 0.78rem 0.5rem; font-size: 0.7rem; text-align: center;" data-action="scroll-to-hunt" data-hunt-cat="Nhập Hàng Sỉ Tận Xưởng (Đa ngành hàng)" data-hunt-title="Cần tìm nhà máy gia công OEM / Lấy mẫu thử theo ảnh">
-              <span>📷 GỬI ẢNH MẪU CẦN LÀM</span>
+            <button type="button" class="btn-editorial-outline mono" style="padding: 0.85rem 0.6rem; font-size: 0.68rem; text-align: center;" data-action="scroll-to-hunt" data-hunt-cat="Nhập Hàng Sỉ Tận Xưởng (Đa ngành hàng)" data-hunt-title="Cần tìm nhà máy gia công OEM / Lấy mẫu thử theo ảnh">
+              <span>GỬI ẢNH MẪU CẦN LÀM</span>
             </button>
           </div>
         </article>
@@ -2438,13 +2497,13 @@
         </div>
         <div class="sec-title-cell">
           <h2 class="sec-heading">Gói Nội Thất Decor Phòng &amp; Nhà Trọn Bộ Từ Cụm Xưởng Phật Sơn</h2>
-          <p style="font-size: 0.9rem; color: var(--ink-secondary);">
-            Dành cho chủ căn hộ mới nhận nhà, chủ homestay, studio hoặc kiến trúc sư: Gom trọn bộ sofa, bàn ghế, giường, đèn và thảm từ cụm xưởng Phật Sơn (Foshan). <strong>Đặt trực tiếp qua Zalo 1 chạm</strong> — đi chung kiện gỗ tiết kiệm 25–40% so với mua lẻ ở showroom.
+          <p style="font-size: 0.92rem; color: var(--ink-secondary); line-height: 1.82;">
+            Dành cho chủ căn hộ mới nhận nhà, chủ homestay, studio hoặc kiến trúc sư: Gom trọn bộ sofa, bàn ghế, giường, đèn và thảm từ cụm xưởng Phật Sơn (Foshan). <strong>Đặt trực tiếp không cần giỏ hàng</strong> — đi chung kiện gỗ tiết kiệm 25–40% so với mua lẻ ở showroom.
           </p>
         </div>
         <div class="sec-meta-cell">
-          <div class="mono" style="margin-bottom: 0.35rem; color: var(--ink-primary);">QUYỀN LỢI ĐẶT GÓI NỘI THẤT</div>
-          <p>Quay video mẫu da/vải/đá thật tại xưởng trước khi làm • Đóng khung gỗ kiện riêng &amp; bảo hiểm nguyên vẹn 100%.</p>
+          <div class="mono" style="margin-bottom: 0.45rem; color: var(--ink-primary);">QUYỀN LỢI ĐẶT GÓI NỘI THẤT</div>
+          <p>Quay video mẫu da/vải/đá thật tại xưởng trước khi làm — Đóng khung gỗ kiện riêng &amp; bảo hiểm nguyên vẹn 100%.</p>
         </div>
       </div>
 
@@ -2461,14 +2520,14 @@
           <span style="color: var(--accent);">QUY TRÌNH LÀM VIỆC</span>
         </div>
         <div class="sec-title-cell">
-          <h2 class="sec-heading">3 Bước Đặt Hàng Trực Tiếp — Không Cần Giỏ Hàng Rườm Rà</h2>
-          <p style="font-size: 0.9rem; color: var(--ink-secondary);">
-            Mọi thao tác được rút gọn tối đa để bạn tiết kiệm thời gian: Gửi ảnh hoặc link Shopee ở Mục 01, chọn món Giá Tốt ở Mục 02, hoặc chọn Gói Sỉ / Nội Thất ở Mục 03 là kết nối thẳng với Zalo báo giá.
+          <h2 class="sec-heading">03 Bước Đặt Hàng Trực Tiếp — Tinh Gọn &amp; Minh Bạch</h2>
+          <p style="font-size: 0.92rem; color: var(--ink-secondary); line-height: 1.82;">
+            Mọi thao tác được rút gọn tối đa để bạn tiết kiệm thời gian: Gửi ảnh hoặc link Shopee ở Mục 01, chọn món Giá Tốt ở Mục 02, hoặc chọn Gói Sỉ / Nội Thất ở Mục 03 để đội ngũ gửi báo giá trực tiếp.
           </p>
         </div>
         <div class="sec-meta-cell">
-          <div class="mono" style="margin-bottom: 0.35rem; color: var(--ink-primary);">CAM KẾT MINH BẠCH</div>
-          <p>Báo giá trọn gói một lần về tận tay, tự động giảm 15% khi đặt từ 3 món, không phát sinh phụ phí lúc nhận hàng.</p>
+          <div class="mono" style="margin-bottom: 0.45rem; color: var(--ink-primary);">CAM KẾT MINH BẠCH</div>
+          <p>Báo giá trọn gói một lần về tận tay, tự động giảm 15% khi đặt từ 03 món, không phát sinh phụ phí lúc nhận hàng.</p>
         </div>
       </div>
 
@@ -2481,7 +2540,7 @@
               Tải ảnh món đồ, dán <strong>Link Shopee</strong> bạn muốn đặt mua hộ giá tốt ở Mục 01; hoặc chọn ngay mặt hàng <strong>Giá Tốt Trong Tháng</strong> (Mục 02) và <strong>Gói Sỉ / Nội Thất</strong> (Mục 03).
             </p>
           </div>
-          <div class="mono" style="margin-top: 1.5rem; color: var(--ink-muted);">[ GỬI ẢNH HOẶC LINK SHOPEE ĐỀU ĐƯỢC ]</div>
+          <div class="mono" style="margin-top: 1.65rem; color: var(--ink-muted);">[ GỬI ẢNH HOẶC LINK SHOPEE ĐỀU ĐƯỢC ]</div>
         </div>
 
         <div class="process-cell">
@@ -2489,10 +2548,10 @@
             <div class="process-step-num">02.</div>
             <h3 class="process-step-title">Bấm Lưu Thông Tin &amp; Đội Ngũ Chủ Động Gửi Báo Giá</h3>
             <p class="process-step-text">
-              Sau khi điền tên và SĐT rồi bấm <strong>Lưu Thông Tin &amp; Nhận Báo Giá</strong>, hình ảnh và yêu cầu của bạn được lưu thẳng vào thư mục riêng theo Tên &amp; SĐT. Đội ngũ ATELIER (<strong>0823.230.703</strong>) sẽ kiểm tra xưởng và chủ động liên hệ gửi báo giá trọn gói cho bạn (tự động giảm 15% khi đặt từ 3 món).
+              Sau khi điền tên và SĐT rồi bấm <strong>Lưu Thông Tin &amp; Nhận Báo Giá</strong>, hình ảnh và yêu cầu của bạn được lưu thẳng vào thư mục riêng theo Tên &amp; SĐT. Đội ngũ ATELIER (<strong>0823.230.703</strong>) sẽ kiểm tra xưởng và chủ động liên hệ gửi báo giá trọn gói cho bạn (tự động giảm 15% khi đặt từ 03 món).
             </p>
           </div>
-          <div class="mono" style="margin-top: 1.5rem; color: var(--ink-muted);">[ ĐẶT TỪ 3 MÓN GIẢM NGAY 15% ]</div>
+          <div class="mono" style="margin-top: 1.65rem; color: var(--ink-muted);">[ ĐẶT TỪ 03 MÓN GIẢM NGAY 15% ]</div>
         </div>
 
         <div class="process-cell">
@@ -2503,7 +2562,7 @@
               Khi hàng tới kho tập kết, nhân viên mở kiện kiểm tra chất liệu, đếm đủ số lượng và quay video thực tế gửi bạn duyệt trước khi đóng kiện gỗ chống sốc chuyển về Việt Nam.
             </p>
           </div>
-          <div class="mono" style="margin-top: 1.5rem; color: var(--ink-muted);">[ ĐỒNG KIỂM &amp; BẢO HIỂM 100% ]</div>
+          <div class="mono" style="margin-top: 1.65rem; color: var(--ink-muted);">[ ĐỒNG KIỂM &amp; BẢO HIỂM 100% ]</div>
         </div>
       </div>
     </section>
@@ -2511,21 +2570,20 @@
     <!-- Pre-Footer Direct Contact Banner -->
     <div class="direct-contact-strip">
       <div>
-        <span class="mono" style="color: var(--accent); display: block; margin-bottom: 0.25rem;">LIÊN HỆ TRỰC TIẾP ĐỘI NGŨ MUA HỘ, BÁO GIÁ SỈ &amp; NỘI THẤT</span>
-        <div class="serif" style="font-size: 1.45rem; font-weight: 600;">
+        <span class="mono" style="color: var(--accent); display: block; margin-bottom: 0.35rem;">LIÊN HỆ TRỰC TIẾP ĐỘI NGŨ MUA HỘ, BÁO GIÁ SỈ &amp; NỘI THẤT</span>
+        <div class="serif" style="font-size: 1.6rem; font-weight: 600;">
           Hotline / Zalo / WhatsApp: <a href="tel:0823230703" style="color: var(--accent); text-decoration: underline;">0823.230.703</a>
         </div>
       </div>
       <div class="contact-strip-actions">
-        <a href="https://zalo.me/0823230703" target="_blank" rel="noopener noreferrer" class="btn-editorial-primary" style="padding: 0.78rem 1.25rem;">
+        <a href="https://zalo.me/0823230703" target="_blank" rel="noopener noreferrer" class="btn-editorial-primary" style="padding: 0.85rem 1.4rem;">
           <span>NHẮN ZALO: 0823.230.703</span>
-          <span>↗</span>
         </a>
-        <a href="https://wa.me/84823230703" target="_blank" rel="noopener noreferrer" class="btn-editorial-outline" style="padding: 0.78rem 1.25rem;">
+        <a href="https://wa.me/84823230703" target="_blank" rel="noopener noreferrer" class="btn-editorial-outline" style="padding: 0.85rem 1.4rem;">
           <span>WHATSAPP: +84 823.230.703</span>
         </a>
-        <a href="tel:0823230703" class="btn-editorial-outline" style="padding: 0.78rem 1.15rem;">
-          <span>📞 GỌI TRỰC TIẾP</span>
+        <a href="tel:0823230703" class="btn-editorial-outline" style="padding: 0.85rem 1.3rem;">
+          <span>GỌI TRỰC TIẾP: 0823.230.703</span>
         </a>
       </div>
     </div>
@@ -2534,34 +2592,34 @@
     <footer class="editorial-footer">
       <div class="footer-grid">
         <div class="footer-col">
-          <div class="serif" style="font-size: 2rem; font-weight: 600; line-height: 1.1;" id="footerBrandName">ATELIER</div>
-          <p style="font-size: 0.84rem; color: var(--ink-secondary); line-height: 1.65;">
+          <div class="serif" style="font-size: 2.15rem; font-weight: 600; line-height: 1.1; letter-spacing: 0.1em;" id="footerBrandName">ATELIER</div>
+          <p style="font-size: 0.86rem; color: var(--ink-secondary); line-height: 1.8;">
             Đơn vị chuyên tìm &amp; đặt mua hộ tận xưởng qua ảnh hoặc link Shopee, tổng hợp sản phẩm giá tốt hàng tháng, cung ứng gói sỉ đa ngành hàng (trừ thực phẩm) và nội thất trọn gói theo phòng.
           </p>
-          <div class="mono" style="color: var(--olive); font-size: 0.7rem;">
-            ● ĐẶT TỪ 3 MÓN GIẢM 15% • BẢO MẬT NGUỒN HÀNG ĐỐI TÁC
+          <div class="mono" style="color: var(--olive); font-size: 0.68rem;">
+            ĐẶT TỪ 03 MÓN GIẢM 15% — BẢO MẬT NGUỒN HÀNG ĐỐI TÁC
           </div>
         </div>
 
         <div class="footer-col">
           <div class="footer-col-title">Bố Cục Dịch Vụ</div>
           <ul class="footer-links-list">
-            <li><a href="#sourcing-section">• 01 / Tìm &amp; Đặt mua hộ qua Ảnh hoặc Link Shopee</a></li>
-            <li><a href="#monthly-deals-section">• 02 / Mặt hàng đang có giá tốt sẵn trong tháng</a></li>
-            <li><a href="#packages-section">• 03A / Gói nhập sỉ (Tất cả ngành hàng trừ thực phẩm)</a></li>
-            <li><a href="#packages-section">• 03B / Gói nội thất decor phòng ngủ &amp; nguyên căn</a></li>
-            <li><a href="#process-section">• 04 / Quy trình kiểm hàng &amp; vận chuyển 3 bước</a></li>
+            <li><a href="#sourcing-section">01 / Tìm &amp; Đặt mua hộ qua Ảnh hoặc Link Shopee</a></li>
+            <li><a href="#monthly-deals-section">02 / Mặt hàng đang có giá tốt sẵn trong tháng</a></li>
+            <li><a href="#packages-section">03A / Gói nhập sỉ (Tất cả ngành hàng trừ thực phẩm)</a></li>
+            <li><a href="#packages-section">03B / Gói nội thất decor phòng ngủ &amp; nguyên căn</a></li>
+            <li><a href="#process-section">04 / Quy trình kiểm hàng &amp; vận chuyển 3 bước</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <div class="footer-col-title">Cam Kết &amp; Ưu Đãi</div>
           <ul class="footer-links-list">
-            <li>• Chiết khấu ngay 15% khi đặt mua từ 03 món trở lên</li>
-            <li>• Quay video kiểm hàng thực tế trước khi đóng kiện</li>
-            <li>• Đóng khung gỗ chống sốc &amp; bảo hiểm gãy vỡ 100%</li>
-            <li>• Đền bù 100% nếu giao sai mẫu hoặc thất lạc</li>
-            <li>• Báo giá trọn gói một lần, không phát sinh phụ phí</li>
+            <li>— Chiết khấu ngay 15% khi đặt mua từ 03 món trở lên</li>
+            <li>— Quay video kiểm hàng thực tế trước khi đóng kiện</li>
+            <li>— Đóng khung gỗ chống sốc &amp; bảo hiểm gãy vỡ 100%</li>
+            <li>— Đền bù 100% nếu giao sai mẫu hoặc thất lạc</li>
+            <li>— Báo giá trọn gói một lần, không phát sinh phụ phí</li>
           </ul>
         </div>
 
@@ -2570,7 +2628,7 @@
           <ul class="footer-links-list">
             <li><strong>Hotline / Zalo / WhatsApp:</strong> <a href="https://zalo.me/0823230703" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: 600;" id="footerZaloDisplay">0823.230.703</a></li>
             <li><strong>Khung giờ hỗ trợ:</strong> 08:30 – 22:30 (Thứ 2 – Chủ Nhật)</li>
-            <li><strong>Cụm xưởng kết nối:</strong> Quảng Châu • Hàng Châu • Phật Sơn • Cảnh Đức Trấn • Thẩm Quyến</li>
+            <li><strong>Cụm xưởng kết nối:</strong> Quảng Châu — Hàng Châu — Phật Sơn — Cảnh Đức Trấn — Thẩm Quyến</li>
             <li><strong>Điểm trả hàng:</strong> Giao tận nơi tại Hà Nội, Đà Nẵng, TP.HCM &amp; 63 tỉnh thành</li>
           </ul>
         </div>
@@ -2590,26 +2648,26 @@
 
   <!-- Quick 1-Step Order Modal (Save Directly to Drive Folder, No Downloads Required!) -->
   <div class="quick-order-modal" id="quickOrderModal" role="dialog" aria-modal="true">
-    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--hairline-strong); padding-bottom: 0.85rem; margin-bottom: 1rem;">
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--hairline-strong); padding-bottom: 1rem; margin-bottom: 1.25rem;">
       <div>
-        <span class="mono" style="color: var(--accent); display: block;" id="qoHeaderBadge">GỬI YÊU CẦU BÁO GIÁ // LƯU THÔNG TIN TRỰC TIẾP</span>
-        <h3 class="serif" style="font-size: 1.5rem; font-weight: 600;" id="qoModalTitle">Điền Thông Tin Để Nhận Báo Giá Riêng</h3>
+        <span class="mono" style="color: var(--accent); display: block; margin-bottom: 0.25rem;" id="qoHeaderBadge">GỬI YÊU CẦU BÁO GIÁ // LƯU THÔNG TIN TRỰC TIẾP</span>
+        <h3 class="serif" style="font-size: 1.65rem; font-weight: 600;" id="qoModalTitle">Điền Thông Tin Để Nhận Báo Giá Riêng</h3>
       </div>
-      <button type="button" id="closeQuickOrderBtn" class="mono" style="padding: 0.35rem 0.65rem; border: 1px solid var(--hairline-strong);">[ ĐÓNG × ]</button>
+      <button type="button" id="closeQuickOrderBtn" class="mono" style="padding: 0.4rem 0.75rem; border: 1px solid var(--hairline-strong);">[ ĐÓNG ]</button>
     </div>
 
     <!-- Selected Item(s) Summary -->
-    <div id="qoItemsPreview" style="padding: 0.85rem; background: var(--bg-secondary); border: 1px solid var(--hairline); margin-bottom: 1rem; display: flex; flex-direction: column; gap: 0.6rem; max-height: 210px; overflow-y: auto;"></div>
+    <div id="qoItemsPreview" style="padding: 1rem; background: var(--bg-secondary); border: 1px solid var(--hairline); margin-bottom: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem; max-height: 210px; overflow-y: auto;"></div>
 
-    <form id="quickOrderForm" style="display: flex; flex-direction: column; gap: 0.85rem;">
-      <div class="form-grid" style="gap: 0.85rem;">
+    <form id="quickOrderForm" style="display: flex; flex-direction: column; gap: 1rem;">
+      <div class="form-grid" style="gap: 1.25rem;">
         <div class="form-group">
           <label class="form-label" for="qoClientName">Tên Của Bạn (Hoặc Tên Shop) *</label>
-          <input type="text" id="qoClientName" class="editorial-input" placeholder="VD: Minh Anh / Tiệm Decor..." required />
+          <input type="text" id="qoClientName" class="editorial-input" placeholder="" required />
         </div>
         <div class="form-group">
           <label class="form-label" for="qoClientZalo">Số Điện Thoại / Zalo Nhận Báo Giá *</label>
-          <input type="text" id="qoClientZalo" class="editorial-input" placeholder="VD: 0987..." required />
+          <input type="text" id="qoClientZalo" class="editorial-input" placeholder="" required />
         </div>
         <div class="form-group">
           <label class="form-label" for="qoClientCity">Khu Vực Nhận Hàng</label>
@@ -2624,26 +2682,26 @@
           <label class="form-label" for="qoOrderQty">Số Lượng &amp; Ưu Đãi</label>
           <select id="qoOrderQty" class="editorial-select">
             <option value="Đặt 01 món / 01 gói (Nhận báo giá riêng)">Đặt 01 món / 01 gói theo thông tin trên</option>
-            <option value="Đặt từ 03 món trở lên (🔥 Giảm ngay 15%)">🔥 Đặt từ 03 món trở lên (Giảm ngay 15%)</option>
+            <option value="Đặt từ 03 món trở lên (Giảm ngay 15%)">Đặt từ 03 món trở lên (Giảm ngay 15%)</option>
             <option value="Nhập sỉ số lượng cho Chủ Shop / Dự án">Nhập sỉ số lượng cho Chủ Shop / Dự án</option>
           </select>
         </div>
         <div class="form-group full">
-          <label class="form-label" for="qoClientNote">Ghi Chú Thêm (Màu sắc, kích cỡ, hoặc dán thêm Link Shopee nếu có)</label>
-          <input type="text" id="qoClientNote" class="editorial-input" placeholder="VD: Lấy màu kem đá, size M..." />
+          <label class="form-label" for="qoClientNote">Ghi Chú Thêm (Màu sắc, kích cỡ, hoặc đường dẫn sản phẩm nếu có)</label>
+          <input type="text" id="qoClientNote" class="editorial-input" placeholder="" />
         </div>
       </div>
 
-      <button type="submit" id="qoSubmitMainBtn" class="btn-editorial-primary" style="width: 100%; justify-content: center; padding: 1.05rem 0.85rem; margin-top: 0.25rem; font-size: 0.84rem;">
-        <span>✓ LƯU THÔNG TIN &amp; NHẬN BÁO GIÁ</span>
+      <button type="submit" id="qoSubmitMainBtn" class="btn-editorial-primary" style="width: 100%; justify-content: center; padding: 1.15rem 1rem; margin-top: 0.35rem; font-size: 0.82rem;">
+        <span>LƯU THÔNG TIN &amp; NHẬN BÁO GIÁ</span>
       </button>
 
-      <div id="qoSuccessBanner" style="display: none; padding: 1rem 1.15rem; background: var(--bg-elevated); border: 1.5px solid var(--olive); border-left: 5px solid var(--olive);">
-        <div class="mono" style="color: var(--olive); font-weight: 700; font-size: 0.76rem; margin-bottom: 0.3rem;">
-          ✓ ĐÃ LƯU THÔNG TIN &amp; SẢN PHẨM BẠN CHỌN THÀNH CÔNG!
+      <div id="qoSuccessBanner" style="display: none; padding: 1.15rem 1.25rem; background: var(--bg-elevated); border: 1px solid var(--olive); border-left: 4px solid var(--olive);">
+        <div class="mono" style="color: var(--olive); font-weight: 600; font-size: 0.75rem; margin-bottom: 0.35rem;">
+          ĐÃ LƯU THÔNG TIN &amp; SẢN PHẨM BẠN CHỌN THÀNH CÔNG
         </div>
-        <p style="font-size: 0.82rem; color: var(--ink-primary); line-height: 1.5;" id="qoSuccessMessage">
-          Hồ sơ và sản phẩm của bạn đã được lưu lại. Đội ngũ ATELIER (0823.230.703) sẽ chủ động liên hệ gửi báo giá riêng cho bạn sớm nhất!
+        <p style="font-size: 0.84rem; color: var(--ink-primary); line-height: 1.72;" id="qoSuccessMessage">
+          Hồ sơ và sản phẩm của bạn đã được lưu lại. Đội ngũ ATELIER (0823.230.703) sẽ chủ động liên hệ gửi báo giá riêng cho bạn sớm nhất.
         </p>
       </div>
     </form>
@@ -2656,45 +2714,44 @@
         <span class="mono" style="color: var(--accent); display: block;">TRANG QUẢN TRỊ RIÊNG CỦA CHỦ SHOP ATELIER (ẨN 100% VỚI KHÁCH HÀNG)</span>
         <h3 class="serif" style="font-size: 1.65rem; font-weight: 600;">Kết Nối Tự Động Lưu Ảnh Về Thư Mục Google Drive &amp; Cập Nhật Hàng Giá Tốt</h3>
       </div>
-      <button type="button" id="closeCrmModalBtn" class="mono" style="padding: 0.4rem 0.75rem; border: 1px solid var(--hairline-strong);">[ ĐÓNG × ]</button>
+      <button type="button" id="closeCrmModalBtn" class="mono" style="padding: 0.4rem 0.75rem; border: 1px solid var(--hairline-strong);">[ ĐÓNG ]</button>
     </div>
 
     <div style="display: grid; grid-template-columns: 1fr; gap: 1.25rem;">
-      <!-- KHỐI 1: KẾT NỐI GOOGLE DRIVE PER-CUSTOMER FOLDER (TỰ ĐỘNG LƯU ẢNH + TÊN + SĐT KHÁCH) -->
-      <div style="padding: 1.2rem; background: var(--bg-elevated); border: 2px solid var(--accent);">
-        <div class="mono" style="color: var(--accent); font-weight: 700; margin-bottom: 0.4rem;">
-          ☁️ 1. TỰ ĐỘNG ĐẨY ẢNH &amp; THÔNG TIN KHÁCH VỀ THƯ MỤC RIÊNG TRÊN GOOGLE DRIVE ([SĐT] - [TÊN KHÁCH])
+      <!-- KHỐI 1: KẾT NỐI GOOGLE DRIVE PER-CUSTOMER FOLDER -->
+      <div style="padding: 1.2rem; background: var(--bg-elevated); border: 1px solid var(--accent);">
+        <div class="mono" style="color: var(--accent); font-weight: 600; margin-bottom: 0.4rem;">
+          01 / TỰ ĐỘNG ĐẨY ẢNH &amp; THÔNG TIN KHÁCH VỀ THƯ MỤC RIÊNG TRÊN GOOGLE DRIVE ([SĐT] - [TÊN KHÁCH])
         </div>
-        <p style="font-size: 0.84rem; color: var(--ink-secondary); line-height: 1.6; margin-bottom: 0.85rem;">
-          Khi khách bấm <strong>"✓ LƯU THÔNG TIN &amp; NHẬN BÁO GIÁ"</strong>, hệ thống sẽ tự động tạo ngay 1 folder riêng trên Google Drive của bạn với tên <strong>[SĐT Khách] - [Tên Khách]</strong> (VD: <code>0934966923 - Hưng test (TP. Hồ Chí Minh)</code>) và <strong>lưu thẳng file Ảnh sản phẩm (.jpg) + File thông tin khách</strong> vào đúng folder đó!
+        <p style="font-size: 0.84rem; color: var(--ink-secondary); line-height: 1.72; margin-bottom: 0.85rem;">
+          Khi khách bấm <strong>"LƯU THÔNG TIN &amp; NHẬN BÁO GIÁ"</strong>, hệ thống sẽ tự động tạo ngay 1 folder riêng trên Google Drive của bạn với tên <strong>[SĐT Khách] - [Tên Khách]</strong> và <strong>lưu thẳng file Ảnh sản phẩm (.jpg) + File thông tin khách</strong> vào đúng folder đó.
         </p>
 
-        <!-- Hướng dẫn 3 bước bấm 1 chạm để lấy link Google Drive của chủ shop -->
-        <div style="padding: 0.9rem 1rem; background: var(--bg-secondary); border: 1px dashed var(--hairline-strong); margin-bottom: 0.9rem; font-size: 0.81rem; line-height: 1.6;">
-          <strong style="color: var(--ink-primary); display: block; margin-bottom: 0.35rem;">⚡ Cài đặt 1 lần duy nhất trong 30 giây (Để nối thẳng vào Google Drive cá nhân của bạn):</strong>
-          1️⃣ Bấm nút <strong>[📋 BƯỚC 1: COPY MÃ GOOGLE DRIVE SCRIPT]</strong> bên dưới.<br/>
-          2️⃣ Bấm <strong>[🚀 BƯỚC 2: MỞ SCRIPT.GOOGLE.COM]</strong> → Bấm <strong>Dự án mới (New project)</strong> → Xóa chữ có sẵn và <strong>Dán (Ctrl+V)</strong> mã vừa copy vào.<br/>
-          3️⃣ Ở góc phải trên cùng, bấm nút màu xanh <strong>Triển khai (Deploy) → Triển khai mới (New deployment)</strong> → Chọn bánh răng <strong>Ứng dụng web (Web app)</strong> → Phần <em>Ai có quyền truy cập (Who has access)</em> chọn <strong>Bất kỳ ai (Anyone)</strong> → Bấm Triển khai &amp; Copy đường link <code>https://script.google.com/macros/s/.../exec</code> dán vào ô dưới đây:
+        <div style="padding: 0.9rem 1rem; background: var(--bg-secondary); border: 1px dashed var(--hairline-strong); margin-bottom: 0.9rem; font-size: 0.81rem; line-height: 1.72;">
+          <strong style="color: var(--ink-primary); display: block; margin-bottom: 0.35rem;">Hướng dẫn cài đặt kết nối Google Drive cá nhân:</strong>
+          01. Bấm nút <strong>[BƯỚC 1: COPY MÃ GOOGLE DRIVE SCRIPT]</strong> bên dưới.<br/>
+          02. Bấm <strong>[BƯỚC 2: MỞ SCRIPT.GOOGLE.COM]</strong> — Chọn <strong>Dự án mới (New project)</strong> — Xóa chữ có sẵn và <strong>Dán (Ctrl+V)</strong> mã vừa copy vào.<br/>
+          03. Ở góc phải trên cùng, bấm <strong>Triển khai (Deploy) — Triển khai mới (New deployment)</strong> — Chọn <strong>Ứng dụng web (Web app)</strong> — Phần <em>Ai có quyền truy cập</em> chọn <strong>Bất kỳ ai (Anyone)</strong> — Bấm Triển khai &amp; dán đường dẫn Web App vào ô dưới đây:
           <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.6rem;">
             <button type="button" id="copyGasCodeBtn" class="btn-editorial-primary mono" style="padding: 0.55rem 0.95rem; font-size: 0.7rem;">
-              📋 BƯỚC 1: COPY MÃ GOOGLE DRIVE SCRIPT
+              BƯỚC 1: COPY MÃ GOOGLE DRIVE SCRIPT
             </button>
             <a href="https://script.google.com/home/start" target="_blank" rel="noopener noreferrer" class="btn-editorial-outline mono" style="padding: 0.55rem 0.95rem; font-size: 0.7rem;">
-              🚀 BƯỚC 2: MỞ SCRIPT.GOOGLE.COM ↗
+              BƯỚC 2: MỞ SCRIPT.GOOGLE.COM
             </a>
           </div>
         </div>
 
         <div style="display: flex; gap: 0.65rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.65rem;">
-          <input type="text" id="gasWebhookInput" class="editorial-input" style="flex: 1; min-width: 260px;" placeholder="BƯỚC 3: Dán link Web App Google Apps Script (https://script.google.com/macros/s/.../exec) vào đây..." />
+          <input type="text" id="gasWebhookInput" class="editorial-input" style="flex: 1; min-width: 260px;" placeholder="" />
           <button type="button" id="saveGasWebhookBtn" class="btn-editorial-primary mono" style="padding: 0.75rem 1.1rem; font-size: 0.72rem;">
-            ✓ LƯU KẾT NỐI DRIVE
+            LƯU KẾT NỐI DRIVE
           </button>
           <button type="button" id="testGasWebhookBtn" class="btn-editorial-outline mono" style="padding: 0.75rem 0.95rem; font-size: 0.72rem;">
-            ⚡ GỬI THỬ 1 FOLDER KÈM ẢNH LÊN DRIVE
+            GỬI THỬ 1 FOLDER KÈM ẢNH LÊN DRIVE
           </button>
           <button type="button" id="syncAllOldLeadsBtn" class="btn-editorial-outline mono" style="padding: 0.75rem 0.95rem; font-size: 0.72rem;">
-            ☁️ ĐẨY CÁC ĐƠN CŨ (KÈM ẢNH) LÊN DRIVE
+            ĐẨY CÁC ĐƠN CŨ LÊN DRIVE
           </button>
         </div>
         <div id="gasStatusText" class="mono" style="font-size: 0.74rem; color: var(--olive);"></div>
@@ -2704,11 +2761,11 @@
       <div style="padding: 1.1rem; background: var(--bg-elevated); border: 1px solid var(--hairline);">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem;">
           <div>
-            <span class="mono" style="color: var(--ink-primary); font-weight: 700;">2. DANH SÁCH KHÁCH ĐÃ LƯU (CÓ SẴN ẢNH KHÁCH GỬI + NÚT MỞ FOLDER GOOGLE DRIVE)</span>
-            <p style="font-size: 0.8rem; color: var(--ink-secondary);">Bạn có thể bấm mở thẳng Folder Google Drive của từng khách, bấm <strong>📥 Tải Ảnh</strong> của khách, hoặc xuất bảng Excel đã chia sẵn cột rõ ràng.</p>
+            <span class="mono" style="color: var(--ink-primary); font-weight: 600;">02 / DANH SÁCH KHÁCH ĐÃ LƯU</span>
+            <p style="font-size: 0.8rem; color: var(--ink-secondary);">Mở thẳng Folder Google Drive của từng khách, tải ảnh của khách, hoặc xuất bảng Excel đã chia sẵn cột.</p>
           </div>
           <button type="button" id="exportCrmCsvBtn" class="btn-editorial-primary mono" style="padding: 0.55rem 0.95rem; font-size: 0.7rem;">
-            📊 XUẤT BẢNG EXCEL (.XLS) CHIA CỘT RÕ RÀNG
+            XUẤT BẢNG EXCEL (.XLS)
           </button>
         </div>
         <div id="localCrmTableWrap" style="max-height: 260px; overflow-y: auto; border: 1px solid var(--hairline);"></div>
@@ -2716,19 +2773,19 @@
 
       <!-- KHỐI 3: CẬP NHẬT MỤC 02 (GIÁ TỐT TRONG THÁNG) BẰNG FILE EXCEL / CSV -->
       <div style="padding: 1.1rem; background: var(--bg-secondary); border: 1px solid var(--hairline);">
-        <div class="mono" style="color: var(--accent); font-weight: 700; margin-bottom: 0.35rem;">
-          📊 3. FORM FILE EXCEL CẬP NHẬT "MẶT HÀNG ĐANG CÓ GIÁ TỐT TRONG THÁNG" (MỤC 02 — KHÔNG PUBLIC GIÁ)
+        <div class="mono" style="color: var(--accent); font-weight: 600; margin-bottom: 0.35rem;">
+          03 / CẬP NHẬT "MẶT HÀNG ĐANG CÓ GIÁ TỐT TRONG THÁNG" (MỤC 02 — KHÔNG PUBLIC GIÁ)
         </div>
-        <p style="font-size: 0.84rem; color: var(--ink-secondary); line-height: 1.6; margin-bottom: 0.85rem;">
-          Tải <strong>File Excel Mẫu (.CSV)</strong> bên dưới về máy, điền danh sách sản phẩm trong tháng rồi bấm <strong>📤 Tải File Excel Lên</strong> để cập nhật Mục 02.
+        <p style="font-size: 0.84rem; color: var(--ink-secondary); line-height: 1.72; margin-bottom: 0.85rem;">
+          Tải <strong>File Excel Mẫu (.CSV)</strong> bên dưới về máy, điền danh sách sản phẩm trong tháng rồi bấm <strong>Tải File Excel Lên</strong> để cập nhật Mục 02.
         </p>
         <div style="display: flex; gap: 0.65rem; flex-wrap: wrap; align-items: center;">
           <a href="mau-san-pham-gia-tot-atelier.csv" download="mau-san-pham-gia-tot-atelier.csv" class="btn-editorial-primary mono" style="padding: 0.7rem 1.1rem; font-size: 0.72rem;">
-            📥 TẢI FILE EXCEL MẪU (.CSV) VỀ MÁY
+            TẢI FILE EXCEL MẪU (.CSV)
           </a>
           <input type="file" id="excelDealsInput" accept=".csv,.txt" style="display: none;" />
           <button type="button" id="uploadExcelDealsBtn" class="btn-editorial-outline mono" style="padding: 0.7rem 1.1rem; font-size: 0.72rem;">
-            📤 TẢI FILE EXCEL (.CSV) LÊN ĐỂ CẬP NHẬT MỤC 02
+            TẢI FILE EXCEL (.CSV) LÊN ĐỂ CẬP NHẬT MỤC 02
           </button>
           <button type="button" id="resetDefaultDealsBtn" class="mono" style="padding: 0.65rem 0.9rem; border: 1px solid var(--hairline); font-size: 0.68rem; color: var(--ink-muted);">
             KHÔI PHỤC 08 MẪU MẶC ĐỊNH
@@ -2742,17 +2799,17 @@
   <!-- Thanh nổi thông báo Chiết Khấu 15% khi khách tích chọn gộp các món Giá Tốt Trong Tháng -->
   <div class="bundle-discount-bar" id="bundleDiscountBar">
     <div>
-      <div class="mono" style="color: #E8A598; font-size: 0.68rem;">🎁 CHƯƠNG TRÌNH ĐẶT TỪ 3 MÓN GIẢM NGAY 15%</div>
-      <div style="font-size: 0.86rem; margin-top: 0.15rem;" id="bundleDiscountText">
-        Bạn đang chọn <strong>1 món</strong>. Chọn thêm 2 món nữa để được giảm 15%!
+      <div class="mono" style="color: #E8A598; font-size: 0.68rem;">CHƯƠNG TRÌNH ĐẶT TỪ 03 MÓN GIẢM NGAY 15%</div>
+      <div style="font-size: 0.88rem; margin-top: 0.25rem;" id="bundleDiscountText">
+        Bạn đang chọn <strong>01 món</strong>. Chọn thêm 02 món nữa để được giảm 15%.
       </div>
     </div>
-    <div style="display: flex; gap: 0.55rem; align-items: center;">
-      <button type="button" id="clearBundleSelectionBtn" class="mono" style="padding: 0.5rem 0.75rem; border: 1px solid rgba(255,255,255,0.25); color: #FAF8F4; font-size: 0.68rem;">
+    <div style="display: flex; gap: 0.65rem; align-items: center;">
+      <button type="button" id="clearBundleSelectionBtn" class="mono" style="padding: 0.55rem 0.85rem; border: 1px solid rgba(255,255,255,0.25); color: #FAF8F4; font-size: 0.68rem;">
         BỎ CHỌN
       </button>
-      <button type="button" id="orderSelectedBundleBtn" class="btn-editorial-primary mono" style="background: var(--accent); color: #FAF8F4; padding: 0.6rem 1.05rem; font-size: 0.72rem;">
-        ✓ LƯU &amp; NHẬN BÁO GIÁ CÁC MÓN ĐÃ CHỌN →
+      <button type="button" id="orderSelectedBundleBtn" class="btn-editorial-primary mono" style="background: var(--accent); color: #FAF8F4; padding: 0.65rem 1.15rem; font-size: 0.72rem;">
+        LƯU &amp; NHẬN BÁO GIÁ CÁC MÓN ĐÃ CHỌN
       </button>
     </div>
   </div>
@@ -2943,28 +3000,29 @@
 
     // Default Monthly Deals Metadata (Strictly NO Public Prices — Private Quote Only)
     const DEFAULT_MONTHLY_PRICES = {
-      "CN-01": { dealPrice: "🔥 Đang có giá tốt trong tháng", marketPrice: "", saveLabel: "NHẬN BÁO GIÁ RIÊNG" },
-      "CN-02": { dealPrice: "🔥 Đang có giá tốt trong tháng", marketPrice: "", saveLabel: "NHẬN BÁO GIÁ RIÊNG" },
-      "CN-03": { dealPrice: "🔥 Đang có giá tốt trong tháng", marketPrice: "", saveLabel: "NHẬN BÁO GIÁ RIÊNG" },
-      "CN-04": { dealPrice: "🔥 Đang có giá tốt trong tháng", marketPrice: "", saveLabel: "NHẬN BÁO GIÁ RIÊNG" },
-      "CN-05": { dealPrice: "🔥 Đang có giá tốt trong tháng", marketPrice: "", saveLabel: "NHẬN BÁO GIÁ RIÊNG" },
-      "CN-06": { dealPrice: "🔥 Đang có giá tốt trong tháng", marketPrice: "", saveLabel: "NHẬN BÁO GIÁ RIÊNG" },
-      "CN-07": { dealPrice: "🔥 Đang có giá tốt trong tháng", marketPrice: "", saveLabel: "NHẬN BÁO GIÁ RIÊNG" },
-      "CN-08": { dealPrice: "🔥 Đang có giá tốt trong tháng", marketPrice: "", saveLabel: "NHẬN BÁO GIÁ RIÊNG" }
+      "CN-01": { dealPrice: "Đang có giá tốt trong tháng", marketPrice: "", saveLabel: "NHẬN BÁO GIÁ RIÊNG" },
+      "CN-02": { dealPrice: "Đang có giá tốt trong tháng", marketPrice: "", saveLabel: "NHẬN BÁO GIÁ RIÊNG" },
+      "CN-03": { dealPrice: "Đang có giá tốt trong tháng", marketPrice: "", saveLabel: "NHẬN BÁO GIÁ RIÊNG" },
+      "CN-04": { dealPrice: "Đang có giá tốt trong tháng", marketPrice: "", saveLabel: "NHẬN BÁO GIÁ RIÊNG" },
+      "CN-05": { dealPrice: "Đang có giá tốt trong tháng", marketPrice: "", saveLabel: "NHẬN BÁO GIÁ RIÊNG" },
+      "CN-06": { dealPrice: "Đang có giá tốt trong tháng", marketPrice: "", saveLabel: "NHẬN BÁO GIÁ RIÊNG" },
+      "CN-07": { dealPrice: "Đang có giá tốt trong tháng", marketPrice: "", saveLabel: "NHẬN BÁO GIÁ RIÊNG" },
+      "CN-08": { dealPrice: "Đang có giá tốt trong tháng", marketPrice: "", saveLabel: "NHẬN BÁO GIÁ RIÊNG" }
     };
 
     ARCHIVE_ITEMS.forEach(item => {
-      const p = DEFAULT_MONTHLY_PRICES[item.id] || { dealPrice: "🔥 Đang có giá tốt trong tháng", marketPrice: "", saveLabel: "NHẬN BÁO GIÁ RIÊNG" };
+      const p = DEFAULT_MONTHLY_PRICES[item.id] || { dealPrice: "Đang có giá tốt trong tháng", marketPrice: "", saveLabel: "NHẬN BÁO GIÁ RIÊNG" };
       item.dealPrice = p.dealPrice;
       item.marketPrice = p.marketPrice;
       item.saveLabel = p.saveLabel;
     });
 
-    // Clear legacy v1 public-price cache & load v2 custom Excel/CSV deals if owner uploaded a sheet
+    // Clear legacy v1 & v2 cache & load v3 custom Excel/CSV deals if owner uploaded a sheet
     let monthlyDealsList = [...ARCHIVE_ITEMS];
     try {
       localStorage.removeItem("atelier_excel_deals_v1");
-      const savedCustomDeals = JSON.parse(localStorage.getItem("atelier_excel_deals_v2"));
+      localStorage.removeItem("atelier_excel_deals_v2");
+      const savedCustomDeals = JSON.parse(localStorage.getItem("atelier_excel_deals_v3"));
       if (Array.isArray(savedCustomDeals) && savedCustomDeals.length > 0) {
         monthlyDealsList = savedCustomDeals;
       }
@@ -3065,9 +3123,9 @@
       bar.classList.add("active");
       if (count < 3) {
         const remain = 3 - count;
-        textEl.innerHTML = `Đang chọn <strong>0${count} món</strong> Giá Tốt. Chọn thêm <strong>0${remain} món nữa</strong> để được <strong>Chiết khấu ngay 15% tổng đơn</strong>!`;
+        textEl.innerHTML = `Đang chọn <strong>0${count} món</strong> Giá Tốt. Chọn thêm <strong>0${remain} món nữa</strong> để được <strong>Chiết khấu ngay 15% tổng đơn</strong>.`;
       } else {
-        textEl.innerHTML = `🎉 Đã chọn <strong>0${count} món</strong> — Đơn của bạn được <strong>Áp dụng Chiết Khấu 15% (Từ 3 món)</strong>! Bấm Lưu thông tin để nhận báo giá ngay.`;
+        textEl.innerHTML = `Đã chọn <strong>0${count} món</strong> — Đơn của bạn được <strong>Áp dụng Chiết Khấu 15% (Từ 3 món)</strong>. Bấm Lưu thông tin để nhận báo giá ngay.`;
       }
     }
 
@@ -3099,7 +3157,7 @@
               </div>
               <div class="card-image-wrap" data-action="quick-order-item" data-id="${item.id}">
                 <img src="${item.image}" alt="${item.title}" loading="lazy" />
-                <span class="private-quote-pill">🔥 GIÁ TỐT TRONG THÁNG • ${item.eta || "5–7 ngày"}</span>
+                <span class="private-quote-pill">GIÁ TỐT TRONG THÁNG // ${item.eta || "5–7 ngày"}</span>
               </div>
             </div>
             <div class="card-body">
@@ -3109,20 +3167,20 @@
 
                 <!-- Private Deal Status Row (No Public Prices) -->
                 <div class="monthly-price-row">
-                  <span class="deal-price-current" style="font-size: 0.92rem;">${item.dealPrice || "🔥 Đang có giá tốt trong tháng"}</span>
+                  <span class="deal-price-current" style="font-size: 0.92rem;">${(item.dealPrice || "Đang có giá tốt trong tháng").replace(/🔥\s*/g, "")}</span>
                   <span class="deal-save-tag mono">${item.saveLabel || "NHẬN BÁO GIÁ RIÊNG"}</span>
                 </div>
 
                 <p class="card-specs">${item.material || item.desc || ""}</p>
               </div>
               <div>
-                <div class="card-batch-note mono" style="color: var(--olive);">🎁 ĐẶT TỪ 3 MÓN GIẢM THÊM 15% • BÁO GIÁ RIÊNG</div>
+                <div class="card-batch-note mono" style="color: var(--olive);">ƯU ĐÃI // ĐẶT TỪ 03 MÓN GIẢM THÊM 15%</div>
                 <div class="card-actions">
                   <button type="button" class="btn-card-add mono" style="background: var(--ink-primary); color: var(--bg-primary);" data-action="quick-order-item" data-id="${item.id}">
-                    ✓ NHẬN BÁO GIÁ
+                    NHẬN BÁO GIÁ
                   </button>
                   <button type="button" class="btn-card-spec mono ${isSelected ? 'in-brief' : ''}" style="${isSelected ? 'background: var(--olive); color: #FAF8F4;' : ''}" data-action="toggle-bundle-item" data-id="${item.id}">
-                    ${isSelected ? '✓ ĐÃ CHỌN GỘP (-15%)' : '+ CHỌN GỘP 3 MÓN (-15%)'}
+                    ${isSelected ? 'ĐÃ CHỌN GỘP (-15%)' : '+ CHỌN GỘP 03 MÓN (-15%)'}
                   </button>
                 </div>
               </div>
@@ -3139,21 +3197,21 @@
             <td><img src="${item.image}" alt="${item.title}" class="index-thumb" /></td>
             <td class="mono">${item.id}</td>
             <td>
-              <strong class="serif" style="font-size: 1.12rem; display: block;">${item.title}</strong>
-              <span style="font-size: 0.78rem; color: var(--ink-secondary);">${item.material || item.desc || ""}</span>
+              <strong class="serif" style="font-size: 1.15rem; display: block;">${item.title}</strong>
+              <span style="font-size: 0.8rem; color: var(--ink-secondary);">${item.material || item.desc || ""}</span>
             </td>
             <td>
-              <strong style="color: var(--accent); font-size: 0.88rem; display: block;">${item.dealPrice || "🔥 Đang có giá tốt trong tháng"}</strong>
+              <strong style="color: var(--accent); font-size: 0.88rem; display: block;">${(item.dealPrice || "Đang có giá tốt trong tháng").replace(/🔥\s*/g, "")}</strong>
               <span class="mono" style="font-size: 0.68rem; color: var(--ink-muted);">${item.saveLabel || "Nhận báo giá riêng (-15% từ 3 món)"}</span>
             </td>
             <td class="mono" style="font-size: 0.72rem;">${item.origin}<br/><span style="color: var(--olive);">${item.eta || "5-7 ngày"}</span></td>
             <td>
-              <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
-                <button type="button" class="btn-editorial-primary mono" style="padding: 0.45rem 0.75rem; font-size: 0.68rem;" data-action="quick-order-item" data-id="${item.id}">
-                  ✓ NHẬN BÁO GIÁ
+              <div style="display: flex; gap: 0.45rem; flex-wrap: wrap;">
+                <button type="button" class="btn-editorial-primary mono" style="padding: 0.48rem 0.8rem; font-size: 0.68rem;" data-action="quick-order-item" data-id="${item.id}">
+                  NHẬN BÁO GIÁ
                 </button>
-                <button type="button" class="btn-editorial-outline mono" style="padding: 0.45rem 0.65rem; font-size: 0.68rem;" data-action="toggle-bundle-item" data-id="${item.id}">
-                  ${isSelected ? '✓ ĐÃ GỘP' : '+ GỘP (-15%)'}
+                <button type="button" class="btn-editorial-outline mono" style="padding: 0.48rem 0.7rem; font-size: 0.68rem;" data-action="toggle-bundle-item" data-id="${item.id}">
+                  ${isSelected ? 'ĐÃ GỘP' : '+ GỘP (-15%)'}
                 </button>
               </div>
             </td>
@@ -3234,19 +3292,19 @@
             </div>
             <div class="package-content">
               <div>
-                <span class="mono" style="color: var(--accent); display: block; margin-bottom: 0.3rem;">${pkg.code} • ${pkg.origin}</span>
-                <h3 class="serif" style="font-size: 1.5rem; font-weight: 600; line-height: 1.25; margin-bottom: 0.55rem;">${pkg.title}</h3>
-                <p style="font-size: 0.84rem; color: var(--ink-secondary); line-height: 1.6;">${pkg.desc}</p>
+                <span class="mono" style="color: var(--accent); display: block; margin-bottom: 0.35rem;">${pkg.code} // ${pkg.origin}</span>
+                <h3 class="serif" style="font-size: 1.58rem; font-weight: 600; line-height: 1.32; margin-bottom: 0.65rem;">${pkg.title}</h3>
+                <p style="font-size: 0.86rem; color: var(--ink-secondary); line-height: 1.75;">${pkg.desc}</p>
                 <ul class="package-items-checklist">
-                  ${pkg.itemsList.map(li => `<li>• ${li}</li>`).join("")}
+                  ${pkg.itemsList.map(li => `<li>— ${li}</li>`).join("")}
                 </ul>
               </div>
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.55rem;">
-                <button type="button" class="btn-editorial-primary mono" style="padding: 0.8rem 0.5rem; font-size: 0.7rem; justify-content: center;" data-action="quick-order-interior" data-pkg-id="${pkg.id}">
-                  <span>✓ NHẬN BÁO GIÁ GÓI NÀY</span>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem;">
+                <button type="button" class="btn-editorial-primary mono" style="padding: 0.85rem 0.6rem; font-size: 0.7rem; justify-content: center;" data-action="quick-order-interior" data-pkg-id="${pkg.id}">
+                  <span>NHẬN BÁO GIÁ GÓI NÀY</span>
                 </button>
-                <button type="button" class="btn-editorial-outline mono" style="padding: 0.8rem 0.5rem; font-size: 0.7rem; text-align: center;" data-action="scroll-to-hunt" data-hunt-cat="Gói Nội Thất Decor Phòng / Nhà Trọn Bộ" data-hunt-title="Tư vấn ${pkg.title} (Kèm ảnh phòng riêng)">
-                  <span>📷 GỬI ẢNH PHÒNG CỦA BẠN</span>
+                <button type="button" class="btn-editorial-outline mono" style="padding: 0.85rem 0.6rem; font-size: 0.7rem; text-align: center;" data-action="scroll-to-hunt" data-hunt-cat="Gói Nội Thất Decor Phòng / Nhà Trọn Bộ" data-hunt-title="Tư vấn ${pkg.title} (Kèm ảnh phòng riêng)">
+                  <span>GỬI ẢNH PHÒNG CỦA BẠN</span>
                 </button>
               </div>
             </div>
@@ -3318,7 +3376,7 @@
           document.getElementById("dropzonePreviewImg").src = uploadedCustomImageData;
           document.getElementById("dropzoneFileName").textContent = `Đã đính kèm: ${uploadedCustomImageName} (Sẽ tự động lưu khi bấm Lưu)`;
           document.getElementById("dropzonePreviewWrap").classList.add("has-img");
-          showToast("📷 ĐÃ ĐÍNH KÈM ẢNH! BẠN ĐIỀN THÔNG TIN RỒI BẤM 'LƯU THÔNG TIN & NHẬN BÁO GIÁ' NHÉ.");
+          showToast("ĐÃ ĐÍNH KÈM ẢNH — BẠN ĐIỀN THÔNG TIN RỒI BẤM 'LƯU THÔNG TIN & NHẬN BÁO GIÁ'");
 
           pendingImageUploadPromise = new Promise((resolve) => {
             canvas.toBlob(async (blob) => {
@@ -3341,8 +3399,8 @@
       const hasDiscount15 = orderData.items.length >= 3 || (orderData.scale && orderData.scale.includes("3 món"));
       let lines = [
         `[PHIẾU YÊU CẦU BÁO GIÁ // ${studioConfig.brandName}]`,
-        `• Khách hàng: ${orderData.clientName} (${orderData.clientZalo})`,
-        `• Khu vực nhận: ${orderData.clientCity}`,
+        `- Khách hàng: ${orderData.clientName} (${orderData.clientZalo})`,
+        `- Khu vực nhận: ${orderData.clientCity}`,
         `----------------------------------------`,
         `CHI TIẾT YÊU CẦU (${orderData.items.length} mục):`
       ];
@@ -3351,19 +3409,19 @@
         lines.push(`${idx + 1}. [${it.code}] ${it.title}`);
         if (it.origin) lines.push(`   - Nhóm / Nguồn: ${it.origin}`);
         if (it.mode) lines.push(`   - Số lượng / Quy mô: ${it.mode}`);
-        if (it.shopeeLink) lines.push(`   - 🔗 Link Shopee / Sản phẩm mẫu: ${it.shopeeLink}`);
+        if (it.shopeeLink) lines.push(`   - Link Shopee / Sản phẩm mẫu: ${it.shopeeLink}`);
         if (it.note) lines.push(`   - Ghi chú: ${it.note}`);
         const viewableUrl = it.remoteImageUrl || (it.image && /^https?:\/\//i.test(it.image) ? it.image : "");
         if (viewableUrl) {
-          lines.push(`   - 🖼️ Link xem ảnh mẫu: ${viewableUrl}`);
+          lines.push(`   - Link xem ảnh mẫu: ${viewableUrl}`);
         } else if (it.image && it.image.startsWith("data:image")) {
-          lines.push(`   - 🖼️ Ảnh mẫu: Đã lưu trực tiếp file ảnh trong thư mục Google Drive của khách`);
+          lines.push(`   - Ảnh mẫu: Đã lưu trực tiếp file ảnh trong thư mục Google Drive của khách`);
         }
       });
 
       if (hasDiscount15) {
         lines.push(`----------------------------------------`);
-        lines.push(`🎁 ƯU ĐÃI ÁP DỤNG: CHIẾT KHẤU 15% (ĐẶT TỪ 03 MÓN TRỞ LÊN)`);
+        lines.push(`ƯU ĐÃI ÁP DỤNG: CHIẾT KHẤU 15% (ĐẶT TỪ 03 MÓN TRỞ LÊN)`);
       }
 
       lines.push(`----------------------------------------`);
@@ -3517,18 +3575,18 @@
       }
 
       if (items.length >= 3) {
-        document.getElementById("qoOrderQty").value = "Đặt từ 03 món trở lên (🔥 Giảm ngay 15%)";
+        document.getElementById("qoOrderQty").value = "Đặt từ 03 món trở lên (Giảm ngay 15%)";
       } else {
         document.getElementById("qoOrderQty").value = "Đặt 01 món / 01 gói (Nhận báo giá riêng)";
       }
 
       const previewEl = document.getElementById("qoItemsPreview");
       previewEl.innerHTML = items.map(it => `
-        <div style="display: flex; align-items: center; gap: 0.75rem; background: var(--bg-primary); padding: 0.55rem; border: 1px solid var(--hairline);">
+        <div style="display: flex; align-items: center; gap: 0.85rem; background: var(--bg-primary); padding: 0.65rem; border: 1px solid var(--hairline);">
           <img src="${it.image}" alt="${it.title}" style="width: 52px; height: 52px; object-fit: cover; border: 1px solid var(--hairline);" />
           <div style="flex: 1;">
-            <div class="mono" style="color: var(--accent); font-size: 0.65rem;">${it.code} • NHẬN BÁO GIÁ RIÊNG</div>
-            <div class="serif" style="font-size: 1.05rem; font-weight: 600;">${it.title}</div>
+            <div class="mono" style="color: var(--accent); font-size: 0.65rem;">${it.code} // NHẬN BÁO GIÁ RIÊNG</div>
+            <div class="serif" style="font-size: 1.08rem; font-weight: 600;">${it.title}</div>
           </div>
         </div>
       `).join("");
@@ -3554,7 +3612,7 @@
               image: item.image
             }],
             `Nhận Báo Giá: ${item.title}`,
-            `MẶT HÀNG GIÁ TỐT TRONG THÁNG // ĐẶT TỪ 3 MÓN GIẢM 15%`
+            `MẶT HÀNG GIÁ TỐT TRONG THÁNG // ĐẶT TỪ 03 MÓN GIẢM 15%`
           );
         }
         return;
@@ -3571,9 +3629,9 @@
         } else {
           selectedDealIds.push(id);
           if (selectedDealIds.length >= 3) {
-            showToast(`🎉 ĐÃ ĐỦ ${selectedDealIds.length} MÓN! ĐƯỢC ÁP DỤNG CHIẾT KHẤU 15%!`);
+            showToast(`ĐÃ ĐỦ ${selectedDealIds.length} MÓN — ĐƯỢC ÁP DỤNG CHIẾT KHẤU 15%`);
           } else {
-            showToast(`ĐÃ CHỌN ${selectedDealIds.length}/3 MÓN (CHỌN ĐỦ 3 MÓN GIẢM NGAY 15%)`);
+            showToast(`ĐÃ CHỌN ${selectedDealIds.length}/3 MÓN (CHỌN ĐỦ 03 MÓN GIẢM NGAY 15%)`);
           }
         }
         renderArchive();
@@ -3645,7 +3703,7 @@
           const safeName = `${lead.clientZalo || "SDT"}-${lead.clientName || "Khach"}`.replace(/[^a-zA-Z0-9_\-\u00C0-\u024F\u1E00-\u1EFF]/g, "_");
           a.download = `Anh-Khach-${safeName}.jpg`;
           a.click();
-          showToast(`📥 ĐÃ TẢI ẢNH CỦA KHÁCH: ${lead.clientName}`);
+          showToast(`ĐÃ TẢI ẢNH CỦA KHÁCH: ${lead.clientName}`);
         }
         return;
       }
@@ -3672,14 +3730,14 @@
         code: it.code || it.id,
         title: it.title,
         origin: it.origin,
-        mode: selectedDealIds.length >= 3 ? "Gộp đơn từ 3 món (🔥 Giảm 15%)" : "Mặt hàng Giá Tốt Trong Tháng",
+        mode: selectedDealIds.length >= 3 ? "Gộp đơn từ 03 món (Giảm 15%)" : "Mặt hàng Giá Tốt Trong Tháng",
         image: it.image
       }));
       if (chosen.length > 0) {
         openQuickOrderModal(
           chosen,
           `Nhận Báo Giá ${chosen.length} Sản Phẩm Đã Chọn`,
-          chosen.length >= 3 ? "🎉 ĐÃ ÁP DỤNG CHIẾT KHẤU 15% (TỪ 3 MÓN)" : "CHỌN ĐỦ 3 MÓN ĐỂ ĐƯỢC GIẢM 15%"
+          chosen.length >= 3 ? "ĐÃ ÁP DỤNG CHIẾT KHẤU 15% (TỪ 03 MÓN)" : "CHỌN ĐỦ 03 MÓN ĐỂ ĐƯỢC GIẢM 15%"
         );
       }
     });
@@ -3696,7 +3754,7 @@
       const btn = document.getElementById("qoSubmitMainBtn");
       const origHtml = btn.innerHTML;
       btn.disabled = true;
-      btn.innerHTML = `<span>⏳ ĐANG LƯU HỒ SƠ &amp; YÊU CẦU BÁO GIÁ...</span>`;
+      btn.innerHTML = `<span>ĐANG LƯU HỒ SƠ &amp; YÊU CẦU BÁO GIÁ...</span>`;
 
       const items = activeQuickOrderItems.map(it => ({
         ...it,
@@ -3722,10 +3780,10 @@
       const banner = document.getElementById("qoSuccessBanner");
       const msg = document.getElementById("qoSuccessMessage");
       if (banner && msg) {
-        msg.innerHTML = `Đã lưu thông tin của <strong>${clientName} (${clientZalo})</strong> vào hồ sơ khách hàng. Đội ngũ ATELIER (<strong>0823.230.703</strong>) sẽ chủ động liên hệ gửi báo giá riêng cho bạn sớm nhất!`;
+        msg.innerHTML = `Đã lưu thông tin của <strong>${clientName} (${clientZalo})</strong> vào hồ sơ khách hàng. Đội ngũ ATELIER (<strong>0823.230.703</strong>) sẽ chủ động liên hệ gửi báo giá riêng cho bạn sớm nhất.`;
         banner.style.display = "block";
       }
-      showToast("✓ ĐÃ LƯU THÔNG TIN THÀNH CÔNG! ATELIER SẼ CHỦ ĐỘNG LIÊN HỆ BÁO GIÁ CHO BẠN.");
+      showToast("ĐÃ LƯU THÔNG TIN THÀNH CÔNG — ATELIER SẼ CHỦ ĐỘNG LIÊN HỆ BÁO GIÁ CHO BẠN");
     });
 
     document.getElementById("closeQuickOrderBtn").addEventListener("click", closeAllOverlays);
@@ -3845,7 +3903,7 @@
       const submitBtn = document.getElementById("huntSubmitMainBtn");
       const origBtnHtml = submitBtn.innerHTML;
       submitBtn.disabled = true;
-      submitBtn.innerHTML = `<span>⏳ ĐANG LƯU HÌNH ẢNH &amp; THÔNG TIN CỦA BẠN...</span>`;
+      submitBtn.innerHTML = `<span>ĐANG LƯU HÌNH ẢNH &amp; THÔNG TIN CỦA BẠN...</span>`;
 
       if (pendingImageUploadPromise && !uploadedCustomRemoteUrl) {
         try {
@@ -3896,10 +3954,10 @@
       const successBanner = document.getElementById("orderSuccessBanner");
       const successMsg = document.getElementById("orderSuccessMessage");
       if (successBanner && successMsg) {
-        successMsg.innerHTML = `Đã lưu thành công hình ảnh sản phẩm và thông tin của <strong>${clientName} (${clientZalo} - ${clientCity})</strong> vào hồ sơ đơn hàng. Đội ngũ ATELIER (Hotline/Zalo: <strong>0823.230.703</strong>) sẽ kiểm tra xưởng và chủ động liên hệ gửi báo giá cho bạn!`;
+        successMsg.innerHTML = `Đã lưu thành công hình ảnh sản phẩm và thông tin của <strong>${clientName} (${clientZalo} - ${clientCity})</strong> vào hồ sơ đơn hàng. Đội ngũ ATELIER (Hotline/Zalo: <strong>0823.230.703</strong>) sẽ kiểm tra xưởng và chủ động liên hệ gửi báo giá cho bạn.`;
         successBanner.style.display = "block";
       }
-      showToast("✓ ĐÃ LƯU ẢNH & THÔNG TIN THÀNH CÔNG! ATELIER SẼ CHỦ ĐỘNG LIÊN HỆ BÁO GIÁ CHO BẠN.");
+      showToast("ĐÃ LƯU ẢNH & THÔNG TIN THÀNH CÔNG — ATELIER SẼ CHỦ ĐỘNG LIÊN HỆ BÁO GIÁ CHO BẠN");
     });
 
     // Excel / CSV Parser for Section 02 ("Mặt Hàng Đang Có Giá Tốt Trong Tháng" — No Public Prices)
@@ -3948,7 +4006,7 @@
         const text = ev.target.result;
         const rows = text.split(/\r?\n/).map(r => r.trim()).filter(Boolean);
         if (rows.length < 2) {
-          showToast("FILE EXCEL (.CSV) CHƯA CÓ DỮ LIỆU SẢN PHẨM!");
+          showToast("FILE EXCEL (.CSV) CHƯA CÓ DỮ LIỆU SẢN PHẨM");
           return;
         }
         const parsedItems = [];
@@ -3960,8 +4018,8 @@
           const fallbackArch = ARCHIVE_ITEMS.find(a => a.id === maSp) || ARCHIVE_ITEMS[(i - 1) % ARCHIVE_ITEMS.length];
           // Ensure no public prices are displayed even if the CSV had numbers
           const cleanStatus = (trangThaiGia && !/\d{3}\.\d{3}/.test(trangThaiGia))
-            ? trangThaiGia
-            : "🔥 Đang có giá tốt trong tháng";
+            ? trangThaiGia.replace(/🔥\s*/g, "")
+            : "Đang có giá tốt trong tháng";
           parsedItems.push({
             id: maSp || `GD-0${i}`,
             code: `GIÁ TỐT // ${maSp || "GD-0" + i}`,
@@ -3981,11 +4039,11 @@
         if (parsedItems.length > 0) {
           monthlyDealsList = parsedItems;
           try {
-            localStorage.setItem("atelier_excel_deals_v2", JSON.stringify(monthlyDealsList));
+            localStorage.setItem("atelier_excel_deals_v3", JSON.stringify(monthlyDealsList));
           } catch (err) {}
           renderArchive();
-          document.getElementById("excelUploadStatus").textContent = `✓ ĐÃ CẬP NHẬT THÀNH CÔNG ${parsedItems.length} SẢN PHẨM GIÁ TỐT TỪ FILE: ${file.name}`;
-          showToast(`📊 ĐÃ CẬP NHẬT ${parsedItems.length} MẶT HÀNG GIÁ TỐT TRONG THÁNG!`);
+          document.getElementById("excelUploadStatus").textContent = `ĐÃ CẬP NHẬT THÀNH CÔNG ${parsedItems.length} SẢN PHẨM GIÁ TỐT TỪ FILE: ${file.name}`;
+          showToast(`ĐÃ CẬP NHẬT ${parsedItems.length} MẶT HÀNG GIÁ TỐT TRONG THÁNG`);
         }
       };
       reader.readAsText(file, "utf-8");
@@ -3994,7 +4052,7 @@
     document.getElementById("resetDefaultDealsBtn").addEventListener("click", () => {
       monthlyDealsList = [...ARCHIVE_ITEMS];
       try {
-        localStorage.removeItem("atelier_excel_deals_v2");
+        localStorage.removeItem("atelier_excel_deals_v3");
       } catch (e) {}
       renderArchive();
       document.getElementById("excelUploadStatus").textContent = "Đã khôi phục 08 mặt hàng Giá Tốt mặc định (Không public giá).";
@@ -4064,8 +4122,8 @@
 
     document.getElementById("copyGasCodeBtn").addEventListener("click", () => {
       copyTextToClipboard(GOOGLE_DRIVE_CRM_SCRIPT_CODE);
-      showToast("📋 ĐÃ COPY ĐOẠN MÃ GOOGLE DRIVE SCRIPT! HÃY DÁN (CTRL+V) VÀO SCRIPT.GOOGLE.COM NHÉ!");
-      document.getElementById("gasStatusText").textContent = "✓ Đã copy mã Google Drive Script vào bộ nhớ tạm! Bạn bấm 'BƯỚC 2: MỞ SCRIPT.GOOGLE.COM' rồi dán (Ctrl+V) vào nhé.";
+      showToast("ĐÃ SAO CHÉP ĐOẠN MÃ GOOGLE DRIVE SCRIPT — HÃY DÁN (CTRL+V) VÀO SCRIPT.GOOGLE.COM");
+      document.getElementById("gasStatusText").textContent = "Đã sao chép mã Google Drive Script vào bộ nhớ tạm. Bạn bấm 'BƯỚC 2: MỞ SCRIPT.GOOGLE.COM' rồi dán (Ctrl+V) vào nhé.";
     });
 
     // Secret Owner-Only CRM & Excel Modal Controls (Completely hidden from regular customers!)
@@ -4075,8 +4133,8 @@
     function openCrmAndExcelModal() {
       gasWebhookInput.value = gasWebhookUrl;
       gasStatusText.textContent = gasWebhookUrl
-        ? "✓ Đang kết nối tự động với Google Drive! Mỗi khi khách bấm Lưu, hệ thống tự tạo folder [SĐT - Tên Khách] kèm file ảnh trên Drive."
-        : "⚠️ Bạn chưa dán link Google Apps Script ở Bước 3 nên đơn hàng đang lưu tạm trên trình duyệt này. Hãy làm 3 bước ở trên để tự động đẩy thẳng ảnh & tên khách về Google Drive nhé!";
+        ? "Đang kết nối tự động với Google Drive. Mỗi khi khách bấm Lưu, hệ thống tự tạo folder [SĐT - Tên Khách] kèm file ảnh trên Drive."
+        : "Bạn chưa dán link Google Apps Script ở Bước 3 nên đơn hàng đang lưu tạm trên trình duyệt này. Hãy làm 3 bước ở trên để tự động đẩy thẳng ảnh & tên khách về Google Drive.";
       renderLocalCrmTable();
       sharedBackdrop.classList.add("open");
       crmModal.classList.add("open");
@@ -4087,7 +4145,7 @@
       if (pin === "2307" || pin === "0823230703") {
         openCrmAndExcelModal();
       } else if (pin !== null) {
-        showToast("MÃ PIN KHÔNG ĐÚNG!");
+        showToast("MÃ PIN KHÔNG ĐÚNG");
       }
     }
 
@@ -4159,8 +4217,8 @@
                   <div style="flex: 1; min-width: 180px;">
                     <div style="margin-bottom: 0.25rem;">${l.itemsSummary}</div>
                     <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                      ${l.firstImage ? `<button type="button" class="mono" data-action="download-lead-img" data-lead-idx="${idx}" style="padding: 0.2rem 0.5rem; border: 1px solid var(--hairline-strong); background: var(--bg-secondary); font-size: 0.66rem; color: var(--ink-primary);">📥 Tải Ảnh Về Máy</button>` : ''}
-                      ${l.driveFolderUrl ? `<a href="${l.driveFolderUrl}" target="_blank" class="mono" style="padding: 0.2rem 0.55rem; background: var(--olive); color: #FAF8F4; font-size: 0.66rem;">📂 Mở Folder Drive Của Khách ↗</a>` : `<span class="mono" style="font-size: 0.65rem; color: var(--ink-muted);">[Chưa nối Drive — Bấm 'Đẩy các đơn cũ lên Drive' ở trên]</span>`}
+                      ${l.firstImage ? `<button type="button" class="mono" data-action="download-lead-img" data-lead-idx="${idx}" style="padding: 0.2rem 0.5rem; border: 1px solid var(--hairline-strong); background: var(--bg-secondary); font-size: 0.66rem; color: var(--ink-primary);">Tải Ảnh Về Máy</button>` : ''}
+                      ${l.driveFolderUrl ? `<a href="${l.driveFolderUrl}" target="_blank" class="mono" style="padding: 0.2rem 0.55rem; background: var(--olive); color: #FAF8F4; font-size: 0.66rem;">Mở Folder Drive Của Khách ↗</a>` : `<span class="mono" style="font-size: 0.65rem; color: var(--ink-muted);">[Chưa nối Drive — Bấm 'Đẩy các đơn cũ lên Drive' ở trên]</span>`}
                     </div>
                   </div>
                 </td>
@@ -4177,21 +4235,21 @@
         localStorage.setItem("atelier_gas_webhook_v1", gasWebhookUrl);
       } catch (e) {}
       gasStatusText.textContent = gasWebhookUrl
-        ? "✓ ĐÃ LƯU KẾT NỐI GOOGLE DRIVE! Từ giờ khách bấm Lưu là tự động tạo folder [SĐT - Tên Khách] kèm file ảnh trên Google Drive của bạn."
+        ? "ĐÃ LƯU KẾT NỐI GOOGLE DRIVE — Từ giờ khách bấm Lưu là tự động tạo folder [SĐT - Tên Khách] kèm file ảnh trên Google Drive của bạn."
         : "Đã xóa link kết nối Google Drive.";
-      showToast("✓ ĐÃ LƯU KẾT NỐI GOOGLE DRIVE!");
+      showToast("ĐÃ LƯU KẾT NỐI GOOGLE DRIVE");
     });
 
     document.getElementById("testGasWebhookBtn").addEventListener("click", async () => {
       gasWebhookUrl = gasWebhookInput.value.trim();
       if (!gasWebhookUrl) {
-        showToast("BẠN HÃY DÁN LINK WEB APP GOOGLE APPS SCRIPT Ở BƯỚC 3 TRƯỚC NHÉ!");
+        showToast("BẠN HÃY DÁN LINK WEB APP GOOGLE APPS SCRIPT Ở BƯỚC 3 TRƯỚC NHÉ");
         return;
       }
       try {
         localStorage.setItem("atelier_gas_webhook_v1", gasWebhookUrl);
       } catch (e) {}
-      gasStatusText.textContent = "⏳ Đang tạo thử thư mục khách hàng kèm file ảnh trên Google Drive của bạn...";
+      gasStatusText.textContent = "Đang tạo thử thư mục khách hàng kèm file ảnh trên Google Drive của bạn...";
       const testOrder = {
         source: "Test Kết Nối Google Drive",
         clientName: "Khách Thử Nghiệm",
@@ -4209,10 +4267,10 @@
       renderLocalCrmTable();
       if (res && res.ok) {
         const fUrl = res.folderUrl || res.customerFolderUrl;
-        gasStatusText.innerHTML = `✓ KẾT NỐI THÀNH CÔNG! Đã tạo folder <strong>0823230703 - Khách Thử Nghiệm</strong> kèm ảnh trên Google Drive: <a href="${fUrl}" target="_blank" style="text-decoration: underline; font-weight: 700;">📂 BẤM MỞ THƯ MỤC GOOGLE DRIVE NGAY ↗</a>`;
-        showToast("✓ ĐÃ TẠO THƯ MỤC KHÁCH HÀNG KÈM ẢNH TRÊN GOOGLE DRIVE!");
+        gasStatusText.innerHTML = `KẾT NỐI THÀNH CÔNG — Đã tạo folder <strong>0823230703 - Khách Thử Nghiệm</strong> kèm ảnh trên Google Drive: <a href="${fUrl}" target="_blank" style="text-decoration: underline; font-weight: 700;">BẤM MỞ THƯ MỤC GOOGLE DRIVE NGAY ↗</a>`;
+        showToast("ĐÃ TẠO THƯ MỤC KHÁCH HÀNG KÈM ẢNH TRÊN GOOGLE DRIVE");
       } else {
-        gasStatusText.textContent = "⚠️ Không thể kết nối. Hãy kiểm tra chắc chắn bạn đã chọn 'Who has access: Anyone (Bất kỳ ai)' khi Deploy trên Google Apps Script.";
+        gasStatusText.textContent = "Không thể kết nối. Hãy kiểm tra chắc chắn bạn đã chọn 'Who has access: Anyone (Bất kỳ ai)' khi Deploy trên Google Apps Script.";
       }
     });
 
@@ -4220,7 +4278,7 @@
     document.getElementById("syncAllOldLeadsBtn").addEventListener("click", async () => {
       gasWebhookUrl = gasWebhookInput.value.trim();
       if (!gasWebhookUrl) {
-        showToast("HÃY DÁN LINK WEB APP GOOGLE APPS SCRIPT TRƯỚC KHI ĐỒNG BỘ NHÉ!");
+        showToast("HÃY DÁN LINK WEB APP GOOGLE APPS SCRIPT TRƯỚC KHI ĐỒNG BỘ");
         return;
       }
       try {
@@ -4228,18 +4286,18 @@
       } catch (e) {}
       const unsynced = crmLeads.filter(l => !l.driveFolderUrl);
       if (unsynced.length === 0) {
-        showToast("TẤT CẢ ĐƠN HÀNG ĐỀU ĐÃ CÓ THƯ MỤC TRÊN GOOGLE DRIVE!");
+        showToast("TẤT CẢ ĐƠN HÀNG ĐỀU ĐÃ CÓ THƯ MỤC TRÊN GOOGLE DRIVE");
         return;
       }
-      gasStatusText.textContent = `⏳ Đang đẩy ${unsynced.length} đơn khách hàng (kèm ảnh) lên Google Drive...`;
+      gasStatusText.textContent = `Đang đẩy ${unsynced.length} đơn khách hàng (kèm ảnh) lên Google Drive...`;
       let okCount = 0;
       for (let i = 0; i < unsynced.length; i++) {
         const res = await pushLeadRecordToGoogleDrive(unsynced[i]);
         if (res && res.ok) okCount++;
       }
       renderLocalCrmTable();
-      gasStatusText.textContent = `✓ ĐÃ ĐẨY THÀNH CÔNG ${okCount}/${unsynced.length} ĐƠN KHÁCH HÀNG (KÈM ẢNH) VÀO THƯ MỤC RIÊNG TRÊN GOOGLE DRIVE!`;
-      showToast(`☁️ ĐÃ ĐỒNG BỘ ${okCount} FOLDER KHÁCH HÀNG LÊN GOOGLE DRIVE!`);
+      gasStatusText.textContent = `ĐÃ ĐẨY THÀNH CÔNG ${okCount}/${unsynced.length} ĐƠN KHÁCH HÀNG (KÈM ẢNH) VÀO THƯ MỤC RIÊNG TRÊN GOOGLE DRIVE`;
+      showToast(`ĐÃ ĐỒNG BỘ ${okCount} FOLDER KHÁCH HÀNG LÊN GOOGLE DRIVE`);
     });
 
     // Export Multi-Column Excel (.xls HTML Table) so Vietnamese Excel splits columns A-H cleanly + clickable links
@@ -4292,7 +4350,7 @@
       a.download = `Danh-Sach-Khach-Hang-ATELIER-${new Date().toISOString().slice(0, 10)}.xls`;
       a.click();
       URL.revokeObjectURL(url);
-      showToast("📊 ĐÃ XUẤT BẢNG EXCEL (.XLS) CHIA CỘT RÕ RÀNG!");
+      showToast("ĐÃ XUẤT BẢNG EXCEL (.XLS) CHIA CỘT RÕ RÀNG");
     });
 
     // Initial Render
