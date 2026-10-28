@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ATELIER CRM — Hệ Thống Quản Lý Đơn Hàng &amp; Hồ Sơ Khách Hàng</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #F4F1EA;
+      --bg-secondary: #EAE4D7;
+      --bg-elevated: #FAF8F4;
+      --ink-primary: #161514;
+      --ink-secondary: #5A5650;
+      --ink-muted: #857F75;
+      --hairline: #D5CFC2;
+      --hairline-strong: #161514;
+      --accent: #9E3321;
+      --accent-soft: rgba(158, 51, 33, 0.08);
+      --olive: #2C3E35;
+      --olive-soft: rgba(44, 62, 53, 0.1);
+      --amber: #8C5818;
+      --amber-soft: rgba(140, 88, 24, 0.1);
+      --blue: #1E3F5A;
+      --blue-soft: rgba(30, 63, 90, 0.1);
+      --font-sans: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      background-color: var(--bg-primary);
+      color: var(--ink-primary);
+      font-family: var(--font-sans);
+      font-size: 15px;
+      line-height: 1.68;
+      letter-spacing: 0.012em;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+      font-size: inherit;
+      color: inherit;
+    }
+
+    button {
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .mono {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* PIN Lock Screen */
+    .pin-gate {
+      position: fixed;
+      inset: 0;
+      background: var(--bg-primary);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .pin-gate.hidden {
+      display: none;
+    }
+
+    .pin-box {
+      width: min(440px, 100%);
+      background: var(--bg-elevated);
+      border: 1px solid var(--hairline-strong);
+      padding: 2.5rem 2.25rem;
+    }
+
+    /* Top Bar */
+    .crm-topbar {
+      background: var(--ink-primary);
+      color: #FAF8F4;
+      padding: 0.65rem 1.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      border-bottom: 1px solid var(--hairline-strong);
+    }
+
+    .live-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      color: #A7D7B8;
+    }
+
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #4CD97B;
+      box-shadow: 0 0 8px #4CD97B;
+    }
+
+    /* Masthead */
+    .crm-header {
+      position: sticky;
+      top: 0;
+      z-index: 80;
+      background: rgba(244, 241, 234, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--hairline-strong);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: stretch;
+    }
+
+    .crm-brand {
+      padding: 1rem 1.75rem;
+      border-right: 1px solid var(--hairline);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .crm-brand-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+    }
+
+    .crm-brand-sub {
+      font-size: 0.62rem;
+      color: var(--ink-muted);
+      margin-top: 0.15rem;
+    }
+
+    .crm-tabs {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: stretch;
+    }
+
+    .crm-tab {
+      padding: 0.85rem 1.25rem;
+      border-right: 1px solid var(--hairline);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
+      transition: background 0.2s;
+      position: relative;
+    }
+
+    .crm-tab::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s ease;
+    }
+
+    .crm-tab:hover {
+      background: var(--bg-elevated);
+    }
+
+    .crm-tab.active {
+      background: var(--bg-elevated);
+    }
+
+    .crm-tab.active::after {
+      transform: scaleX(1);
+    }
+
+    .crm-tab-top {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--ink-muted);
+      letter-spacing: 0.09em;
+      margin-bottom: 0.15rem;
+    }
+
+    .crm-tab.active .crm-tab-top,
+    .crm-tab.active .crm-tab-label {
+      color: var(--accent);
+    }
+
+    .crm-tab-label {
+      font-size: 0.84rem;
+      font-weight: 600;
+    }
+
+    .crm-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0 1.25rem;
+    }
+
+    /* Container */
+    .crm-container {
+      max-width: 1440px;
+      margin: 0 auto;
+      border-left: 1px solid var(--hairline);
+      border-right: 1px solid var(--hairline);
+      min-height: calc(100vh - 110px);
+    }
+
+    /* KPI Strip */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 1px solid var(--hairline-strong);
+      background: var(--bg-elevated);
+    }
+
+    .kpi-cell {
+      padding: 1.4rem 1.65rem;
+      border-right: 1px solid var(--hairline);
+    }
+
+    .kpi-cell:last-child {
+      border-right: none;
+    }
+
+    .kpi-label {
+      color: var(--ink-muted);
+      margin-bottom: 0.35rem;
+      display: block;
+    }
+
+    .kpi-value {
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1.15;
+    }
+
+    .kpi-sub {
+      font-size: 0.78rem;
+      color: var(--ink-secondary);
+      margin-top: 0.3rem;
+    }
+
+    /* Toolbar */
+    .crm-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 1.1rem 1.65rem;
+      border-bottom: 1px solid var(--hairline);
+      background: var(--bg-primary);
+    }
+
+    .filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .filter-pill {
+      padding: 0.55rem 1rem;
+      border: 1px solid var(--hairline-strong);
+      background: var(--bg-elevated);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      transition: all 0.2s;
+    }
+
+    .filter-pill.active {
+      background: var(--ink-primary);
+      color: #FAF8F4;
+    }
+
+    .search-box {
+      padding: 0.6rem 1rem;
+      border: 1px solid var(--hairline-strong);
+      background: var(--bg-elevated);
+      min-width: 280px;
+      font-size: 0.86rem;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      padding: 0.65rem 1.15rem;
+      background: var(--ink-primary);
+      color: #FAF8F4;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid var(--ink-primary);
+      transition: background 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .btn-outline {
+      padding: 0.6rem 1rem;
+      background: var(--bg-elevated);
+      color: var(--ink-primary);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid var(--hairline-strong);
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn-outline:hover {
+      background: var(--bg-secondary);
+    }
+
+    .btn-clear-tick {
+      padding: 0.55rem 0.95rem;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      border: 1px solid var(--olive);
+      color: var(--olive);
+      background: var(--olive-soft);
+      transition: all 0.2s;
+    }
+
+    .btn-clear-tick.is-cleared {
+      background: var(--olive);
+      color: #FAF8F4;
+    }
+
+    /* Order List */
+    .orders-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .order-card {
+      display: grid;
+      grid-template-columns: 240px 1fr 330px;
+      border-bottom: 1px solid var(--hairline);
+      background: var(--bg-primary);
+      transition: background 0.2s;
+    }
+
+    .order-card:hover {
+      background: var(--bg-elevated);
+    }
+
+    .order-card.cleared-row {
+      background: rgba(234, 228, 215, 0.45);
+    }
+
+    .order-col-customer {
+      padding: 1.35rem 1.5rem;
+      border-right: 1px solid var(--hairline);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .order-col-details {
+      padding: 1.35rem 1.65rem;
+      border-right: 1px solid var(--hairline);
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .order-col-actions {
+      padding: 1.35rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.8rem;
+    }
+
+    /* Status Badges */
+    .status-badge {
+      display: inline-block;
+      padding: 0.25rem 0.65rem;
+      font-family: var(--font-mono);
+      font-size: 0.64rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      width: fit-content;
+    }
+
+    .status-pending {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+    }
+
+    .status-quoted {
+      background: var(--amber-soft);
+      color: var(--amber);
+      border: 1px solid var(--amber);
+    }
+
+    .status-shipping {
+      background: var(--blue-soft);
+      color: var(--blue);
+      border: 1px solid var(--blue);
+    }
+
+    .status-cleared {
+      background: var(--olive-soft);
+      color: var(--olive);
+      border: 1px solid var(--olive);
+    }
+
+    .item-Row {
+      display: flex;
+      gap: 0.9rem;
+      align-items: flex-start;
+      padding: 0.75rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--hairline);
+    }
+
+    .item-thumb {
+      width: 68px;
+      height: 68px;
+      object-fit: cover;
+      border: 1px solid var(--hairline-strong);
+      cursor: zoom-in;
+      flex-shrink: 0;
+      background: var(--bg-elevated);
+    }
+
+    .note-input {
+      width: 100%;
+      padding: 0.55rem 0.75rem;
+      border: 1px solid var(--hairline-strong);
+      background: var(--bg-elevated);
+      font-size: 0.82rem;
+      resize: vertical;
+      min-height: 58px;
+    }
+
+    /* Customer Table */
+    .crm-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .crm-table th, .crm-table td {
+      padding: 1.1rem 1.4rem;
+      text-align: left;
+      border-bottom: 1px solid var(--hairline);
+      vertical-align: top;
+    }
+
+    .crm-table th {
+      background: var(--bg-secondary);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-secondary);
+    }
+
+    .crm-panel {
+      display: none;
+    }
+
+    .crm-panel.active {
+      display: block;
+    }
+
+    /* Lightbox */
+    .img-lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(22, 21, 20, 0.86);
+      z-index: 900;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .img-lightbox.open {
+      display: flex;
+    }
+
+    .img-lightbox img {
+      max-width: 92vw;
+      max-height: 86vh;
+      object-fit: contain;
+      border: 2px solid #FAF8F4;
+    }
+
+    /* Toast */
+    .crm-toast {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: var(--ink-primary);
+      color: #FAF8F4;
+      border: 1px solid var(--accent);
+      padding: 0.85rem 1.35rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.07em;
+      z-index: 950;
+      opacity: 0;
+      transform: translateY(12px);
+      pointer-events: none;
+      transition: all 0.25s ease;
+    }
+
+    .crm-toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 960px) {
+      .crm-header {
+        grid-template-columns: 1fr auto;
+      }
+      .crm-tabs {
+        grid-column: 1 / -1;
+        order: 3;
+        border-top: 1px solid var(--hairline);
+      }
+      .kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .order-card {
+        grid-template-columns: 1fr;
+      }
+      .order-col-customer, .order-col-details {
+        border-right: none;
+        border-bottom: 1px solid var(--hairline);
+      }
+      .search-box {
+        width: 100%;
+        min-width: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PIN Lock Gate -->
+  <div class="pin-gate" id="pinGate">
+    <div class="pin-box">
+      <div class="mono" style="color: var(--accent); margin-bottom: 0.4rem;">HỆ THỐNG NỘI BỘ // CHỈ DÀNH CHO CHỦ SHOP</div>
+      <h1 style="font-size: 1.45rem; font-weight: 700; margin-bottom: 0.5rem;">ATELIER — Quản Lý Đơn &amp; Khách Hàng</h1>
+      <p style="font-size: 0.86rem; color: var(--ink-secondary); margin-bottom: 1.5rem;">
+        Nhập mã PIN quản trị (Mặc định: <strong>2307</strong> hoặc <strong>0823230703</strong>) để mở bảng theo dõi đơn hàng và lịch sử khách hàng.
+      </p>
+      <form id="pinForm" style="display: flex; flex-direction: column; gap: 0.9rem;">
+        <input type="password" id="pinInput" style="padding: 0.85rem 1rem; border: 1px solid var(--hairline-strong); background: var(--bg-primary); font-size: 1rem; letter-spacing: 0.15em;" placeholder="Nhập mã PIN..." required />
+        <button type="submit" class="btn-primary" style="justify-content: center; padding: 0.9rem;">MỞ HỆ THỐNG CRM</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Top Status Bar -->
+  <div class="crm-topbar">
+    <div class="live-indicator">
+      <span class="live-dot"></span>
+      <span id="syncStatusText">ĐANG ĐỒNG BỘ ĐƠN HÀNG TỰ ĐỘNG (WEB + ĐIỆN THOẠI + MÁY TÍNH)</span>
+    </div>
+    <div style="display: flex; gap: 1.25rem; align-items: center;">
+      <a href="index.html" class="mono" style="color: #FAF8F4; text-decoration: underline;">← MỞ TRANG KHÁCH ĐẶT HÀNG</a>
+      <button type="button" id="logoutPinBtn" class="mono" style="color: #E8A598;">KHÓA MÀN HÌNH</button>
+    </div>
+  </div>
+
+  <!-- Sticky Header -->
+  <header class="crm-header">
+    <div class="crm-brand">
+      <div class="crm-brand-title">ATELIER CRM</div>
+      <div class="crm-brand-sub mono">THEO DÕI ĐƠN HÀNG &amp; HỒ SƠ KHÁCH HÀNG</div>
+    </div>
+
+    <nav class="crm-tabs">
+      <button type="button" class="crm-tab active" data-tab="orders">
+        <span class="crm-tab-top">BẢNG 01 // PIPELINE</span>
+        <span class="crm-tab-label">Theo Dõi Đơn Hàng (<span id="tabOrderCount">0</span>)</span>
+      </button>
+      <button type="button" class="crm-tab" data-tab="customers">
+        <span class="crm-tab-top">BẢNG 02 // DATABASE</span>
+        <span class="crm-tab-label">Lịch Sử Khách Hàng (<span id="tabCustomerCount">0</span>)</span>
+      </button>
+      <button type="button" class="crm-tab" data-tab="add-manual">
+        <span class="crm-tab-top">BẢNG 03 // THÊM MỚI &amp; ĐỒNG BỘ</span>
+        <span class="crm-tab-label">Thêm Đơn Thủ Công / Drive</span>
+      </button>
+    </nav>
+
+    <div class="crm-header-actions">
+      <button type="button" class="btn-outline" id="refreshCloudBtn">LÀM MỚI DỮ LIỆU</button>
+      <button type="button" class="btn-primary" id="exportExcelBtn">XUẤT FILE EXCEL (.XLS)</button>
+    </div>
+  </header>
+
+  <main class="crm-container">
+    <!-- 4 KPI Summary Cards -->
+    <section class="kpi-grid">
+      <div class="kpi-cell">
+        <span class="kpi-label mono">01 / TỔNG ĐƠN HÀNG</span>
+        <div class="kpi-value" id="kpiTotalOrders">0</div>
+        <div class="kpi-sub">Từ Web Đặt Mua Hộ &amp; Gói Sỉ</div>
+      </div>
+      <div class="kpi-cell">
+        <span class="kpi-label mono" style="color: var(--accent);">02 / CẦN XỬ LÝ / ĐANG THEO DÕI</span>
+        <div class="kpi-value" style="color: var(--accent);" id="kpiPendingOrders">0</div>
+        <div class="kpi-sub">Chờ báo giá hoặc đang đặt về</div>
+      </div>
+      <div class="kpi-cell">
+        <span class="kpi-label mono" style="color: var(--olive);">03 / ĐÃ TICK CLEAR (HOÀN TẤT)</span>
+        <div class="kpi-value" style="color: var(--olive);" id="kpiClearedOrders">0</div>
+        <div class="kpi-sub">Đơn đã chốt xong / đã giao</div>
+      </div>
+      <div class="kpi-cell">
+        <span class="kpi-label mono">04 / TỔNG KHÁCH HÀNG LƯU TRỮ</span>
+        <div class="kpi-value" id="kpiTotalCustomers">0</div>
+        <div class="kpi-sub" id="kpiRepeatCustomers">0 khách quen đặt lại</div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         TAB 01: THEO DÕI ĐƠN HÀNG (TICK CLEAR & TRACKING)
+         ========================================================================= -->
+    <section class="crm-panel active" id="panel-orders">
+      <div class="crm-toolbar">
+        <div class="filter-group" id="statusFilterGroup">
+          <button type="button" class="filter-pill active" data-status="all">Tất Cả Đơn</button>
+          <button type="button" class="filter-pill" data-status="pending">Chờ Báo Giá (Mới)</button>
+          <button type="button" class="filter-pill" data-status="quoted">Đã Báo Giá</button>
+          <button type="button" class="filter-pill" data-status="shipping">Đang Đặt / Về Kho</button>
+          <button type="button" class="filter-pill" data-status="cleared">Đã Tick Clear (Xong)</button>
+        </div>
+        <input type="text" class="search-box" id="orderSearchInput" placeholder="Tìm theo tên khách, SĐT, mã đơn, sản phẩm..." />
+      </div>
+
+      <div class="orders-list" id="ordersListContainer"></div>
+    </section>
+
+    <!-- =========================================================================
+         TAB 02: LỊCH SỬ KHÁCH HÀNG & REMARKETING
+         ========================================================================= -->
+    <section class="crm-panel" id="panel-customers">
+      <div class="crm-toolbar">
+        <div>
+          <strong style="font-size: 0.95rem;">Danh Bạ Khách Hàng Tự Động Gom Nhóm Theo SĐT</strong>
+          <span style="font-size: 0.82rem; color: var(--ink-secondary); margin-left: 0.5rem;">Lưu toàn bộ lịch sử hỏi hàng, đặt sỉ và ghi chú ưu đãi mua lại.</span>
+        </div>
+        <input type="text" class="search-box" id="customerSearchInput" placeholder="Tìm khách hàng theo tên, SĐT, tỉnh thành..." />
+      </div>
+
+      <div style="overflow-x: auto;">
+        <table class="crm-table">
+          <thead>
+            <tr>
+              <th>Khách Hàng &amp; Phân Hạng</th>
+              <th>SĐT / Zalo Liên Hệ</th>
+              <th>Khu Vực</th>
+              <th>Số Đơn &amp; Lịch Sử Sản Phẩm Đã Đặt</th>
+              <th>Ghi Chú Chăm Sóc &amp; Ưu Đãi Mua Lại</th>
+            </tr>
+          </thead>
+          <tbody id="customersTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         TAB 03: THÊM ĐƠN THỦ CÔNG & CẤU HÌNH ĐỒNG BỘ GOOGLE DRIVE
+         ========================================================================= -->
+    <section class="crm-panel" id="panel-add-manual">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); border-bottom: 1px solid var(--hairline-strong);">
+        <!-- Thêm đơn thủ công -->
+        <div style="padding: 2rem; border-right: 1px solid var(--hairline);">
+          <div class="mono" style="color: var(--accent); margin-bottom: 0.35rem;">NHẬP ĐƠN KHÁCH GỌI QUA ZALO / HOTLINE</div>
+          <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.25rem;">Thêm Đơn Hàng Hoặc Khách Hàng Mới</h2>
+          <form id="manualOrderForm" style="display: flex; flex-direction: column; gap: 1rem;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem;">
+              <div>
+                <label class="mono" style="display: block; margin-bottom: 0.35rem; color: var(--ink-secondary);">Tên khách hàng *</label>
+                <input type="text" id="mClientName" style="width: 100%; padding: 0.7rem 0.85rem; border: 1px solid var(--hairline-strong); background: var(--bg-elevated);" required />
+              </div>
+              <div>
+                <label class="mono" style="display: block; margin-bottom: 0.35rem; color: var(--ink-secondary);">Số điện thoại / Zalo *</label>
+                <input type="text" id="mClientZalo" style="width: 100%; padding: 0.7rem 0.85rem; border: 1px solid var(--hairline-strong); background: var(--bg-elevated);" required />
+              </div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem;">
+              <div>
+                <label class="mono" style="display: block; margin-bottom: 0.35rem; color: var(--ink-secondary);">Tỉnh / Thành nhận hàng</label>
+                <input type="text" id="mClientCity" value="TP. Hồ Chí Minh" style="width: 100%; padding: 0.7rem 0.85rem; border: 1px solid var(--hairline-strong); background: var(--bg-elevated);" />
+              </div>
+              <div>
+                <label class="mono" style="display: block; margin-bottom: 0.35rem; color: var(--ink-secondary);">Phân loại đơn</label>
+                <select id="mOrderScale" style="width: 100%; padding: 0.7rem 0.85rem; border: 1px solid var(--hairline-strong); background: var(--bg-elevated);">
+                  <option value="Đặt mua hộ lẻ (1-2 món)">Đặt mua hộ lẻ (1-2 món)</option>
+                  <option value="Gộp từ 03 món (Giảm 15%)">Gộp từ 03 món (Giảm 15%)</option>
+                  <option value="Gói Nhập Sỉ Tận Xưởng">Gói Nhập Sỉ Tận Xưởng</option>
+                  <option value="Gói Nội Thất Trọn Bộ">Gói Nội Thất Trọn Bộ</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label class="mono" style="display: block; margin-bottom: 0.35rem; color: var(--ink-secondary);">Tên sản phẩm / Yêu cầu cần tìm *</label>
+              <input type="text" id="mItemTitle" style="width: 100%; padding: 0.7rem 0.85rem; border: 1px solid var(--hairline-strong); background: var(--bg-elevated);" required />
+            </div>
+            <div>
+              <label class="mono" style="display: block; margin-bottom: 0.35rem; color: var(--ink-secondary);">Link Shopee hoặc Link Ảnh (Nếu có)</label>
+              <input type="text" id="mShopeeLink" style="width: 100%; padding: 0.7rem 0.85rem; border: 1px solid var(--hairline-strong); background: var(--bg-elevated);" />
+            </div>
+            <div>
+              <label class="mono" style="display: block; margin-bottom: 0.35rem; color: var(--ink-secondary);">Ghi chú báo giá / Theo dõi</label>
+              <textarea id="mTrackingNote" class="note-input"></textarea>
+            </div>
+            <button type="submit" class="btn-primary" style="justify-content: center; padding: 0.85rem;">LƯU ĐƠN VÀO HỆ THỐNG CRM</button>
+          </form>
+        </div>
+
+        <!-- Kết nối Google Drive Folder tự động -->
+        <div style="padding: 2rem; background: var(--bg-elevated);">
+          <div class="mono" style="color: var(--olive); margin-bottom: 0.35rem;">ĐỒNG BỘ GOOGLE DRIVE &amp; SAO LƯU</div>
+          <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem;">Kết Nối Tự Động Đẩy Ảnh &amp; Đơn Về Google Drive</h2>
+          <p style="font-size: 0.86rem; color: var(--ink-secondary); margin-bottom: 1.15rem;">
+            Khi dán link Google Apps Script (Web App URL) tại đây, mỗi đơn khách gửi sẽ tự động tạo thư mục riêng <strong>[SĐT - Tên Khách]</strong> trên Google Drive của bạn kèm file ảnh gốc.
+          </p>
+          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <label class="mono" style="color: var(--ink-secondary);">Link Google Apps Script Web App URL:</label>
+            <input type="text" id="crmGasUrlInput" style="width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--hairline-strong); background: var(--bg-primary);" />
+            <div style="display: flex; gap: 0.65rem; flex-wrap: wrap;">
+              <button type="button" class="btn-primary" id="saveGasUrlCrmBtn">LƯU KẾT NỐI DRIVE</button>
+              <button type="button" class="btn-outline" id="syncUnsyncedDriveBtn">ĐẨY CÁC ĐƠN CHƯA CÓ LÊN DRIVE</button>
+            </div>
+            <div id="crmGasStatusMsg" class="mono" style="color: var(--olive); margin-top: 0.35rem;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Image Lightbox -->
+  <div class="img-lightbox" id="imgLightbox">
+    <img src="" alt="Preview" id="lightboxImg" />
+  </div>
+
+  <!-- Toast -->
+  <div class="crm-toast" id="crmToast">ĐÃ CẬP NHẬT</div>
+
+  <script>
+    const ATELIER_CLOUD_RELAY_TOPIC = "atelier_crm_sync_78f4cba0_0823230703";
+    const STORAGE_LEADS_KEY = "atelier_crm_leads_v1";
+    const STORAGE_CUST_NOTES_KEY = "atelier_crm_cust_notes_v1";
+    const STORAGE_GAS_KEY = "atelier_gas_webhook_v1";
+    const STORAGE_AUTH_KEY = "atelier_crm_pin_unlocked_v1";
+
+    let crmLeads = [];
+    let customerNotes = {};
+    let currentStatusFilter = "all";
+    let orderSearchQuery = "";
+    let customerSearchQuery = "";
+    let gasWebhookUrl = "";
+
+    const toastEl = document.getElementById("crmToast");
+    function showToast(msg) {
+      toastEl.textContent = msg;
+      toastEl.classList.add("show");
+      setTimeout(() => toastEl.classList.remove("show"), 2800);
+    }
+
+    function esc(str) {
+      return String(str || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    // PIN Gate Check
+    const pinGate = document.getElementById("pinGate");
+    function checkPinUnlock() {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const qPin = params.get("pin") || params.get("quanly") || params.get("admin");
+        if (qPin === "2307" || qPin === "0823230703") {
+          localStorage.setItem(STORAGE_AUTH_KEY, "1");
+          pinGate.classList.add("hidden");
+          return;
+        }
+        if (localStorage.getItem(STORAGE_AUTH_KEY) === "1") {
+          pinGate.classList.add("hidden");
+        }
+      } catch (e) {}
+    }
+    checkPinUnlock();
+
+    document.getElementById("pinForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const val = document.getElementById("pinInput").value.trim();
+      if (val === "2307" || val === "0823230703") {
+        try { localStorage.setItem(STORAGE_AUTH_KEY, "1"); } catch (err) {}
+        pinGate.classList.add("hidden");
+        showToast("ĐÃ MỞ KHÓA HỆ THỐNG CRM");
+      } else {
+        showToast("MÃ PIN KHÔNG ĐÚNG (MẶC ĐỊNH: 2307)");
+      }
+    });
+
+    document.getElementById("logoutPinBtn").addEventListener("click", () => {
+      try { localStorage.removeItem(STORAGE_AUTH_KEY); } catch (e) {}
+      pinGate.classList.remove("hidden");
+      document.getElementById("pinInput").value = "";
+    });
+
+    // Load & Save State
+    function loadLocalData() {
+      try {
+        const raw = JSON.parse(localStorage.getItem(STORAGE_LEADS_KEY));
+        if (Array.isArray(raw)) crmLeads = raw;
+      } catch (e) {}
+      try {
+        const rawNotes = JSON.parse(localStorage.getItem(STORAGE_CUST_NOTES_KEY));
+        if (rawNotes && typeof rawNotes === "object") customerNotes = rawNotes;
+      } catch (e) {}
+      try {
+        gasWebhookUrl = localStorage.getItem(STORAGE_GAS_KEY) || "";
+        const gasInput = document.getElementById("crmGasUrlInput");
+        if (gasInput) gasInput.value = gasWebhookUrl;
+      } catch (e) {}
+    }
+
+    function saveLocalData() {
+      try {
+        localStorage.setItem(STORAGE_LEADS_KEY, JSON.stringify(crmLeads));
+        localStorage.setItem(STORAGE_CUST_NOTES_KEY, JSON.stringify(customerNotes));
+      } catch (e) {}
+      // Also push state to localhost server if running
+      try {
+        fetch("http://localhost:3456/api/orders/bulk", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ leads: crmLeads })
+        }).catch(() => {});
+      } catch (e) {}
+    }
+
+    function mergeIncomingOrder(order) {
+      if (!order || !order.orderId) return false;
+      const existingIdx = crmLeads.findIndex(o => o.orderId === order.orderId);
+      if (existingIdx === -1) {
+        if (!order.status) order.status = "pending";
+        if (typeof order.trackingNote !== "string") order.trackingNote = "";
+        crmLeads.unshift(order);
+        return true;
+      } else {
+        const cur = crmLeads[existingIdx];
+        if (!cur.firstImage && order.firstImage) cur.firstImage = order.firstImage;
+        if (!cur.remoteUrls && order.remoteUrls) cur.remoteUrls = order.remoteUrls;
+        if (!cur.driveFolderUrl && order.driveFolderUrl) cur.driveFolderUrl = order.driveFolderUrl;
+        return false;
+      }
+    }
+
+    // Fetch from Cloud Relay (ntfy.sh) & Localhost Server (if active)
+    async function syncFromCloudAndLocalServer() {
+      let addedCount = 0;
+
+      // 1. Check localhost:3456 if running on owner's PC
+      try {
+        const resLocal = await fetch("http://localhost:3456/api/data");
+        if (resLocal.ok) {
+          const dataLocal = await resLocal.json();
+          if (Array.isArray(dataLocal.orders)) {
+            dataLocal.orders.forEach(o => {
+              if (mergeIncomingOrder(o)) addedCount++;
+            });
+          }
+        }
+      } catch (e) {}
+
+      // 2. Check Cloud Relay (ntfy.sh) for orders placed on GitHub Pages from any phone/PC
+      try {
+        const resCloud = await fetch(`https://ntfy.sh/${ATELIER_CLOUD_RELAY_TOPIC}/json?poll=1&since=all`);
+        if (resCloud.ok) {
+          const text = await resCloud.text();
+          const lines = text.split("\n").filter(Boolean);
+          for (const line of lines) {
+            try {
+              const msg = JSON.parse(line);
+              if (msg && msg.event === "message" && msg.message) {
+                const lead = JSON.parse(msg.message);
+                if (lead && lead.orderId) {
+                  if (!lead.firstImage && lead.items && lead.items[0] && lead.items[0].remoteImageUrl) {
+                    lead.firstImage = lead.items[0].remoteImageUrl;
+                  }
+                  if (mergeIncomingOrder(lead)) addedCount++;
+                }
+              }
+            } catch (err) {}
+          }
+        }
+      } catch (e) {}
+
+      if (addedCount > 0) {
+        saveLocalData();
+        showToast(`ĐÃ ĐỒNG BỘ THÊM ${addedCount} ĐƠN HÀNG MỚI`);
+      }
+      renderAll();
+    }
+
+    // Live Stream Subscription for Instant Notification when Customer Clicks Save
+    function subscribeLiveOrderStream() {
+      try {
+        const es = new EventSource(`https://ntfy.sh/${ATELIER_CLOUD_RELAY_TOPIC}/sse`);
+        es.onmessage = (ev) => {
+          try {
+            const msg = JSON.parse(ev.data);
+            if (msg && msg.message) {
+              const lead = JSON.parse(msg.message);
+              if (lead && lead.orderId) {
+                if (!lead.firstImage && lead.items && lead.items[0] && lead.items[0].remoteImageUrl) {
+                  lead.firstImage = lead.items[0].remoteImageUrl;
+                }
+                if (mergeIncomingOrder(lead)) {
+                  saveLocalData();
+                  renderAll();
+                  showToast(`ĐƠN HÀNG MỚI TỪ KHÁCH: ${lead.clientName} (${lead.clientZalo})`);
+                }
+              }
+            }
+          } catch (e) {}
+        };
+      } catch (e) {}
+
+      window.addEventListener("storage", (e) => {
+        if (e.key === STORAGE_LEADS_KEY) {
+          loadLocalData();
+          renderAll();
+        }
+      });
+    }
+
+    function getStatusBadgeHtml(status) {
+      switch (status) {
+        case "quoted":
+          return `<span class="status-badge status-quoted">ĐÃ BÁO GIÁ</span>`;
+        case "shipping":
+          return `<span class="status-badge status-shipping">ĐANG ĐẶT / VỀ KHO</span>`;
+        case "cleared":
+          return `<span class="status-badge status-cleared">ĐÃ HOÀN TẤT (CLEARED)</span>`;
+        default:
+          return `<span class="status-badge status-pending">CHỜ BÁO GIÁ (MỚI)</span>`;
+      }
+    }
+
+    function buildCustomerMap() {
+      const map = new Map();
+      crmLeads.forEach(lead => {
+        const phone = (lead.clientZalo || "Chưa rõ SĐT").trim();
+        if (!map.has(phone)) {
+          map.set(phone, {
+            phone,
+            name: lead.clientName || "Khách hàng",
+            city: lead.clientCity || "VN",
+            orders: [],
+            totalItems: 0,
+            lastOrderAt: lead.createdAt || ""
+          });
+        }
+        const entry = map.get(phone);
+        entry.orders.push(lead);
+        entry.totalItems += Number(lead.itemCount || (lead.items ? lead.items.length : 1));
+      });
+      return Array.from(map.values());
+    }
+
+    function renderKpisAndCounts() {
+      const total = crmLeads.length;
+      const cleared = crmLeads.filter(l => l.status === "cleared").length;
+      const pending = total - cleared;
+      const customers = buildCustomerMap();
+      const repeatCount = customers.filter(c => c.orders.length >= 2).length;
+
+      document.getElementById("kpiTotalOrders").textContent = total;
+      document.getElementById("kpiPendingOrders").textContent = pending;
+      document.getElementById("kpiClearedOrders").textContent = cleared;
+      document.getElementById("kpiTotalCustomers").textContent = customers.length;
+      document.getElementById("kpiRepeatCustomers").textContent = `${repeatCount} khách quen đặt từ 2 đơn`;
+      document.getElementById("tabOrderCount").textContent = total;
+      document.getElementById("tabCustomerCount").textContent = customers.length;
+    }
+
+    function renderOrdersList() {
+      const container = document.getElementById("ordersListContainer");
+      const q = orderSearchQuery.trim().toLowerCase();
+
+      const filtered = crmLeads.filter(lead => {
+        const st = lead.status || "pending";
+        const matchStatus = currentStatusFilter === "all" || st === currentStatusFilter;
+        const matchQuery = !q ||
+          (lead.clientName && lead.clientName.toLowerCase().includes(q)) ||
+          (lead.clientZalo && lead.clientZalo.toLowerCase().includes(q)) ||
+          (lead.orderId && lead.orderId.toLowerCase().includes(q)) ||
+          (lead.itemsSummary && lead.itemsSummary.toLowerCase().includes(q)) ||
+          (lead.trackingNote && lead.trackingNote.toLowerCase().includes(q));
+        return matchStatus && matchQuery;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div style="padding: 3.5rem 2rem; text-align: center; color: var(--ink-secondary);">
+            <div class="mono" style="color: var(--accent); margin-bottom: 0.5rem;">CHƯA CÓ ĐƠN HÀNG TRONG MỤC NÀY</div>
+            <p style="font-size: 0.88rem;">Khi khách bấm "Lưu Thông Tin &amp; Nhận Báo Giá" trên trang web hoặc bạn thêm đơn ở Bảng 03, đơn hàng sẽ tự động hiển thị tại đây.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(lead => {
+        const st = lead.status || "pending";
+        const isCleared = st === "cleared";
+        const cleanPhone = String(lead.clientZalo || "").replace(/\D/g, "");
+        const itemsArr = Array.isArray(lead.items) && lead.items.length > 0
+          ? lead.items
+          : [{
+              code: "YÊU CẦU BÁO GIÁ",
+              title: lead.itemsSummary || "Đơn đặt hàng của khách",
+              mode: lead.scale || "",
+              image: lead.firstImage || "",
+              remoteImageUrl: lead.remoteUrls || ""
+            }];
+
+        return `
+          <article class="order-card ${isCleared ? 'cleared-row' : ''}" data-order-id="${esc(lead.orderId)}">
+            <!-- Cột 1: Thông tin khách -->
+            <div class="order-col-customer">
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; margin-bottom: 0.45rem;">
+                  <span class="mono" style="color: var(--ink-muted);">${esc(lead.orderId)}</span>
+                  ${getStatusBadgeHtml(st)}
+                </div>
+                <div style="font-size: 1.12rem; font-weight: 700; margin-bottom: 0.2rem;">${esc(lead.clientName)}</div>
+                <div class="mono" style="font-size: 0.88rem; color: var(--accent); font-weight: 700; margin-bottom: 0.35rem;">
+                  SĐT/Zalo: ${esc(lead.clientZalo)}
+                </div>
+                <div style="font-size: 0.8rem; color: var(--ink-secondary);">
+                  Khu vực: <strong>${esc(lead.clientCity || "Việt Nam")}</strong><br/>
+                  Thời gian: ${esc(lead.createdAt)}<br/>
+                  Nguồn: ${esc(lead.source || "Web ATELIER")}
+                </div>
+              </div>
+
+              <div style="display: flex; gap: 0.45rem; flex-wrap: wrap;">
+                ${cleanPhone ? `<a href="https://zalo.me/${cleanPhone}" target="_blank" rel="noopener noreferrer" class="btn-primary" style="padding: 0.45rem 0.75rem; font-size: 0.65rem;">NHẮN ZALO KHÁCH ↗</a>` : ''}
+                <button type="button" class="btn-outline" style="padding: 0.45rem 0.65rem; font-size: 0.65rem;" data-action="copy-phone" data-phone="${esc(lead.clientZalo)}">SAO CHÉP SĐT</button>
+              </div>
+            </div>
+
+            <!-- Cột 2: Chi tiết sản phẩm & Ảnh & Link Shopee -->
+            <div class="order-col-details">
+              <div class="mono" style="color: var(--ink-secondary);">
+                CHI TIẾT SẢN PHẨM YÊU CẦU (${itemsArr.length} MỤC) ${lead.scale ? '— ' + esc(lead.scale) : ''}
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 0.6rem;">
+                ${itemsArr.map(it => {
+                  const imgSrc = it.image || it.remoteImageUrl || lead.firstImage || "";
+                  return `
+                    <div class="item-Row">
+                      ${imgSrc ? `<img src="${esc(imgSrc)}" alt="Ảnh khách gửi" class="item-thumb" data-action="zoom-img" data-src="${esc(imgSrc)}" />` : ''}
+                      <div style="flex: 1; min-width: 0;">
+                        <div class="mono" style="color: var(--accent); font-size: 0.64rem;">${esc(it.code || "SẢN PHẨM")}</div>
+                        <div style="font-weight: 600; font-size: 0.94rem; margin: 0.1rem 0 0.25rem;">${esc(it.title)}</div>
+                        ${it.mode ? `<div style="font-size: 0.8rem; color: var(--ink-secondary);">Quy mô / Gói: <strong>${esc(it.mode)}</strong></div>` : ''}
+                        ${it.shopeeLink ? `<div style="font-size: 0.8rem; margin-top: 0.2rem;"><a href="${esc(it.shopeeLink)}" target="_blank" style="color: var(--accent); text-decoration: underline; font-weight: 600;">Mở Link Shopee / Link Mẫu Khách Gửi ↗</a></div>` : ''}
+                        ${it.note ? `<div style="font-size: 0.8rem; color: var(--ink-secondary); margin-top: 0.2rem;">Ghi chú khách: ${esc(it.note)}</div>` : ''}
+                      </div>
+                    </div>
+                  `;
+                }).join("")}
+              </div>
+
+              <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center;">
+                ${lead.firstImage ? `<button type="button" class="btn-outline" style="padding: 0.4rem 0.75rem; font-size: 0.65rem;" data-action="download-img" data-id="${esc(lead.orderId)}">TẢI ẢNH KHÁCH GỬI VỀ MÁY</button>` : ''}
+                ${lead.driveFolderUrl ? `<a href="${esc(lead.driveFolderUrl)}" target="_blank" class="btn-outline" style="padding: 0.4rem 0.75rem; font-size: 0.65rem; border-color: var(--olive); color: var(--olive);">MỞ FOLDER GOOGLE DRIVE CỦA KHÁCH ↗</a>` : ''}
+              </div>
+            </div>
+
+            <!-- Cột 3: Tick Clear, Đổi Trạng Thái & Ghi Chú Theo Dõi -->
+            <div class="order-col-actions">
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem;">
+                  <button type="button" class="btn-clear-tick ${isCleared ? 'is-cleared' : ''}" style="flex: 1; text-align: center;" data-action="toggle-clear" data-id="${esc(lead.orderId)}">
+                    ${isCleared ? 'ĐÃ TICK CLEAR (HOÀN TẤT)' : 'BẤM TICK CLEAR (ĐÃ XỬ LÝ)'}
+                  </button>
+                </div>
+
+                <label class="mono" style="display: block; color: var(--ink-muted); margin-bottom: 0.25rem; font-size: 0.63rem;">TRẠNG THÁI THEO DÕI:</label>
+                <select class="editorial-select" data-action="change-status" data-id="${esc(lead.orderId)}" style="width: 100%; padding: 0.5rem 0.65rem; border: 1px solid var(--hairline-strong); background: var(--bg-elevated); font-size: 0.82rem; margin-bottom: 0.65rem;">
+                  <option value="pending" ${st === 'pending' ? 'selected' : ''}>01 / Chờ báo giá (Mới)</option>
+                  <option value="quoted" ${st === 'quoted' ? 'selected' : ''}>02 / Đã gửi báo giá cho khách</option>
+                  <option value="shipping" ${st === 'shipping' ? 'selected' : ''}>03 / Khách đã cọc — Đang đặt về</option>
+                  <option value="cleared" ${st === 'cleared' ? 'selected' : ''}>04 / Đã hoàn tất (Cleared)</option>
+                </select>
+
+                <label class="mono" style="display: block; color: var(--ink-muted); margin-bottom: 0.25rem; font-size: 0.63rem;">GHI CHÚ NỘI BỘ (GIÁ ĐÃ BÁO, MÃ VẬN ĐƠN...):</label>
+                <textarea class="note-input" data-action="order-note" data-id="${esc(lead.orderId)}" placeholder="Ghi chú tiến độ đơn này...">${esc(lead.trackingNote || "")}</textarea>
+              </div>
+
+              <div style="display: flex; justify-content: flex-end;">
+                <button type="button" class="mono" style="font-size: 0.64rem; color: var(--ink-muted);" data-action="delete-order" data-id="${esc(lead.orderId)}">Xóa đơn</button>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function renderCustomersTable() {
+      const tbody = document.getElementById("customersTableBody");
+      const customers = buildCustomerMap();
+      const q = customerSearchQuery.trim().toLowerCase();
+
+      const filtered = customers.filter(c => {
+        return !q ||
+          c.name.toLowerCase().includes(q) ||
+          c.phone.toLowerCase().includes(q) ||
+          c.city.toLowerCase().includes(q);
+      });
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; padding: 2.5rem; color: var(--ink-secondary);">Chưa có dữ liệu khách hàng.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(c => {
+        const orderCount = c.orders.length;
+        const badge = orderCount >= 3
+          ? `<span class="status-badge status-cleared">KHÁCH VIP (${orderCount} ĐƠN)</span>`
+          : (orderCount === 2 ? `<span class="status-badge status-shipping">KHÁCH QUEN (2 ĐƠN)</span>` : `<span class="status-badge status-quoted">KHÁCH MỚI (1 ĐƠN)</span>`);
+        const cleanPhone = String(c.phone || "").replace(/\D/g, "");
+        const savedCustNote = customerNotes[c.phone] || "";
+
+        return `
+          <tr>
+            <td>
+              <div style="font-weight: 700; font-size: 1rem; margin-bottom: 0.35rem;">${esc(c.name)}</div>
+              ${badge}
+            </td>
+            <td>
+              <div class="mono" style="font-size: 0.9rem; color: var(--accent); font-weight: 700; margin-bottom: 0.45rem;">${esc(c.phone)}</div>
+              ${cleanPhone ? `<a href="https://zalo.me/${cleanPhone}" target="_blank" class="btn-outline" style="padding: 0.35rem 0.65rem; font-size: 0.63rem;">MỞ ZALO ↗</a>` : ''}
+            </td>
+            <td>${esc(c.city)}</td>
+            <td>
+              <div class="mono" style="margin-bottom: 0.4rem; color: var(--ink-secondary);">TỔNG: ${orderCount} ĐƠN (${c.totalItems} MỤC)</div>
+              <div style="display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.82rem;">
+                ${c.orders.map(o => `
+                  <div style="padding: 0.4rem 0.6rem; background: var(--bg-secondary); border-left: 2px solid var(--accent);">
+                    <span class="mono" style="font-size: 0.64rem; color: var(--ink-muted);">${esc(o.createdAt)} — ${esc(o.orderId)}</span><br/>
+                    <strong>${esc(o.itemsSummary)}</strong>
+                  </div>
+                `).join("")}
+              </div>
+            </td>
+            <td style="min-width: 250px;">
+              <textarea class="note-input" data-action="customer-note" data-phone="${esc(c.phone)}" placeholder="Ghi chú sở thích khách, chiết khấu lần sau...">${esc(savedCustNote)}</textarea>
+            </td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    function renderAll() {
+      renderKpisAndCounts();
+      renderOrdersList();
+      renderCustomersTable();
+    }
+
+    // Event Delegation for Order Actions
+    document.addEventListener("click", (e) => {
+      const toggleClearBtn = e.target.closest("[data-action='toggle-clear']");
+      if (toggleClearBtn) {
+        const id = toggleClearBtn.getAttribute("data-id");
+        const order = crmLeads.find(o => o.orderId === id);
+        if (order) {
+          order.status = order.status === "cleared" ? "pending" : "cleared";
+          saveLocalData();
+          renderAll();
+          showToast(order.status === "cleared" ? `ĐÃ TICK CLEAR ĐƠN ${id}` : `ĐÃ MỞ LẠI ĐƠN ${id}`);
+        }
+        return;
+      }
+
+      const copyPhoneBtn = e.target.closest("[data-action='copy-phone']");
+      if (copyPhoneBtn) {
+        const phone = copyPhoneBtn.getAttribute("data-phone");
+        if (navigator.clipboard) navigator.clipboard.writeText(phone).catch(() => {});
+        showToast(`ĐÃ SAO CHÉP SĐT: ${phone}`);
+        return;
+      }
+
+      const dlImgBtn = e.target.closest("[data-action='download-img']");
+      if (dlImgBtn) {
+        const id = dlImgBtn.getAttribute("data-id");
+        const order = crmLeads.find(o => o.orderId === id);
+        if (order && order.firstImage) {
+          const a = document.createElement("a");
+          a.href = order.firstImage;
+          a.download = `Anh-Khach-${order.clientZalo || id}.jpg`;
+          a.click();
+          showToast("ĐANG TẢI ẢNH CỦA KHÁCH VỀ MÁY");
+        }
+        return;
+      }
+
+      const zoomImg = e.target.closest("[data-action='zoom-img']");
+      if (zoomImg) {
+        document.getElementById("lightboxImg").src = zoomImg.getAttribute("data-src");
+        document.getElementById("imgLightbox").classList.add("open");
+        return;
+      }
+
+      const delBtn = e.target.closest("[data-action='delete-order']");
+      if (delBtn) {
+        const id = delBtn.getAttribute("data-id");
+        if (window.confirm(`Bạn có chắc muốn xóa đơn ${id} khỏi danh sách?`)) {
+          crmLeads = crmLeads.filter(o => o.orderId !== id);
+          saveLocalData();
+          renderAll();
+          showToast(`ĐÃ XÓA ĐƠN ${id}`);
+        }
+        return;
+      }
+    });
+
+    document.addEventListener("change", (e) => {
+      const statusSel = e.target.closest("[data-action='change-status']");
+      if (statusSel) {
+        const id = statusSel.getAttribute("data-id");
+        const order = crmLeads.find(o => o.orderId === id);
+        if (order) {
+          order.status = statusSel.value;
+          saveLocalData();
+          renderAll();
+          showToast(`ĐÃ CẬP NHẬT TRẠNG THÁI ĐƠN ${id}`);
+        }
+      }
+    });
+
+    document.addEventListener("input", (e) => {
+      const noteArea = e.target.closest("[data-action='order-note']");
+      if (noteArea) {
+        const id = noteArea.getAttribute("data-id");
+        const order = crmLeads.find(o => o.orderId === id);
+        if (order) {
+          order.trackingNote = noteArea.value;
+          saveLocalData();
+        }
+        return;
+      }
+
+      const custNoteArea = e.target.closest("[data-action='customer-note']");
+      if (custNoteArea) {
+        const phone = custNoteArea.getAttribute("data-phone");
+        customerNotes[phone] = custNoteArea.value;
+        saveLocalData();
+      }
+    });
+
+    document.getElementById("imgLightbox").addEventListener("click", () => {
+      document.getElementById("imgLightbox").classList.remove("open");
+    });
+
+    // Tabs Switching
+    document.querySelectorAll(".crm-tab").forEach(tab => {
+      tab.addEventListener("click", () => {
+        document.querySelectorAll(".crm-tab").forEach(t => t.classList.remove("active"));
+        document.querySelectorAll(".crm-panel").forEach(p => p.classList.remove("active"));
+        tab.classList.add("active");
+        const target = tab.getAttribute("data-tab");
+        document.getElementById(`panel-${target}`).classList.add("active");
+      });
+    });
+
+    // Status Filters & Search
+    document.querySelectorAll("#statusFilterGroup .filter-pill").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll("#statusFilterGroup .filter-pill").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        currentStatusFilter = btn.getAttribute("data-status");
+        renderOrdersList();
+      });
+    });
+
+    document.getElementById("orderSearchInput").addEventListener("input", (e) => {
+      orderSearchQuery = e.target.value;
+      renderOrdersList();
+    });
+
+    document.getElementById("customerSearchInput").addEventListener("input", (e) => {
+      customerSearchQuery = e.target.value;
+      renderCustomersTable();
+    });
+
+    // Manual Order Form Submit
+    document.getElementById("manualOrderForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const orderId = "ATL-" + Date.now().toString().slice(-6);
+      const clientName = document.getElementById("mClientName").value.trim();
+      const clientZalo = document.getElementById("mClientZalo").value.trim();
+      const clientCity = document.getElementById("mClientCity").value.trim() || "TP. Hồ Chí Minh";
+      const scale = document.getElementById("mOrderScale").value;
+      const title = document.getElementById("mItemTitle").value.trim();
+      const shopeeLink = document.getElementById("mShopeeLink").value.trim();
+      const trackingNote = document.getElementById("mTrackingNote").value.trim();
+
+      const newOrder = {
+        orderId,
+        createdAt: new Date().toLocaleString("vi-VN"),
+        createdAtIso: new Date().toISOString(),
+        status: "pending",
+        trackingNote,
+        source: "Chủ Shop Nhập Thủ Công",
+        clientName,
+        clientZalo,
+        clientCity,
+        scale,
+        itemCount: 1,
+        itemsSummary: `[MUA HỘ] ${title} (${scale})`,
+        firstImage: "",
+        remoteUrls: shopeeLink,
+        items: [{
+          code: "ĐƠN NHẬP TAY",
+          title,
+          mode: scale,
+          shopeeLink
+        }]
+      };
+
+      crmLeads.unshift(newOrder);
+      saveLocalData();
+      renderAll();
+      e.target.reset();
+      document.querySelector(".crm-tab[data-tab='orders']").click();
+      showToast(`ĐÃ THÊM ĐƠN HÀNG MỚI CHO KHÁCH: ${clientName}`);
+    });
+
+    // Google Drive Webhook Save
+    document.getElementById("saveGasUrlCrmBtn").addEventListener("click", () => {
+      gasWebhookUrl = document.getElementById("crmGasUrlInput").value.trim();
+      try { localStorage.setItem(STORAGE_GAS_KEY, gasWebhookUrl); } catch (e) {}
+      document.getElementById("crmGasStatusMsg").textContent = gasWebhookUrl
+        ? "ĐÃ LƯU LINK KẾT NỐI GOOGLE DRIVE"
+        : "ĐÃ XÓA LINK GOOGLE DRIVE";
+      showToast("ĐÃ LƯU CẤU HÌNH GOOGLE DRIVE");
+    });
+
+    document.getElementById("syncUnsyncedDriveBtn").addEventListener("click", async () => {
+      gasWebhookUrl = document.getElementById("crmGasUrlInput").value.trim();
+      if (!gasWebhookUrl) {
+        showToast("HÃY DÁN LINK GOOGLE APPS SCRIPT TRƯỚC KHI ĐỒNG BỘ");
+        return;
+      }
+      const unsynced = crmLeads.filter(l => !l.driveFolderUrl);
+      if (unsynced.length === 0) {
+        showToast("TẤT CẢ ĐƠN ĐỀU ĐÃ CÓ THƯ MỤC GOOGLE DRIVE");
+        return;
+      }
+      document.getElementById("crmGasStatusMsg").textContent = `Đang đẩy ${unsynced.length} đơn lên Google Drive...`;
+      let ok = 0;
+      for (const lead of unsynced) {
+        try {
+          const res = await fetch(gasWebhookUrl, {
+            method: "POST",
+            headers: { "Content-Type": "text/plain;charset=utf-8" },
+            body: JSON.stringify({
+              orderId: lead.orderId,
+              clientName: lead.clientName,
+              clientZalo: lead.clientZalo,
+              clientPhone: lead.clientZalo,
+              clientCity: lead.clientCity,
+              summaryText: lead.summaryText || lead.itemsSummary,
+              items: lead.items || [{ title: lead.itemsSummary, image: lead.firstImage || "" }]
+            })
+          });
+          const data = await res.json();
+          if (data && data.ok && (data.folderUrl || data.customerFolderUrl)) {
+            lead.driveFolderUrl = data.folderUrl || data.customerFolderUrl;
+            ok++;
+          }
+        } catch (err) {}
+      }
+      saveLocalData();
+      renderAll();
+      document.getElementById("crmGasStatusMsg").textContent = `ĐÃ ĐỒNG BỘ ${ok}/${unsynced.length} ĐƠN LÊN GOOGLE DRIVE`;
+      showToast(`ĐÃ ĐỒNG BỘ ${ok} FOLDER KHÁCH HÀNG LÊN GOOGLE DRIVE`);
+    });
+
+    // Refresh Button
+    document.getElementById("refreshCloudBtn").addEventListener("click", () => {
+      showToast("ĐANG KIỂM TRA ĐƠN MỚI...");
+      syncFromCloudAndLocalServer();
+    });
+
+    // Export Multi-Column Excel (.xls)
+    document.getElementById("exportExcelBtn").addEventListener("click", () => {
+      if (crmLeads.length === 0) {
+        showToast("CHƯA CÓ ĐƠN HÀNG ĐỂ XUẤT EXCEL");
+        return;
+      }
+      const rows = crmLeads.map(l => `
+        <tr>
+          <td style="border:1px solid #ccc; padding:6px;">${esc(l.orderId)}</td>
+          <td style="border:1px solid #ccc; padding:6px;">${esc(l.createdAt)}</td>
+          <td style="border:1px solid #ccc; padding:6px; font-weight:bold;">${esc(l.status === 'cleared' ? 'ĐÃ HOÀN TẤT' : (l.status === 'quoted' ? 'ĐÃ BÁO GIÁ' : (l.status === 'shipping' ? 'ĐANG ĐẶT VỀ' : 'CHỜ BÁO GIÁ')))}</td>
+          <td style="border:1px solid #ccc; padding:6px; font-weight:bold;">${esc(l.clientName)}</td>
+          <td style="border:1px solid #ccc; padding:6px; mso-number-format:'\\@'; color:#9E3321; font-weight:bold;">${esc(l.clientZalo)}</td>
+          <td style="border:1px solid #ccc; padding:6px;">${esc(l.clientCity)}</td>
+          <td style="border:1px solid #ccc; padding:6px;">${esc(l.itemsSummary)}</td>
+          <td style="border:1px solid #ccc; padding:6px;">${esc(l.trackingNote || "")}</td>
+          <td style="border:1px solid #ccc; padding:6px;">${esc(l.remoteUrls || "")}</td>
+        </tr>
+      `).join("");
+
+      const html = `
+        <html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+        <head><meta charset="UTF-8"></head>
+        <body>
+          <table border="1" style="border-collapse:collapse; font-family:Arial, sans-serif; font-size:13px;">
+            <thead>
+              <tr style="background:#161514; color:#FAF8F4; font-weight:bold;">
+                <th style="padding:8px;">Mã Đơn</th>
+                <th style="padding:8px;">Thời Gian</th>
+                <th style="padding:8px;">Trạng Thái</th>
+                <th style="padding:8px;">Tên Khách Hàng</th>
+                <th style="padding:8px;">SĐT / Zalo</th>
+                <th style="padding:8px;">Khu Vực</th>
+                <th style="padding:8px;">Sản Phẩm Yêu Cầu</th>
+                <th style="padding:8px;">Ghi Chú Theo Dõi</th>
+                <th style="padding:8px;">Link Ảnh / Shopee</th>
+              </tr>
+            </thead>
+            <tbody>${rows}</tbody>
+          </table>
+        </body>
+        </html>
+      `;
+      const blob = new Blob(["\uFEFF" + html], { type: "application/vnd.ms-excel;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `ATELIER-CRM-Don-Hang-${new Date().toISOString().slice(0, 10)}.xls`;
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast("ĐÃ XUẤT FILE EXCEL (.XLS) THÀNH CÔNG");
+    });
+
+    // Boot
+    loadLocalData();
+    renderAll();
+    syncFromCloudAndLocalServer();
+    subscribeLiveOrderStream();
+  </script>
+</body>
+</html>
